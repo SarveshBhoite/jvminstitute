@@ -10,11 +10,16 @@ import {
   Share2, 
   CheckCircle2,
   LockOpen,
-  Zap
+  Zap,
+  RotateCw
 } from "lucide-react";
 
 export default function NewFeaturesSpotlight() {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
+
+  const toggleCard = (id: number) => {
+    setFlippedCard((prev) => (prev === id ? null : id));
+  };
 
   return (
     <section className="py-20 md:py-28 bg-gradient-to-b from-slate-100 via-indigo-900/10 to-slate-100 dark:from-[#0B0F19] dark:via-[#1E2B88]/20 dark:to-[#0B0F19] relative overflow-hidden transition-colors duration-500 border-y border-indigo-200/50 dark:border-indigo-900/40">
@@ -36,7 +41,8 @@ export default function NewFeaturesSpotlight() {
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium">
-            Hover over any perk card to flip and reveal full feature details, payout rewards, & instant access!
+            <span className="hidden md:inline">Hover over any perk card to flip and reveal full feature details, payout rewards, & instant access!</span>
+            <span className="inline md:hidden">Tap/click on any card to flip and reveal full feature details & rewards!</span>
           </p>
         </div>
 
@@ -45,11 +51,16 @@ export default function NewFeaturesSpotlight() {
           
           {/* Card 1: Refer & Earn (Amber / Yellow Theme Flip) */}
           <div 
-            className="group [perspective:1000px] h-[480px] cursor-pointer"
-            onMouseEnter={() => setFlippedCard(1)}
-            onMouseLeave={() => setFlippedCard(null)}
+            className="group [perspective:1000px] h-[480px] cursor-pointer touch-manipulation"
+            onMouseEnter={() => {
+              if (window.innerWidth >= 1024) setFlippedCard(1);
+            }}
+            onMouseLeave={() => {
+              if (window.innerWidth >= 1024) setFlippedCard(null);
+            }}
+            onClick={() => toggleCard(1)}
           >
-            <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 1 ? '[transform:rotateY(180deg)]' : ''}`}>
+            <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 1 ? '[transform:rotateY(180deg)]' : 'lg:group-hover:[transform:rotateY(180deg)]'}`}>
               
               {/* FRONT FACE */}
               <div className="absolute inset-0 w-full h-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-xl flex flex-col justify-between shadow-md group-hover:shadow-2xl group-hover:border-amber-400/80 transition-all [backface-visibility:hidden]">
@@ -84,7 +95,8 @@ export default function NewFeaturesSpotlight() {
                 </div>
 
                 <div className="pt-4 flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400">
-                  <span>Hover to flip for details</span>
+                  <span className="hidden md:inline">Hover to flip for details</span>
+                  <span className="inline md:hidden flex items-center gap-1"><RotateCw className="w-3.5 h-3.5" /> Tap to flip card</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -128,7 +140,8 @@ export default function NewFeaturesSpotlight() {
                 <div className="pt-4">
                   <Link 
                     href="/refer-and-earn"
-                    className="w-full bg-slate-950 hover:bg-slate-900 text-white font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg"
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full bg-slate-950 hover:bg-slate-900 text-white font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg relative z-30"
                   >
                     <Share2 className="w-4 h-4 text-amber-400" /> Start Referring Friends
                   </Link>
@@ -140,11 +153,16 @@ export default function NewFeaturesSpotlight() {
 
           {/* Card 2: Study Material & PDF Store (Brand Deep Purple/Indigo Theme Flip) */}
           <div 
-            className="group [perspective:1000px] h-[480px] cursor-pointer"
-            onMouseEnter={() => setFlippedCard(2)}
-            onMouseLeave={() => setFlippedCard(null)}
+            className="group [perspective:1000px] h-[480px] cursor-pointer touch-manipulation"
+            onMouseEnter={() => {
+              if (window.innerWidth >= 1024) setFlippedCard(2);
+            }}
+            onMouseLeave={() => {
+              if (window.innerWidth >= 1024) setFlippedCard(null);
+            }}
+            onClick={() => toggleCard(2)}
           >
-            <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 2 ? '[transform:rotateY(180deg)]' : ''}`}>
+            <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 2 ? '[transform:rotateY(180deg)]' : 'lg:group-hover:[transform:rotateY(180deg)]'}`}>
               
               {/* FRONT FACE */}
               <div className="absolute inset-0 w-full h-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-xl flex flex-col justify-between shadow-md group-hover:shadow-2xl group-hover:border-indigo-500/80 transition-all [backface-visibility:hidden]">
@@ -179,7 +197,8 @@ export default function NewFeaturesSpotlight() {
                 </div>
 
                 <div className="pt-4 flex items-center justify-between text-xs font-bold text-[#1E2B88] dark:text-indigo-300">
-                  <span>Hover to flip for details</span>
+                  <span className="hidden md:inline">Hover to flip for details</span>
+                  <span className="inline md:hidden flex items-center gap-1"><RotateCw className="w-3.5 h-3.5" /> Tap to flip card</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -223,7 +242,8 @@ export default function NewFeaturesSpotlight() {
                 <div className="pt-4">
                   <Link 
                     href="/study-material"
-                    className="w-full bg-white hover:bg-slate-100 text-indigo-950 font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg"
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full bg-white hover:bg-slate-100 text-indigo-950 font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg relative z-30"
                   >
                     <LockOpen className="w-4 h-4 text-[#1E2B88]" /> Explore Notes & PDFs
                   </Link>
@@ -235,11 +255,16 @@ export default function NewFeaturesSpotlight() {
 
           {/* Card 3: Placements Wall (Royal Blue / Dark Theme Flip) */}
           <div 
-            className="group [perspective:1000px] h-[480px] cursor-pointer"
-            onMouseEnter={() => setFlippedCard(3)}
-            onMouseLeave={() => setFlippedCard(null)}
+            className="group [perspective:1000px] h-[480px] cursor-pointer touch-manipulation"
+            onMouseEnter={() => {
+              if (window.innerWidth >= 1024) setFlippedCard(3);
+            }}
+            onMouseLeave={() => {
+              if (window.innerWidth >= 1024) setFlippedCard(null);
+            }}
+            onClick={() => toggleCard(3)}
           >
-            <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 3 ? '[transform:rotateY(180deg)]' : ''}`}>
+            <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 3 ? '[transform:rotateY(180deg)]' : 'lg:group-hover:[transform:rotateY(180deg)]'}`}>
               
               {/* FRONT FACE */}
               <div className="absolute inset-0 w-full h-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-xl flex flex-col justify-between shadow-md group-hover:shadow-2xl group-hover:border-emerald-400/80 transition-all [backface-visibility:hidden]">
@@ -274,7 +299,8 @@ export default function NewFeaturesSpotlight() {
                 </div>
 
                 <div className="pt-4 flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                  <span>Hover to flip for details</span>
+                  <span className="hidden md:inline">Hover to flip for details</span>
+                  <span className="inline md:hidden flex items-center gap-1"><RotateCw className="w-3.5 h-3.5" /> Tap to flip card</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -318,7 +344,8 @@ export default function NewFeaturesSpotlight() {
                 <div className="pt-4">
                   <Link 
                     href="/placements"
-                    className="w-full bg-white hover:bg-slate-100 text-slate-950 font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg"
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full bg-white hover:bg-slate-100 text-slate-950 font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg relative z-30"
                   >
                     View Placements Record <ArrowRight className="w-4 h-4 text-emerald-600" />
                   </Link>

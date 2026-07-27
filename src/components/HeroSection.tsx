@@ -33,7 +33,7 @@ export default function HeroSection() {
       {/* Background Ambient Glows */}
       <div className="ambient-glow w-96 h-96 bg-[#1E2B88] dark:bg-[#4F46E5] top-0 left-[-10%] opacity-20 z-0"></div>
 
-      {/* FULL RIGHT-SIDE IMAGE CONTAINER WITH AUTOMATIC FADE SLIDESHOW */}
+      {/* DESKTOP FULL RIGHT-SIDE IMAGE CONTAINER WITH AUTOMATIC FADE SLIDESHOW */}
       <div className="absolute top-0 right-0 bottom-0 w-full lg:w-1/2 z-0 hidden lg:block overflow-hidden">
         
         {/* Auto Fade Images Layer */}
@@ -58,7 +58,6 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40 z-10 pointer-events-none"></div>
 
         {/* --- ORGANIC FULL-CURVE WAVY RIBBON DIVIDER --- */}
-        {/* 1. Outer Magenta (#E01E6A) Ribbon Wave */}
         <svg 
           className="absolute -left-1 top-0 bottom-0 h-full w-36 text-[#E01E6A] pointer-events-none drop-shadow-xl z-20" 
           viewBox="0 0 100 100" 
@@ -67,7 +66,6 @@ export default function HeroSection() {
           <path d="M100,0 C20,15 70,60 100,100 L0,100 L0,0 Z" fill="currentColor" />
         </svg>
 
-        {/* 2. Middle Royal Blue (#1E2B88) Ribbon Wave */}
         <svg 
           className="absolute -left-2 top-0 bottom-0 h-full w-32 text-[#1E2B88] pointer-events-none drop-shadow-lg z-20" 
           viewBox="0 0 100 100" 
@@ -76,7 +74,6 @@ export default function HeroSection() {
           <path d="M95,0 C15,18 65,65 95,100 L0,100 L0,0 Z" fill="currentColor" />
         </svg>
 
-        {/* 3. Section Background Matching Smooth Wavy Cutout */}
         <svg 
           className="absolute -left-3 top-0 bottom-0 h-full w-28 text-slate-50 dark:text-[#0B0F19] pointer-events-none z-20" 
           viewBox="0 0 100 100" 
@@ -86,15 +83,39 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Main Grid Content (Balanced Padding for Viewport Fit & Prominent Feel) */}
+      {/* Main Container */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6 sm:py-8 lg:py-10">
         
+        {/* MOBILE FEATURED IMAGE SLIDESHOW HEADER (Visible on Mobile & Tablet before text content) */}
+        <div className="block lg:hidden mb-6 relative w-full h-[240px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border-2 border-white dark:border-slate-800">
+          {heroImages.map((img, idx) => (
+            <div
+              key={img.src}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                currentImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover object-center"
+                priority={idx === 0}
+              />
+            </div>
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute bottom-3 left-4 z-20 text-xs font-extrabold text-white bg-slate-950/80 px-3.5 py-1 rounded-full border border-white/20 backdrop-blur-md">
+            ✦ JVM Institute Pune Campus
+          </div>
+        </div>
+
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
           <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
             
-            {/* Top Rating & ISO Badge (Fixed inline layout for Shield & text) */}
+            {/* Top Rating & ISO Badge */}
             <div className="flex justify-center lg:justify-start">
               <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3.5 py-1.5 rounded-full shadow-xs flex-wrap sm:flex-nowrap">
                 <span className="flex text-amber-400">
