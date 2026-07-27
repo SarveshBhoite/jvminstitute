@@ -3,23 +3,31 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { 
   BookOpen, 
-  Sparkles, 
   GraduationCap, 
   Gift, 
   PhoneCall, 
   Menu, 
   X, 
   ChevronRight,
+  ChevronDown,
   FileText,
   Calendar,
-  Layers
+  Layers,
+  Sparkles,
+  Code2,
+  BrainCircuit,
+  FileCode2,
+  HelpCircle
 } from "lucide-react";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,87 +57,198 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Main Floating Glass Navbar */}
+      {/* Main Wide Floating Navbar */}
       <header className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? "bg-white/90 backdrop-blur-md shadow-lg shadow-slate-900/5 py-3 border-b border-slate-200/80" 
-          : "bg-white/70 backdrop-blur-sm py-4 border-b border-slate-100"
+          ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-200" 
+          : "bg-white/90 backdrop-blur-sm py-4 border-b border-slate-100"
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Brand Logo with Glow Accent */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-xl bg-white p-1 shadow-sm border border-slate-100 transition-transform duration-300 group-hover:scale-105">
+          {/* Larger Full Brand Logo */}
+          <Link href="/" className="flex items-center shrink-0 group">
+            <div className="relative h-12 md:h-14 w-auto flex items-center">
               <Image 
                 src="/jvm_logo-bg.png" 
                 alt="JVM Institute Logo" 
-                width={56} 
-                height={56}
-                className="object-contain"
+                width={260} 
+                height={65}
+                className="h-11 md:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
                 priority
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl md:text-2xl font-extrabold tracking-tight font-heading leading-tight text-slate-900 group-hover:text-[#1E2B88] transition-colors">
-                JVM <span className="jvm-gradient-text">INSTITUTE</span>
-              </span>
-              <span className="text-[10px] md:text-[11px] tracking-widest uppercase font-semibold text-slate-500">
-                Pune&apos;s No.1 Tech Academy
-              </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60 shadow-inner">
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/70">
+            {/* Active Pill: Home */}
             <Link 
               href="/" 
-              className="px-4 py-2 text-sm font-semibold text-slate-800 rounded-full hover:bg-white hover:text-[#1E2B88] hover:shadow-sm transition-all"
+              className={`px-4 py-2 text-sm font-bold rounded-full transition-all whitespace-nowrap ${
+                pathname === "/" 
+                  ? "bg-gradient-to-r from-[#1E2B88] to-[#7C248C] text-white shadow-sm" 
+                  : "text-slate-700 hover:bg-white hover:text-[#1E2B88]"
+              }`}
             >
               Home
             </Link>
-            <Link 
-              href="/our-courses" 
-              className="px-4 py-2 text-sm font-semibold text-slate-700 rounded-full hover:bg-white hover:text-[#1E2B88] hover:shadow-sm transition-all flex items-center gap-1.5"
+
+            {/* Comprehensive Courses Dropdown showing ALL existing course pages */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setCoursesDropdownOpen(true)}
+              onMouseLeave={() => setCoursesDropdownOpen(false)}
             >
-              <BookOpen className="w-4 h-4 text-[#7C248C]" /> Courses
-            </Link>
-            <Link 
-              href="/data-engineering-course-in-pune" 
-              className="px-4 py-2 text-sm font-bold text-[#1E2B88] bg-white shadow-sm rounded-full flex items-center gap-1.5 border border-purple-100"
-            >
-              <Sparkles className="w-4 h-4 text-[#E01E6A] animate-pulse" /> Data Engineering
-            </Link>
+              <button 
+                className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                  pathname.includes("/courses") || 
+                  pathname === "/data-engineering-course-in-pune" ||
+                  pathname === "/learn-python-for-data-analysis" ||
+                  pathname === "/why-should-i-learn-python-for-data-analysis" ||
+                  pathname === "/how-to-read-xml-files-into-python"
+                    ? "bg-white text-[#1E2B88] shadow-xs font-bold"
+                    : "text-slate-700 hover:bg-white hover:text-[#1E2B88]"
+                }`}
+              >
+                <BookOpen className="w-4 h-4 text-[#7C248C]" /> 
+                Courses 
+                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+              </button>
+
+              {coursesDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-200/90 space-y-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
+                    Flagship & Training Tracks
+                  </div>
+
+                  {/* 1. Top Ranked Data Engineering */}
+                  <Link 
+                    href="/data-engineering-course-in-pune" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50 transition-colors group border border-transparent hover:border-purple-100"
+                  >
+                    <div className="p-2 rounded-lg bg-purple-100 text-[#1E2B88] shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4 text-[#E01E6A]" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900 group-hover:text-[#1E2B88]">
+                          Data Engineering in Pune
+                        </span>
+                        <span className="text-[10px] bg-[#1E2B88] text-white px-1.5 py-0.2 rounded font-extrabold">Top 3</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 line-clamp-1">PySpark, Databricks, AWS & Snowflake</p>
+                    </div>
+                  </Link>
+
+                  {/* 2. Learn Python for Data Analysis */}
+                  <Link 
+                    href="/learn-python-for-data-analysis" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-indigo-50 text-[#1E2B88] shrink-0 mt-0.5">
+                      <Code2 className="w-4 h-4 text-[#7C248C]" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 group-hover:text-[#1E2B88]">
+                        Learn Python for Data Analysis
+                      </span>
+                      <p className="text-[11px] text-slate-500 line-clamp-1">Pandas, NumPy, SQL & EDA Projects</p>
+                    </div>
+                  </Link>
+
+                  {/* 3. Why Learn Python Guide */}
+                  <Link 
+                    href="/why-should-i-learn-python-for-data-analysis" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-amber-50 text-amber-600 shrink-0 mt-0.5">
+                      <HelpCircle className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 group-hover:text-[#1E2B88]">
+                        Why Learn Python for Data Analysis?
+                      </span>
+                      <p className="text-[11px] text-slate-500 line-clamp-1">Career roadmap, salary & job market</p>
+                    </div>
+                  </Link>
+
+                  {/* 4. How to Read XML Files into Python */}
+                  <Link 
+                    href="/how-to-read-xml-files-into-python" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600 shrink-0 mt-0.5">
+                      <FileCode2 className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 group-hover:text-[#1E2B88]">
+                        Read XML Files into Python
+                      </span>
+                      <p className="text-[11px] text-slate-500 line-clamp-1">Pandas read_xml & ElementTree tutorial</p>
+                    </div>
+                  </Link>
+
+                  <div className="pt-1 border-t border-slate-100">
+                    <Link 
+                      href="/our-courses" 
+                      className="flex items-center justify-between p-2 rounded-xl text-xs font-bold text-[#1E2B88] hover:bg-slate-50 transition-colors"
+                    >
+                      <span>Explore All Courses Catalog</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Placements */}
             <Link 
               href="/placements" 
-              className="px-4 py-2 text-sm font-semibold text-slate-700 rounded-full hover:bg-white hover:text-[#1E2B88] hover:shadow-sm transition-all flex items-center gap-1.5"
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/placements" 
+                  ? "bg-white text-emerald-700 shadow-xs font-bold" 
+                  : "text-slate-700 hover:bg-white hover:text-[#1E2B88]"
+              }`}
             >
               <GraduationCap className="w-4 h-4 text-emerald-600" /> Placements
             </Link>
+
+            {/* Refer & Earn */}
             <Link 
               href="/refer-and-earn" 
-              className="px-4 py-2 text-sm font-semibold text-slate-700 rounded-full hover:bg-white hover:text-[#1E2B88] hover:shadow-sm transition-all flex items-center gap-1.5"
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/refer-and-earn" 
+                  ? "bg-white text-amber-600 shadow-xs font-bold" 
+                  : "text-slate-700 hover:bg-white hover:text-[#1E2B88]"
+              }`}
             >
               <Gift className="w-4 h-4 text-amber-500" /> Refer & Earn
             </Link>
+
+            {/* Notes & PDFs */}
             <Link 
               href="/study-material" 
-              className="px-4 py-2 text-sm font-semibold text-slate-700 rounded-full hover:bg-white hover:text-[#1E2B88] hover:shadow-sm transition-all flex items-center gap-1.5"
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/study-material" 
+                  ? "bg-white text-sky-600 shadow-xs font-bold" 
+                  : "text-slate-700 hover:bg-white hover:text-[#1E2B88]"
+              }`}
             >
               <FileText className="w-4 h-4 text-sky-600" /> Notes & PDFs
             </Link>
           </nav>
 
           {/* Desktop Right CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3 shrink-0">
             <Link 
               href="/download-brochure" 
-              className="text-xs font-bold text-slate-700 hover:text-[#1E2B88] px-3 py-2 rounded-lg border border-slate-200 hover:border-slate-300 transition-all"
+              className="text-xs font-bold text-slate-700 hover:text-[#1E2B88] px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 transition-all whitespace-nowrap"
             >
               Syllabus PDF
             </Link>
             <Link 
               href="/contact-us" 
-              className="jvm-gradient-bg text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md shadow-purple-900/20 hover:opacity-95 hover:shadow-lg hover:shadow-purple-900/30 transition-all flex items-center gap-2"
+              className="jvm-gradient-bg text-white px-5 py-2.5 rounded-full text-xs md:text-sm font-bold shadow-md hover:opacity-95 transition-all flex items-center gap-2 whitespace-nowrap"
             >
               <PhoneCall className="w-4 h-4" /> Enquire Now
             </Link>
@@ -147,14 +266,21 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-4 pb-6 space-y-3 shadow-xl">
+          <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-4 pb-6 space-y-3 shadow-xl max-h-[85vh] overflow-y-auto">
             <Link 
               href="/" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50"
+              className={`block px-4 py-2.5 rounded-lg text-base font-semibold ${
+                pathname === "/" ? "bg-purple-50 text-[#1E2B88] font-bold" : "text-slate-800 hover:bg-slate-50"
+              }`}
             >
               Home
             </Link>
+
+            <div className="px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-slate-400">
+              Courses & Programs
+            </div>
+
             <Link 
               href="/data-engineering-course-in-pune" 
               onClick={() => setMobileMenuOpen(false)}
@@ -165,13 +291,39 @@ export default function Navbar() {
               </span>
               <span className="text-xs font-extrabold bg-[#1E2B88] text-white px-2 py-0.5 rounded-full">Top Ranked</span>
             </Link>
+
+            <Link 
+              href="/learn-python-for-data-analysis" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50"
+            >
+              Learn Python for Data Analysis
+            </Link>
+
+            <Link 
+              href="/why-should-i-learn-python-for-data-analysis" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50"
+            >
+              Why Learn Python Guide
+            </Link>
+
+            <Link 
+              href="/how-to-read-xml-files-into-python" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50"
+            >
+              Read XML Files into Python
+            </Link>
+
             <Link 
               href="/our-courses" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-2"
+              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-2 border-t border-slate-100 pt-3"
             >
-              <BookOpen className="w-4 h-4 text-[#7C248C]" /> All Courses
+              <BookOpen className="w-4 h-4 text-[#7C248C]" /> All Courses Catalog
             </Link>
+
             <Link 
               href="/placements" 
               onClick={() => setMobileMenuOpen(false)}
@@ -179,6 +331,7 @@ export default function Navbar() {
             >
               <GraduationCap className="w-4 h-4 text-emerald-600" /> Placements Record
             </Link>
+
             <Link 
               href="/refer-and-earn" 
               onClick={() => setMobileMenuOpen(false)}
@@ -186,6 +339,7 @@ export default function Navbar() {
             >
               <Gift className="w-4 h-4 text-amber-500" /> Refer & Earn Money
             </Link>
+
             <Link 
               href="/study-material" 
               onClick={() => setMobileMenuOpen(false)}
@@ -193,6 +347,7 @@ export default function Navbar() {
             >
               <FileText className="w-4 h-4 text-sky-600" /> Free Notes & PDFs
             </Link>
+
             <Link 
               href="/events" 
               onClick={() => setMobileMenuOpen(false)}
@@ -200,6 +355,7 @@ export default function Navbar() {
             >
               <Calendar className="w-4 h-4 text-purple-600" /> Workshops & Events
             </Link>
+
             <Link 
               href="/blog" 
               onClick={() => setMobileMenuOpen(false)}
