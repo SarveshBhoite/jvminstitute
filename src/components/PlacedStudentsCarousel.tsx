@@ -83,12 +83,11 @@ export default function PlacedStudentsCarousel() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 scale-105"
         style={{ 
-          backgroundImage: `url('/students1.jpeg')`,
-          filter: 'blur(3px)',
+          backgroundImage: `url('/students2.jpeg')`,
         }}
       ></div>
-      {/* Dark overlay mask for legibility */}
-      <div className="absolute inset-0 z-0 bg-slate-950/65 bg-gradient-to-b from-slate-950/75 via-slate-900/60 to-slate-950/85"></div>
+      {/* Reduced translucent overlay mask so background group photo is clear */}
+      <div className="absolute inset-0 z-0 bg-slate-950/30 bg-gradient-to-b from-slate-950/40 via-slate-950/25 to-slate-950/50"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -99,7 +98,7 @@ export default function PlacedStudentsCarousel() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight drop-shadow-md">
-            Placed Alumni <span className="jvm-gradient-text">Success Showcase</span>
+            Placed Alumni Success Showcase
           </h2>
 
           <p className="text-base sm:text-lg text-slate-200 drop-shadow-sm font-medium">
