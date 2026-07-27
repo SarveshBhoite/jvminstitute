@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import LeadEnquiryModal from "@/components/LeadEnquiryModal";
 import HiringPartnersTicker from "@/components/HiringPartnersTicker";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import GlobeTechEcoSection from "@/components/GlobeTechEcoSection";
@@ -15,9 +16,12 @@ export default function HomePage() {
       {/* Navigation Header */}
       <Navbar />
 
+      {/* Automatic Lead Enquiry Popup Modal */}
+      <LeadEnquiryModal />
+
       {/* Main Page Content */}
       <main className="flex-grow">
-        {/* Asymmetric Light Theme Hero Section */}
+        {/* Asymmetric Curved Hero Section */}
         <HeroSection />
 
         {/* 1. Infinite Ticker: Top MNC Hiring Partners */}
