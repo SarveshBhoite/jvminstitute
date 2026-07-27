@@ -1,8 +1,22 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "JVM Institute - Premier Data Engineering, Python & Tech Training Institute in Pune",
+  metadataBase: new URL("https://jvminstitute.com"),
+  title: "JVM Institute - Premier Data Engineering & Tech Training Institute in Pune",
   description: "JVM Institute Pune offers industry-aligned training in Data Engineering, Python for Data Analysis, Big Data, SQL, and Cloud Technologies. Transform your career with 100% placement assistance.",
   keywords: [
     "JVM Institute",
@@ -41,8 +55,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#FAFAFC] text-slate-900 antialiased selection:bg-[#7C248C] selection:text-white">
+    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} scroll-smooth`}>
+      <body className="min-h-screen bg-[#FAFAFC] text-slate-900 font-sans antialiased selection:bg-[#7C248C] selection:text-white">
         {children}
       </body>
     </html>
