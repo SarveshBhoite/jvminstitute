@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { 
   Globe, 
@@ -14,18 +15,26 @@ import {
   ArrowRight
 } from "lucide-react";
 
+// 6 Orbiting nodes using transparent /react.png image
 const techNodes = [
-  { id: 1, name: "PySpark", role: "Distributed Processing", icon: Cpu, angle: 0 },
-  { id: 2, name: "Databricks", role: "Lakehouse Platform", icon: Cloud, angle: 60 },
-  { id: 3, name: "Snowflake", role: "Data Warehousing", icon: Server, angle: 120 },
-  { id: 4, name: "AWS Glue", role: "Cloud ETL Service", icon: Layers, angle: 180 },
-  { id: 5, name: "Apache Airflow", role: "Pipeline Orchestration", icon: Database, angle: 240 },
-  { id: 6, name: "Python & SQL", role: "Core Data Language", icon: Code2, angle: 300 },
+  { id: 1, name: "React", logoImg: "/react.png", angle: 0 },
+  { id: 2, name: "React", logoImg: "/react.png", angle: 60 },
+  { id: 3, name: "React", logoImg: "/react.png", angle: 120 },
+  { id: 4, name: "React", logoImg: "/react.png", angle: 180 },
+  { id: 5, name: "React", logoImg: "/react.png", angle: 240 },
+  { id: 6, name: "React", logoImg: "/react.png", angle: 300 },
+];
+
+const techList = [
+  { name: "PySpark", role: "Distributed Processing", icon: Cpu },
+  { name: "Databricks", role: "Lakehouse Platform", icon: Cloud },
+  { name: "Snowflake", role: "Data Warehousing", icon: Server },
+  { name: "AWS Glue", role: "Cloud ETL Service", icon: Layers },
+  { name: "Apache Airflow", role: "Pipeline Orchestration", icon: Database },
+  { name: "Python & SQL", role: "Core Data Language", icon: Code2 },
 ];
 
 export default function GlobeTechEcoSection() {
-  const [activeNode, setActiveNode] = useState(techNodes[0]);
-
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-white via-slate-50 to-white dark:from-[#0B0F19] dark:via-[#0F172A] dark:to-[#0B0F19] relative overflow-hidden transition-colors duration-300">
       
@@ -49,106 +58,127 @@ export default function GlobeTechEcoSection() {
           </p>
         </div>
 
-        {/* 2-Column Grid: Interactive Orbiting Globe Visual & Tech Details */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        {/* 2-Column Layout: Larger Rotating Globe & Matching Height Tech Stack Card */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Column: Interactive Orbiting Globe Canvas */}
-          <div className="lg:col-span-7 relative flex items-center justify-center py-8">
+          {/* Left Column: CONTINUOUSLY ROTATING ORBITING LOGOS (NO CIRCULAR/DOTTED BORDER LINES) */}
+          <div className="lg:col-span-6 relative flex items-center justify-center min-h-[520px] lg:min-h-full py-6">
             
-            {/* Outer Orbit Ring 1 */}
-            <div className="w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] rounded-full border-2 border-dashed border-purple-200 dark:border-purple-900/60 absolute animate-globe-spin"></div>
-            
-            {/* Outer Orbit Ring 2 */}
-            <div className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full border border-indigo-200 dark:border-indigo-900/60 absolute animate-globe-spin-reverse"></div>
+            {/* Ambient Center Glow */}
+            <div className="absolute w-96 h-96 bg-purple-500/20 dark:bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-            {/* Central Globe Core */}
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full jvm-gradient-bg p-1 shadow-2xl flex flex-col items-center justify-center text-center text-white z-20 group">
-              <div className="w-full h-full rounded-full bg-slate-950/80 backdrop-blur-md flex flex-col items-center justify-center p-4">
-                <Globe className="w-10 h-10 text-amber-300 mb-1 animate-pulse" />
-                <span className="text-xs font-extrabold font-heading tracking-wider">
-                  JVM ECOSYSTEM
-                </span>
-                <span className="text-[10px] text-purple-200 font-medium">Pune & Global</span>
-              </div>
-            </div>
-
-            {/* Orbiting Tech Badges Around Center */}
-            {techNodes.map((node) => {
-              const NodeIcon = node.icon;
-              const isSelected = activeNode.id === node.id;
+            {/* CONTINUOUSLY ROTATING EXPANDED CONTAINER */}
+            <div className="relative w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] flex items-center justify-center">
               
-              // Calculate positioning around the 360 circle radius
-              const radius = 160; // radius in px
-              const x = radius * Math.cos((node.angle * Math.PI) / 180);
-              const y = radius * Math.sin((node.angle * Math.PI) / 180);
+              {/* CONTINUOUSLY ROTATING ORBITING LOGOS CONTAINER (Seamlessly orbiting without any lines or borders) */}
+              <div className="absolute inset-0 animate-[spin_22s_linear_infinite]">
+                {techNodes.map((node) => {
+                  const radius = 215; // px
+                  const x = radius * Math.cos((node.angle * Math.PI) / 180);
+                  const y = radius * Math.sin((node.angle * Math.PI) / 180);
 
-              return (
-                <button
-                  key={node.id}
-                  onClick={() => setActiveNode(node)}
-                  style={{
-                    transform: `translate(${x}px, ${y}px)`,
-                  }}
-                  className={`absolute z-30 transition-all duration-300 p-3 rounded-2xl flex items-center gap-2 border shadow-lg cursor-pointer hover:scale-110 ${
-                    isSelected
-                      ? "bg-gradient-to-r from-[#1E2B88] to-[#7C248C] text-white border-transparent ring-4 ring-purple-300 dark:ring-purple-900"
-                      : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-[#1E2B88]"
-                  }`}
-                >
-                  <NodeIcon className={`w-4 h-4 ${isSelected ? "text-amber-300" : "text-[#7C248C] dark:text-purple-400"}`} />
-                  <span className="text-xs font-extrabold whitespace-nowrap">{node.name}</span>
-                </button>
-              );
-            })}
+                  return (
+                    <div
+                      key={node.id}
+                      style={{
+                        position: "absolute",
+                        left: "50%",
+                        top: "50%",
+                        transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                      }}
+                    >
+                      {/* Counter-rotate logo so it stays upright while orbiting continuously */}
+                      <div className="animate-[spin_22s_linear_infinite_reverse]">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center filter drop-shadow-xl hover:scale-125 transition-transform cursor-pointer">
+                          <Image 
+                            src={node.logoImg}
+                            alt={node.name}
+                            width={64}
+                            height={64}
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Central Globe Core with Large JVM Institute Logo */}
+              <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-gradient-to-br from-purple-500/30 via-pink-500/30 to-indigo-500/30 p-2 shadow-2xl flex flex-col items-center justify-center text-center z-20 backdrop-blur-md">
+                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex flex-col items-center justify-center p-3 overflow-hidden border-2 border-purple-200 dark:border-purple-800 shadow-inner">
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 relative mb-1">
+                    <Image
+                      src="/jvm logo.jpeg"
+                      alt="JVM Institute Logo"
+                      fill
+                      className="object-contain rounded-full"
+                    />
+                  </div>
+                  <span className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white tracking-wider uppercase font-heading">
+                    JVM Institute
+                  </span>
+                </div>
+              </div>
+
+            </div>
 
           </div>
 
-          {/* Right Column: Selected Node Spotlight Card */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl jvm-gradient-bg text-white flex items-center justify-center shadow-md">
-                  {React.createElement(activeNode.icon, { className: "w-7 h-7" })}
-                </div>
-                <div>
-                  <span className="text-xs font-bold text-[#E01E6A] dark:text-pink-400 uppercase tracking-wider">
-                    {activeNode.role}
-                  </span>
-                  <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">
-                    {activeNode.name} Mastery
-                  </h3>
-                </div>
+          {/* Right Column: Highlighting Ecosystem Tech Stack */}
+          <div className="lg:col-span-6 flex flex-col justify-between">
+            <div className="bg-white/95 dark:bg-slate-900/95 rounded-3xl p-8 sm:p-9 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 relative overflow-hidden h-full flex flex-col justify-between">
+              
+              <div className="space-y-3">
+                <span className="text-xs font-extrabold text-[#E01E6A] dark:text-pink-400 uppercase tracking-wider">
+                  Industry Ready Curriculum
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
+                  Complete Data Stack Mastery
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  At JVM Institute, you don&apos;t just read theory — you build production ETL pipelines, configure cluster nodes, and process million-row datasets using industry standard tools.
+                </p>
               </div>
 
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                At JVM Institute, you don&apos;t just read theory — you build production ETL pipelines, configure cluster nodes, and process million-row datasets using <strong>{activeNode.name}</strong>.
-              </p>
+              {/* Technologies Grid */}
+              <div className="grid sm:grid-cols-2 gap-3.5">
+                {techList.map((item, idx) => {
+                  const IconComp = item.icon;
+                  return (
+                    <div key={idx} className="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/80 p-3.5 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                      <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 text-[#7C248C] dark:text-purple-300 flex items-center justify-center shrink-0 shadow-xs">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">{item.name}</div>
+                        <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">{item.role}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
 
-              <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Integrated into Data Engineering Master Program</span>
-                </div>
+              <div className="space-y-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
                   <span>Real-time Databricks / Cloud Workspace Access</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>MNC Interview Questions & Code Snippets</span>
+                  <span>Verified MNC Interview Questions & Code Snippets</span>
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2">
                 <Link
-                  href="/data-engineering-course-in-pune"
+                  href="/courses"
                   className="w-full jvm-gradient-bg text-white font-extrabold py-3.5 px-6 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-md hover:opacity-95"
                 >
-                  View Data Engineering Syllabus <ArrowRight className="w-4 h-4" />
+                  Explore Complete Syllabus <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
+
             </div>
           </div>
 
