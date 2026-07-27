@@ -5,6 +5,7 @@ import LeadEnquiryModal from "@/components/LeadEnquiryModal";
 import HiringPartnersTicker from "@/components/HiringPartnersTicker";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import GlobeTechEcoSection from "@/components/GlobeTechEcoSection";
+import KeyFeaturesBentoSection from "@/components/KeyFeaturesBentoSection";
 import PlacedStudentsCarousel from "@/components/PlacedStudentsCarousel";
 import NewFeaturesSpotlight from "@/components/NewFeaturesSpotlight";
 import BlogCrossLinkSection from "@/components/BlogCrossLinkSection";
@@ -30,16 +31,19 @@ export default function HomePage() {
         {/* 2. Featured Courses Track & Fee Deposit Options */}
         <FeaturedCourses />
 
-        {/* 3. Interactive Orbiting Tech Globe Ecosystem */}
+        {/* 3. Key Features Bento Grid & Arched Circular Marquee */}
+        <KeyFeaturesBentoSection />
+
+        {/* 4. Interactive Orbiting Tech Globe Ecosystem */}
         <GlobeTechEcoSection />
 
-        {/* 4. Rotating Placed Alumni Carousel with Salary Hikes */}
+        {/* 5. Rotating Placed Alumni Carousel with Salary Hikes */}
         <PlacedStudentsCarousel />
 
-        {/* 5. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
+        {/* 6. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
         <NewFeaturesSpotlight />
 
-        {/* 6. High-Authority SEO Ranking Blog Cross-links */}
+        {/* 7. High-Authority SEO Ranking Blog Cross-links */}
         <BlogCrossLinkSection />
       </main>
 
