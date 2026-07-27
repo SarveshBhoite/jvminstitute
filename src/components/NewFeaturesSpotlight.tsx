@@ -10,8 +10,6 @@ import {
   Share2, 
   CheckCircle2,
   LockOpen,
-  Sparkles,
-  TrendingUp,
   Zap
 } from "lucide-react";
 
@@ -19,17 +17,17 @@ export default function NewFeaturesSpotlight() {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-100/90 via-purple-50/40 to-slate-100/90 dark:from-[#0B0F19] dark:via-[#131B2E] dark:to-[#0B0F19] relative overflow-hidden transition-colors duration-500 border-y border-purple-100/60 dark:border-purple-900/30">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-slate-100 via-indigo-900/10 to-slate-100 dark:from-[#0B0F19] dark:via-[#1E2B88]/20 dark:to-[#0B0F19] relative overflow-hidden transition-colors duration-500 border-y border-indigo-200/50 dark:border-indigo-900/40">
       
-      {/* Background Decorative Ambient Glows */}
-      <div className="ambient-glow w-96 h-96 bg-[#1E2B88] dark:bg-[#4F46E5] top-0 left-[-10%] opacity-15 pointer-events-none"></div>
-      <div className="ambient-glow w-96 h-96 bg-[#E01E6A] dark:bg-[#EC4899] bottom-0 right-[-10%] opacity-15 pointer-events-none"></div>
+      {/* Background Decorative Ambient Glows using exact Brand Colors #1E2B88 and #E01E6A */}
+      <div className="ambient-glow w-[450px] h-[450px] bg-[#1E2B88] dark:bg-[#1E2B88] top-0 left-[-10%] opacity-15 pointer-events-none"></div>
+      <div className="ambient-glow w-[450px] h-[450px] bg-[#E01E6A] dark:bg-[#E01E6A] bottom-0 right-[-10%] opacity-15 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-purple-200 dark:border-purple-800/80 text-xs font-extrabold text-[#7C248C] dark:text-purple-300 uppercase tracking-wider shadow-xs">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-indigo-200 dark:border-indigo-800/80 text-xs font-extrabold text-[#1E2B88] dark:text-indigo-300 uppercase tracking-wider shadow-xs">
             <Gift className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" /> Student & Alumni Perks
           </div>
 
@@ -140,7 +138,7 @@ export default function NewFeaturesSpotlight() {
             </div>
           </div>
 
-          {/* Card 2: Study Material & PDF Store (Purple Theme Flip) */}
+          {/* Card 2: Study Material & PDF Store (Brand Deep Purple/Indigo Theme Flip) */}
           <div 
             className="group [perspective:1000px] h-[480px] cursor-pointer"
             onMouseEnter={() => setFlippedCard(2)}
@@ -149,14 +147,14 @@ export default function NewFeaturesSpotlight() {
             <div className={`relative w-full h-full rounded-3xl transition-transform duration-700 [transform-style:preserve-3d] ${flippedCard === 2 ? '[transform:rotateY(180deg)]' : ''}`}>
               
               {/* FRONT FACE */}
-              <div className="absolute inset-0 w-full h-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-xl flex flex-col justify-between shadow-md group-hover:shadow-2xl group-hover:border-purple-400/80 transition-all [backface-visibility:hidden]">
+              <div className="absolute inset-0 w-full h-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-8 backdrop-blur-xl flex flex-col justify-between shadow-md group-hover:shadow-2xl group-hover:border-indigo-500/80 transition-all [backface-visibility:hidden]">
                 <div className="space-y-6">
-                  <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/60 flex items-center justify-center text-[#7C248C] dark:text-purple-300">
+                  <div className="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 flex items-center justify-center text-[#1E2B88] dark:text-indigo-300">
                     <FileText className="w-7 h-7" />
                   </div>
 
                   <div>
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-[#7C248C] dark:text-purple-300 bg-purple-100/70 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-900/60 px-3 py-1 rounded-full">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-[#1E2B88] dark:text-indigo-300 bg-indigo-100/70 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-900/60 px-3 py-1 rounded-full">
                       Free & Premium PDFs
                     </span>
                     <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white mt-3">
@@ -180,14 +178,14 @@ export default function NewFeaturesSpotlight() {
                   </ul>
                 </div>
 
-                <div className="pt-4 flex items-center justify-between text-xs font-bold text-purple-600 dark:text-purple-300">
+                <div className="pt-4 flex items-center justify-between text-xs font-bold text-[#1E2B88] dark:text-indigo-300">
                   <span>Hover to flip for details</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
 
-              {/* BACK FACE (Purple Theme Reveal) */}
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#7C248C] via-purple-700 to-[#1E2B88] text-white rounded-3xl p-8 flex flex-col justify-between shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+              {/* BACK FACE (Brand Deep Royal Blue / Indigo Theme Reveal) */}
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#1E2B88] via-indigo-800 to-slate-950 text-white rounded-3xl p-8 flex flex-col justify-between shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div className="space-y-5">
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
@@ -202,7 +200,7 @@ export default function NewFeaturesSpotlight() {
                     PDF Library Highlights
                   </h3>
 
-                  <p className="text-xs sm:text-sm font-medium text-purple-100 leading-relaxed">
+                  <p className="text-xs sm:text-sm font-medium text-indigo-100 leading-relaxed">
                     Curated by senior Data Engineers working in MNCs. High-yield revision kits before technical interviews!
                   </p>
 
@@ -225,9 +223,9 @@ export default function NewFeaturesSpotlight() {
                 <div className="pt-4">
                   <Link 
                     href="/study-material"
-                    className="w-full bg-white hover:bg-slate-100 text-purple-950 font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full bg-white hover:bg-slate-100 text-indigo-950 font-extrabold py-3.5 px-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg"
                   >
-                    <LockOpen className="w-4 h-4 text-purple-700" /> Explore Notes & PDFs
+                    <LockOpen className="w-4 h-4 text-[#1E2B88]" /> Explore Notes & PDFs
                   </Link>
                 </div>
               </div>
@@ -286,7 +284,7 @@ export default function NewFeaturesSpotlight() {
                 <div className="space-y-5">
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
-                      <TrendingUp className="w-6 h-6 text-emerald-300" />
+                      <GraduationCap className="w-6 h-6 text-emerald-300" />
                     </div>
                     <span className="text-xs font-extrabold uppercase tracking-wider bg-emerald-400/20 text-emerald-200 px-3 py-1 rounded-full border border-emerald-400/30">
                       250+ Hiring Partners

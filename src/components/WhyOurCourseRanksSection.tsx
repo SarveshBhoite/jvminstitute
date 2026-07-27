@@ -13,7 +13,7 @@ export default function WhyOurCourseRanksSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden transition-colors duration-500 border-t border-purple-100/60 dark:border-purple-900/30">
+    <section className="py-20 md:py-28 relative overflow-hidden transition-colors duration-500 border-t border-indigo-200/50 dark:border-indigo-900/40">
       
       {/* Background Image of students1.jpeg across the entire section */}
       <div className="absolute inset-0 z-0">
@@ -23,8 +23,8 @@ export default function WhyOurCourseRanksSection() {
           fill
           className="object-cover object-center filter blur-md scale-105 opacity-35 dark:opacity-20"
         />
-        {/* Uniform Solid Tint Overlay - Clean without corner gradient spots */}
-        <div className="absolute inset-0 bg-slate-100/5 dark:bg-[#0B0F19]/70 backdrop-blur-sm"></div>
+        {/* Uniform Solid Tint Overlay using JVM Brand Royal Blue / Dark Indigo */}
+        <div className="absolute inset-0 bg-slate-100/90 dark:bg-[#0B0F19]/90 backdrop-blur-sm"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -34,7 +34,7 @@ export default function WhyOurCourseRanksSection() {
           {/* LEFT CONTENT COLUMN (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-purple-200 dark:border-purple-800/80 text-xs font-extrabold text-[#7C248C] dark:text-purple-300 uppercase tracking-wider shadow-xs backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-indigo-200 dark:border-indigo-800/80 text-xs font-extrabold text-[#1E2B88] dark:text-indigo-300 uppercase tracking-wider shadow-xs backdrop-blur-md">
               <Award className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" /> Proven Track Record
             </div>
 
@@ -53,7 +53,7 @@ export default function WhyOurCourseRanksSection() {
             {/* Highlights Grid */}
             <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
               <div className="flex items-center gap-3 bg-white/90 dark:bg-slate-900/90 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs backdrop-blur-md">
-                <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-[#1E2B88] dark:text-indigo-300 flex items-center justify-center shrink-0">
                   <Users className="w-5 h-5" />
                 </div>
                 <div>

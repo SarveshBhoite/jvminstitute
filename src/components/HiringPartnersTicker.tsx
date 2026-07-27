@@ -1,110 +1,75 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Building2 } from "lucide-react";
 import LogoLoop, { LogoItem } from "./LogoLoop";
 
-// Dedicated MNC partner logos styled as clean brand logo elements
+// Seamless transparent image logos without text or borders (Enlarged Size)
 const partnerLogos: LogoItem[] = [
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          TCS
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 1" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "TATA Consultancy Services",
+    title: "Partner 1",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          INFOSYS
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 2" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "Infosys",
+    title: "Partner 2",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          WIPRO
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 3" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "Wipro",
+    title: "Partner 3",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          COGNIZANT
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 4" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "Cognizant",
+    title: "Partner 4",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          ACCENTURE
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 5" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "Accenture",
+    title: "Partner 5",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          CAPGEMINI
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 6" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "Capgemini",
+    title: "Partner 6",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          TECH MAHINDRA
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 7" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "Tech Mahindra",
+    title: "Partner 7",
   },
   {
     node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          IBM
-        </span>
+      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+        <Image src="/react.png" alt="Hiring Partner 8" width={76} height={76} className="object-contain" />
       </div>
     ),
-    title: "IBM",
-  },
-  {
-    node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          LTIMINDTREE
-        </span>
-      </div>
-    ),
-    title: "LTIMindtree",
-  },
-  {
-    node: (
-      <div className="flex items-center gap-2 bg-white dark:bg-slate-800/90 px-7 py-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-xs hover:border-[#1E2B88] dark:hover:border-purple-400 transition-all cursor-pointer group">
-        <span className="text-sm font-extrabold font-heading text-slate-800 dark:text-slate-200 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 tracking-wider">
-          PERSISTENT
-        </span>
-      </div>
-    ),
-    title: "Persistent Systems",
+    title: "Partner 8",
   },
 ];
 
@@ -120,14 +85,14 @@ export default function HiringPartnersTicker() {
         </p>
       </div>
 
-      {/* React Bits LogoLoop Component */}
+      {/* React Bits LogoLoop Component with Larger Pure Image Logos */}
       <div className="w-full relative">
         <LogoLoop
           logos={partnerLogos}
           speed={60}
           direction="left"
-          logoHeight={48}
-          gap={32}
+          logoHeight={76}
+          gap={52}
           pauseOnHover={true}
           scaleOnHover={true}
           fadeOut={true}
