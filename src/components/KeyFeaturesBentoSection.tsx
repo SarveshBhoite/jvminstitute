@@ -14,8 +14,7 @@ import {
   TrendingUp,
   Clock,
   Briefcase,
-  Star,
-  GraduationCap
+  Star
 } from "lucide-react";
 
 // CountUp hook using IntersectionObserver
@@ -58,7 +57,7 @@ export default function KeyFeaturesBentoSection() {
   const count360 = useCountUp(360, 2000);
 
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-[#0B0F19] relative overflow-hidden transition-colors duration-500">
+    <section className="pt-20 md:pt-28 pb-10 bg-white dark:bg-[#0B0F19] relative overflow-hidden transition-colors duration-500">
       
       {/* Background ambient glows */}
       <div className="ambient-glow w-[500px] h-[500px] bg-[#1E2B88] dark:bg-[#4F46E5] top-[-10%] left-[-10%] opacity-10 pointer-events-none"></div>
@@ -84,7 +83,7 @@ export default function KeyFeaturesBentoSection() {
         {/* ASYMMETRIC BENTO GRID WITH PROMINENT TOP HERO NUMBERS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
-          {/* Top Row Hero Box 1: 100% Placement Assistance (Massive Number 100%) */}
+          {/* Top Row Hero Box 1: 100% Placement Assistance */}
           <div 
             ref={count100.ref}
             className="lg:col-span-2 bg-gradient-to-br from-slate-950 via-[#1E2B88] to-slate-900 text-white rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-slate-800 hover:border-purple-500/50 transition-all min-h-[320px]"
@@ -101,7 +100,6 @@ export default function KeyFeaturesBentoSection() {
                 </span>
               </div>
 
-              {/* PROMINENT HUGE NUMBER DISPLAY */}
               <div className="space-y-1 pt-2">
                 <div className="text-6xl sm:text-7xl lg:text-8xl font-black font-heading text-white tracking-tight drop-shadow-md leading-none">
                   {count100.count}%
@@ -122,7 +120,7 @@ export default function KeyFeaturesBentoSection() {
             </div>
           </div>
 
-          {/* Top Row Hero Box 2: 450+ Hours Live Sessions (Massive Number 450+) */}
+          {/* Top Row Hero Box 2: 450+ Hours Live Sessions */}
           <div 
             ref={count450.ref}
             className="lg:col-span-1 bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md hover:shadow-xl transition-all min-h-[320px]"
@@ -137,7 +135,6 @@ export default function KeyFeaturesBentoSection() {
                 </span>
               </div>
 
-              {/* PROMINENT HUGE NUMBER DISPLAY */}
               <div className="space-y-1 pt-1">
                 <div className="text-5xl sm:text-6xl font-black font-heading text-[#7C248C] dark:text-purple-400 tracking-tight leading-none">
                   {count450.count}+
@@ -157,7 +154,7 @@ export default function KeyFeaturesBentoSection() {
             </div>
           </div>
 
-          {/* LOWER ROWS: COMPACT COMPACT-HEIGHT CARDS */}
+          {/* LOWER ROWS: COMPACT CARDS */}
 
           {/* Bento Item 3: Hands-on Industry Expert Training */}
           <div className="lg:col-span-1 bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4">
@@ -259,19 +256,20 @@ export default function KeyFeaturesBentoSection() {
 
       </div>
 
-      {/* CIRCULAR ARCHED MARQUEE RUNNING LEFT TO RIGHT AT THE END OF SECTION */}
-      <div className="mt-20 pt-10 pb-6 relative overflow-hidden bg-slate-950 text-white border-t border-slate-900">
+      {/* SEAMLESS INTEGRATED NECKLACE MARQUEE RIBBON WITH SITE BRAND THEME COLORS */}
+      <div className="mt-14 pt-2 relative overflow-hidden text-[#1E2B88] dark:text-purple-300">
         
-        {/* Curved Arc SVG Container */}
+        {/* Full Edge-to-Edge U-Shaped Necklace Curved Arc SVG */}
         <div className="relative w-full overflow-hidden h-28 sm:h-36 flex items-center justify-center">
           
-          <svg className="absolute w-[140%] sm:w-[120%] h-full overflow-visible pointer-events-none" viewBox="0 0 1000 200">
-            <path id="curvePath" d="M 0 180 Q 500 20 1000 180" fill="none" stroke="transparent" />
+          <svg className="absolute w-[100vw] h-full overflow-visible pointer-events-none" viewBox="0 0 1000 180" preserveAspectRatio="none">
+            {/* Smooth U-Shape Curve */}
+            <path id="necklaceCurvePath" d="M 0,10 Q 500,160 1000,10" fill="none" stroke="transparent" />
             
-            <text className="text-lg sm:text-2xl md:text-3xl font-extrabold font-heading tracking-widest fill-white uppercase">
-              <textPath href="#curvePath" startOffset="0%">
+            <text className="text-lg sm:text-2xl md:text-3xl font-extrabold font-heading tracking-[0.25em] fill-[#1E2B88] dark:fill-purple-300 uppercase opacity-90">
+              <textPath href="#necklaceCurvePath" startOffset="0%">
                 ✦ JVM INSTITUTE ✦ 100% PLACEMENT ASSISTANCE ✦ PYSPARK & DATABRICKS MASTERY ✦ 450+ HOURS LEARNING ✦ 25+ INDUSTRY PROJECTS ✦ 360° CAREER SUPPORT ✦ JVM INSTITUTE ✦ 100% PLACEMENT ASSISTANCE ✦
-                <animate attributeName="startOffset" from="-50%" to="0%" dur="18s" repeatCount="indefinite" />
+                <animate attributeName="startOffset" from="0%" to="-50%" dur="20s" repeatCount="indefinite" />
               </textPath>
             </text>
           </svg>
