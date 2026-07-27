@@ -118,3 +118,37 @@ h1, h2, h3, h4, h5, h6 {
 .dark .ambient-glow {
   opacity: 0.35;
 }
+
+/* Infinite Ticker Keyframes for Partner Logos */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Globe Orbit Spin Animation */
+@keyframes globe-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-globe-spin {
+  animation: globe-spin 40s linear infinite;
+}
+
+/* Reverse Spin for Counter Rotation */
+@keyframes globe-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-globe-spin-reverse {
+  animation: globe-spin-reverse 40s linear infinite;
+}

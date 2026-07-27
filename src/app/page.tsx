@@ -1,14 +1,17 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import HiringPartnersTicker from "@/components/HiringPartnersTicker";
 import FeaturedCourses from "@/components/FeaturedCourses";
+import GlobeTechEcoSection from "@/components/GlobeTechEcoSection";
+import PlacedStudentsCarousel from "@/components/PlacedStudentsCarousel";
 import NewFeaturesSpotlight from "@/components/NewFeaturesSpotlight";
 import BlogCrossLinkSection from "@/components/BlogCrossLinkSection";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFAFC]">
+    <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300">
       {/* Navigation Header */}
       <Navbar />
 
@@ -17,13 +20,22 @@ export default function HomePage() {
         {/* Asymmetric Light Theme Hero Section */}
         <HeroSection />
 
-        {/* Featured Courses Track & Fee Deposit Options */}
+        {/* 1. Infinite Ticker: Top MNC Hiring Partners */}
+        <HiringPartnersTicker />
+
+        {/* 2. Featured Courses Track & Fee Deposit Options */}
         <FeaturedCourses />
 
-        {/* New Features Spotlight: Refer & Earn, PDF Store, Placements */}
+        {/* 3. Interactive Orbiting Tech Globe Ecosystem */}
+        <GlobeTechEcoSection />
+
+        {/* 4. Rotating Placed Alumni Carousel with Salary Hikes */}
+        <PlacedStudentsCarousel />
+
+        {/* 5. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
         <NewFeaturesSpotlight />
 
-        {/* High-Authority SEO Ranking Blog Cross-links */}
+        {/* 6. High-Authority SEO Ranking Blog Cross-links */}
         <BlogCrossLinkSection />
       </main>
 
