@@ -1,0 +1,125 @@
+// Prisma schema for JVM Institute website
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  STUDENT
+  ADMIN
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum PaymentType {
+  FULL_COURSE_FEE
+  ADVANCE_DEPOSIT
+  STUDY_MATERIAL
+}
+
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  phone         String?
+  passwordHash  String?
+  role          Role            @default(USER)
+  referralCode  String          @unique @default(cuid())
+  referredById  String?
+  referredBy    User?           @relation("UserReferrals", fields: [referredById], references: [id])
+  referrals     User[]          @relation("UserReferrals")
+  enrollments   Enrollment[]
+  purchases     MaterialPurchase[]
+  payouts       ReferralPayout[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model Course {
+  id               String       @id @default(cuid())
+  slug             String       @unique
+  title            String
+  shortDescription String
+  fullDescription  String       @db.Text
+  duration         String
+  mode             String       @default("Online & Offline")
+  fullFee          Float
+  advanceFee       Float
+  brochurePdfUrl   String?
+  isFeatured       Boolean      @default(true)
+  enrollments      Enrollment[]
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+}
+
+model Enrollment {
+  id            String        @id @default(cuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId      String
+  course        Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  paymentType   PaymentType
+  paymentStatus PaymentStatus @default(PENDING)
+  amountPaid    Float
+  transactionId String?
+  createdAt     DateTime      @default(now())
+}
+
+model StudyMaterial {
+  id          String             @id @default(cuid())
+  slug        String             @unique
+  title       String
+  description String
+  subject     String
+  price       Float              @default(0) // 0 means free
+  fileUrl     String
+  previewUrl  String?
+  isFree      Boolean            @default(false)
+  purchases   MaterialPurchase[]
+  createdAt   DateTime           @default(now())
+}
+
+model MaterialPurchase {
+  id            String        @id @default(cuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  materialId    String
+  material      StudyMaterial @relation(fields: [materialId], references: [id], onDelete: Cascade)
+  amountPaid    Float
+  paymentStatus PaymentStatus @default(PENDING)
+  transactionId String?
+  createdAt     DateTime      @default(now())
+}
+
+model ReferralPayout {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Float
+  status      String   @default("PENDING") // PENDING, PAID
+  notes       String?
+  createdAt   DateTime @default(now())
+}
+
+model LeadEnquiry {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String
+  courseSlug  String?
+  message     String?  @db.Text
+  source      String   @default("WEBSITE_CONTACT")
+  isResolved  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}

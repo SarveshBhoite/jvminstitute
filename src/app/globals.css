@@ -2,26 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    /* Brand Logo Colors: Deep Blue & Gradient Pink/Magenta */
+    --primary: 232 64% 32%; /* #1E2B88 Deep Royal Blue */
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 326 76% 50%; /* #D42B76 Brand Magenta Accent */
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 288 59% 35%; /* #7C248C Brand Deep Purple Accent */
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 232 64% 32%;
+
+    --radius: 0.75rem;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: hsl(var(--foreground));
+  background: #FAFAFC;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Gradient Utilities based on JVM Institute Logo */
+.jvm-gradient-text {
+  background: linear-gradient(135deg, #1E2B88 0%, #7C248C 50%, #E01E6A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.jvm-gradient-bg {
+  background: linear-gradient(135deg, #1E2B88 0%, #7C248C 50%, #E01E6A 100%);
+}
+
+.jvm-glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px -10px rgba(30, 43, 136, 0.08);
 }
