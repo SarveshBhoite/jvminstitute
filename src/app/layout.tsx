@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -65,6 +66,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          {/* Floating WhatsApp Button across all pages */}
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>
