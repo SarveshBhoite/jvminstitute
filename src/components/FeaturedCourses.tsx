@@ -14,21 +14,6 @@ import {
 
 const coursesData = [
   {
-    id: "data-engineering",
-    slug: "data-engineering-course-in-pune",
-    title: "Data Engineering Master Program",
-    badge: "Top Ranked in Pune",
-    description: "End-to-end Data Pipeline engineering with PySpark, Databricks, AWS Glue, Snowflake, SQL & Airflow.",
-    duration: "4 Months",
-    mode: "Offline & Online Live",
-    icon: Database,
-    isTopRanked: true,
-    fullFee: "₹35,000",
-    advanceFee: "₹5,000",
-    highlights: ["PySpark & Databricks Labs", "4 Live Industry Capstone Projects", "100% Placement Assistance"],
-    glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
-  },
-  {
     id: "python-data-analysis",
     slug: "learn-python-for-data-analysis",
     title: "Python for Data Analysis & SQL",
@@ -42,6 +27,21 @@ const coursesData = [
     advanceFee: "₹3,000",
     highlights: ["Pandas & NumPy Deep Dive", "Real-world EDA Projects", "Interview Questions Prep"],
     glowClass: "hover:border-[#7C248C] hover:shadow-[0_0_35px_rgba(124,36,140,0.35)] dark:hover:shadow-[0_0_40px_rgba(147,51,234,0.4)]",
+  },
+  {
+    id: "data-engineering",
+    slug: "data-engineering-course-in-pune",
+    title: "Data Engineering Master Program",
+    badge: "Top Ranked in Pune",
+    description: "End-to-end Data Pipeline engineering with PySpark, Databricks, AWS Glue, Snowflake, SQL & Airflow.",
+    duration: "4 Months",
+    mode: "Offline & Online Live",
+    icon: Database,
+    isTopRanked: true,
+    fullFee: "₹35,000",
+    advanceFee: "₹5,000",
+    highlights: ["PySpark & Databricks Labs", "4 Live Industry Capstone Projects", "100% Placement Assistance"],
+    glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
   },
   {
     id: "big-data-spark",
@@ -62,35 +62,40 @@ const coursesData = [
 
 export default function FeaturedCourses() {
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-[#0B0F19] relative transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-slate-100/90 via-purple-50/40 to-slate-100/90 dark:from-[#0B0F19] dark:via-[#131B2E] dark:to-[#0B0F19] transition-colors duration-500 border-y border-purple-100/60 dark:border-purple-900/30">
+      
+      {/* Background Animated Gradient Glow Blobs */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-500/10 dark:bg-purple-600/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-pink-500/10 dark:bg-pink-600/20 rounded-full blur-3xl pointer-events-none animate-pulse duration-1000"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-100 dark:border-purple-900/60 text-xs font-extrabold text-[#7C248C] dark:text-purple-300 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-purple-200 dark:border-purple-800/80 text-xs font-extrabold text-[#7C248C] dark:text-purple-300 uppercase tracking-wider shadow-xs">
             <Sparkles className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" /> Industry Aligned Programs
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight drop-shadow-xs">
             Accelerate Your Tech Career With <span className="jvm-gradient-text">Our Featured Courses</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium">
             Hand-crafted curriculum focused on real-world practical skills that top IT companies hire for.
           </p>
         </div>
 
         {/* Courses Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {coursesData.map((course) => {
             const IconComponent = course.icon;
             return (
               <div 
                 key={course.id}
-                className={`relative bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
+                className={`relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
                   course.isTopRanked 
-                    ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-xl shadow-purple-900/10 dark:shadow-purple-950/40 ring-4 ring-purple-100 dark:ring-purple-950/30" 
-                    : "border border-slate-200 dark:border-slate-800 shadow-md"
+                    ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-2xl shadow-purple-900/20 dark:shadow-purple-950/50 ring-4 ring-purple-100 dark:ring-purple-950/40 md:-translate-y-2" 
+                    : "border border-slate-200/90 dark:border-slate-800 shadow-md"
                 } ${course.glowClass}`}
               >
                 {/* Top Badge */}
@@ -147,7 +152,7 @@ export default function FeaturedCourses() {
                   </div>
                 </div>
 
-                {/* Card CTA Links (Original Buttons Restored) */}
+                {/* Card CTA Links */}
                 <div className="pt-6 grid grid-cols-2 gap-3 mt-4">
                   <Link 
                     href={`/${course.slug}`}

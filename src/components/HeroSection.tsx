@@ -19,7 +19,7 @@ const heroImages = [
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Automatic smooth image fade transition loop (switches every 4 seconds)
+  // Automatic smooth image fade transition loop (switches every 2 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
@@ -94,9 +94,9 @@ export default function HeroSection() {
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
           <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
             
-            {/* Top Rating & ISO Badge */}
+            {/* Top Rating & ISO Badge (Fixed inline layout for Shield & text) */}
             <div className="flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-4 py-1.5 rounded-full shadow-xs">
+              <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-4 py-1.5 rounded-full shadow-xs flex-wrap sm:flex-nowrap">
                 <span className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
@@ -105,9 +105,10 @@ export default function HeroSection() {
                 <span className="text-xs md:text-sm font-bold text-slate-800 dark:text-slate-200">
                   4.9/5 Rating (1,200+ Reviews)
                 </span>
-                <span className="hidden sm:inline text-slate-300 dark:text-slate-600">|</span>
-                <span className="hidden sm:inline text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5" /> ISO Certified
+                <span className="text-slate-300 dark:text-slate-600">|</span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                  <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <span>ISO Certified</span>
                 </span>
               </div>
             </div>
