@@ -86,17 +86,17 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Main Grid Content */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6 md:py-10 lg:py-12">
+      {/* Main Grid Content (Balanced Padding for Viewport Fit & Prominent Feel) */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6 sm:py-8 lg:py-10">
         
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
           <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
             
             {/* Top Rating & ISO Badge (Fixed inline layout for Shield & text) */}
             <div className="flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-4 py-1.5 rounded-full shadow-xs flex-wrap sm:flex-nowrap">
+              <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3.5 py-1.5 rounded-full shadow-xs flex-wrap sm:flex-nowrap">
                 <span className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
@@ -113,11 +113,11 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.15] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.15] tracking-tight">
               Master <span className="jvm-gradient-text">Data Engineering</span> & High-Paying Tech Skills in Pune
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
               Transform your IT career with live industry projects, real ETL pipelines, Databricks & PySpark mastery, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> from Pune&apos;s most trusted institute.
             </p>
 
@@ -141,51 +141,28 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+            {/* CTAs Button Group */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
               <Link 
-                href="/data-engineering-course-in-pune" 
-                className="w-full sm:w-auto jvm-gradient-bg text-white px-7 py-3.5 rounded-xl text-sm md:text-base font-extrabold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
+                href="/courses"
+                className="w-full sm:w-auto jvm-gradient-bg text-white font-extrabold px-7 py-3.5 rounded-2xl text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 flex items-center justify-center gap-2 group"
               >
-                Explore Data Engineering Course 
+                Explore All Courses
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-
-              <Link 
-                href="/download-brochure" 
-                className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-[#1E2B88] dark:hover:border-purple-400 hover:text-[#1E2B88] px-6 py-3.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-xs"
+              
+              <Link
+                href="#curriculum"
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold px-5 py-3.5 rounded-2xl text-sm border border-slate-200/90 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2 shadow-xs"
               >
-                <Download className="w-4 h-4" /> Download Syllabus PDF
+                <Download className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" /> Download Syllabus
               </Link>
             </div>
 
-            {/* Quick Metrics */}
-            <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-3 gap-4">
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold font-heading text-[#1E2B88] dark:text-indigo-400">3,500+</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Students Trained</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold font-heading text-[#7C248C] dark:text-purple-400">12 LPA</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Highest Package</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold font-heading text-[#E01E6A] dark:text-pink-400">250+</p>
-                <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">Hiring Partners</p>
-              </div>
-            </div>
-
           </div>
 
-          {/* Mobile Image Slideshow (Shown only on small screens) */}
-          <div className="lg:hidden relative w-full h-[280px] rounded-3xl overflow-hidden shadow-xl mt-4">
-            <Image
-              src={heroImages[currentImageIndex].src}
-              alt={heroImages[currentImageIndex].alt}
-              fill
-              className="object-cover object-center transition-all duration-1000"
-            />
-          </div>
+          {/* Right Column Spacer (for desktop view over full background image) */}
+          <div className="hidden lg:block lg:col-span-6 h-full min-h-[480px] pointer-events-none"></div>
 
         </div>
 

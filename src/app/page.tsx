@@ -8,6 +8,7 @@ import GlobeTechEcoSection from "@/components/GlobeTechEcoSection";
 import KeyFeaturesBentoSection from "@/components/KeyFeaturesBentoSection";
 import PlacedStudentsCarousel from "@/components/PlacedStudentsCarousel";
 import NewFeaturesSpotlight from "@/components/NewFeaturesSpotlight";
+import WhyOurCourseRanksSection from "@/components/WhyOurCourseRanksSection";
 import BlogCrossLinkSection from "@/components/BlogCrossLinkSection";
 import Footer from "@/components/Footer";
 
@@ -43,7 +44,10 @@ export default function HomePage() {
         {/* 6. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
         <NewFeaturesSpotlight />
 
-        {/* 7. High-Authority SEO Ranking Blog Cross-links */}
+        {/* 7. Why Our Course Ranks Among the Best (Video & Track Record) */}
+        <WhyOurCourseRanksSection />
+
+        {/* 8. High-Authority SEO Ranking Blog Cross-links */}
         <BlogCrossLinkSection />
       </main>
 
