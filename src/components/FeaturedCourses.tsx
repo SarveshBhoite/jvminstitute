@@ -26,6 +26,7 @@ const coursesData = [
     fullFee: "₹35,000",
     advanceFee: "₹5,000",
     highlights: ["PySpark & Databricks Labs", "4 Live Industry Capstone Projects", "100% Placement Assistance"],
+    glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
   },
   {
     id: "python-data-analysis",
@@ -40,6 +41,7 @@ const coursesData = [
     fullFee: "₹18,000",
     advanceFee: "₹3,000",
     highlights: ["Pandas & NumPy Deep Dive", "Real-world EDA Projects", "Interview Questions Prep"],
+    glowClass: "hover:border-[#7C248C] hover:shadow-[0_0_35px_rgba(124,36,140,0.35)] dark:hover:shadow-[0_0_40px_rgba(147,51,234,0.4)]",
   },
   {
     id: "big-data-spark",
@@ -54,6 +56,7 @@ const coursesData = [
     fullFee: "₹22,000",
     advanceFee: "₹4,000",
     highlights: ["Spark Performance Tuning", "Real-time Streaming", "AWS Cloud Integration"],
+    glowClass: "hover:border-[#1E2B88] hover:shadow-[0_0_35px_rgba(30,43,136,0.35)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.4)]",
   },
 ];
 
@@ -84,15 +87,15 @@ export default function FeaturedCourses() {
             return (
               <div 
                 key={course.id}
-                className={`relative bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
+                className={`relative bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
                   course.isTopRanked 
                     ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-xl shadow-purple-900/10 dark:shadow-purple-950/40 ring-4 ring-purple-100 dark:ring-purple-950/30" 
-                    : "border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl"
-                }`}
+                    : "border border-slate-200 dark:border-slate-800 shadow-md"
+                } ${course.glowClass}`}
               >
                 {/* Top Badge */}
                 {course.badge && (
-                  <div className="absolute -top-3.5 left-6 bg-gradient-to-r from-[#1E2B88] to-[#7C248C] dark:from-[#4F46E5] dark:to-[#9333EA] text-white px-3.5 py-1 rounded-full text-xs font-bold shadow-sm flex items-center gap-1">
+                  <div className="absolute -top-3.5 left-6 bg-gradient-to-r from-[#1E2B88] to-[#7C248C] dark:from-[#4F46E5] dark:to-[#9333EA] text-white px-3.5 py-1 rounded-full text-xs font-bold shadow-sm flex items-center gap-1 z-10">
                     <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                     {course.badge}
                   </div>
@@ -144,7 +147,7 @@ export default function FeaturedCourses() {
                   </div>
                 </div>
 
-                {/* Card CTA Links */}
+                {/* Card CTA Links (Original Buttons Restored) */}
                 <div className="pt-6 grid grid-cols-2 gap-3 mt-4">
                   <Link 
                     href={`/${course.slug}`}
