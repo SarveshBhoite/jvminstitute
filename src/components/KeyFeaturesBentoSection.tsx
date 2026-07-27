@@ -10,11 +10,8 @@ import {
   Video, 
   UserCheck, 
   FolderGit2, 
-  CheckCircle2,
   TrendingUp,
-  Clock,
-  Briefcase,
-  Star
+  Clock
 } from "lucide-react";
 
 // CountUp hook using IntersectionObserver

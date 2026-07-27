@@ -324,6 +324,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
         }
 
         const isNodeItem = 'node' in item;
+        const itemObj = item as Record<string, unknown>;
 
         const content = isNodeItem ? (
           <span
@@ -333,9 +334,9 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               scaleOnHover &&
                 'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
             )}
-            aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
+            aria-hidden={!!itemObj.href && !itemObj.ariaLabel}
           >
-            {(item as any).node}
+            {itemObj.node as React.ReactNode}
           </span>
         ) : (
           <img
@@ -347,13 +348,13 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               scaleOnHover &&
                 'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
             )}
-            src={(item as any).src}
-            srcSet={(item as any).srcSet}
-            sizes={(item as any).sizes}
-            width={(item as any).width}
-            height={(item as any).height}
-            alt={(item as any).alt ?? ''}
-            title={(item as any).title}
+            src={itemObj.src as string}
+            srcSet={itemObj.srcSet as string | undefined}
+            sizes={itemObj.sizes as string | undefined}
+            width={itemObj.width as number | undefined}
+            height={itemObj.height as number | undefined}
+            alt={(itemObj.alt as string | undefined) ?? ''}
+            title={itemObj.title as string | undefined}
             loading="lazy"
             decoding="async"
             draggable={false}
@@ -361,10 +362,10 @@ export const LogoLoop = React.memo<LogoLoopProps>(
         );
 
         const itemAriaLabel = isNodeItem
-          ? ((item as any).ariaLabel ?? (item as any).title)
-          : ((item as any).alt ?? (item as any).title);
+          ? ((itemObj.ariaLabel as string) ?? (itemObj.title as string))
+          : ((itemObj.alt as string) ?? (itemObj.title as string));
 
-        const inner = (item as any).href ? (
+        const inner = itemObj.href ? (
           <a
             className={cx(
               'inline-flex items-center no-underline rounded',
@@ -372,7 +373,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               'hover:opacity-80',
               'focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2'
             )}
-            href={(item as any).href}
+            href={itemObj.href as string}
             aria-label={itemAriaLabel || 'logo link'}
             target="_blank"
             rel="noreferrer noopener"
