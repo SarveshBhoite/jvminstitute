@@ -38,26 +38,26 @@ const rankedBlogArticles = [
 
 export default function BlogCrossLinkSection() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50 relative">
+    <section className="py-16 md:py-24 bg-slate-50 dark:bg-[#0B0F19] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-[#1E2B88] text-xs font-extrabold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-[#1E2B88] dark:text-indigo-300 text-xs font-extrabold uppercase tracking-wider">
               <Bookmark className="w-3.5 h-3.5" /> High-Authority Technical Guides
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
               Featured Articles & <span className="jvm-gradient-text">Top-Ranked Tutorials</span>
             </h2>
-            <p className="text-slate-600 text-sm md:text-base max-w-2xl">
+            <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base max-w-2xl">
               Read our most popular technical guides written by senior JVM Institute instructors and industry data engineers.
             </p>
           </div>
 
           <Link 
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2B88] hover:text-[#7C248C] transition-colors shrink-0 group"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2B88] dark:text-purple-300 hover:text-[#7C248C] dark:hover:text-purple-200 transition-colors shrink-0 group"
           >
             Explore All Blog Posts 
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -69,11 +69,11 @@ export default function BlogCrossLinkSection() {
           {rankedBlogArticles.map((article, index) => (
             <article 
               key={index}
-              className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+              className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-semibold text-slate-500">
-                  <span className="bg-purple-50 text-[#7C248C] font-extrabold px-3 py-1 rounded-full">
+                <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  <span className="bg-purple-50 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 font-extrabold px-3 py-1 rounded-full">
                     {article.category}
                   </span>
                   <span className="flex items-center gap-1">
@@ -81,25 +81,25 @@ export default function BlogCrossLinkSection() {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold font-heading text-slate-900 leading-snug hover:text-[#1E2B88] transition-colors">
+                <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white leading-snug hover:text-[#1E2B88] dark:hover:text-purple-300 transition-colors">
                   <Link href={`/${article.slug}`}>
                     {article.title}
                   </Link>
                 </h3>
 
-                <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
                   {article.excerpt}
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md">
+              <div className="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-md">
                   {article.date}
                 </span>
 
                 <Link 
                   href={`/${article.slug}`}
-                  className="text-xs font-bold text-[#1E2B88] hover:text-[#E01E6A] flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-[#1E2B88] dark:text-purple-300 hover:text-[#E01E6A] dark:hover:text-pink-400 flex items-center gap-1 transition-colors"
                 >
                   Read Article <ChevronRight className="w-4 h-4" />
                 </Link>

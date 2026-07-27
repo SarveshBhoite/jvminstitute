@@ -13,7 +13,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 224 71.4% 4.1%;
 
-    /* Brand Logo Colors: Deep Blue & Gradient Pink/Magenta */
     --primary: 232 64% 32%; /* #1E2B88 Deep Royal Blue */
     --primary-foreground: 210 20% 98%;
 
@@ -26,36 +25,71 @@
     --accent: 288 59% 35%; /* #7C248C Brand Deep Purple Accent */
     --accent-foreground: 210 20% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-
     --border: 220 13% 91%;
     --input: 220 13% 91%;
     --ring: 232 64% 32%;
 
     --radius: 0.75rem;
   }
+
+  .dark {
+    --background: 224 71% 4%; /* #0B0F19 Deep Obsidian Navy */
+    --foreground: 210 20% 98%;
+
+    --card: 222 47% 9%; /* #0F172A Dark Slate Card */
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 232 75% 65%; /* Bright Royal Blue for Dark Mode */
+    --primary-foreground: 224 71% 4%;
+
+    --secondary: 326 80% 60%; /* Vibrant Pink */
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 288 70% 60%;
+    --accent-foreground: 210 20% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 232 75% 65%;
+  }
 }
 
 body {
   color: hsl(var(--foreground));
-  background: #FAFAFC;
+  background: hsl(var(--background));
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), system-ui, sans-serif;
 }
 
-/* Gradient Utilities based on JVM Institute Logo */
+/* Gradient Utilities derived strictly from JVM Institute Brand Logo */
 .jvm-gradient-text {
   background: linear-gradient(135deg, #1E2B88 0%, #7C248C 50%, #E01E6A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.dark .jvm-gradient-text {
+  background: linear-gradient(135deg, #818CF8 0%, #C084FC 50%, #F472B6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .jvm-gradient-bg {
   background: linear-gradient(135deg, #1E2B88 0%, #7C248C 50%, #E01E6A 100%);
+}
+
+.dark .jvm-gradient-bg {
+  background: linear-gradient(135deg, #3730A3 0%, #6B21A8 50%, #BE185D 100%);
 }
 
 .jvm-glass-card {
@@ -65,10 +99,11 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 30px -10px rgba(30, 43, 136, 0.08);
 }
 
-.jvm-nav-glass {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+.dark .jvm-glass-card {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 /* Dynamic subtle ambient glow behind sections */
@@ -78,4 +113,8 @@ h1, h2, h3, h4, h5, h6 {
   filter: blur(80px);
   opacity: 0.25;
   pointer-events: none;
+}
+
+.dark .ambient-glow {
+  opacity: 0.35;
 }
