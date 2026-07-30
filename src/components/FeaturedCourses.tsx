@@ -162,8 +162,8 @@ export default function FeaturedCourses() {
                   </Link>
 
                   <Link 
-                    href="/contact-us"
-                    className="w-full jvm-gradient-bg text-center py-3 px-3 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 transition-opacity flex items-center justify-center gap-1"
+                    href="/enroll"
+                    className="w-full jvm-gradient-bg text-center py-3 px-3 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer"
                   >
                     Enroll Now <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

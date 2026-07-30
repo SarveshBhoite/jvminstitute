@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import LeadEnquiryModal from "@/components/LeadEnquiryModal";
 import HiringPartnersTicker from "@/components/HiringPartnersTicker";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import GlobeTechEcoSection from "@/components/GlobeTechEcoSection";
@@ -18,9 +17,6 @@ export default function HomePage() {
       {/* Navigation Header */}
       <Navbar />
 
-      {/* Automatic Lead Enquiry Popup Modal */}
-      <LeadEnquiryModal />
-
       {/* Main Page Content */}
       <main className="flex-grow">
         {/* Asymmetric Curved Hero Section */}
@@ -35,19 +31,19 @@ export default function HomePage() {
         {/* 3. Key Features Bento Grid & Arched Circular Marquee */}
         <KeyFeaturesBentoSection />
 
-        {/* 4. Interactive Orbiting Tech Globe Ecosystem */}
+        {/* 5. Interactive Orbiting Tech Globe Ecosystem */}
         <GlobeTechEcoSection />
 
-        {/* 5. Rotating Placed Alumni Carousel with Salary Hikes */}
+        {/* 6. Rotating Placed Alumni Carousel with Salary Hikes */}
         <PlacedStudentsCarousel />
 
-        {/* 6. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
+        {/* 7. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
         <NewFeaturesSpotlight />
 
-        {/* 7. Why Our Course Ranks Among the Best (Video & Track Record) */}
+        {/* 8. Why Our Course Ranks Among the Best (Video & Track Record) */}
         <WhyOurCourseRanksSection />
 
-        {/* 8. High-Authority SEO Ranking Blog Cross-links */}
+        {/* 9. High-Authority SEO Ranking Blog Cross-links */}
         <BlogCrossLinkSection />
       </main>
 
