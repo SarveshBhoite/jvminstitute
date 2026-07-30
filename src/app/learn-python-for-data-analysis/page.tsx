@@ -66,20 +66,7 @@ export default function LearnPythonPage() {
             </span>
           </nav>
 
-          {/* Category & Meta */}
-          <div className="flex flex-wrap items-center gap-3 text-xs font-bold">
-            <span className="px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-950/90 text-[#7C3AED] dark:text-purple-300 uppercase tracking-wider font-extrabold border border-purple-200 dark:border-purple-800">
-              {post.category}
-            </span>
-            <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-              <Calendar className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <span>By {post.author.name} • {post.publishedAt}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-              <Clock className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              <span>{post.readTime}</span>
-            </div>
-          </div>
+        
 
           {/* Main Title */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.2]">
@@ -205,28 +192,7 @@ export default function LearnPythonPage() {
               ))}
 
 
-              {/* Author Bio Banner Footer */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-purple-500 shrink-0 shadow-md">
-                  <Image
-                    src={post.author.avatar}
-                    alt={post.author.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="space-y-2 text-center sm:text-left">
-                  <h4 className="text-lg font-extrabold text-slate-900 dark:text-white">
-                    Written by {post.author.name}
-                  </h4>
-                  <p className="text-xs font-bold text-purple-600 dark:text-purple-400">
-                    {post.author.role}
-                  </p>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {post.author.bio}
-                  </p>
-                </div>
-              </div>
+              
 
               {/* JVM Course CTA Banner */}
               <div className="rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white p-8 sm:p-12 border border-purple-500/30 relative overflow-hidden shadow-2xl space-y-6">
