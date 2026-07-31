@@ -92,16 +92,16 @@ export default function PlacedStudentsCarousel() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-xs font-extrabold text-emerald-300 uppercase tracking-wider shadow-sm">
-            <GraduationCap className="w-4 h-4 text-emerald-400" /> Authentic Career Transformations
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-[11px] sm:text-xs font-extrabold text-emerald-300 uppercase tracking-wider shadow-sm">
+            <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" /> Authentic Career Transformations
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight drop-shadow-md">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight drop-shadow-md leading-tight">
             Placed Alumni Success Showcase
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-200 drop-shadow-sm font-medium">
+          <p className="text-xs sm:text-base md:text-lg text-slate-200 drop-shadow-sm font-medium">
             Real stories of non-IT transitions, freshers landing top MNC offers, and career growth.
           </p>
         </div>
@@ -112,12 +112,12 @@ export default function PlacedStudentsCarousel() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-[36px] shadow-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden transition-all duration-500">
+          <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-2xl sm:rounded-[36px] shadow-2xl p-3.5 sm:p-8 md:p-10 relative overflow-hidden transition-all duration-500">
             
-            <div key={activeStudent.id} className="grid lg:grid-cols-12 gap-8 items-center w-full">
+            <div key={activeStudent.id} className="grid lg:grid-cols-12 gap-3.5 sm:gap-8 items-center w-full">
               
-              {/* Left Half (5 cols): Full Student Image with Ultra-Smooth 0.8s Entry */}
-              <div className="lg:col-span-5 relative w-full h-[360px] md:h-[440px] rounded-2xl overflow-hidden shadow-md group">
+              {/* Left Half (5 cols): Large Featured Student Image */}
+              <div className="lg:col-span-5 relative w-full h-[280px] xs:h-[320px] sm:h-[380px] md:h-[440px] rounded-2xl overflow-hidden shadow-lg border border-slate-200/80 dark:border-slate-700/80 group">
                 <Image
                   src={activeStudent.image}
                   alt={activeStudent.name}
@@ -127,57 +127,57 @@ export default function PlacedStudentsCarousel() {
                 />
                 
                 {/* Gradient Overlay Mask */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
 
                 {/* Top Verification Badge */}
-                <div className="absolute top-4 left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span className="text-xs font-extrabold text-slate-900 dark:text-white">Verified Placement</span>
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm flex items-center gap-1.5 z-10">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="text-[10px] sm:text-xs font-extrabold text-slate-900 dark:text-white">Verified Placement</span>
                 </div>
 
                 {/* Bottom Student Details */}
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                  <div className="flex items-center justify-between">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 text-white space-y-1 z-10">
+                  <div className="flex items-center justify-between gap-2">
                     <SplitText
                       text={activeStudent.name}
                       tag="h3"
-                      className="text-xl font-bold font-heading text-white"
+                      className="text-base sm:text-xl font-bold font-heading text-white drop-shadow-md"
                       delay={20}
                       duration={0.5}
                       splitType="words"
                     />
-                    <span className="bg-emerald-500 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow-sm">
+                    <span className="bg-emerald-500 text-white font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full shadow-md shrink-0">
                       {activeStudent.package}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 font-medium">Earlier: {activeStudent.previousRole}</p>
+                  <p className="text-[11px] sm:text-xs text-slate-300 font-semibold drop-shadow-sm">Earlier: {activeStudent.previousRole}</p>
                 </div>
               </div>
 
-              {/* Right Half (7 cols): Smooth & Fast GSAP SplitText Testimonial & Metrics */}
-              <div className="lg:col-span-7 space-y-6 py-2">
+              {/* Right Half (7 cols): Smooth GSAP SplitText Testimonial & Metrics */}
+              <div className="lg:col-span-7 space-y-2.5 sm:space-y-6 py-0.5 sm:py-2">
                 
                 {/* Top Ratings & Role */}
-                <div className="flex items-center justify-between flex-wrap gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
-                  <div className="flex items-center gap-1 text-amber-400">
+                <div className="flex items-center justify-between flex-wrap gap-1.5 border-b border-slate-100 dark:border-slate-800 pb-2 sm:pb-3">
+                  <div className="flex items-center gap-0.5 text-amber-400">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400" />
+                      <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400" />
                     ))}
                   </div>
 
-                  <span className="text-xs font-extrabold text-[#1E2B88] dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-100 dark:border-purple-900/60 flex items-center gap-1.5">
-                    <Briefcase className="w-4 h-4" /> {activeStudent.placedRole}
+                  <span className="text-[10px] sm:text-xs font-extrabold text-[#1E2B88] dark:text-purple-300 bg-purple-50 dark:bg-purple-950/60 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full border border-purple-100 dark:border-purple-900/60 flex items-center gap-1">
+                    <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" /> {activeStudent.placedRole}
                   </span>
                 </div>
 
-                {/* GSAP Animated Testimonial Text tailored for 2.5s interval */}
-                <div className="relative min-h-[110px]">
-                  <Quote className="w-10 h-10 text-purple-200 dark:text-purple-900/40 absolute -top-3 -left-3 pointer-events-none" />
-                  <div className="pl-4">
+                {/* GSAP Animated Testimonial Text */}
+                <div className="relative min-h-[45px] sm:min-h-[110px]">
+                  <Quote className="w-6 h-6 sm:w-10 sm:h-10 text-purple-200 dark:text-purple-900/40 absolute -top-2 -left-2 pointer-events-none" />
+                  <div className="pl-2 sm:pl-4">
                     <SplitText
                       text={`"${activeStudent.testimonial}"`}
                       tag="p"
-                      className="text-base md:text-lg text-slate-700 dark:text-slate-200 italic leading-relaxed"
+                      className="text-[11px] sm:text-base md:text-lg text-slate-700 dark:text-slate-200 italic leading-snug sm:leading-relaxed"
                       delay={18}
                       duration={0.6}
                       splitType="words"
@@ -186,21 +186,21 @@ export default function PlacedStudentsCarousel() {
                 </div>
 
                 {/* Metric Cards Row */}
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <div className="bg-slate-50 dark:bg-slate-800/70 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700">
-                    <span className="text-slate-400 dark:text-slate-400 font-medium text-[11px] block flex items-center gap-1">
-                      <Building2 className="w-3.5 h-3.5 text-[#1E2B88] dark:text-purple-400" /> Placed Company
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 pt-1">
+                  <div className="bg-slate-50 dark:bg-slate-800/70 p-2 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                    <span className="text-slate-400 dark:text-slate-400 font-medium text-[9px] sm:text-[11px] block flex items-center gap-1">
+                      <Building2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#1E2B88] dark:text-purple-400" /> Placed Company
                     </span>
-                    <span className="text-lg font-extrabold text-slate-900 dark:text-white mt-0.5 block">
+                    <span className="text-xs sm:text-lg font-extrabold text-slate-900 dark:text-white mt-0.5 block truncate">
                       {activeStudent.company}
                     </span>
                   </div>
 
-                  <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-4 rounded-2xl shadow-sm">
-                    <span className="text-emerald-100 font-medium text-[11px] block flex items-center gap-1">
-                      <TrendingUp className="w-3.5 h-3.5 text-amber-300" /> Career Outcome
+                  <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-sm">
+                    <span className="text-emerald-100 font-medium text-[9px] sm:text-[11px] block flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300" /> Career Outcome
                     </span>
-                    <span className="text-base font-extrabold mt-0.5 block">
+                    <span className="text-xs sm:text-base font-extrabold mt-0.5 block truncate">
                       {activeStudent.hike}
                     </span>
                   </div>

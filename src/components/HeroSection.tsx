@@ -30,7 +30,7 @@ export default function HeroSection() {
     <section className="relative overflow-hidden bg-slate-50 dark:bg-[#0B0F19] transition-colors duration-300">
       
       {/* Background Ambient Glows */}
-      <div className="ambient-glow w-96 h-96 bg-[#1E2B88] dark:bg-[#4F46E5] top-0 left-[-10%] opacity-20 z-0"></div>
+      <div className="ambient-glow w-72 h-72 sm:w-96 sm:h-96 bg-[#1E2B88] dark:bg-[#4F46E5] top-0 left-[-10%] opacity-20 z-0 pointer-events-none"></div>
 
       {/* DESKTOP FULL RIGHT-SIDE IMAGE CONTAINER WITH AUTOMATIC FADE SLIDESHOW */}
       <div className="absolute top-0 right-0 bottom-0 w-full lg:w-1/2 z-0 hidden lg:block overflow-hidden">
@@ -83,10 +83,10 @@ export default function HeroSection() {
       </div>
 
       {/* Main Container */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-6 sm:py-8 lg:py-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-5 sm:py-8 lg:py-10">
         
         {/* MOBILE FEATURED IMAGE SLIDESHOW HEADER (Visible on Mobile & Tablet before text content) */}
-        <div className="block lg:hidden mb-6 relative w-full h-[240px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border-2 border-white dark:border-slate-800">
+        <div className="block lg:hidden mb-5 relative w-full h-[200px] xs:h-[240px] sm:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
           {heroImages.map((img, idx) => (
             <div
               key={img.src}
@@ -103,66 +103,67 @@ export default function HeroSection() {
               />
             </div>
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute bottom-3 left-4 z-20 text-xs font-extrabold text-white bg-slate-950/80 px-3.5 py-1 rounded-full border border-white/20 backdrop-blur-md">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute bottom-3 left-3 sm:left-4 z-20 text-[11px] sm:text-xs font-extrabold text-white bg-slate-950/80 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
             ✦ JVM Institute Pune Campus
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-center">
           
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
           <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
             
             {/* Top Rating & ISO Badge */}
             <div className="flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3.5 py-1.5 rounded-full shadow-xs flex-wrap sm:flex-nowrap">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
                 <span className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                    <Star key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400" />
                   ))}
                 </span>
-                <span className="text-xs md:text-sm font-bold text-slate-800 dark:text-slate-200">
-                  4.9/5 Rating (1,200+ Reviews)
+                <span className="text-[11px] sm:text-xs md:text-sm font-extrabold">
+                  4.9/5 (1,200+ Reviews)
                 </span>
                 <span className="text-slate-300 dark:text-slate-600">|</span>
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
-                  <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   <span>ISO Certified</span>
                 </span>
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.15] tracking-tight">
-              Master <span className="jvm-gradient-text">Data Engineering</span> & High-Paying Tech Skills in Pune
+            {/* Main Headline */}
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15] tracking-tight">
+              Master <span className="jvm-gradient-text">Data Engineering</span> &amp; High-Paying Tech Skills in Pune
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
-              Transform your IT career with live industry projects, real ETL pipelines, Databricks & PySpark mastery, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> from Pune&apos;s most trusted institute.
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
+              Transform your IT career with live industry projects, real ETL pipelines, Databricks &amp; PySpark mastery, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> from Pune&apos;s most trusted institute.
             </p>
 
             {/* Key Value Points Grid */}
-            <div className="grid sm:grid-cols-2 gap-2.5 pt-1">
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left pt-1">
+              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Real PySpark & Databricks Labs</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Real PySpark &amp; Databricks Labs</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
+              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">1:1 Mock Interviews & Resume Prep</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">1:1 Mock Interviews &amp; Resume Prep</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
+              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Weekend & Weekday Batches</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Weekend &amp; Weekday Batches</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
+              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Offline Campus & Live Online</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Offline Campus &amp; Live Online</span>
               </div>
             </div>
 
             {/* CTAs Button Group */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 pt-2">
               <Link 
                 href="/enroll"
                 className="w-full sm:w-auto jvm-gradient-bg text-white font-extrabold px-8 py-3.5 rounded-2xl text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 group cursor-pointer"
