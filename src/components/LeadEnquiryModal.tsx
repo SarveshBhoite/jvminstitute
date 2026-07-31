@@ -3,16 +3,38 @@
 import React, { useState, useEffect } from "react";
 import { X, Send, PhoneCall, CheckCircle2 } from "lucide-react";
 
-export default function LeadEnquiryModal() {
-  const [isOpen, setIsOpen] = useState(false);
+interface LeadEnquiryModalProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+  courseTitle?: string;
+}
 
-  // Automatically trigger modal after 2.5 seconds when visiting home page
+export default function LeadEnquiryModal({
+  isOpen: externalIsOpen,
+  onClose: externalOnClose,
+  courseTitle,
+}: LeadEnquiryModalProps) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+
+  // Automatically trigger modal after 2.5 seconds when visiting home page if uncontrolled
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
+    if (externalIsOpen === undefined) {
+      const timer = setTimeout(() => {
+        setInternalIsOpen(true);
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [externalIsOpen]);
+
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+
+  const handleClose = () => {
+    if (externalOnClose) {
+      externalOnClose();
+    } else {
+      setInternalIsOpen(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -22,8 +44,8 @@ export default function LeadEnquiryModal() {
         
         {/* Close Button */}
         <button
-          onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+          onClick={handleClose}
+          className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -36,7 +58,7 @@ export default function LeadEnquiryModal() {
           </div>
 
           <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
-            Book Free Demo & Syllabus PDF
+            {courseTitle ? courseTitle : "Book Free Demo & Syllabus PDF"}
           </h3>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
@@ -45,7 +67,7 @@ export default function LeadEnquiryModal() {
         </div>
 
         {/* Form */}
-        <form onSubmit={(e) => { e.preventDefault(); setIsOpen(false); }} className="space-y-4">
+        <form onSubmit={(e) => { e.preventDefault(); handleClose(); }} className="space-y-4">
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
             <input 
@@ -77,7 +99,7 @@ export default function LeadEnquiryModal() {
 
           <button 
             type="submit" 
-            className="w-full jvm-gradient-bg text-white font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2"
+            className="w-full jvm-gradient-bg text-white font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
           >
             <Send className="w-4 h-4" /> Reserve Free Callback Seat
           </button>
