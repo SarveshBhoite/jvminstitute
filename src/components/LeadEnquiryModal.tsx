@@ -14,16 +14,33 @@ export function openEnrollModal(courseName?: string) {
   }
 }
 
-export default function LeadEnquiryModal() {
-  const [isOpen, setIsOpen] = useState(false);
+interface LeadEnquiryModalProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+  courseTitle?: string;
+}
+
+export default function LeadEnquiryModal({
+  isOpen: externalIsOpen,
+  onClose: externalOnClose,
+  courseTitle,
+}: LeadEnquiryModalProps = {}) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   // Form State
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [course, setCourse] = useState("Data Engineering Master Program");
+  const [course, setCourse] = useState(courseTitle || "Data Engineering Master Program");
   const [referralCode, setReferralCode] = useState("");
+
+  // Update course state if courseTitle prop changes
+  useEffect(() => {
+    if (courseTitle) {
+      setCourse(courseTitle);
+    }
+  }, [courseTitle]);
 
   // Listen to custom event to open modal on "Enroll Now" click
   useEffect(() => {
@@ -33,21 +50,26 @@ export default function LeadEnquiryModal() {
         setCourse(customEvent.detail.courseName);
       }
       setSubmitted(false);
-      setIsOpen(true);
+      setInternalIsOpen(true);
     };
 
     window.addEventListener("open-enroll-modal", handleOpen);
 
-    // Auto trigger after 4 seconds on initial home page visit if not closed previously
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 4000);
+    // Auto trigger after 4 seconds on initial home page visit if not controlled externally
+    let timer: NodeJS.Timeout | undefined;
+    if (externalIsOpen === undefined) {
+      timer = setTimeout(() => {
+        setInternalIsOpen(true);
+      }, 4000);
+    }
 
     return () => {
       window.removeEventListener("open-enroll-modal", handleOpen);
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
     };
-  }, []);
+  }, [externalIsOpen]);
+
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,7 +77,11 @@ export default function LeadEnquiryModal() {
   };
 
   const handleClose = () => {
-    setIsOpen(false);
+    if (externalOnClose) {
+      externalOnClose();
+    } else {
+      setInternalIsOpen(false);
+    }
     setTimeout(() => {
       setSubmitted(false);
     }, 300);
@@ -74,7 +100,7 @@ export default function LeadEnquiryModal() {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors z-20"
+          className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors z-20 cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -97,7 +123,7 @@ export default function LeadEnquiryModal() {
               </p>
             </div>
 
-            {/* Form with requested fields */}
+            {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
               {/* 1. Student Name */}
               <div>
@@ -184,7 +210,7 @@ export default function LeadEnquiryModal() {
               {/* Submit Button */}
               <button 
                 type="submit" 
-                className="w-full jvm-gradient-bg text-white font-extrabold py-4 px-4 rounded-xl text-sm transition-all shadow-xl hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
+                className="w-full jvm-gradient-bg text-white font-extrabold py-4 px-4 rounded-xl text-sm transition-all shadow-xl hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2 cursor-pointer"
               >
                 <Send className="w-4 h-4" /> Submit Enrollment Application
               </button>
@@ -226,7 +252,7 @@ export default function LeadEnquiryModal() {
 
             <button
               onClick={handleClose}
-              className="jvm-gradient-bg text-white font-extrabold px-8 py-3 rounded-xl text-sm transition-all shadow-md"
+              className="jvm-gradient-bg text-white font-extrabold px-8 py-3 rounded-xl text-sm transition-all shadow-md cursor-pointer"
             >
               Done &amp; Close
             </button>
