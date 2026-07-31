@@ -940,7 +940,10 @@ export default function DataEngineeringCoursePage() {
                     <strong>Core Focus:</strong> {m.specialty}
                   </div>
                 </div>
-              ))}
+
+
+
+))}
             </div>
 
           </div>
