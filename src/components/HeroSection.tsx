@@ -8,7 +8,6 @@ import {
   ArrowRight, 
   Star, 
   ShieldCheck, 
-  Download
 } from "lucide-react";
 
 const heroImages = [
@@ -165,18 +164,17 @@ export default function HeroSection() {
             {/* CTAs Button Group */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
               <Link 
-                href="/courses"
-                className="w-full sm:w-auto jvm-gradient-bg text-white font-extrabold px-7 py-3.5 rounded-2xl text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 flex items-center justify-center gap-2 group"
+                href="/enroll"
+                className="w-full sm:w-auto jvm-gradient-bg text-white font-extrabold px-8 py-3.5 rounded-2xl text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 group cursor-pointer"
               >
-                Explore All Courses
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Enroll Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <Link
-                href="#curriculum"
-                className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold px-5 py-3.5 rounded-2xl text-sm border border-slate-200/90 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2 shadow-xs"
+                href="/our-courses"
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold px-6 py-3.5 rounded-2xl text-sm border border-slate-200/90 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2 shadow-xs"
               >
-                <Download className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" /> Download Syllabus
+                Explore All Courses
               </Link>
             </div>
 
