@@ -21,7 +21,9 @@ import {
   Compass,
   MapPin,
   Home,
-  ChevronRight
+  ChevronRight,
+  Zap,
+  Cloud
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -54,47 +56,156 @@ function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: strin
 }
 
 function WordRevealHeading({ text, highlightText }: { text: string; highlightText?: string }) {
+  const words = text.split(" ");
   return (
     <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-      {text.split(" ").map((word, i) => (
-        <span key={i} className={highlightText && word.toLowerCase().includes(highlightText.toLowerCase()) ? "jvm-gradient-text" : ""}>
-          {word}{" "}
-        </span>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: i * 0.08 }}
+          className={`inline-block mr-1.5 ${
+            highlightText && word.toLowerCase().includes(highlightText.toLowerCase())
+              ? "jvm-gradient-text"
+              : ""
+          }`}
+        >
+          {word}
+        </motion.span>
       ))}
     </h2>
   );
 }
 
 function ShinyText({ text }: { text: string; [key: string]: any }) {
-  return <span className="jvm-gradient-text">{text}</span>;
+  return (
+    <motion.span
+      animate={{
+        backgroundPosition: ["0% 50%", "200% 50%"],
+      }}
+      transition={{
+        duration: 3.5,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+      className="bg-clip-text text-transparent bg-gradient-to-r from-white via-pink-400 to-white bg-[length:200%_auto] inline-block font-extrabold drop-shadow-lg"
+    >
+      {text}
+    </motion.span>
+  );
 }
 
 function TimelineSection({ timelineData }: { timelineData: { year: string; title: string; description: string }[] }) {
+  const milestoneTags = [
+    { badge: "Foundation", icon: Building2, color: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 border-indigo-200 dark:border-indigo-800" },
+    { badge: "Curriculum Innovation", icon: Zap, color: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 border-purple-200 dark:border-purple-800" },
+    { badge: "Cloud Scale", icon: Cloud, color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border-blue-200 dark:border-blue-800" },
+    { badge: "5K+ Milestone", icon: Users, color: "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/60 border-pink-200 dark:border-pink-800" },
+    { badge: "ISO Accredited", icon: Award, color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-800" },
+  ];
+
   return (
-    <section className="py-8 sm:py-20 bg-slate-50/80 dark:bg-[#0B0F19] border-t border-b border-slate-200/80 dark:border-slate-800">
-      <div className="max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-            OUR MILESTONES
-          </span>
-          <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+    <section className="py-12 sm:py-24 lg:py-32 bg-gradient-to-b from-white via-slate-50 to-white dark:from-[#0B0F19] dark:via-[#0E1322] dark:to-[#0B0F19] border-t border-b border-slate-200/80 dark:border-slate-800/80 relative overflow-hidden transition-colors duration-500">
+      
+      {/* Background Ambient Glows & Grid Overlay */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-500/10 dark:bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#80808012_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-20 space-y-2 sm:space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100/90 dark:bg-purple-950/90 border border-purple-200 dark:border-purple-800 text-[#7C3AED] dark:text-[#A78BFA] text-[11px] sm:text-xs font-black tracking-widest uppercase shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+            <span>MILESTONES OF EXCELLENCE</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Why Choose <span className="jvm-gradient-text">JVM Institute</span>
           </h2>
+
+          <p className="text-xs sm:text-lg text-slate-600 dark:text-slate-300 font-medium max-w-2xl mx-auto">
+            A decade-long legacy of empowering software engineers in Pune through practical, real-world data engineering mastery.
+          </p>
         </div>
 
-        <div className="space-y-3 sm:space-y-6">
-          {timelineData.map((item, idx) => (
-            <div key={idx} className="bg-white dark:bg-slate-900 p-3.5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col sm:flex-row gap-2 sm:gap-6 items-start sm:items-center">
-              <span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-extrabold text-xs sm:text-sm shrink-0">
-                {item.year}
-              </span>
-              <div>
-                <h3 className="text-xs sm:text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
-                <p className="text-[11px] sm:text-sm text-slate-600 dark:text-slate-400 mt-0.5">{item.description}</p>
-              </div>
-            </div>
-          ))}
+        {/* DESKTOP & MOBILE TIMELINE CONTAINER */}
+        <div className="relative">
+          
+          {/* Vertical Glowing Line Spine (Centered on Desktop, Left on Mobile) */}
+          <div className="absolute left-4 lg:left-1/2 top-4 bottom-4 w-1 bg-gradient-to-b from-purple-500 via-indigo-500 to-emerald-500 rounded-full lg:-translate-x-1/2 opacity-30 dark:opacity-40" />
+
+          <div className="space-y-6 sm:space-y-12">
+            {timelineData.map((item, idx) => {
+              const isEven = idx % 2 === 0;
+              const tagInfo = milestoneTags[idx % milestoneTags.length];
+              const IconComp = tagInfo.icon;
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className={`relative flex flex-col lg:flex-row items-start lg:items-center ${
+                    isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+                  }`}
+                >
+                  
+                  {/* Timeline Card (Half Width on Desktop) */}
+                  <div className={`w-full lg:w-1/2 pl-10 lg:pl-0 ${
+                    isEven ? "lg:pr-12 lg:text-right" : "lg:pl-12 lg:text-left"
+                  }`}>
+                    
+                    <motion.div 
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden text-left"
+                    >
+                      {/* Top Row: Year Pill & Category Badge */}
+                      <div className={`flex items-center gap-2 mb-3 flex-wrap ${
+                        isEven ? "lg:justify-end" : "lg:justify-start"
+                      }`}>
+                        <span className="px-3.5 py-1 rounded-full jvm-gradient-bg text-white font-black text-xs sm:text-sm shadow-md">
+                          {item.year}
+                        </span>
+
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-extrabold border ${tagInfo.color}`}>
+                          <IconComp className="w-3.5 h-3.5" />
+                          {tagInfo.badge}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-base sm:text-xl font-bold font-heading text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-snug">
+                        {item.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-2 font-medium">
+                        {item.description}
+                      </p>
+
+                    </motion.div>
+                  </div>
+
+                  {/* Center Glowing Timeline Node Dot */}
+                  <div className="absolute left-4 lg:left-1/2 top-6 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-slate-900 border-4 border-purple-600 dark:border-purple-400 shadow-xl flex items-center justify-center z-20">
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#E01E6A] animate-ping" />
+                  </div>
+
+                  {/* Empty Spacer Column for Alternating Desktop Layout */}
+                  <div className="hidden lg:block lg:w-1/2" />
+
+                </motion.div>
+              );
+            })}
+          </div>
+
         </div>
+
       </div>
     </section>
   );
@@ -248,38 +359,38 @@ export default function AboutUsPage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 2. INSTITUTE STORY (Compact Image & Content on Mobile)    */}
+        {/* 2. INSTITUTE STORY (Story -> Image -> Highlights on Mobile) */}
         {/* ========================================================= */}
         <section className="py-6 sm:py-20 md:py-28 relative overflow-hidden bg-white dark:bg-[#0E1322]">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
               
-              {/* Left Column: Creative Image Collage (Small size on Mobile) */}
+              {/* DESKTOP ONLY: Left Column Image Collage */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-6 relative"
+                className="hidden lg:block lg:col-span-6 relative"
               >
                 <div className="relative mx-auto max-w-md lg:max-w-none">
                   
                   {/* Backdrop Glow */}
                   <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/10 to-pink-500/10 rounded-3xl blur-2xl -z-10" />
 
-                  {/* Main Large Collage Photo (Small height on Mobile) */}
-                  <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800 h-[160px] xs:h-[200px] sm:h-auto">
+                  {/* Main Large Collage Photo */}
+                  <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800">
                     <Image
                       src="/place1.png"
                       alt="JVM Institute Campus Placement Drive"
                       width={600}
-                      height={420}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      height={520}
+                      className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-2 left-3 sm:bottom-4 sm:left-6 text-white">
-                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-pink-600/90 text-[9px] sm:text-[10px] font-bold tracking-wider uppercase">Campus Hiring</span>
-                      <h4 className="text-xs sm:text-lg font-bold mt-0.5">Direct MNC Drives</h4>
+                    <div className="absolute bottom-4 left-6 text-white">
+                      <span className="px-2.5 py-1 rounded-md bg-pink-600/90 text-[10px] font-bold tracking-wider uppercase">Campus Hiring</span>
+                      <h4 className="text-lg font-bold mt-1">Direct MNC Drives</h4>
                     </div>
                   </div>
 
@@ -287,15 +398,15 @@ export default function AboutUsPage() {
                   <motion.div
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:right-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-2xl max-w-[160px] sm:max-w-[240px] z-20"
+                    className="absolute -bottom-6 right-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-2xl max-w-[240px] z-20"
                   >
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0">
-                        <Users className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0">
+                        <Users className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-base sm:text-2xl font-extrabold text-slate-900 dark:text-white">98.4%</div>
-                        <p className="text-[9px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Placement Track</p>
+                        <div className="text-2xl font-extrabold text-slate-900 dark:text-white">98.4%</div>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Placement Track</p>
                       </div>
                     </div>
                   </motion.div>
@@ -303,14 +414,15 @@ export default function AboutUsPage() {
                 </div>
               </motion.div>
 
-              {/* Right Column: Story & Philosophy */}
+              {/* Story Column (On Mobile: 1. Header & Story -> 2. Image -> 3. Highlights) */}
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-6 space-y-3 sm:space-y-6 pt-2 sm:pt-0"
+                className="lg:col-span-6 space-y-4 sm:space-y-6"
               >
+                {/* 1. STORY & PHILOSOPHY HEADER & INTRO TEXT */}
                 <div>
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                     OUR JOURNEY &amp; PHILOSOPHY
@@ -329,7 +441,38 @@ export default function AboutUsPage() {
                   </p>
                 </div>
 
-                {/* 3 Core Highlights */}
+                {/* 2. MOBILE ONLY: IMAGE COLLAGE DISPLAYED RIGHT AFTER STORY & PHILOSOPHY */}
+                <div className="block lg:hidden my-4 relative">
+                  <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800 h-[200px] xs:h-[230px]">
+                    <Image
+                      src="/place1.png"
+                      alt="JVM Institute Campus Placement Drive"
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-2 left-3 text-white">
+                      <span className="px-2 py-0.5 rounded-md bg-pink-600/90 text-[9px] font-bold tracking-wider uppercase">Campus Hiring</span>
+                      <h4 className="text-xs font-bold mt-0.5">Direct MNC Drives</h4>
+                    </div>
+                  </div>
+
+                  {/* Secondary Floating Stats Card on Mobile */}
+                  <div className="absolute -bottom-3 -right-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 rounded-xl shadow-xl max-w-[150px] z-20">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0">
+                        <Users className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-extrabold text-slate-900 dark:text-white">98.4%</div>
+                        <p className="text-[9px] text-slate-500 dark:text-slate-400 font-medium">Placement Track</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. CORE HIGHLIGHTS DISPLAYED RIGHT AFTER IMAGE */}
                 <div className="pt-2 sm:pt-4 space-y-2 sm:space-y-4">
                   
                   <div className="flex items-start gap-2.5 sm:gap-4 p-2.5 sm:p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60">
