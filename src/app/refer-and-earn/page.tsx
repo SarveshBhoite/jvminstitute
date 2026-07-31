@@ -93,75 +93,57 @@ export default function ReferAndEarnPage() {
 
       <main className="flex-grow">
         
-        {/* Section 1: Hero Banner matching Placements Page Brand Theme */}
-        <section className="relative overflow-hidden bg-[#FAFAFC] dark:bg-[#0B0F19] py-16 md:py-24 transition-colors duration-300 border-b border-slate-200/80 dark:border-slate-800/80">
+        {/* Section 1: Hero Banner (Compact for Mobile) */}
+        <section className="relative overflow-hidden bg-[#FAFAFC] dark:bg-[#0B0F19] py-8 sm:py-16 md:py-24 transition-colors duration-300 border-b border-slate-200/80 dark:border-slate-800/80">
           
-          {/* Background Ambient Glows using exact Brand Colors #1E2B88 and #E01E6A */}
-          <div className="ambient-glow w-[500px] h-[500px] bg-[#1E2B88] dark:bg-[#4F46E5] top-[-10%] left-[-10%] opacity-15 pointer-events-none"></div>
-          <div className="ambient-glow w-[400px] h-[400px] bg-[#E01E6A] dark:bg-[#BE185D] bottom-[-10%] right-[-5%] opacity-10 pointer-events-none"></div>
+          {/* Background Ambient Glows */}
+          <div className="ambient-glow w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#1E2B88] dark:bg-[#4F46E5] top-[-10%] left-[-10%] opacity-15 pointer-events-none" />
+          <div className="ambient-glow w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#E01E6A] dark:bg-[#BE185D] bottom-[-10%] right-[-5%] opacity-10 pointer-events-none" />
 
-          {/* Wavy Decorative Ribbons */}
-          <div className="absolute top-0 right-0 bottom-0 w-1/3 hidden lg:block pointer-events-none opacity-40">
-            <svg 
-              className="absolute right-0 top-0 bottom-0 h-full w-48 text-[#E01E6A] opacity-30" 
-              viewBox="0 0 100 100" 
-              preserveAspectRatio="none"
-            >
-              <path d="M100,0 C40,25 80,75 100,100 L100,100 L100,0 Z" fill="currentColor" />
-            </svg>
-            <svg 
-              className="absolute right-0 top-0 bottom-0 h-full w-40 text-[#1E2B88]" 
-              viewBox="0 0 100 100" 
-              preserveAspectRatio="none"
-            >
-              <path d="M100,0 C30,30 70,80 100,100 L100,100 L100,0 Z" fill="currentColor" />
-            </svg>
-          </div>
-
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
+          <div className="max-w-[1400px] mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-6">
               
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-wider shadow-xs">
-                <Gift className="w-4 h-4 text-amber-500" /> Student &amp; Alumni Rewards Hub
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] sm:text-xs font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-wider shadow-xs">
+                <Gift className="w-3.5 h-3.5 text-amber-500" /> Student &amp; Alumni Rewards Hub
               </div>
 
               <div className="space-y-2">
                 <SplitText
                   text="Refer Your Friends & Earn Up to ₹2,000 Per Enrollment"
                   tag="h1"
-                  className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight leading-[1.15]"
+                  className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight leading-[1.15]"
                   delay={25}
                   duration={0.6}
                   splitType="words"
                 />
               </div>
 
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
                 Help your friends launch a high-paying tech career in Data Engineering &amp; AI. Share the gift of learning and get instant cash payouts directly to your UPI!
               </p>
 
               {/* Instant Referral Link Copy Box & WhatsApp Share */}
-              <div className="pt-2 max-w-lg mx-auto space-y-3">
-                <div className="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full p-2 shadow-lg">
+              <div className="pt-2 max-w-lg mx-auto space-y-2.5 sm:space-y-3">
+                <div className="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full p-1.5 sm:p-2 shadow-lg">
                   <input
                     type="text"
                     readOnly
                     value={`https://jvminstitute.com/enroll?ref=${sampleReferralCode}`}
-                    className="w-full bg-transparent px-4 text-xs font-mono text-slate-700 dark:text-slate-300 focus:outline-none"
+                    className="w-full bg-transparent px-3 sm:px-4 text-[10px] sm:text-xs font-mono text-slate-700 dark:text-slate-300 focus:outline-none truncate"
                   />
                   <button
                     onClick={handleCopyLink}
-                    className="jvm-gradient-bg text-white px-5 py-2.5 rounded-full text-xs font-bold shrink-0 flex items-center gap-1.5 shadow-md hover:opacity-95 transition-all"
+                    className="jvm-gradient-bg text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold shrink-0 flex items-center gap-1 sm:gap-1.5 shadow-md hover:opacity-95 transition-all"
                   >
                     {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    {copiedLink ? "Copied Link!" : "Copy Link"}
+                    {copiedLink ? "Copied!" : "Copy Link"}
                   </button>
                 </div>
 
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center">
                   <button
                     onClick={handleShareWhatsApp}
-                    className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 shadow-md transition-all"
+                    className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all"
                   >
                     <Share2 className="w-3.5 h-3.5" /> Share directly on WhatsApp
                   </button>
@@ -172,40 +154,38 @@ export default function ReferAndEarnPage() {
           </div>
         </section>
 
-        {/* NEW STUDENT FEATURE 1: Interactive Live Earnings Calculator */}
-        <section className="py-14 bg-gradient-to-b from-purple-900/5 via-indigo-950/10 to-transparent dark:from-purple-950/40 dark:to-slate-950 border-b border-purple-200/50 dark:border-purple-900/40">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section 2: Interactive Live Earnings Calculator */}
+        <section className="py-6 sm:py-14 bg-gradient-to-b from-purple-900/5 via-indigo-950/10 to-transparent dark:from-purple-950/40 dark:to-slate-950 border-b border-purple-200/50 dark:border-purple-900/40">
+          <div className="max-w-[1240px] mx-auto px-3.5 sm:px-6 lg:px-8">
             
-            <div className="bg-white dark:bg-[#0F172A] border border-purple-200 dark:border-purple-900/60 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div className="bg-white dark:bg-[#0F172A] border border-purple-200 dark:border-purple-900/60 rounded-2xl sm:rounded-3xl p-4 sm:p-10 shadow-xl relative overflow-hidden">
               
-              <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-              <div className="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+              <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
                 
                 {/* Calculator Controls Left */}
-                <div className="lg:col-span-7 space-y-6">
-                  <div className="space-y-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-extrabold border border-amber-500/30">
-                      <Calculator className="w-3.5 h-3.5" /> Interactive Earnings Simulator
+                <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] sm:text-xs font-extrabold border border-amber-500/30">
+                      <Calculator className="w-3.5 h-3.5" /> Earnings Simulator
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
+                    <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
                       Calculate Your Expected Referral Income
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                      Adjust the sliders below to estimate your total cash payout based on the number of friends you refer!
+                      Adjust the sliders below to estimate your total cash payout:
                     </p>
                   </div>
 
                   {/* Sliders */}
-                  <div className="space-y-5 bg-slate-50 dark:bg-slate-900/80 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800">
+                  <div className="space-y-4 sm:space-y-5 bg-slate-50 dark:bg-slate-900/80 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800">
                     
                     {/* Slider 1: Data Engineering */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <div className="flex justify-between items-center text-xs font-bold">
-                        <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                          <Sparkles className="w-3.5 h-3.5 text-purple-600" /> Data Engineering &amp; PySpark (₹2,000 / student):
+                        <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
+                          <Sparkles className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Data Engineering (₹2,000/student):
                         </span>
-                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-sm">{deCount} Friends</span>
+                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-xs sm:text-sm">{deCount} Friends</span>
                       </div>
                       <input 
                         type="range" 
@@ -218,12 +198,12 @@ export default function ReferAndEarnPage() {
                     </div>
 
                     {/* Slider 2: Data Analytics */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <div className="flex justify-between items-center text-xs font-bold">
-                        <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                          <Zap className="w-3.5 h-3.5 text-amber-500" /> Data Analytics &amp; SQL (₹1,000 / student):
+                        <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
+                          <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" /> Data Analytics (₹1,000/student):
                         </span>
-                        <span className="text-amber-600 dark:text-amber-400 font-extrabold text-sm">{daCount} Friends</span>
+                        <span className="text-amber-600 dark:text-amber-400 font-extrabold text-xs sm:text-sm">{daCount} Friends</span>
                       </div>
                       <input 
                         type="range" 
@@ -240,21 +220,21 @@ export default function ReferAndEarnPage() {
 
                 {/* Live Output Card Right */}
                 <div className="lg:col-span-5">
-                  <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-950 text-white rounded-3xl p-7 text-center space-y-4 shadow-xl border border-purple-500/30">
-                    <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/30">
+                  <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 text-center space-y-3 sm:space-y-4 shadow-xl border border-purple-500/30">
+                    <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/30">
                       Estimated Direct Cash Payout
                     </span>
 
-                    <div className="py-2">
-                      <div className="text-4xl sm:text-5xl font-black text-amber-400 font-heading tracking-tight">
+                    <div className="py-1 sm:py-2">
+                      <div className="text-3xl xs:text-4xl sm:text-5xl font-black text-amber-400 font-heading tracking-tight">
                         ₹{totalEarnings.toLocaleString()}
                       </div>
-                      <p className="text-xs text-purple-200 mt-1 font-medium">
+                      <p className="text-[10px] sm:text-xs text-purple-200 mt-0.5 font-medium">
                         Instant UPI Payout within 48 hrs of batch start
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-white/10 text-xs font-medium text-slate-300 space-y-1">
+                    <div className="pt-2 sm:pt-3 border-t border-white/10 text-[11px] sm:text-xs font-medium text-slate-300 space-y-1">
                       <div className="flex justify-between">
                         <span>Total Candidates Referred:</span>
                         <strong className="text-white">{deCount + daCount} Friends</strong>
@@ -270,7 +250,7 @@ export default function ReferAndEarnPage() {
                         const elem = document.getElementById("referral-form-section");
                         elem?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="w-full py-3 rounded-full jvm-gradient-bg text-white font-extrabold text-xs shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-1.5 mt-2"
+                      className="w-full py-2.5 sm:py-3 rounded-full jvm-gradient-bg text-white font-extrabold text-xs shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-1.5 mt-2"
                     >
                       <Gift className="w-3.5 h-3.5" /> Claim This Payout Now
                     </button>
@@ -284,50 +264,50 @@ export default function ReferAndEarnPage() {
           </div>
         </section>
 
-        {/* NEW STUDENT FEATURE 2: Real-time Leaderboard & Hall of Fame */}
-        <section className="py-14 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
-            <span className="text-xs font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest bg-amber-50 dark:bg-amber-950/60 px-3.5 py-1.5 rounded-full border border-amber-200 dark:border-amber-800">
+        {/* Section 3: Real-time Leaderboard & Hall of Fame */}
+        <section className="py-8 sm:py-14 max-w-[1240px] mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2 mb-6 sm:mb-10">
+            <span className="text-[10px] sm:text-xs font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest bg-amber-50 dark:bg-amber-950/60 px-3.5 py-1.5 rounded-full border border-amber-200 dark:border-amber-800">
               Alumni Hall of Fame
             </span>
-            <h2 className="text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
+            <h2 className="text-xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
               Top Student Referral Champions
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-              Meet our active students &amp; alumni who earned maximum cash rewards by helping their peer network transition to IT:
+              Meet our active students &amp; alumni who earned maximum cash rewards:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
             {topReferrers.map((item, idx) => (
               <div 
                 key={idx}
-                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-md hover:shadow-xl transition-all space-y-4 relative overflow-hidden group"
+                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm space-y-3 sm:space-y-4"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+                  <span className="text-[10px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                     {item.badge}
                   </span>
-                  <Award className="w-5 h-5 text-amber-500" />
+                  <Award className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-extrabold text-slate-900 dark:text-white font-heading">
+                  <h3 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white font-heading">
                     {item.name}
                   </h3>
-                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                  <p className="text-[11px] sm:text-xs font-medium text-slate-500 dark:text-slate-400">
                     {item.course}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <div className="pt-2 sm:pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
                   <div>
-                    <span className="text-[10px] uppercase text-slate-400 font-bold block">Candidates Placed</span>
-                    <strong className="text-sm font-extrabold text-purple-600 dark:text-purple-400">{item.referrals} Candidates</strong>
+                    <span className="text-[9px] sm:text-[10px] uppercase text-slate-400 font-bold block">Candidates Placed</span>
+                    <strong className="text-xs sm:text-sm font-extrabold text-purple-600 dark:text-purple-400">{item.referrals} Candidates</strong>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] uppercase text-slate-400 font-bold block">Total Cash Earned</span>
-                    <strong className="text-base font-black text-emerald-600 dark:text-emerald-400">{item.earned}</strong>
+                    <span className="text-[9px] sm:text-[10px] uppercase text-slate-400 font-bold block">Total Cash Earned</span>
+                    <strong className="text-sm sm:text-base font-black text-emerald-600 dark:text-emerald-400">{item.earned}</strong>
                   </div>
                 </div>
               </div>
@@ -335,33 +315,30 @@ export default function ReferAndEarnPage() {
           </div>
         </section>
 
-        {/* Section 2: Interactive Reward Calculator & 3-Step Process (Featuring LineSidebar Animation) */}
-        <section className="py-16 md:py-24 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200/80 dark:border-slate-800/80">
+        {/* Section 4: 3-Step Process */}
+        <section className="py-8 sm:py-16 md:py-24 max-w-[1360px] mx-auto px-3.5 sm:px-6 lg:px-8 border-t border-slate-200/80 dark:border-slate-800/80">
           
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
-            <span className="text-xs font-black text-[#1E2B88] dark:text-purple-400 uppercase tracking-widest bg-blue-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-blue-200 dark:border-purple-800">
+          <div className="text-center max-w-3xl mx-auto space-y-2 mb-8 sm:mb-14">
+            <span className="text-[10px] sm:text-xs font-black text-[#1E2B88] dark:text-purple-400 uppercase tracking-widest bg-blue-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-blue-200 dark:border-purple-800">
               Simple 3-Step Rewards Payout
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-xl sm:text-4xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
               How the Refer &amp; Earn Program Works
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-base font-medium">
-              Hover over each step below to view the interactive line animation &amp; payout milestones:
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 items-stretch">
             
-            {/* Box 1: Step 1 - Share Link */}
-            <div className="bg-slate-50/90 dark:bg-[#0F172A]/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-7 flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold font-heading text-[#1E2B88] dark:text-purple-400 border-b border-slate-200 dark:border-slate-800 pb-4 text-center">
+            {/* Box 1 */}
+            <div className="bg-slate-50/90 dark:bg-[#0F172A]/90 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between shadow-sm">
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-[#1E2B88] dark:text-purple-400 border-b border-slate-200 dark:border-slate-800 pb-3 sm:pb-4 text-center">
                   1. Share Referral Link:
                 </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-2">
-                  Send your unique referral link to friends or fill out the quick candidate recommendation form:
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                  Send your unique referral link to friends or fill out the candidate recommendation form:
                 </p>
-                <div className="pt-2 px-1">
+                <div className="pt-1 px-1">
                   <LineSidebar
                     items={[
                       "Copy your unique referral link above",
@@ -376,8 +353,8 @@ export default function ReferAndEarnPage() {
                     proximityRadius={80}
                     maxShift={15}
                     markerLength={24}
-                    itemGap={16}
-                    fontSize={0.8}
+                    itemGap={12}
+                    fontSize={0.75}
                     smoothing={100}
                     defaultActive={0}
                   />
@@ -385,13 +362,13 @@ export default function ReferAndEarnPage() {
               </div>
             </div>
 
-            {/* Box 2: Step 2 - Free Career Counselling */}
-            <div className="bg-slate-50/90 dark:bg-[#0F172A]/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-7 flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold font-heading text-[#1E2B88] dark:text-purple-400 border-b border-slate-200 dark:border-slate-800 pb-4 text-center">
+            {/* Box 2 */}
+            <div className="bg-slate-50/90 dark:bg-[#0F172A]/90 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between shadow-sm">
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-[#1E2B88] dark:text-purple-400 border-b border-slate-200 dark:border-slate-800 pb-3 sm:pb-4 text-center">
                   2. Free Demo &amp; Counselling:
                 </h3>
-                <div className="pt-2 px-1">
+                <div className="pt-1 px-1">
                   <LineSidebar
                     items={[
                       "Friend attends 1:1 expert tech demo session",
@@ -406,8 +383,8 @@ export default function ReferAndEarnPage() {
                     proximityRadius={80}
                     maxShift={15}
                     markerLength={24}
-                    itemGap={16}
-                    fontSize={0.8}
+                    itemGap={12}
+                    fontSize={0.75}
                     smoothing={100}
                     defaultActive={0}
                   />
@@ -415,13 +392,13 @@ export default function ReferAndEarnPage() {
               </div>
             </div>
 
-            {/* Box 3: Step 3 - Instant UPI Payout */}
-            <div className="bg-slate-50/90 dark:bg-[#0F172A]/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-7 flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold font-heading text-[#1E2B88] dark:text-purple-400 border-b border-slate-200 dark:border-slate-800 pb-4 text-center">
+            {/* Box 3 */}
+            <div className="bg-slate-50/90 dark:bg-[#0F172A]/90 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between shadow-sm">
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-bold font-heading text-[#1E2B88] dark:text-purple-400 border-b border-slate-200 dark:border-slate-800 pb-3 sm:pb-4 text-center">
                   3. Instant Payout:
                 </h3>
-                <div className="pt-2 px-1">
+                <div className="pt-1 px-1">
                   <LineSidebar
                     items={[
                       "Earn ₹2,000 for Data Engineering track",
@@ -436,8 +413,8 @@ export default function ReferAndEarnPage() {
                     proximityRadius={80}
                     maxShift={15}
                     markerLength={24}
-                    itemGap={16}
-                    fontSize={0.8}
+                    itemGap={12}
+                    fontSize={0.75}
                     smoothing={100}
                     defaultActive={0}
                   />
@@ -449,36 +426,33 @@ export default function ReferAndEarnPage() {
 
         </section>
 
-        {/* Section 3: Direct Referral Form & Live Payout Perks Grid */}
-        <section id="referral-form-section" className="py-16 bg-white dark:bg-[#0B0F19] border-t border-slate-200/80 dark:border-slate-800/80">
-          <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-12 gap-12 items-center">
+        {/* Section 5: Direct Referral Form & Perks Grid */}
+        <section id="referral-form-section" className="py-8 sm:py-16 bg-white dark:bg-[#0B0F19] border-t border-slate-200/80 dark:border-slate-800/80">
+          <div className="max-w-[1360px] mx-auto px-3.5 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-12 gap-6 sm:gap-12 items-center">
               
               {/* Form Left Side */}
-              <div className="lg:col-span-6 space-y-6">
-                <div className="space-y-3">
-                  <span className="text-xs font-black text-[#E01E6A] uppercase tracking-widest bg-pink-50 dark:bg-pink-950/60 px-3.5 py-1.5 rounded-full border border-pink-200 dark:border-pink-800">
+              <div className="lg:col-span-6 space-y-4 sm:space-y-6">
+                <div className="space-y-2 sm:space-y-3">
+                  <span className="text-[10px] sm:text-xs font-black text-[#E01E6A] uppercase tracking-widest bg-pink-50 dark:bg-pink-950/60 px-3.5 py-1.5 rounded-full border border-pink-200 dark:border-pink-800">
                     Quick Referral Submission
                   </span>
-                  <h2 className="text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
+                  <h2 className="text-xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
                     Submit Candidate Details
                   </h2>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    Fill in your friend&apos;s details below. Our academic counsellor will reach out to them for a free career demo class!
-                  </p>
                 </div>
 
-                <div className="bg-slate-50 dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+                <div className="bg-slate-50 dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl">
                   {submitted ? (
-                    <div className="text-center py-8 space-y-4">
-                      <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/30 flex items-center justify-center mx-auto">
-                        <CheckCircle2 className="w-8 h-8" />
+                    <div className="text-center py-6 space-y-3">
+                      <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/30 flex items-center justify-center mx-auto">
+                        <CheckCircle2 className="w-6 h-6" />
                       </div>
-                      <h3 className="text-xl font-extrabold text-slate-900 dark:text-white font-heading">
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white font-heading">
                         Referral Registered Successfully!
                       </h3>
                       <p className="text-xs text-slate-600 dark:text-slate-300 max-w-sm mx-auto">
-                        Thank you, <strong className="text-slate-900 dark:text-white">{referrerName}</strong>. We have logged <strong className="text-slate-900 dark:text-white">{friendName}</strong> for free counselling. Your cash payout will trigger upon admission.
+                        Thank you, <strong className="text-slate-900 dark:text-white">{referrerName}</strong>. We have logged <strong className="text-slate-900 dark:text-white">{friendName}</strong> for free counselling.
                       </p>
                       <button
                         onClick={() => setSubmitted(false)}
@@ -488,11 +462,11 @@ export default function ReferAndEarnPage() {
                       </button>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmitReferral} className="space-y-4">
+                    <form onSubmit={handleSubmitReferral} className="space-y-3 sm:space-y-4">
                       
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                             Your Name (Referrer)
                           </label>
                           <input
@@ -501,11 +475,11 @@ export default function ReferAndEarnPage() {
                             placeholder="Siddharth Bhoite"
                             value={referrerName}
                             onChange={(e) => setReferrerName(e.target.value)}
-                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                            className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                             Your Phone / UPI Number
                           </label>
                           <input
@@ -514,14 +488,14 @@ export default function ReferAndEarnPage() {
                             placeholder="9876543210"
                             value={referrerPhone}
                             onChange={(e) => setReferrerPhone(e.target.value)}
-                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                            className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                             Friend&apos;s Full Name *
                           </label>
                           <input
@@ -530,11 +504,11 @@ export default function ReferAndEarnPage() {
                             placeholder="Rahul Deshmukh"
                             value={friendName}
                             onChange={(e) => setFriendName(e.target.value)}
-                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                            className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                             Friend&apos;s Phone Number *
                           </label>
                           <input
@@ -543,44 +517,19 @@ export default function ReferAndEarnPage() {
                             placeholder="9123456789"
                             value={friendPhone}
                             onChange={(e) => setFriendPhone(e.target.value)}
-                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                            className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                           />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                            Friend&apos;s Email Address (Optional)
-                          </label>
-                          <input
-                            type="email"
-                            placeholder="rahul.deshmukh@gmail.com"
-                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                            Best Time to Call
-                          </label>
-                          <select
-                            className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
-                          >
-                            <option value="Morning">Morning (10 AM - 1 PM)</option>
-                            <option value="Afternoon">Afternoon (1 PM - 5 PM)</option>
-                            <option value="Evening">Evening (5 PM - 8 PM)</option>
-                          </select>
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                           Interested Tech Track *
                         </label>
                         <select
                           value={courseInterest}
                           onChange={(e) => setCourseInterest(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                         >
                           <option value="Data Engineering">Data Engineering &amp; PySpark (₹2,000 Cash Reward)</option>
                           <option value="Data Analytics">Data Analytics &amp; SQL (₹1,000 Cash Reward)</option>
@@ -590,7 +539,7 @@ export default function ReferAndEarnPage() {
 
                       <button
                         type="submit"
-                        className="w-full py-3.5 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2"
+                        className="w-full py-3 sm:py-3.5 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2"
                       >
                         <Gift className="w-4 h-4" /> Submit Candidate &amp; Claim Reward
                       </button>
@@ -601,46 +550,46 @@ export default function ReferAndEarnPage() {
               </div>
 
               {/* Right Side: Perks Highlights Cards */}
-              <div className="lg:col-span-6 space-y-5">
+              <div className="lg:col-span-6 space-y-3 sm:space-y-5">
                 
-                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-200/80 dark:border-amber-900/60 rounded-3xl p-6 shadow-md flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-md">
-                    <Zap className="w-6 h-6" />
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-200/80 dark:border-amber-900/60 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-md">
+                    <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="text-base font-extrabold text-slate-900 dark:text-white font-heading">
+                  <div className="space-y-0.5">
+                    <h4 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white font-heading">
                       Unlimited Payout Capability
                     </h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                      There is zero cap on how many candidates you can refer. Students have earned over ₹40,000+ in extra cash payouts!
+                    <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      Zero cap on how many candidates you can refer. Students have earned over ₹40,000+!
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/20 border border-purple-200/80 dark:border-purple-900/60 rounded-3xl p-6 shadow-md flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center shrink-0 shadow-md">
-                    <ShieldCheck className="w-6 h-6" />
+                <div className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/20 border border-purple-200/80 dark:border-purple-900/60 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-purple-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                    <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="text-base font-extrabold text-slate-900 dark:text-white font-heading">
+                  <div className="space-y-0.5">
+                    <h4 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white font-heading">
                       100% Verified Tracking
                     </h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                      Every candidate is tagged with your unique referral ID. Get real-time SMS updates as soon as your candidate enrolls.
+                    <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      Every candidate is tagged with your unique referral ID with real-time tracking updates.
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/20 border border-emerald-200/80 dark:border-emerald-900/60 rounded-3xl p-6 shadow-md flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
-                    <TrendingUp className="w-6 h-6" />
+                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/20 border border-emerald-200/80 dark:border-emerald-900/60 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                    <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="text-base font-extrabold text-slate-900 dark:text-white font-heading">
+                  <div className="space-y-0.5">
+                    <h4 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white font-heading">
                       Scholarship Option for Friends
                     </h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                      Referred candidates automatically receive an extra ₹1,000 scholarship discount on their total course fee deposit.
+                    <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      Referred candidates receive an extra ₹1,000 scholarship discount on course fee.
                     </p>
                   </div>
                 </div>
@@ -651,27 +600,27 @@ export default function ReferAndEarnPage() {
           </div>
         </section>
 
-        {/* Section 4: Frequently Asked Questions Accordion */}
-        <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section 6: Frequently Asked Questions Accordion */}
+        <section className="py-8 sm:py-16 max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
           
-          <div className="text-center space-y-3 mb-12">
-            <span className="text-xs font-black text-purple-600 dark:text-purple-400 uppercase tracking-widest">
+          <div className="text-center space-y-2 mb-6 sm:mb-12">
+            <span className="text-[10px] sm:text-xs font-black text-purple-600 dark:text-purple-400 uppercase tracking-widest">
               Got Questions?
             </span>
-            <h2 className="text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
+            <h2 className="text-xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
               Referral Program FAQs
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {FaqItems.map((faq, idx) => (
               <div 
                 key={idx}
-                className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm transition-all"
+                className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-xs"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full text-left flex items-center justify-between gap-4 font-bold text-sm text-slate-900 dark:text-white"
+                  className="w-full text-left flex items-center justify-between gap-3 font-bold text-xs sm:text-sm text-slate-900 dark:text-white"
                 >
                   <span className="flex items-center gap-2">
                     <HelpCircle className="w-4 h-4 text-purple-500 shrink-0" />
@@ -681,7 +630,7 @@ export default function ReferAndEarnPage() {
                 </button>
                 
                 {openFaq === idx && (
-                  <p className="text-xs text-slate-600 dark:text-slate-300 pt-3 border-t border-slate-100 dark:border-slate-800 mt-3 leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 pt-2.5 border-t border-slate-100 dark:border-slate-800 mt-2.5 leading-relaxed">
                     {faq.a}
                   </p>
                 )}
