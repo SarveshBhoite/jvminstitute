@@ -5,6 +5,13 @@ const nextConfig = {
       config.cache = false;
     }
     return config;
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
 };
 

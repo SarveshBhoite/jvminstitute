@@ -8,5 +8,6 @@ export default function DownloadBrochurePage() {
         Fill out your details to receive the detailed syllabus PDF and career handbook instantly.
       </p>
     </div>
+
   );
 }
