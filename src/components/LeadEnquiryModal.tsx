@@ -53,19 +53,8 @@ export default function LeadEnquiryModal({
       setInternalIsOpen(true);
     };
 
-    window.addEventListener("open-enroll-modal", handleOpen);
-
-    // Auto trigger after 4 seconds on initial home page visit if not controlled externally
-    let timer: NodeJS.Timeout | undefined;
-    if (externalIsOpen === undefined) {
-      timer = setTimeout(() => {
-        setInternalIsOpen(true);
-      }, 4000);
-    }
-
     return () => {
       window.removeEventListener("open-enroll-modal", handleOpen);
-      if (timer) clearTimeout(timer);
     };
   }, [externalIsOpen]);
 
