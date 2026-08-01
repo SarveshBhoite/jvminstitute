@@ -38,14 +38,8 @@ export default function LeadEnquiryModal() {
 
     window.addEventListener("open-enroll-modal", handleOpen);
 
-    // Auto trigger after 4 seconds on initial home page visit if not closed previously
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 4000);
-
     return () => {
       window.removeEventListener("open-enroll-modal", handleOpen);
-      clearTimeout(timer);
     };
   }, []);
 
