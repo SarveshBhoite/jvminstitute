@@ -5,6 +5,7 @@ const nextConfig = {
       config.cache = false;
     }
     return config;
+  },
   images: {
     remotePatterns: [
       {
