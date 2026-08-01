@@ -135,11 +135,26 @@ export default function ContactUsPage() {
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formState.fullName,
+          email: formState.email,
+          phone: formState.phone,
+          courseSlug: formState.course,
+          message: formState.message,
+          source: "CONTACT_US_PAGE",
+        }),
+      });
+    } catch (err) {
+      console.error("Error submitting contact enquiry:", err);
+    } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormState({
@@ -149,7 +164,7 @@ export default function ContactUsPage() {
         course: "PySpark Data Engineering",
         message: ""
       });
-    }, 1200);
+    }
   };
 
   return (

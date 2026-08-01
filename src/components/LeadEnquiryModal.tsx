@@ -60,8 +60,24 @@ export default function LeadEnquiryModal({
 
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          courseSlug: course,
+          source: "ENROLLMENT_MODAL",
+          message: referralCode ? `Referral Code: ${referralCode}` : null,
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to submit lead to database:", err);
+    }
     setSubmitted(true);
   };
 

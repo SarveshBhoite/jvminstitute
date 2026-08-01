@@ -357,13 +357,40 @@ export default function EventsPage() {
   };
 
   // Submit Registration Form
-  const handleSubmitRegistration = (e: React.FormEvent) => {
+  const handleSubmitRegistration = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email || !phone) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventId: selectedEventForReg?.id,
+          name: fullName,
+          email,
+          phone,
+          expLevel,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success && data.registration) {
+        setRegistrationPass(data.registration);
+      } else {
+        const generatedPassId = `JVM-PASS-${Math.floor(100000 + Math.random() * 900000)}`;
+        setRegistrationPass({
+          passId: generatedPassId,
+          name: fullName,
+          eventTitle: selectedEventForReg?.title || "JVM Live Masterclass",
+          date: selectedEventForReg?.date || "Upcoming Date",
+          time: selectedEventForReg?.time || "Scheduled Time"
+        });
+      }
+      triggerConfetti();
+    } catch (err) {
+      console.error("API Error:", err);
       const generatedPassId = `JVM-PASS-${Math.floor(100000 + Math.random() * 900000)}`;
       setRegistrationPass({
         passId: generatedPassId,
@@ -373,7 +400,9 @@ export default function EventsPage() {
         time: selectedEventForReg?.time || "Scheduled Time"
       });
       triggerConfetti();
-    }, 800);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Share Event Link

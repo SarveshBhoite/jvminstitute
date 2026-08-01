@@ -4,8 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
@@ -29,21 +29,21 @@ enum PaymentType {
 }
 
 model User {
-  id            String          @id @default(cuid())
-  name          String?
-  email         String          @unique
-  phone         String?
-  passwordHash  String?
-  role          Role            @default(USER)
-  referralCode  String          @unique @default(cuid())
-  referredById  String?
-  referredBy    User?           @relation("UserReferrals", fields: [referredById], references: [id])
-  referrals     User[]          @relation("UserReferrals")
-  enrollments   Enrollment[]
-  purchases     MaterialPurchase[]
-  payouts       ReferralPayout[]
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  id           String             @id @default(cuid())
+  name         String?
+  email        String             @unique
+  phone        String?
+  passwordHash String?
+  role         Role               @default(USER)
+  referralCode String             @unique @default(cuid())
+  referredById String?
+  referredBy   User?              @relation("UserReferrals", fields: [referredById], references: [id])
+  referrals    User[]             @relation("UserReferrals")
+  enrollments  Enrollment[]
+  purchases    MaterialPurchase[]
+  payouts      ReferralPayout[]
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
 }
 
 model Course {
@@ -76,6 +76,71 @@ model Enrollment {
   createdAt     DateTime      @default(now())
 }
 
+model Event {
+  id             String              @id @default(cuid())
+  slug           String              @unique
+  title          String
+  category       String // upcoming, past, hackathon, free
+  date           String
+  time           String
+  mode           String // Virtual, Campus, Hybrid
+  speakerName    String
+  speakerRole    String
+  speakerCompany String
+  speakerAvatar  String
+  description    String              @db.Text
+  tags           String[]
+  seatsTotal     Int                 @default(250)
+  seatsFilled    Int                 @default(0)
+  isFeatured     Boolean             @default(false)
+  videoUrl       String?
+  githubUrl      String?
+  slidesUrl      String?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  registrations  EventRegistration[]
+}
+
+model EventRegistration {
+  id        String   @id @default(cuid())
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  passId    String   @unique
+  name      String
+  email     String
+  phone     String
+  expLevel  String
+  createdAt DateTime @default(now())
+}
+
+model Placement {
+  id          String   @id @default(cuid())
+  studentName String
+  domain      String
+  placedRole  String
+  company     String
+  package     String
+  hike        String
+  image       String
+  skills      String
+  category    String // data_engineering, pyspark_bigdata, etc.
+  createdAt   DateTime @default(now())
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String   @db.Text
+  content     String   @db.Text
+  category    String
+  authorName  String
+  authorRole  String
+  publishedAt String
+  readTime    String
+  createdAt   DateTime @default(now())
+}
+
 model StudyMaterial {
   id          String             @id @default(cuid())
   slug        String             @unique
@@ -103,23 +168,23 @@ model MaterialPurchase {
 }
 
 model ReferralPayout {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  amount      Float
-  status      String   @default("PENDING") // PENDING, PAID
-  notes       String?
-  createdAt   DateTime @default(now())
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount    Float
+  status    String   @default("PENDING") // PENDING, PAID
+  notes     String?
+  createdAt DateTime @default(now())
 }
 
 model LeadEnquiry {
-  id          String   @id @default(cuid())
-  name        String
-  email       String
-  phone       String
-  courseSlug  String?
-  message     String?  @db.Text
-  source      String   @default("WEBSITE_CONTACT")
-  isResolved  Boolean  @default(false)
-  createdAt   DateTime @default(now())
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  phone      String
+  courseSlug String?
+  message    String?  @db.Text
+  source     String   @default("WEBSITE_CONTACT")
+  isResolved Boolean  @default(false)
+  createdAt  DateTime @default(now())
 }
