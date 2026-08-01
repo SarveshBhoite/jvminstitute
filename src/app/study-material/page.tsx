@@ -31,10 +31,19 @@ import {
   Share2,
   FileCode2,
   Layers,
-  Check
+  Check,
+  ListOrdered,
+  HelpCircle,
+  Award
 } from "lucide-react";
 
 // ─── Data Types & Items ──────────────────────────────────────────────────────
+
+interface NotePointSection {
+  sectionTitle: string;
+  points: string[];
+  codeSnippet?: string;
+}
 
 interface StudyNoteItem {
   id: string;
@@ -49,7 +58,7 @@ interface StudyNoteItem {
   border: string;
   iconType: "file" | "code" | "db" | "chart";
   pdfTopics: string[];
-  previewSnippet: string;
+  detailedNotes: NotePointSection[];
   relatedIds: string[];
 }
 
@@ -72,14 +81,52 @@ const ALL_STUDY_NOTES: StudyNoteItem[] = [
       "Executor Memory Management & GC Overhead Tuning",
       "Broadcast Joins & Data Skewness Mitigation Strategies"
     ],
-    previewSnippet: `// PySpark Broadcast Join Example
-import org.apache.spark.sql.functions.broadcast
+    detailedNotes: [
+      {
+        sectionTitle: "1. Core Architecture: RDD vs DataFrame vs Dataset",
+        points: [
+          "RDD (Resilient Distributed Dataset): Low-level immutable collection distributed across cluster nodes. Lacks Catalyst Optimizer optimization.",
+          "DataFrame: Distributed dataset organized into named columns. Uses Catalyst Query Optimizer for logical plan optimization and projection pruning.",
+          "Dataset: Provides compile-time type safety in Scala/Java. In PySpark, DataFrames are used exclusively for Python execution efficiency.",
+          "Lazy Evaluation: PySpark transformations (map, filter, join) build a DAG logical execution plan and only compute when an Action (collect, show, write) is called."
+        ],
+        codeSnippet: `# PySpark DataFrame Transformation Example
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, sum, avg
 
-val largeDF = spark.read.parquet("s3://data-lake/large_transactions")
-val lookupDF = spark.read.parquet("s3://data-lake/small_lookup")
+spark = SparkSession.builder.appName("JVM_DataEngineers").getOrCreate()
 
-val joinedDF = largeDF.join(broadcast(lookupDF), "customer_id")
-joinedDF.write.format("delta").mode("append").save("s3://data-lake/gold_orders")`,
+df = spark.read.option("header", "true").parquet("s3://jvm-lake/sales_data/")
+filtered_df = df.filter(col("amount") > 500) \\
+                .groupBy("region") \\
+                .agg(sum("amount").alias("total_sales"), avg("amount").alias("avg_sales"))
+
+filtered_df.show(5)`
+      },
+      {
+        sectionTitle: "2. Executor Memory & Performance Tuning",
+        points: [
+          "Memory Division: Spark Executor Memory is partitioned into Storage Memory (caches/broadcasts) and Execution Memory (shuffles/joins/sorts).",
+          "Data Skewness Mitigation: Uneven key distribution causes single worker bottlenecks. Resolve by salting keys (adding random integer suffixes) or using broadcast joins.",
+          "AQE (Adaptive Query Execution): Enable via 'spark.sql.adaptive.enabled=true' to dynamically coalesce shuffle partitions and optimize skew joins at runtime."
+        ],
+        codeSnippet: `# Enabling Adaptive Query Execution & Key Salting
+spark.conf.set("spark.sql.adaptive.enabled", "true")
+spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+
+# Broadcast Join for Small Lookup Datasets (<10MB)
+from pyspark.sql.functions import broadcast
+joined_df = large_fact_df.join(broadcast(small_lookup_df), "customer_id")`
+      },
+      {
+        sectionTitle: "3. Real-Time Kafka Streaming & Delta Lake Storage",
+        points: [
+          "Structured Streaming: PySpark streams data directly from Apache Kafka topics using '.readStream.format(\"kafka\")'.",
+          "Checkpointing: Guarantees exactly-once processing semantics by storing offset pointers in S3/ADLS storage paths.",
+          "Delta Lake ACID: Guarantees atomic commits and time travel capability for streaming data sinks."
+        ]
+      }
+    ],
     relatedIds: ["note-sql-cheatsheet", "note-databricks-delta", "note-[#de-roadmap]"]
   },
   {
@@ -100,14 +147,34 @@ joinedDF.write.format("delta").mode("append").save("s3://data-lake/gold_orders")
       "Indexing Strategies: B-Tree vs Bitmap",
       "Query Execution Plans & EXPLAIN ANALYZE"
     ],
-    previewSnippet: `-- Advanced Window Function Example
+    detailedNotes: [
+      {
+        sectionTitle: "1. Window Ranking Functions (ROW_NUMBER, RANK, DENSE_RANK)",
+        points: [
+          "ROW_NUMBER(): Assigns unique sequential integers (1, 2, 3, 4) ignoring duplicate tie values. Best for pagination and deduplication.",
+          "RANK(): Assigns duplicate ranks for tied rows and skips subsequent numbers (1, 1, 3, 4). Used for leaderboard rankings.",
+          "DENSE_RANK(): Assigns duplicate ranks for tied rows without skipping numbers (1, 1, 2, 3). Essential for top-N analytical queries.",
+          "LEAD / LAG: Fetches subsequent or preceding row values relative to current row without performing expensive self-joins."
+        ],
+        codeSnippet: `-- Advanced Window Ranking Query
 SELECT 
   employee_id,
   department_id,
   salary,
-  DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) as salary_rank,
+  ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary DESC) as row_num,
+  DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) as dense_rnk,
   LAG(salary, 1) OVER (PARTITION BY department_id ORDER BY salary DESC) as prev_salary
-FROM employees;`,
+FROM company_employees;`
+      },
+      {
+        sectionTitle: "2. Common Table Expressions (CTEs) & Query Optimization",
+        points: [
+          "CTEs (WITH clause): Improves SQL query readability and breaks down complex logic into reusable named temporary result sets.",
+          "EXPLAIN ANALYZE: Inspect query execution plans to identify Full Table Scans vs Index Scans and expensive Hash Join operations.",
+          "Partition Pruning: Ensure WHERE clauses filter on indexed/partitioned columns to avoid reading irrelevant table partitions."
+        ]
+      }
+    ],
     relatedIds: ["note-pyspark-qa", "note-snowflake-guide", "note-[#de-roadmap]"]
   },
   {
@@ -128,13 +195,24 @@ FROM employees;`,
       "Phase 3: Cloud Warehouses: Snowflake & AWS Redshift",
       "Phase 4: Orchestration & CI/CD with Airflow & dbt"
     ],
-    previewSnippet: `# Data Engineer Skill Tree 2026
-1. Python / Scala
-2. SQL Window Functions & Indexing
-3. PySpark Structured Streaming
-4. Snowflake / Databricks Delta Lake
-5. Apache Airflow / Orchestration
-6. System Design & Data Lake Architecture`,
+    detailedNotes: [
+      {
+        sectionTitle: "1. Foundational Layer (Python, SQL & Shell Scripting)",
+        points: [
+          "Python Core: Master OOP, data structures, generators, file I/O, regex, and exception handling.",
+          "SQL Mastery: Master window functions, CTEs, query optimization, indexing, and transactional isolation levels.",
+          "Linux Shell: Learn bash scripting, cron jobs, file system commands, and ssh authentication for cloud VMs."
+        ]
+      },
+      {
+        sectionTitle: "2. Big Data & Cloud Architecture Layer",
+        points: [
+          "PySpark & Databricks: Distributed computation, RDDs, DataFrames, Spark SQL, Delta Lake, and performance tuning.",
+          "Cloud Warehouses: Snowflake micro-partitioning, zero-copy cloning, virtual warehouses, and AWS Redshift Spectrum.",
+          "Pipeline Orchestration: Apache Airflow DAGs, task dependencies, sensor operators, and dbt analytics modeling."
+        ]
+      }
+    ],
     relatedIds: ["note-pyspark-qa", "note-python-analysis", "note-databricks-delta"]
   },
   {
@@ -155,16 +233,27 @@ FROM employees;`,
       "Groupby Aggregations & Pivot Tables",
       "Exporting High-Performance Parquet & Feather Files"
     ],
-    previewSnippet: `import pandas as pd
+    detailedNotes: [
+      {
+        sectionTitle: "1. Vectorization & Memory Efficiency",
+        points: [
+          "Vectorized Operations: Avoid 'for' loops or '.iterrows()'; use NumPy underlying C arrays for 100x execution speedups.",
+          "Memory Reduction: Convert string columns with low cardinality into 'category' data type to save up to 80% RAM.",
+          "Fast Formats: Read/Write data in Parquet or Feather column format instead of text CSVs."
+        ],
+        codeSnippet: `import pandas as pd
 import numpy as np
 
-# Load Data & Perform Vectorized Aggregations
+# Load & Perform Vectorized Aggregations
 df = pd.read_parquet("sales_data.parquet")
-summary = df.groupby(["region", "product_category"]).agg(
+df["category"] = df["category"].astype("category")
+
+summary = df.groupby(["region", "category"]).agg(
     total_sales=("amount", "sum"),
-    avg_order=("amount", "mean"),
-    active_users=("user_id", "nunique")
-).reset_index()`,
+    avg_order=("amount", "mean")
+).reset_index()`
+      }
+    ],
     relatedIds: ["note-pyspark-qa", "note-[#de-roadmap]", "note-sql-cheatsheet"]
   },
   {
@@ -185,12 +274,22 @@ summary = df.groupby(["region", "product_category"]).agg(
       "Z-Ordering & File Compaction Optimization",
       "Medallion Architecture (Bronze, Silver, Gold)"
     ],
-    previewSnippet: `-- Optimize & Z-Order Delta Table
-OPTIMIZE delta.\`s3://data-lake/events\`
-ZORDER BY (event_type, event_date);
+    detailedNotes: [
+      {
+        sectionTitle: "1. Delta Transaction Log & Time Travel",
+        points: [
+          "ACID Compliance: Delta Lake provides atomic commits via commit log files (_delta_log/*.json).",
+          "Time Travel: Query previous versions of data using 'VERSION AS OF' or 'TIMESTAMP AS OF'.",
+          "Schema Enforcement: Prevents bad data records from corrupting production tables by raising schema mismatch exceptions."
+        ],
+        codeSnippet: `-- OPTIMIZE & Z-Order Delta Table
+OPTIMIZE delta.\`s3://jvm-lake/transactions\`
+ZORDER BY (customer_id, transaction_date);
 
 -- Time Travel Query
-SELECT * FROM events VERSION AS OF 12;`,
+SELECT * FROM transactions VERSION AS OF 5;`
+      }
+    ],
     relatedIds: ["note-pyspark-qa", "note-snowflake-guide", "note-[#de-roadmap]"]
   },
   {
@@ -211,12 +310,22 @@ SELECT * FROM events VERSION AS OF 12;`,
       "Snowpipe Real-Time Ingestion",
       "Resource Monitors & Query Acceleration Service"
     ],
-    previewSnippet: `-- Zero-Copy Clone Sandbox Database
+    detailedNotes: [
+      {
+        sectionTitle: "1. Separated Compute & Storage Architecture",
+        points: [
+          "Storage Layer: Compressed immutable micro-partitions stored in cloud object storage (S3/ADLS).",
+          "Compute Layer: Independent Virtual Warehouses (XS to 6XL) that auto-scale up/down instantly with zero downtime.",
+          "Zero-Copy Cloning: Create instant sandbox copies of production databases using 'CLONE' without duplicating storage cost."
+        ],
+        codeSnippet: `-- Zero-Copy Clone Sandbox Database
 CREATE DATABASE dev_sandbox CLONE production_db;
 
 -- Auto-Ingest Snowpipe
 CREATE OR REPLACE PIPE sales_pipe AS 
-COPY INTO sales_raw FROM @sales_stage;`,
+COPY INTO sales_raw FROM @sales_stage;`
+      }
+    ],
     relatedIds: ["note-sql-cheatsheet", "note-databricks-delta", "note-pyspark-qa"]
   }
 ];
@@ -560,7 +669,7 @@ export default function StudyMaterialPage() {
 
       <Footer />
 
-      {/* ── Interactive PDF Reader & Related Notes Modal ────────────────────────────── */}
+      {/* ── Interactive PDF Reader & Detailed Notes Modal ────────────────────────────── */}
       {pdfModalOpen && activeNote && (
         <div className="fixed inset-0 z-[99999] bg-slate-950/95 backdrop-blur-2xl text-slate-100 overflow-y-auto animate-fadeIn min-h-screen w-full flex flex-col justify-between">
           
@@ -603,7 +712,7 @@ export default function StudyMaterialPage() {
               <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-purple-400 font-bold block mb-1">
-                    JVM INSTITUTE OFFICIAL PDF NOTES
+                    JVM INSTITUTE HANDWRITTEN & TYPED STUDY NOTES
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
                     {activeNote.title}
@@ -633,15 +742,15 @@ export default function StudyMaterialPage() {
                 </div>
               </div>
 
-              {/* Document Pages Preview */}
+              {/* Document Pages Preview & Detailed Notes */}
               <div 
-                className="space-y-6 transition-transform duration-200 origin-top"
+                className="space-y-8 transition-transform duration-200 origin-top"
                 style={{ transform: `scale(${zoomLevel / 100})` }}
               >
-                {/* Topic Breakdown */}
+                {/* Topic Modules Summary */}
                 <div className="space-y-3">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    📘 KEY MODULES & CHAPTERS COVERED IN THIS PDF
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+                    <ListOrdered className="w-4 h-4 text-purple-400" /> KEY TOPICS COVERED IN THIS NOTEBOOK
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {activeNote.pdfTopics.map((topic, i) => (
@@ -653,14 +762,38 @@ export default function StudyMaterialPage() {
                   </div>
                 </div>
 
-                {/* Live Code / Answer Snippet */}
-                <div className="space-y-2 pt-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    💻 SAMPLE EXCERPT & CODE SNIPPET (PAGE 1)
+                {/* Point-By-Point Detailed Notes Section */}
+                <div className="space-y-6 pt-4 border-t border-slate-800">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                    <Award className="w-4 h-4" /> POINT-BY-POINT DETAILED STUDY NOTES & CONCEPTS
                   </h3>
-                  <div className="bg-slate-950 rounded-2xl p-5 border border-slate-800 overflow-x-auto text-xs sm:text-sm font-mono text-emerald-400 leading-relaxed shadow-inner">
-                    <pre>{activeNote.previewSnippet}</pre>
-                  </div>
+
+                  {activeNote.detailedNotes.map((sec, idx) => (
+                    <div key={idx} className="bg-slate-950/80 rounded-2xl p-5 sm:p-6 border border-slate-800 space-y-4 shadow-inner">
+                      <h4 className="font-bold text-sm sm:text-base text-purple-300 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                        {sec.sectionTitle}
+                      </h4>
+
+                      <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {sec.points.map((pt, pIdx) => (
+                          <li key={pIdx} className="flex items-start gap-2.5">
+                            <span className="text-emerald-400 font-bold mt-0.5">•</span>
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {sec.codeSnippet && (
+                        <div className="pt-2">
+                          <span className="text-[10px] font-mono uppercase text-slate-400 block mb-1">Code Example:</span>
+                          <div className="bg-slate-900 rounded-xl p-4 border border-slate-800 overflow-x-auto text-xs font-mono text-emerald-400 shadow-inner">
+                            <pre>{sec.codeSnippet}</pre>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -721,7 +854,7 @@ export default function StudyMaterialPage() {
                         onClick={() => handleOpenPdfViewer(rel)}
                         className="w-full py-2.5 rounded-xl font-bold text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors flex items-center justify-center gap-1.5"
                       >
-                        <BookOpen className="w-3.5 h-3.5 text-purple-400" /> Switch & Preview Note
+                        <BookOpen className="w-3.5 h-3.5 text-purple-400" /> Switch & Read Notes
                       </button>
                     </div>
                   </div>
