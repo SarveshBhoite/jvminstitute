@@ -108,9 +108,7 @@ export default function Navbar() {
                 className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   pathname.includes("/courses") || 
                   pathname === "/data-engineering-course-in-pune" ||
-                  pathname === "/learn-python-for-data-analysis" ||
-                  pathname === "/why-should-i-learn-python-for-data-analysis" ||
-                  pathname === "/how-to-read-xml-files-into-python"
+                  pathname === "/our-courses"
                     ? "bg-white dark:bg-slate-700 text-[#1E2B88] dark:text-purple-300 shadow-xs font-bold"
                     : "text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:text-[#1E2B88] dark:hover:text-white"
                 }`}
@@ -142,54 +140,6 @@ export default function Navbar() {
                         <span className="text-[10px] bg-[#1E2B88] text-white px-1.5 py-0.2 rounded font-extrabold">Top 3</span>
                       </div>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">PySpark, Databricks, AWS & Snowflake</p>
-                    </div>
-                  </Link>
-
-                  {/* 2. Learn Python for Data Analysis */}
-                  <Link 
-                    href="/learn-python-for-data-analysis" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-[#1E2B88] dark:text-indigo-300 shrink-0 mt-0.5">
-                      <Code2 className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Learn Python for Data Analysis
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas, NumPy, SQL & EDA Projects</p>
-                    </div>
-                  </Link>
-
-                  {/* 3. Why Learn Python Guide */}
-                  <Link 
-                    href="/why-should-i-learn-python-for-data-analysis" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
-                      <HelpCircle className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Why Learn Python for Data Analysis?
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Career roadmap, salary & job market</p>
-                    </div>
-                  </Link>
-
-                  {/* 4. How to Read XML Files into Python */}
-                  <Link 
-                    href="/how-to-read-xml-files-into-python" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
-                      <FileCode2 className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Read XML Files into Python
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas read_xml & ElementTree tutorial</p>
                     </div>
                   </Link>
 
@@ -240,6 +190,30 @@ export default function Navbar() {
               }`}
             >
               <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" /> Notes & PDFs
+            </Link>
+
+            {/* About Us */}
+            <Link 
+              href="/about-us" 
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/about-us" 
+                  ? "bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-xs font-bold" 
+                  : "text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:text-[#1E2B88] dark:hover:text-white"
+              }`}
+            >
+              About Us
+            </Link>
+
+            {/* Contact Us */}
+            <Link 
+              href="/contact-us" 
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/contact-us" 
+                  ? "bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-xs font-bold" 
+                  : "text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:text-[#1E2B88] dark:hover:text-white"
+              }`}
+            >
+              Contact Us
             </Link>
           </nav>
 
@@ -324,30 +298,6 @@ export default function Navbar() {
             </Link>
 
             <Link 
-              href="/learn-python-for-data-analysis" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
-            >
-              Learn Python for Data Analysis
-            </Link>
-
-            <Link 
-              href="/why-should-i-learn-python-for-data-analysis" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
-            >
-              Why Learn Python Guide
-            </Link>
-
-            <Link 
-              href="/how-to-read-xml-files-into-python" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
-            >
-              Read XML Files into Python
-            </Link>
-
-            <Link 
               href="/our-courses" 
               onClick={() => setMobileMenuOpen(false)}
               className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2 border-t border-slate-100 dark:border-slate-800 pt-3"
@@ -395,6 +345,22 @@ export default function Navbar() {
               <Layers className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Technical Blog
             </Link>
 
+            <Link 
+              href="/about-us" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              About Us
+            </Link>
+
+            <Link 
+              href="/contact-us" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              Contact Us
+            </Link>
+
             <div className="pt-2 grid grid-cols-2 gap-2">
               <Link 
                 href="/download-brochure" 
@@ -413,6 +379,7 @@ export default function Navbar() {
             </div>
           </div>
         )}
+
       </header>
     </>
   );

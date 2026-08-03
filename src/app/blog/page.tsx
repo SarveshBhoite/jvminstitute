@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { blogCategories, mapDBBlogToBlogPost, BlogPost } from "@/data/blogData";
+import { blogCategories, mapDBBlogToBlogPost, BlogPost, blogPosts as staticBlogPosts } from "@/data/blogData";
 
 export default function BlogListingPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -25,28 +25,33 @@ export default function BlogListingPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch blogs from API
+  // Fetch blogs from API and combine with static fallback blog posts
   useEffect(() => {
     async function loadBlogs() {
       try {
         setLoading(true);
         const res = await fetch("/api/blogs");
         const data = await res.json();
-        if (data.success && Array.isArray(data.data)) {
-          const mapped = data.data.map(mapDBBlogToBlogPost);
-          setBlogPosts(mapped);
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          const mappedFromDB = data.data.map(mapDBBlogToBlogPost);
+          // Combine DB blogs with static blogs, avoiding duplicate slugs
+          const dbSlugs = new Set(mappedFromDB.map((b: BlogPost) => b.slug));
+          const filteredStatic = staticBlogPosts.filter((b: BlogPost) => !dbSlugs.has(b.slug));
+          setBlogPosts([...mappedFromDB, ...filteredStatic]);
+
         } else {
-          setBlogPosts([]);
+          setBlogPosts(staticBlogPosts);
         }
       } catch (err) {
         console.error("Failed to fetch blogs:", err);
-        setBlogPosts([]);
+        setBlogPosts(staticBlogPosts);
       } finally {
         setLoading(false);
       }
     }
     loadBlogs();
   }, []);
+
 
   // Filtered Blog List Logic
   const filteredPosts = useMemo(() => {
@@ -346,88 +351,95 @@ export default function BlogListingPage() {
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <AnimatePresence mode="popLayout">
-                      {filteredPosts.map((post, idx) => (
-                        <motion.article
-                          key={post.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{ duration: 0.4, delay: idx * 0.05 }}
-                          className="group flex flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-                        >
-                          {/* Image Container with Zoom Effect */}
-                          <Link href={`/blog/${post.slug}`} className="relative w-full h-52 overflow-hidden block">
-                            <Image
-                              src={post.image || "/course.jpg"}
-                              alt={post.title}
-                              fill
-                              className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div className="absolute top-3 left-3">
-                              <span className="px-3 py-1 rounded-full bg-slate-900/90 text-white text-[11px] font-black tracking-wider shadow-sm backdrop-blur-xs">
-                                {post.category}
-                              </span>
-                            </div>
-                          </Link>
+                      {filteredPosts.map((post, idx) => {
+                        const targetHref = (post.slug === "learn-python-for-data-analysis" || post.slug === "why-should-i-learn-python-for-data-analysis" || post.slug === "how-to-read-xml-files-into-python")
+                          ? `/${post.slug}`
+                          : `/blog/${post.slug}`;
 
-                          {/* Card Content */}
-                          <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
-                            <div className="space-y-3">
-                              
-                              {/* Publish Date & Read Time */}
-                              <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
-                                <div className="flex items-center gap-1">
-                                  <Calendar className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                                  <span>{post.publishedAt}</span>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                  <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-                                  <span>{post.readTime}</span>
-                                </div>
-                              </div>
-
-                              {/* Title */}
-                              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-snug line-clamp-2">
-                                <Link href={`/blog/${post.slug}`}>
-                                  {post.title}
-                                </Link>
-                              </h3>
-
-                              {/* Excerpt */}
-                              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
-                                {post.excerpt}
-                              </p>
-
-                            </div>
-
-                            {/* Author Footnote & Read More Button */}
-                            <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <div className="relative w-7 h-7 rounded-full overflow-hidden border border-purple-400/40">
-                                  <Image
-                                    src={post.author.avatar || "/place1.png"}
-                                    alt={post.author.name}
-                                    fill
-                                    className="object-cover"
-                                  />
-                                </div>
-                                <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate max-w-[120px]">
-                                  {post.author.name}
+                        return (
+                          <motion.article
+                            key={post.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.4, delay: idx * 0.05 }}
+                            className="group flex flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                          >
+                            {/* Image Container with Zoom Effect */}
+                            <Link href={targetHref} className="relative w-full h-52 overflow-hidden block">
+                              <Image
+                                src={post.image || "/course.jpg"}
+                                alt={post.title}
+                                fill
+                                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                              />
+                              <div className="absolute top-3 left-3">
+                                <span className="px-3 py-1 rounded-full bg-slate-900/90 text-white text-[11px] font-black tracking-wider shadow-sm backdrop-blur-xs">
+                                  {post.category}
                                 </span>
                               </div>
+                            </Link>
 
-                              <Link
-                                href={`/blog/${post.slug}`}
-                                className="inline-flex items-center gap-1 text-xs font-black text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors group/btn"
-                              >
-                                <span>Read More</span>
-                                <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                              </Link>
+                            {/* Card Content */}
+                            <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+                              <div className="space-y-3">
+                                
+                                {/* Publish Date & Read Time */}
+                                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                                  <div className="flex items-center gap-1">
+                                    <Calendar className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+                                    <span>{post.publishedAt}</span>
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+                                    <span>{post.readTime}</span>
+                                  </div>
+                                </div>
+
+                                {/* Title */}
+                                <h3 className="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-snug line-clamp-2">
+                                  <Link href={targetHref}>
+                                    {post.title}
+                                  </Link>
+                                </h3>
+
+                                {/* Excerpt */}
+                                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                                  {post.excerpt}
+                                </p>
+
+                              </div>
+
+                              {/* Author Footnote & Read More Button */}
+                              <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-purple-400/40">
+                                    <Image
+                                      src={post.author.avatar || "/place1.png"}
+                                      alt={post.author.name}
+                                      fill
+                                      className="object-cover"
+                                    />
+                                  </div>
+                                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate max-w-[120px]">
+                                    {post.author.name}
+                                  </span>
+                                </div>
+
+                                <Link
+                                  href={targetHref}
+                                  className="inline-flex items-center gap-1 text-xs font-black text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors group/btn"
+                                >
+                                  <span>Read More</span>
+                                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                                </Link>
+                              </div>
+
                             </div>
+                          </motion.article>
+                        );
+                      })}
 
-                          </div>
-                        </motion.article>
-                      ))}
                     </AnimatePresence>
                   </div>
                 )}
