@@ -4,6 +4,9 @@ import { AdminAuthService } from "@/services/adminAuthService";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError, ApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
+
 export async function GET(req: NextRequest) {
   try {
     // Check HTTP-only cookie first, then Authorization Bearer header
