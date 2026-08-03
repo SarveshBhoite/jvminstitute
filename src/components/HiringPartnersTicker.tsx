@@ -5,73 +5,23 @@ import Image from "next/image";
 import { Building2 } from "lucide-react";
 import LogoLoop, { LogoItem } from "./LogoLoop";
 
-// Seamless transparent image logos without text or borders (Enlarged Size)
-const partnerLogos: LogoItem[] = [
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 1" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 1",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 2" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 2",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 3" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 3",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 4" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 4",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 5" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 5",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 6" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 6",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 7" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 7",
-  },
-  {
-    node: (
-      <div className="flex items-center justify-center p-1 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-        <Image src="/react.png" alt="Hiring Partner 8" width={76} height={76} className="object-contain" />
-      </div>
-    ),
-    title: "Partner 8",
-  },
-];
+const ReactLogoNode = () => (
+  <div className="flex items-center justify-center p-2 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
+    <svg className="w-14 h-14 sm:w-16 sm:h-16" viewBox="-11.5 -10.23174 23 20.46348" fill="none">
+      <circle cx="0" cy="0" r="2.05" fill="#00D8FF" />
+      <g stroke="#00D8FF" strokeWidth="1" fill="none">
+        <ellipse rx="11" ry="4.2" />
+        <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+        <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+      </g>
+    </svg>
+  </div>
+);
+
+const partnerLogos: LogoItem[] = Array.from({ length: 12 }).map((_, idx) => ({
+  node: <ReactLogoNode key={idx} />,
+  title: `Hiring Partner ${idx + 1}`,
+}));
 
 export default function HiringPartnersTicker() {
   return (
