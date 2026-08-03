@@ -95,10 +95,10 @@ export default function HeroSection() {
       </div>
 
       {/* Main Container */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-5 sm:py-8 lg:py-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-4 sm:py-6 lg:py-6">
         
         {/* MOBILE FEATURED IMAGE SLIDESHOW HEADER (Visible on Mobile & Tablet before text content) */}
-        <div className="block lg:hidden mb-5 relative w-full h-[200px] xs:h-[240px] sm:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
+        <div className="block lg:hidden mb-4 relative w-full h-[180px] xs:h-[210px] sm:h-[260px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
           {heroImages.map((img, idx) => (
             <div
               key={img.src}
@@ -121,14 +121,14 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 items-center">
           
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
-          <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
+          <div className="lg:col-span-6 space-y-3.5 text-center lg:text-left">
             
             {/* Top Rating & ISO Badge */}
             <div className="flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
                 <span className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400" />
@@ -146,16 +146,16 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15] tracking-tight">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15] tracking-tight">
               Become an Industry-Ready <span className="jvm-gradient-text">Data Engineer &amp; AI Professional</span> in Pune
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
               Master Data Engineering, Generative AI, Machine Learning, Cloud AI, and Advanced AI technologies through industry-led training, live projects, real business case studies, and comprehensive <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>. Whether you are a fresher, working professional, or engineering, BSC, MBS, or pharmacist student, JVM Institute helps you build practical skills that leading companies expect from today&apos;s technology professionals.
             </p>
 
             {/* Key Value Points Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 text-left pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2 text-left pt-0.5">
               {[
                 "Live Instructor-Led Classes",
                 "450+ Learning Hours",
@@ -170,15 +170,16 @@ export default function HeroSection() {
               ].map((point, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2.5 p-2.5 sm:p-3 rounded-xl border bg-white dark:bg-slate-800/90 border-slate-200/80 dark:border-slate-700/80 shadow-xs"
+                  className="flex items-center gap-2 p-2 rounded-lg border bg-white dark:bg-slate-800/90 border-slate-200/80 dark:border-slate-700/80 shadow-xs"
                 >
-                  <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-500" />
-                  <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
+                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">
                     {point}
                   </span>
                 </div>
               ))}
             </div>
+
 
             {/* CTAs Button Group - 3 Action Buttons in JVM Website Theme */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-2 sm:gap-2.5 pt-3">
