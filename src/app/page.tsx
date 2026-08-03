@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HiringPartnersTicker from "@/components/HiringPartnersTicker";
+import PlacementRecordStatsBar from "@/components/PlacementRecordStatsBar";
 import FeaturedCourses from "@/components/FeaturedCourses";
 import GlobeTechEcoSection from "@/components/GlobeTechEcoSection";
 import KeyFeaturesBentoSection from "@/components/KeyFeaturesBentoSection";
@@ -25,6 +26,9 @@ export default function HomePage() {
         {/* 1. Infinite Ticker: Top MNC Hiring Partners */}
         <HiringPartnersTicker />
 
+        {/* Placement Record Statistics Bar */}
+        <PlacementRecordStatsBar />
+
         {/* 2. Featured Courses Track & Fee Deposit Options */}
         <FeaturedCourses />
 
@@ -37,11 +41,11 @@ export default function HomePage() {
         {/* 6. Rotating Placed Alumni Carousel with Salary Hikes */}
         <PlacedStudentsCarousel />
 
-        {/* 7. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
-        <NewFeaturesSpotlight />
-
-        {/* 8. Why Our Course Ranks Among the Best (Video & Track Record) */}
+        {/* 7. Why Our Course Ranks Among the Best (Video & Track Record) */}
         <WhyOurCourseRanksSection />
+
+        {/* 8. New Features Spotlight: Refer & Earn, PDF Store, Placements */}
+        <NewFeaturesSpotlight />
 
         {/* 9. High-Authority SEO Ranking Blog Cross-links */}
         <BlogCrossLinkSection />
