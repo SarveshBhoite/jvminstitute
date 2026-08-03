@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
@@ -32,9 +32,66 @@ export default function SingleBlogPage() {
 
   const [copied, setCopied] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Find Post by Slug or Fallback to First Post
-  const post: BlogPost | undefined = blogPosts.find((p) => p.slug === slug) || blogPosts[0];
+  // Find static fallback or live post
+  useEffect(() => {
+    fetch("/api/admin/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data)) {
+          const livePost = data.data.find((b: any) => b.slug === slug);
+          if (livePost) {
+            setPost({
+              id: livePost.id,
+              slug: livePost.slug,
+              title: livePost.title,
+              metaTitle: livePost.metaTitle || livePost.title,
+              excerpt: livePost.excerpt,
+              longDescriptionHtml: livePost.longDescriptionHtml,
+              category: livePost.category,
+              author: {
+                name: livePost.authorName || "JVM Technical Team",
+                role: livePost.authorRole || "Senior Data Architect @ JVM",
+                avatar: livePost.authorAvatar || "/place1.png",
+                bio: "Senior technical writer and architecture mentor @ JVM Institute."
+              },
+              publishedAt: livePost.publishedAt || "Aug 2026",
+              readTime: livePost.readTime || "5 min read",
+              image: livePost.image || "/course.jpg",
+              tags: livePost.tags ? livePost.tags.split(",").map((t: string) => t.trim()) : ["Data Engineering"],
+              tableOfContents: [{ id: "introduction", title: "Introduction" }],
+              content: [
+                {
+                  sectionId: "introduction",
+                  paragraphs: [livePost.excerpt]
+                }
+              ]
+            });
+            setLoading(false);
+            return;
+          }
+        }
+        // Fallback to static data
+        const staticP = blogPosts.find((p) => p.slug === slug) || blogPosts[0];
+        setPost(staticP);
+        setLoading(false);
+      })
+      .catch(() => {
+        const staticP = blogPosts.find((p) => p.slug === slug) || blogPosts[0];
+        setPost(staticP);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#FAFAFC] dark:bg-[#0B0F19] flex items-center justify-center text-purple-600 font-bold">
+        Loading article details...
+      </div>
+    );
+  }
 
   if (!post) {
     notFound();
@@ -246,8 +303,16 @@ export default function SingleBlogPage() {
                 </ul>
               </div>
 
+              {/* Render HTML Long Description if present */}
+              {post.longDescriptionHtml && (
+                <div 
+                  className="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed space-y-4"
+                  dangerouslySetInnerHTML={{ __html: post.longDescriptionHtml }}
+                />
+              )}
+
               {/* Render Editorial Sections */}
-              {post.content.map((sec, idx) => (
+              {post.content && post.content.map((sec: any, idx: number) => (
                 <div key={idx} id={sec.sectionId} className="space-y-4 scroll-mt-28">
                   {sec.heading && (
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
@@ -255,7 +320,7 @@ export default function SingleBlogPage() {
                     </h2>
                   )}
 
-                  {sec.paragraphs.map((pText, pIdx) => (
+                  {sec.paragraphs.map((pText: string, pIdx: number) => (
                     <p key={pIdx} className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
                       {pText}
                     </p>

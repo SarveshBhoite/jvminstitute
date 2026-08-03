@@ -23,10 +23,48 @@ import { blogPosts, blogCategories, BlogPost } from "@/data/blogData";
 export default function BlogListingPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All Blogs");
+  const [combinedPosts, setCombinedPosts] = useState<BlogPost[]>([]);
+
+  // Fetch live blog posts added by Admin from Neon DB
+  React.useEffect(() => {
+    fetch("/api/admin/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data)) {
+          const formatted: BlogPost[] = data.data.map((item: any) => ({
+            id: item.id,
+            slug: item.slug,
+            title: item.title,
+            excerpt: item.excerpt,
+            category: item.category as any,
+            author: {
+              name: item.authorName || "JVM Technical Team",
+              role: item.authorRole || "Senior Data Architect @ JVM",
+              avatar: item.authorAvatar || "/place1.png",
+              bio: "Industry technical writer & senior architect @ JVM Institute.",
+            },
+            publishedAt: item.publishedAt || "Aug 2026",
+            readTime: item.readTime || "5 min read",
+            image: item.image || "/course.jpg",
+            tags: item.tags ? item.tags.split(",").map((t: string) => t.trim()) : ["Data Engineering"],
+            featured: item.featured || false,
+            tableOfContents: [{ id: "introduction", title: "Introduction" }],
+            content: [
+              {
+                sectionId: "introduction",
+                paragraphs: [item.excerpt, "Full technical guide and architecture code examples."]
+              }
+            ]
+          }));
+          setCombinedPosts(formatted);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Filtered Blog List Logic
   const filteredPosts = useMemo(() => {
-    return blogPosts.filter((post) => {
+    return combinedPosts.filter((post) => {
       const matchesCategory =
         selectedCategory === "All Blogs" || post.category === selectedCategory;
 
@@ -39,12 +77,12 @@ export default function BlogListingPage() {
 
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, combinedPosts]);
 
   // Featured Post (first featured post or first item)
   const featuredPost = useMemo(() => {
-    return blogPosts.find((p) => p.featured) || blogPosts[0];
-  }, []);
+    return combinedPosts.find((p) => p.featured) || combinedPosts[0];
+  }, [combinedPosts]);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 transition-colors duration-300 selection:bg-[#7C248C] selection:text-white">

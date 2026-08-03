@@ -264,10 +264,10 @@ export default function Navbar() {
               Syllabus PDF
             </Link>
             <Link 
-              href="/enroll" 
+              href="/contact-us" 
               className="jvm-gradient-bg text-white px-5 py-2.5 rounded-full text-xs md:text-sm font-bold shadow-md hover:opacity-95 transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer"
             >
-              <PhoneCall className="w-4 h-4" /> Enroll Now
+              <PhoneCall className="w-4 h-4" /> Contact Us
             </Link>
           </div>
 

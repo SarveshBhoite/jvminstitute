@@ -109,6 +109,11 @@ export default function Footer() {
               <li>
                 <Link href="/events" className="hover:text-white transition-colors">Workshops & Events</Link>
               </li>
+              <li className="pt-2 border-t border-slate-900">
+                <Link href="/admin" className="text-xs text-slate-500 hover:text-purple-400 font-semibold transition-colors flex items-center gap-1">
+                  <span>🔒 Admin Login</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -239,6 +239,7 @@ export default function PlacementsPage() {
   const [selectedStudent, setSelectedStudent] = useState<typeof AllPlacements[0] | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(3);
   const [heroImgIndex, setHeroImgIndex] = useState(0);
+  const [combinedPlacements, setCombinedPlacements] = useState(AllPlacements);
 
   // Auto-rotate hero student photos every 3 seconds
   useEffect(() => {
@@ -248,9 +249,33 @@ export default function PlacementsPage() {
     return () => clearInterval(timer);
   }, []);
 
+  // Fetch admin-added placement records from DB
+  useEffect(() => {
+    fetch("/api/admin/placements")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          const formatted = data.data.map((item: any) => ({
+            id: item.id,
+            category: item.category || "data_engineering",
+            name: item.name,
+            domain: item.domain,
+            placedRole: item.placedRole,
+            company: item.company,
+            package: item.package,
+            hike: item.hike || "Direct Placement",
+            image: item.image || "/place1.png",
+            skills: item.skills,
+          }));
+          setCombinedPlacements([...formatted, ...AllPlacements]);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const currentHero = HeroCircleImages[heroImgIndex];
 
-  const filteredPlacements = AllPlacements.filter((student) => {
+  const filteredPlacements = combinedPlacements.filter((student) => {
     const matchesTab = activeTab === "all" || student.category === activeTab;
     const matchesQuery = 
       student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
