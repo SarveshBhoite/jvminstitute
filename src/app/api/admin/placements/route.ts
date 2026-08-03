@@ -4,6 +4,9 @@ import { placementSchema } from "@/validators/placementValidator";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
+
 // GET /api/admin/placements - List all placements
 export async function GET() {
   try {
