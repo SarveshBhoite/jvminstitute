@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
@@ -66,7 +67,7 @@ async function main() {
   await prisma.placement.createMany({
     data: [
       {
-        studentName: "Siddharth Bhoite",
+        name: "Siddharth Bhoite",
         domain: "Data Engineering",
         placedRole: "Associate Data Engineer",
         company: "TCS",
@@ -77,7 +78,7 @@ async function main() {
         category: "data_engineering",
       },
       {
-        studentName: "Priya Sharma",
+        name: "Priya Sharma",
         domain: "PySpark & Big Data",
         placedRole: "Big Data PySpark Engineer",
         company: "Infosys",
@@ -106,6 +107,30 @@ async function main() {
         isFeatured: true,
       },
     ],
+  });
+
+  // Seed Default Admin Account
+  const defaultAdminEmail = process.env.DEFAULT_ADMIN_EMAIL || "admin@jvminstitute.com";
+  const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD || "Admin@JVM2026!";
+  const defaultAdminName = process.env.DEFAULT_ADMIN_NAME || "JVM Super Admin";
+
+  const hashedDefaultPassword = await bcrypt.hash(defaultAdminPassword, 10);
+
+  await prisma.admin.upsert({
+    where: { email: defaultAdminEmail.toLowerCase().trim() },
+    update: {
+      password: hashedDefaultPassword,
+      fullName: defaultAdminName,
+      role: "SUPER_ADMIN",
+      isActive: true,
+    },
+    create: {
+      email: defaultAdminEmail.toLowerCase().trim(),
+      password: hashedDefaultPassword,
+      fullName: defaultAdminName,
+      role: "SUPER_ADMIN",
+      isActive: true,
+    },
   });
 
   console.log("Database seeded successfully!");

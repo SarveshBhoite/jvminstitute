@@ -3,7 +3,8 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  category: "Data Engineering" | "AI & ML" | "Cloud Computing" | "Career Guidance" | "Digital Marketing" | "Tutorials";
+  longDescriptionHtml?: string;
+  category: "Data Engineering" | "AI & ML" | "Cloud Computing" | "Career Guidance" | "Digital Marketing" | "Tutorials" | string;
   author: {
     name: string;
     role: string;
@@ -15,8 +16,8 @@ export interface BlogPost {
   image: string;
   tags: string[];
   featured?: boolean;
-  tableOfContents: { id: string; title: string }[];
-  content: {
+  tableOfContents?: { id: string; title: string }[];
+  content?: {
     sectionId?: string;
     heading?: string;
     paragraphs: string[];
@@ -40,6 +41,52 @@ export const blogCategories = [
   "Digital Marketing",
   "Tutorials",
 ] as const;
+
+export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
+  if (!dbBlog) return null as any;
+
+  let content = [];
+  let tableOfContents = [];
+  if (dbBlog.contentJson) {
+    try {
+      const parsed = typeof dbBlog.contentJson === "string" ? JSON.parse(dbBlog.contentJson) : dbBlog.contentJson;
+      if (Array.isArray(parsed)) {
+        content = parsed;
+      } else if (parsed && typeof parsed === "object") {
+        content = parsed.content || [];
+        tableOfContents = parsed.tableOfContents || [];
+      }
+    } catch (e) {
+      content = [];
+    }
+  }
+
+  const tags = typeof dbBlog.tags === "string" 
+    ? dbBlog.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
+    : (Array.isArray(dbBlog.tags) ? dbBlog.tags : []);
+
+  return {
+    id: dbBlog.id,
+    slug: dbBlog.slug,
+    title: dbBlog.title,
+    excerpt: dbBlog.excerpt,
+    longDescriptionHtml: dbBlog.longDescriptionHtml || "",
+    category: dbBlog.category || "Data Engineering",
+    featured: dbBlog.featured ?? false,
+    author: {
+      name: dbBlog.authorName || "JVM Technical Team",
+      role: dbBlog.authorRole || "Senior Data Architect @ JVM",
+      avatar: dbBlog.authorAvatar || "/place1.png",
+      bio: "",
+    },
+    publishedAt: dbBlog.publishedAt || "Aug 2026",
+    readTime: dbBlog.readTime || "5 min read",
+    image: dbBlog.image || "/course.jpg",
+    tags: tags.length > 0 ? tags : ["Data Engineering"],
+    tableOfContents: tableOfContents,
+    content: content,
+  };
+}
 
 export const blogPosts: BlogPost[] = [
   {

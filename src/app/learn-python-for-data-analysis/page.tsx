@@ -108,7 +108,7 @@ export default function LearnPythonPage() {
                   <span>TABLE OF CONTENTS</span>
                 </div>
                 <nav className="space-y-2">
-                  {post.tableOfContents.map((toc) => (
+                  {post.tableOfContents?.map((toc) => (
                     <a
                       key={toc.id}
                       href={`#${toc.id}`}
@@ -132,7 +132,7 @@ export default function LearnPythonPage() {
                   <BookOpen className="w-4 h-4" /> Table of Contents
                 </h3>
                 <ul className="space-y-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  {post.tableOfContents.map((toc) => (
+                  {post.tableOfContents?.map((toc) => (
                     <li key={toc.id}>
                       <a href={`#${toc.id}`} className="hover:text-purple-600 transition-colors">
                         {toc.title}
@@ -143,7 +143,7 @@ export default function LearnPythonPage() {
               </div>
 
               {/* Render Article Content Sections */}
-              {post.content.map((sec, idx) => (
+              {post.content?.map((sec, idx) => (
                 <div key={idx} id={sec.sectionId} className="space-y-4 scroll-mt-28">
                   {sec.heading && (
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">

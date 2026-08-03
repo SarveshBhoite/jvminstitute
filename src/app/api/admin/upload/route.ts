@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import cloudinary from "@/lib/cloudinary";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError, ApiError } from "@/utils/errorHandler";
