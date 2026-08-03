@@ -68,59 +68,156 @@ function WordRevealHeading({ text, highlightText }: { text: string; highlightTex
 const coursesData = [
   {
     id: "de-pyspark",
-    badge: "🔥 Bestseller Track",
+    badge: "🔥 Flagship Program",
     badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800",
-    title: "Master Data Engineering & PySpark Track",
-    desc: "Become an enterprise Big Data Engineer. Master PySpark distributed compute, AWS Redshift, Databricks, Snowflake, Apache Airflow, Python, and production SQL pipelines.",
+    title: "Data Engineering Course",
+    desc: "Master SQL, Python, Linux, Hadoop, PySpark, Spark, Airflow, Databricks, GCP, Azure, AWS, ETL Pipelines, Data Warehousing, and Big Data technologies through practical implementation.",
     image: "/place1.png",
     url: "/data-engineering-course-in-pune",
-    duration: "6 Months (24 Weeks)",
-    mode: "Hybrid (Live + Cloud Lab)",
+    duration: "6 Months",
+    mode: "Offline & Online",
     level: "Beginner to Advanced",
     projects: "4 Capstone Projects",
     rating: "4.9",
     reviewsCount: "1,240+",
     placement: "100% Placement Support",
-    technologies: ["PySpark", "AWS Redshift", "Databricks", "Snowflake", "Apache Airflow", "Python", "SQL"],
-    highlights: ["Live PySpark Clusters", "ETL Architecture", "AWS Cloud Deployments"],
+    technologies: ["SQL", "Python", "Linux", "Hadoop", "PySpark", "Spark", "Airflow", "Databricks", "GCP", "Azure", "AWS", "ETL Pipelines", "Data Warehousing"],
+    highlights: [
+      "Industry-Ready Data Engineering Curriculum",
+      "Spark, PySpark & Airflow Hands-on",
+      "AWS, Azure & GCP Cloud Training",
+      "Live ETL & Big Data Projects",
+      "Databricks & Data Warehousing",
+      "Placement & Interview Preparation"
+    ],
     entranceAnim: { x: -50, opacity: 0 }
   },
   {
-    id: "aws-devops",
-    badge: "⚡ High Demand Track",
+    id: "de-genai",
+    badge: "🤖 Next-Gen AI Track",
     badgeColor: "bg-pink-100 text-pink-700 dark:bg-pink-950/80 dark:text-pink-300 border-pink-200 dark:border-pink-800",
-    title: "AWS Cloud & DevOps Engineering Certification",
-    desc: "Master cloud infrastructure automation, CI/CD pipelines, Docker containerization, Kubernetes orchestration, Terraform IaC, and AWS cloud security architecture.",
+    title: "Data Engineering with Generative AI",
+    desc: "Combine modern Data Engineering with Large Language Models, AI-powered automation, Retrieval-Augmented Generation (RAG), AI Data Pipelines, Vector Databases, Prompt Engineering, and Intelligent Analytics.",
     image: "/place2.png",
-    url: "/our-courses",
-    duration: "4.5 Months (18 Weeks)",
-    mode: "Live Interactive + Cloud Lab",
-    level: "Intermediate Level",
-    projects: "3 Cloud Capstones",
-    rating: "4.8",
-    reviewsCount: "890+",
-    placement: "Dedicated Career Desk",
-    technologies: ["AWS Core", "Docker", "Kubernetes", "Terraform", "Jenkins", "Linux Shell", "Git"],
-    highlights: ["Kubernetes Clusters", "Automated CI/CD", "Terraform Scripts"],
+    url: "/data-engineering-course-in-pune",
+    duration: "6 Months",
+    mode: "Offline & Online Mode",
+    level: "All Levels Welcome",
+    projects: "20+ Enterprise Projects",
+    rating: "4.9",
+    reviewsCount: "980+",
+    placement: "100% Placement Support",
+    technologies: ["SQL", "Python", "Spark", "Databricks", "Airflow", "GCP", "Azure", "Generative AI", "OpenAI", "LangChain", "MCP", "AI Agents", "Vector Databases", "RAG"],
+    highlights: [
+      "Roadmap: SQL → Python → Spark → Databricks → Airflow → GCP → Azure → Gen AI",
+      "Build AI-powered data pipelines, enterprise copilots & intelligent data platforms",
+      "Gain hands-on experience with OpenAI, LangChain, MCP, AI Agents & Azure AI",
+      "Work on 20+ enterprise-level projects covering ETL pipelines & Lakehouse architecture"
+    ],
     entranceAnim: { scale: 0.95, opacity: 0 }
   },
   {
-    id: "python-sql",
-    badge: "🚀 Career Launcher",
-    badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
-    title: "Advanced SQL, Python & Data Analytics Masterclass",
-    desc: "Master exploratory data analysis, complex SQL query optimization, Python Pandas data wrangling, interactive BI dashboards in Tableau, Power BI, and PostgreSQL.",
+    id: "generative-ai",
+    badge: "✨ AI Innovation",
+    badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800",
+    title: "Generative AI",
+    desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
     image: "/place3.jpeg",
-    url: "/learn-python-for-data-analysis",
-    duration: "3.5 Months (14 Weeks)",
-    mode: "Live Weekend & Evening",
+    url: "/our-courses",
+    duration: "1 Month",
+    mode: "Offline & Online",
     level: "All Levels Welcome",
-    projects: "5 Real Datasets",
+    projects: "GenAI Capstone Projects",
     rating: "4.9",
-    reviewsCount: "1,450+",
-    placement: "Interview Guarantee Support",
-    technologies: ["Advanced SQL", "Python Core", "Pandas", "Tableau", "Power BI", "PostgreSQL"],
-    highlights: ["Exploratory Data Analysis", "BI Dashboards", "Window Functions"],
+    reviewsCount: "1,150+",
+    placement: "Placement Assistance & Portfolio Support",
+    technologies: ["ChatGPT", "OpenAI APIs", "LangChain", "CrewAI", "Vector Databases", "AI Agents", "Prompt Engineering", "RAG"],
+    highlights: [
+      "End-to-End Generative AI Learning Path",
+      "Build AI Agents with LangChain & CrewAI",
+      "ChatGPT, OpenAI APIs & Prompt Engineering Hands-on",
+      "RAG, Vector Databases & Enterprise AI Solutions",
+      "Develop Real-World GenAI Applications & Capstone Projects",
+      "Portfolio Development, Interview Preparation & Placement Support"
+    ],
+    entranceAnim: { x: 50, opacity: 0 }
+  },
+  {
+    id: "advanced-ai-ml",
+    badge: "🧠 Deep Specialization",
+    badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
+    title: "Advanced AI & Machine Learning",
+    desc: "Learn Deep Learning, Neural Networks, Computer Vision, Natural Language Processing (NLP), Reinforcement Learning, MLOps, Model Deployment, and AI System Design.",
+    image: "/students1.jpeg",
+    url: "/our-courses",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    level: "Intermediate to Advanced",
+    projects: "Computer Vision & NLP Labs",
+    rating: "4.9",
+    reviewsCount: "860+",
+    placement: "Placement Assistance & Interview Prep",
+    technologies: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "Reinforcement Learning", "MLOps", "AI System Design"],
+    highlights: [
+      "Comprehensive AI & Machine Learning Curriculum",
+      "Deep Learning with TensorFlow & PyTorch",
+      "Computer Vision & NLP Hands-on Projects",
+      "MLOps, Model Deployment & AI System Design",
+      "Real-World AI Applications & Capstone Projects",
+      "Placement Assistance & Interview Preparation"
+    ],
+    entranceAnim: { x: -50, opacity: 0 }
+  },
+  {
+    id: "cloud-ai",
+    badge: "☁️ Multi-Cloud Mastery",
+    badgeColor: "bg-sky-100 text-sky-700 dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800",
+    title: "Cloud AI",
+    desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
+    image: "/students2.jpeg",
+    url: "/our-courses",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    level: "All Levels Welcome",
+    projects: "Production Cloud ML Pipelines",
+    rating: "4.8",
+    reviewsCount: "740+",
+    placement: "Cloud Certification & Job Support",
+    technologies: ["AWS AI", "Azure AI", "GCP Cloud AI", "Docker", "Kubernetes", "Scalable ML Pipelines", "MLOps", "CI/CD"],
+    highlights: [
+      "Multi-Cloud AI Training (AWS, Azure & GCP)",
+      "Docker, Kubernetes & Cloud Infrastructure Hands-on",
+      "Build & Deploy Scalable AI/ML Applications",
+      "MLOps, CI/CD & Production ML Pipelines",
+      "Real-Time Cloud AI Projects & Enterprise Use Cases",
+      "Placement Assistance & Cloud Certification Guidance"
+    ],
+    entranceAnim: { scale: 0.95, opacity: 0 }
+  },
+  {
+    id: "basic-ai-ml",
+    badge: "🌱 Beginner Friendly",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    title: "Basic AI & ML",
+    desc: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
+    image: "/course.jpg",
+    url: "/our-courses",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    level: "Beginner Level",
+    projects: "Business Analytics Case Studies",
+    rating: "4.9",
+    reviewsCount: "920+",
+    placement: "Career Guidance & Resume Support",
+    technologies: ["Python", "Statistics", "Machine Learning", "Data Visualization", "EDA", "Predictive Analytics", "Pandas", "Scikit-Learn"],
+    highlights: [
+      "Beginner-Friendly AI & Machine Learning Roadmap",
+      "Python Programming & Data Analysis from Scratch",
+      "Statistics, EDA & Data Visualization Hands-on",
+      "Machine Learning Algorithms with Practical Projects",
+      "Real-World Datasets & Business Case Studies",
+      "Career Guidance, Resume Building & Placement Support"
+    ],
     entranceAnim: { x: 50, opacity: 0 }
   }
 ];
@@ -285,11 +382,11 @@ export default function OurCoursesPage() {
       <Navbar />
 
       <main className="flex-grow pt-0">
-         {/* ========================================================= */}
+        {/* ========================================================= */}
         {/* 1. HERO SECTION (FULL SECTION HEIGHT SEAMLESS IMAGE MERGE) */}
         {/* ========================================================= */}
         <section className="relative bg-gradient-to-r from-[#F5F3FF] via-[#FAFAFC] to-white dark:from-[#0E1322] dark:via-[#111827] dark:to-[#0B0F19] py-6 sm:py-10 lg:py-12 border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden flex items-center min-h-0 lg:min-h-[40vh]">
-          
+
           {/* Subtle Ambient Glow on Left Side */}
           <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-purple-500/10 dark:bg-purple-600/15 rounded-full blur-3xl pointer-events-none z-0" />
 
@@ -306,10 +403,10 @@ export default function OurCoursesPage() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative">
-              
+
               {/* Left Column: Headline & Action Buttons (7 Cols, Z-20 for natural image overlap) */}
               <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left relative z-20">
-                
+
                 {/* Pill Tag Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -440,14 +537,14 @@ export default function OurCoursesPage() {
         {/* 2. FEATURED COURSES SECTION (ALTERNATING HORIZONTAL SHOWCASE) */}
         {/* ========================================================= */}
         <section id="featured-courses" className="py-10 md:py-16 relative overflow-hidden">
-          
+
           {/* Ambient Background Glows */}
           <div className="ambient-glow w-[500px] h-[500px] bg-[#1E2B88] dark:bg-[#4F46E5] top-1/4 left-[-10%] opacity-15 pointer-events-none" />
           <div className="ambient-glow w-[450px] h-[450px] bg-[#E01E6A] dark:bg-[#EC4899] bottom-1/4 right-[-10%] opacity-15 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(#80808012_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span
@@ -488,7 +585,7 @@ export default function OurCoursesPage() {
                     className="relative group border-b border-slate-200/60 dark:border-slate-800/60 pb-16 lg:pb-24 last:border-b-0 last:pb-0"
                   >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-                      
+
                       {/* Course Image Container (6 cols) */}
                       <div className={`lg:col-span-6 relative ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
                         <div className="relative h-[280px] sm:h-[360px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
@@ -521,7 +618,7 @@ export default function OurCoursesPage() {
 
                       {/* Course Information Container (6 cols) */}
                       <div className={`lg:col-span-6 space-y-5 ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
-                        
+
                         <div className="space-y-2">
                           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-tight">
                             {course.title}
@@ -619,7 +716,7 @@ export default function OurCoursesPage() {
         {/* ========================================================= */}
         <section className="py-20 md:py-28 relative overflow-hidden bg-slate-50/70 dark:bg-[#0B0F19]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span
@@ -716,14 +813,14 @@ export default function OurCoursesPage() {
         {/* 5. TECHNOLOGIES COVERED (5 FULL-WIDTH ROTATING OPPOSITE COLUMNS) */}
         {/* ========================================================= */}
         <section className="py-20 md:py-28 relative overflow-hidden bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-b border-purple-100/60 dark:border-slate-800/80">
-          
+
           {/* Background Ambient Glows & Dot Texture */}
           <div className="absolute inset-0 bg-[radial-gradient(#7C3AED18_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
           <div className="ambient-glow w-[500px] h-[500px] bg-purple-500/15 dark:bg-purple-600/15 top-1/4 left-[-5%] pointer-events-none" />
           <div className="ambient-glow w-[500px] h-[500px] bg-indigo-500/15 dark:bg-indigo-600/15 bottom-1/4 right-[-5%] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span
@@ -751,7 +848,7 @@ export default function OurCoursesPage() {
 
             {/* 5 Full-Width Vertical Columns Rotating in Opposite Directions */}
             <div className="relative max-w-5xl mx-auto">
-              
+
               {/* Floating Side Highlight Chips */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}
@@ -773,7 +870,7 @@ export default function OurCoursesPage() {
 
               {/* Marquee Container */}
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 sm:gap-6 h-[480px] overflow-hidden relative rounded-3xl p-3 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-200/80 dark:border-slate-800 shadow-2xl">
-                
+
                 {/* Fade Overlays at Top & Bottom */}
                 <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#FAFAFC] dark:from-[#0B0F19] via-slate-100/80 dark:via-slate-900/80 to-transparent z-20 pointer-events-none" />
                 <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#FAFAFC] dark:from-[#0B0F19] via-slate-100/80 dark:via-slate-900/80 to-transparent z-20 pointer-events-none" />
@@ -915,7 +1012,7 @@ export default function OurCoursesPage() {
         {/* ========================================================= */}
         <section className="py-20 md:py-28 relative overflow-hidden bg-white dark:bg-[#0E1322]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span
@@ -1002,9 +1099,8 @@ export default function OurCoursesPage() {
                     <button
                       key={i}
                       onClick={() => setActiveTestimonial(i)}
-                      className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
-                        activeTestimonial === i ? "bg-purple-600 w-8" : "bg-slate-300 dark:bg-slate-700"
-                      }`}
+                      className={`w-3 h-3 rounded-full transition-all cursor-pointer ${activeTestimonial === i ? "bg-purple-600 w-8" : "bg-slate-300 dark:bg-slate-700"
+                        }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
@@ -1030,7 +1126,7 @@ export default function OurCoursesPage() {
         <section className="py-16 md:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative rounded-3xl jvm-gradient-bg p-8 sm:p-12 lg:p-16 text-white shadow-2xl overflow-hidden">
-              
+
               {/* Background Glow */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_60%)]" />
 
