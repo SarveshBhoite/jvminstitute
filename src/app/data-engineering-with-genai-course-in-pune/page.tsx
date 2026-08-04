@@ -57,8 +57,24 @@ const curriculumModules = [
       "Subqueries, Common Table Expressions (CTEs) & Recursive CTEs",
       "Window (Analytical) Functions for Data Analysis",
       "Stored Procedures, User-Defined Functions (UDFs) & Views",
+      "Dynamic SQL Development & Parameterized Queries",
       "Query Optimization, Indexing & SQL Performance Tuning",
-      "ETL Development & Data Validation in SQL"
+      "Transactions, ACID Properties & Concurrency Control",
+      "Error Handling, Exception Management & Debugging Techniques",
+      "JSON, XML & Semi-Structured Data Processing in SQL",
+      "ETL Development Using SQL",
+      "Data Validation, Data Cleansing & Business Rule Implementation",
+      "Watermark Tables for Incremental Data Processing",
+      "Audit Tables, Logging Frameworks & Data Lineage",
+      "Change Data Capture (CDC) Frameworks & Incremental Loading",
+      "Star Schema & Snowflake Schema Design",
+      "Fact Tables & Dimension Tables Modeling",
+      "Slowly Changing Dimensions (SCD Type 1 & Type 2)",
+      "Incremental Loading Strategies & Delta Processing",
+      "SQL Coding Standards & Enterprise Best Practices",
+      "SQL-Based Data Warehouse Development",
+      "Real-Time SQL Scenarios & Case Studies",
+      "Industry-Level Hands-on Projects & Interview Preparation"
     ],
     tools: ["PostgreSQL", "MySQL", "Advanced SQL", "DBeaver"],
     project: "Design & optimize a multi-million record e-commerce SQL database schema."
@@ -69,14 +85,34 @@ const curriculumModules = [
     title: "Python",
     duration: "4 Weeks",
     topics: [
-      "Python Fundamentals, OOP & Data Structures",
-      "Data Wrangling with Pandas & NumPy for Large Datasets",
-      "File Format Handling: CSV, JSON, Parquet, Avro & Delta",
-      "REST API Extraction, Web Scraping & Ingestion",
-      "Python Automation, Logging, Unit Testing & Debugging"
+      "Python Fundamentals & Programming Essentials",
+      "Variables, Data Types, Operators & Expressions",
+      "Conditional Statements, Loops & Control Flow",
+      "Functions, Lambda Functions & Scope Management",
+      "Modules, Packages & Virtual Environments",
+      "Object-Oriented Programming (OOP) Concepts",
+      "Classes, Objects, Inheritance, Polymorphism & Encapsulation",
+      "Lists, Tuples, Dictionaries, Sets & Collections Framework",
+      "String Manipulation & Regular Expressions (Regex)",
+      "File Handling & Data Processing",
+      "Working with CSV, JSON, XML & Excel Files",
+      "Exception Handling, Logging & Debugging Techniques",
+      "Python Libraries for Data Engineering (NumPy, Pandas & OpenPyXL)",
+      "REST API Integration & Data Extraction",
+      "Data Cleaning, Validation & Transformation",
+      "Web Data Collection & API-Based Data Ingestion",
+      "Python Automation & Workflow Development",
+      "ETL Development Using Python",
+      "Reusable Framework Development & Modular Programming",
+      "Database Connectivity with Python (SQL Server, MySQL & PostgreSQL)",
+      "Performance Optimization & Memory Management",
+      "Enterprise Coding Standards & Best Practices",
+      "Unit Testing, Code Documentation & Version Control Integration",
+      "Real-World Data Engineering Projects",
+      "Industry-Level Case Studies & Interview Preparation"
     ],
-    tools: ["Python", "Pandas", "NumPy", "PyTest", "REST APIs"],
-    project: "Build an automated Python ingestion script pulling real-time market data."
+    tools: ["Python", "Pandas", "NumPy", "PyTest", "OpenPyXL", "REST APIs"],
+    project: "Build an automated Python ingestion script pulling real-time API market data."
   },
   {
     id: "mod-3",
@@ -84,13 +120,38 @@ const curriculumModules = [
     title: "BigData",
     duration: "6 Weeks",
     topics: [
-      "Hadoop Architecture, HDFS & YARN Cluster Administration",
-      "Apache Hive Data Warehousing & Distributed Query Engines",
-      "Apache Spark Fundamentals, RDDs, DataFrames & Datasets",
-      "Spark SQL & PySpark Distributed Processing",
-      "Apache Kafka Streaming & Event-Driven Systems"
+      "Introduction to Big Data & Distributed Computing Concepts",
+      "Big Data Architecture & Enterprise Data Ecosystem",
+      "Hadoop Ecosystem Overview & Cluster Architecture",
+      "Hadoop Distributed File System (HDFS)",
+      "YARN Resource Management & Cluster Administration",
+      "Apache Hive for Data Warehousing & SQL Analytics",
+      "Apache Spark Fundamentals & Distributed Processing",
+      "Spark Core, RDDs, DataFrames & Datasets",
+      "Spark SQL for Large-Scale Data Processing",
+      "PySpark Programming for Data Engineering",
+      "Apache Kafka for Real-Time Data Streaming",
+      "Kafka Producers, Consumers & Topic Management",
+      "Batch Processing vs Real-Time Stream Processing",
+      "Data Partitioning, Bucketing & File Formats (Parquet, ORC, Avro)",
+      "Distributed Data Processing & Parallel Computing",
+      "Data Ingestion from Databases, APIs & Cloud Storage",
+      "ETL & ELT Pipeline Development Using Spark",
+      "Data Transformation, Aggregation & Optimization",
+      "Spark Performance Tuning & Query Optimization",
+      "Partitioning, Caching & Memory Management",
+      "Fault Tolerance, Checkpointing & Recovery Mechanisms",
+      "Workflow Orchestration with Apache Airflow",
+      "Data Lake Architecture & Modern Lakehouse Concepts",
+      "Delta Lake Fundamentals & ACID Transactions",
+      "Incremental Data Processing & Change Data Capture (CDC)",
+      "Enterprise Logging, Monitoring & Error Handling",
+      "Big Data Security, Authentication & Authorization",
+      "Production Deployment & Cluster Best Practices",
+      "End-to-End Big Data Pipeline Development",
+      "Industry-Level Big Data Projects & Interview Preparation"
     ],
-    tools: ["Hadoop", "HDFS", "Apache Hive", "Apache Spark", "PySpark", "Kafka"],
+    tools: ["Hadoop", "HDFS", "YARN", "Apache Hive", "Apache Spark", "PySpark", "Kafka", "Delta Lake"],
     project: "Process 500GB+ clickstream log files on distributed clusters."
   },
   {
@@ -99,14 +160,38 @@ const curriculumModules = [
     title: "PySpark",
     duration: "4 Weeks",
     topics: [
-      "PySpark Optimization: Broadcast Joins, Bucketing & Catalyst Engine",
-      "Delta Lake Architecture, ACID Transactions & Time Travel",
-      "Databricks Medallion Architecture (Bronze, Silver, Gold)",
-      "Change Data Capture (CDC) & Incremental Pipeline Loading",
-      "PySpark Structured Streaming & Real-Time Analytics"
+      "Introduction to Apache Spark & PySpark",
+      "Apache Spark Architecture & Distributed Computing Fundamentals",
+      "PySpark Environment Setup & Cluster Configuration",
+      "Resilient Distributed Datasets (RDDs) Fundamentals",
+      "DataFrames, Datasets & Spark SQL",
+      "Data Loading from CSV, JSON, Parquet, ORC & Delta Formats",
+      "Data Transformations & Actions",
+      "Lazy Evaluation & Spark Execution Model",
+      "Filtering, Sorting, Mapping & Complex Transformations",
+      "Joins, Aggregations & Advanced Spark Operations",
+      "User Defined Functions (UDFs) & Pandas UDFs",
+      "Window Functions & Analytical Processing",
+      "Partitioning, Repartitioning & Data Distribution Strategies",
+      "Caching, Persistence & Memory Management",
+      "Handling Null Values, Duplicates & Data Cleansing",
+      "Large-Scale Data Processing & Distributed ETL Development",
+      "Incremental Data Processing & Change Data Capture (CDC)",
+      "Performance Optimization & Spark Execution Plans",
+      "Catalyst Optimizer & Tungsten Execution Engine",
+      "Broadcast Joins, Bucketing & Data Skew Optimization",
+      "File Processing Using CSV, JSON, Parquet, ORC & Delta Lake",
+      "Reading & Writing Data to Databases, Cloud Storage & Data Lakes",
+      "Workflow Automation & Production ETL Pipelines",
+      "Spark UI, Debugging, Monitoring & Logging",
+      "Exception Handling & Fault Tolerance in Spark Applications",
+      "Enterprise Coding Standards & PySpark Best Practices",
+      "Real-Time Data Processing with Structured Streaming",
+      "End-to-End Data Engineering Projects Using PySpark",
+      "Industry-Level Case Studies & Interview Preparation"
     ],
-    tools: ["PySpark", "Databricks", "Delta Lake", "Spark SQL", "Parquet"],
-    project: "Build scalable PySpark distributed pipelines with Databricks Medallion architecture."
+    tools: ["PySpark", "Spark SQL", "Delta Lake", "Databricks", "Parquet"],
+    project: "Build scalable PySpark distributed pipelines with broadcast joins & catalyst optimization."
   },
   {
     id: "mod-5",
@@ -114,11 +199,31 @@ const curriculumModules = [
     title: "Airflow",
     duration: "3 Weeks",
     topics: [
-      "Apache Airflow Architecture, DAG Design & Schedulers",
-      "Operators, Sensors, Hooks & XCom Data Sharing",
-      "Dynamic Workflows, Branching & Parameterized Pipelines",
-      "SLA Management, Error Recovery, Retries & Email Alerts",
-      "Production Airflow Deployment & Cloud Integration"
+      "Introduction to Apache Airflow & Workflow Orchestration",
+      "Apache Airflow Architecture, Components & Environment Setup",
+      "Airflow Installation, Configuration & Deployment",
+      "DAG Development & Workflow Design Principles",
+      "Task Dependencies, Scheduling & Execution Flow",
+      "Operators (Python, Bash, SQL & Custom Operators)",
+      "Sensors, Hooks & External System Integration",
+      "XCom Communication & Inter-Task Data Sharing",
+      "Variables, Connections & Configuration Management",
+      "Workflow Scheduling, Cron Expressions & Timetables",
+      "Dynamic DAGs & Parameterized Workflows",
+      "Pipeline Automation & End-to-End ETL Orchestration",
+      "Retry Logic, Failure Handling & Error Recovery",
+      "Branching, Trigger Rules & Conditional Workflow Execution",
+      "Monitoring, Logging & Airflow UI",
+      "Email Notifications, Alerts & SLA Management",
+      "Workflow Optimization & Parallel Task Execution",
+      "Performance Tuning & Resource Management",
+      "Integration with Databricks, Snowflake, Spark & Cloud Platforms",
+      "Database, API & File System Integration",
+      "Secrets Management & Secure Credential Handling",
+      "Production Deployment, Version Control & CI/CD Integration",
+      "Enterprise Workflow Orchestration & Scheduling Best Practices",
+      "Real-World ETL Pipeline Development Using Airflow",
+      "Industry-Level Projects & Interview Preparation"
     ],
     tools: ["Apache Airflow", "Python", "Docker", "Bash", "SQL"],
     project: "Deploy an end-to-end Airflow DAG orchestrating daily ETL pipelines."
@@ -129,28 +234,88 @@ const curriculumModules = [
     title: "Azure",
     duration: "4 Weeks",
     topics: [
-      "Azure Infrastructure, Resource Management & Subscription Governance",
+      "Introduction to Microsoft Azure & Cloud Computing Fundamentals",
+      "Azure Resource Management (ARM), Resource Groups & Subscription Management",
+      "Azure Storage Services (Blob Storage, Data Lake Storage Gen2 & File Storage)",
+      "Azure Virtual Machines (VMs), Networking & Identity Management",
+      "Azure SQL Database, Azure Database Services & Managed Instances",
       "Azure Data Factory (ADF) for Enterprise ETL & ELT Pipelines",
-      "Azure Synapse Analytics for Data Warehousing & Big Data",
-      "Azure Databricks for Distributed PySpark Processing",
-      "ADLS Gen2, Medallion Lakehouse Architecture & Security"
+      "Data Ingestion, Data Movement & Pipeline Orchestration using ADF",
+      "Azure Synapse Analytics for Data Warehousing & Big Data Analytics",
+      "Azure Databricks for Distributed Data Processing & PySpark Development",
+      "Azure Data Lake Storage (ADLS Gen2) Architecture & Best Practices",
+      "Delta Lake, Lakehouse Architecture & Medallion Data Design",
+      "Azure Event Hubs & Real-Time Data Streaming",
+      "Azure Functions & Serverless Data Processing",
+      "Azure Key Vault for Secrets & Credential Management",
+      "Microsoft Entra ID (Azure AD), RBAC & Identity Management",
+      "Azure Monitor, Log Analytics & Performance Monitoring",
+      "Azure DevOps, Git Integration & CI/CD for Data Engineering",
+      "Azure Machine Learning Integration for AI-Powered Data Pipelines",
+      "Data Governance with Microsoft Purview",
+      "Security, Encryption, Compliance & Enterprise Governance",
+      "Cost Optimization, Resource Monitoring & Performance Tuning",
+      "End-to-End Azure Data Engineering Pipeline Development",
+      "Real-Time & Batch Data Processing on Azure",
+      "Production Deployment & Enterprise Best Practices",
+      "Industry-Level Azure Data Engineering Projects & Interview Preparation",
+      "Hands-on Project: End-to-End Azure Data Engineering Pipeline",
+      "Hands-on Project: Azure Data Factory ETL/ELT Project",
+      "Hands-on Project: Azure Databricks & PySpark Data Processing Project",
+      "Hands-on Project: Azure Synapse Data Warehouse Implementation",
+      "Hands-on Project: Real-Time Streaming Pipeline using Event Hubs",
+      "Hands-on Project: Azure Data Lake & Delta Lake Project",
+      "Hands-on Project: Enterprise Data Migration to Azure",
+      "Hands-on Project: CI/CD Deployment for Azure Data Pipelines",
+      "Hands-on Project: Production-Ready Lakehouse Architecture Project",
+      "Hands-on Project: Capstone Project: Enterprise Azure Data Engineering Solution"
     ],
-    tools: ["Azure ADF", "Azure Synapse", "Azure Databricks", "ADLS Gen2", "Azure DevOps"],
+    tools: ["Azure ADF", "Azure Synapse", "Azure Databricks", "ADLS Gen2", "Azure Event Hubs", "Azure DevOps"],
     project: "Architect & deploy an enterprise cloud data lakehouse on Microsoft Azure."
   },
   {
     id: "mod-7",
     number: "07",
     title: "GCP",
-    duration: "3 Weeks",
+    duration: "4 Weeks",
     topics: [
-      "Google Cloud Platform (GCP) Data Ecosystem & Cloud Storage",
-      "Google BigQuery for Serverless Data Warehousing & SQL Analytics",
-      "GCP Dataflow (Apache Beam) for Batch & Stream Data Processing",
-      "Google Dataproc for Managed Hadoop & Spark Clusters",
-      "Pub/Sub for Real-Time Event Ingestion & Cloud Composer (Airflow)"
+      "Introduction to Google Cloud Platform (GCP) & Cloud Computing Fundamentals",
+      "GCP Project Setup, IAM, Service Accounts & Resource Management",
+      "Google Cloud Storage (GCS) & Enterprise Data Lake Architecture",
+      "Compute Engine, Cloud Shell & Virtual Machine Management",
+      "BigQuery for Enterprise Data Warehousing & Analytics",
+      "Cloud SQL, Spanner & Bigtable for Data Management",
+      "Cloud Data Fusion for No-Code ETL & Data Integration",
+      "Cloud Composer (Apache Airflow) for Workflow Orchestration",
+      "Dataproc for Hadoop, Spark & PySpark Processing",
+      "Dataflow (Apache Beam) for Batch & Stream Data Processing",
+      "Pub/Sub for Real-Time Event Streaming & Messaging",
+      "Datastream for Change Data Capture (CDC) & Incremental Data Replication",
+      "BigLake & Lakehouse Architecture on GCP",
+      "Data Ingestion, Transformation & Enterprise ETL/ELT Pipelines",
+      "Delta Processing, Partitioning & Data Optimization",
+      "Vertex AI Integration for AI-Powered Data Engineering",
+      "Cloud Functions & Cloud Run for Serverless Data Processing",
+      "Secret Manager, IAM & Enterprise Security Best Practices",
+      "Cloud Monitoring, Logging & Performance Optimization",
+      "Infrastructure as Code (Terraform) & CI/CD Integration",
+      "Cost Optimization, Resource Management & Governance",
+      "End-to-End Data Engineering Pipeline Development on GCP",
+      "Batch & Real-Time Data Processing Architecture",
+      "Production Deployment & Enterprise Best Practices",
+      "Industry-Level GCP Data Engineering Projects & Interview Preparation",
+      "Hands-on Project: End-to-End GCP Data Engineering Pipeline",
+      "Hands-on Project: BigQuery Data Warehouse Implementation",
+      "Hands-on Project: Dataflow Batch & Streaming ETL Project",
+      "Hands-on Project: Dataproc PySpark Data Processing Project",
+      "Hands-on Project: Cloud Composer Workflow Orchestration",
+      "Hands-on Project: Pub/Sub Real-Time Streaming Pipeline",
+      "Hands-on Project: Datastream CDC & Incremental Loading Project",
+      "Hands-on Project: Vertex AI-Powered Data Engineering Solution",
+      "Hands-on Project: Enterprise Data Lake on Google Cloud Storage",
+      "Hands-on Project: Capstone Project: Production-Ready GCP Data Engineering Platform"
     ],
-    tools: ["GCP", "BigQuery", "Dataflow", "Dataproc", "Pub/Sub", "Cloud Composer"],
+    tools: ["GCP", "BigQuery", "Dataflow", "Dataproc", "Pub/Sub", "Cloud Composer", "Datastream"],
     project: "Build an automated serverless BigQuery data warehouse pipeline on GCP."
   },
   {
@@ -159,14 +324,33 @@ const curriculumModules = [
     title: "Gen AI",
     duration: "4 Weeks",
     topics: [
-      "Generative AI Fundamentals & LLM Application Architecture",
-      "Vector Embeddings & High-Dimensional Vector Search",
-      "Vector Databases: Pinecone, Milvus, Qdrant & Chroma",
-      "Retrieval-Augmented Generation (RAG) Architecture & Data Workflows",
-      "LangChain & LlamaIndex for AI-Powered Data Pipelines",
-      "Fine-Tuning Data Preparation & Prompt Data Engineering"
+      "Large Language Models (LLMs), Generative AI & Enterprise AI Fundamentals",
+      "Transformer Architecture, Tokens & Attention Mechanism",
+      "Prompt Engineering & Advanced Prompting Techniques",
+      "Hugging Face Models & Open-Source AI Ecosystem",
+      "AI Development Best Practices & LLM Application Design",
+      "LangChain Framework for Enterprise AI Applications",
+      "Embeddings, Semantic Search & Vector Search",
+      "Vector Databases (FAISS, ChromaDB, Pinecone & Milvus)",
+      "Retrieval-Augmented Generation (RAG) Architecture & Enterprise Knowledge Retrieval",
+      "Document Processing, Chunking & Context Management",
+      "AI Agents, Multi-Agent Systems & Agentic AI Workflows",
+      "MCP (Model Context Protocol) & Tool Integration",
+      "Function Calling & External API Integration with LLMs",
+      "AI/BI Genie, Natural Language Analytics & Business Intelligence",
+      "AI-Powered SQL Generation & Intelligent Data Assistants",
+      "Model Serving, AI Inference & Production AI Deployment",
+      "LLM Monitoring, Evaluation & Performance Optimization",
+      "Delta Live Tables (DLT) & AI Data Pipeline Development",
+      "Lakehouse Monitoring & Data Quality Management",
+      "Unity Catalog, Data Governance & Metadata Management",
+      "AI Governance, Security, Privacy & Responsible AI Practices",
+      "Enterprise AI Workflow Automation & Intelligent Data Engineering",
+      "Building End-to-End Production AI Applications",
+      "Real-Time AI Applications & Enterprise Integration",
+      "Industry-Level GenAI Projects & Interview Preparation"
     ],
-    tools: ["Generative AI", "LangChain", "Vector DBs", "Pinecone", "ChromaDB", "LLMs"],
+    tools: ["Generative AI", "LangChain", "Vector DBs", "Pinecone", "Milvus", "ChromaDB", "LLMs"],
     project: "Build an Enterprise RAG Ingestion Pipeline with Vector DBs and PySpark."
   }
 ];
@@ -351,7 +535,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-xl xs:text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-[1.15]"
                 >
-                  <span className="jvm-gradient-text">Data Engineering with GenAI Course in Pune!</span>
+                  <span className="jvm-gradient-text">Master Data Engineering &amp; Generative AI in Pune!</span>
                 </motion.h1>
 
                 {/* Animated Narrative Paragraphs */}
@@ -362,10 +546,10 @@ export default function DataEngineeringWithGenAICoursePage() {
                   className="space-y-1.5 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal"
                 >
                   <p>
-                    Modern enterprises are integrating Large Language Models (LLMs) into massive data platforms. Companies in Pune are actively searching for Data Engineers skilled in building PySpark ETLs, Databricks Lakehouses, Vector Databases, and GenAI RAG pipelines.
+                    Transform into a high-demand Data &amp; AI Engineer by mastering PySpark distributed pipelines, Databricks Medallion Lakehouse, Apache Airflow orchestration, Multi-Cloud Data Warehouses (AWS, Azure &amp; GCP), and Generative AI RAG Workflows with Vector Databases.
                   </p>
                   <p className="hidden sm:block">
-                    JVM Institute&apos;s Data Engineering with GenAI Master Track prepares you for high-paying roles with hands-on PySpark, Databricks, Vector DBs, Airflow, Azure &amp; AWS, backed by <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Support</strong>.
+                    JVM Institute&apos;s industry-accredited program bridges Big Data engineering with enterprise LLM architectures, featuring 85%+ live hands-on cloud labs and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Support</strong> with direct MNC interview referrals in Pune.
                   </p>
                 </motion.div>
 
@@ -380,7 +564,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-purple-600 dark:text-purple-400">130%</div>
+                    <div className="text-base sm:text-2xl font-black text-purple-600 dark:text-purple-400">140%</div>
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Average Salary Hike</div>
                   </motion.div>
 
@@ -388,16 +572,16 @@ export default function DataEngineeringWithGenAICoursePage() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">4.2x</div>
-                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">GenAI Data Demand</div>
+                    <div className="text-base sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">4.8x</div>
+                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">GenAI Data Hiring</div>
                   </motion.div>
 
                   <motion.div 
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-pink-600 dark:text-pink-400">85%</div>
-                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Practical Hands-On Labs</div>
+                    <div className="text-base sm:text-2xl font-black text-pink-600 dark:text-pink-400">100%</div>
+                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Practical Cloud Labs</div>
                   </motion.div>
                 </motion.div>
 
@@ -409,7 +593,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                   className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3"
                 >
                   <button
-                    onClick={() => openEnrollModal("GenAI Batch Enrollment")}
+                    onClick={() => openEnrollModal("Hero GenAI Batch Enrollment")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
@@ -417,7 +601,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                   </button>
 
                   <button
-                    onClick={() => openEnrollModal("GenAI Download Syllabus PDF")}
+                    onClick={() => openEnrollModal("Hero Download GenAI Syllabus PDF")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm shadow-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
@@ -438,7 +622,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <BrainCircuit className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                    <span>GenAI & Vector Labs</span>
+                    <span>85%+ Cloud Labs</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
@@ -476,12 +660,12 @@ export default function DataEngineeringWithGenAICoursePage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span>Orchestrate automated workflows with Airflow &amp; Azure ADF.</span>
+                      <span>Orchestrate automated workflows with Airflow, Azure ADF &amp; GCP.</span>
                     </li>
                   </ul>
 
                   <button
-                    onClick={() => openEnrollModal("GenAI Prospectus Enrollment")}
+                    onClick={() => openEnrollModal("Hero GenAI Prospectus Enrollment")}
                     className="w-full py-2.5 sm:py-3 rounded-xl bg-white text-slate-900 font-extrabold text-xs sm:text-sm shadow-lg hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Request Detailed Program Prospectus</span>
