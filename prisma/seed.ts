@@ -1,11 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
-import { Pool } from "pg";
 
-const connectionString = process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/jvm";
-const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClient();
 
 async function main() {
   console.log("Seeding database...");
@@ -120,20 +115,6 @@ async function main() {
       },
       {
         name: "Ajinkya",
-=======
-        studentName: "Siddharth Bhoite",
-        domain: "Data Engineering",
-        placedRole: "Associate Data Engineer",
-        company: "TCS",
-        package: "8.5 LPA",
-        hike: "140% Hike",
-        image: "/place1.png",
-        skills: "PySpark, Databricks, SQL",
-        category: "data_engineering",
-      },
-      {
-        studentName: "Priya Sharma",
->>>>>>> origin/feature/placement
         domain: "PySpark & Big Data",
         placedRole: "Senior Data Engineer",
         company: "LTI Mindtree",

@@ -132,17 +132,26 @@ model Placement {
 }
 
 model BlogPost {
-  id          String   @id @default(cuid())
-  slug        String   @unique
-  title       String
-  excerpt     String   @db.Text
-  content     String   @db.Text
-  category    String
-  authorName  String
-  authorRole  String
-  publishedAt String
-  readTime    String
-  createdAt   DateTime @default(now())
+  id                  String   @id @default(cuid())
+  slug                String   @unique
+  title               String
+  metaTitle           String?
+  excerpt             String   @db.Text
+  longDescriptionHtml String?  @db.Text
+  category            String   @default("Data Engineering")
+  authorName          String   @default("JVM Technical Team")
+  authorRole          String   @default("Senior Data Architect @ JVM")
+  authorAvatar        String   @default("/place1.png")
+  publishedAt         String   @default("Aug 2026")
+  readTime            String   @default("5 min read")
+  image               String   @default("/course.jpg")
+  tags                String   @default("Data Engineering, Python, SQL")
+  featured            Boolean  @default(false)
+  contentJson         String   @db.Text
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("blog_posts")
 }
 
 model StudyMaterial {
@@ -191,4 +200,17 @@ model LeadEnquiry {
   source     String   @default("WEBSITE_CONTACT")
   isResolved Boolean  @default(false)
   createdAt  DateTime @default(now())
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  fullName  String
+  email     String   @unique
+  password  String
+  role      String   @default("SUPER_ADMIN")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
 }
