@@ -11,7 +11,7 @@ export default function PlacementRecordStatsBar() {
           {/* Stat 1 — Students Placed */}
           <div className="flex flex-col items-center justify-center text-center group px-2 sm:px-4 border-r border-slate-100 dark:border-slate-800/80 last:border-r-0 md:last:border-r-0">
             <span className="text-2xl sm:text-4xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
-              1,200<span className="jvm-gradient-text">+</span>
+              2,000<span className="jvm-gradient-text">+</span>
             </span>
             <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1.5">
               Students Placed
@@ -21,7 +21,7 @@ export default function PlacementRecordStatsBar() {
           {/* Stat 2 — Hiring Companies */}
           <div className="flex flex-col items-center justify-center text-center group px-2 sm:px-4 md:border-r border-slate-100 dark:border-slate-800/80">
             <span className="text-2xl sm:text-4xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
-              150<span className="jvm-gradient-text">+</span>
+              250<span className="jvm-gradient-text">+</span>
             </span>
             <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1.5">
               Hiring Companies
@@ -41,7 +41,7 @@ export default function PlacementRecordStatsBar() {
           {/* Stat 4 — Avg Package Range */}
           <div className="flex flex-col items-center justify-center text-center group px-2 sm:px-4">
             <span className="text-2xl sm:text-4xl md:text-4xl font-black tracking-tight leading-none jvm-gradient-text">
-              ₹10–25 LPA
+              ₹10–40 LPA
             </span>
             <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1.5">
               Avg Package Range

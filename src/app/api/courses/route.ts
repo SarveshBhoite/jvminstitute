@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-
 // GET /api/courses - Retrieve courses from PostgreSQL
 export async function GET() {
   try {

@@ -373,7 +373,7 @@ export default function PlacementsPage() {
               {/* Stat 1 — Students Placed */}
               <div className="flex flex-col items-center lg:items-start group px-2 sm:px-4">
                 <span className="text-xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
-                  1,200<span className="jvm-gradient-text">+</span>
+                  2,000<span className="jvm-gradient-text">+</span>
                 </span>
                 <span className="text-[9px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1 text-center sm:text-left">
                   Students Placed
@@ -383,7 +383,7 @@ export default function PlacementsPage() {
               {/* Stat 2 — Hiring Companies */}
               <div className="flex flex-col items-center lg:items-start group px-2 sm:px-4">
                 <span className="text-xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
-                  150<span className="jvm-gradient-text">+</span>
+                  250<span className="jvm-gradient-text">+</span>
                 </span>
                 <span className="text-[9px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1 text-center sm:text-left">
                   Hiring Companies
@@ -403,7 +403,7 @@ export default function PlacementsPage() {
               {/* Stat 4 — Avg Package */}
               <div className="flex flex-col items-center lg:items-start group px-2 sm:px-4">
                 <span className="text-xl sm:text-4xl font-black tracking-tight leading-none jvm-gradient-text">
-                  ₹10–25 LPA
+                  ₹10–40 LPA
                 </span>
                 <span className="text-[9px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1 text-center sm:text-left">
                   Avg Package Range

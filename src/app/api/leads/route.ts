@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 // POST /api/leads - Save contact & enrollment lead enquiries to PostgreSQL
 export async function POST(request: Request) {
   try {
