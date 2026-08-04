@@ -145,6 +145,25 @@ export default function Navbar() {
                     </div>
                   </Link>
 
+                  {/* 1b. Data Engineering with GenAI */}
+                  <Link 
+                    href="/data-engineering-with-genai-course-in-pune" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-colors group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
+                  >
+                    <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                          Data Engineering with GenAI
+                        </span>
+                        <span className="text-[10px] bg-[#7C248C] text-white px-1.5 py-0.2 rounded font-extrabold">New AI</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">LLMs, Vector DBs, PySpark & Databricks</p>
+                    </div>
+                  </Link>
+
                   {/* 2. Learn Python for Data Analysis */}
                   <Link 
                     href="/learn-python-for-data-analysis" 

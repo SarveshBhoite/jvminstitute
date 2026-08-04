@@ -34,7 +34,8 @@ import {
   Zap,
   Check,
   GraduationCap,
-  Wrench
+  Wrench,
+  BrainCircuit
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -46,7 +47,7 @@ const curriculumModules = [
   {
     id: "mod-1",
     number: "01",
-    title: "MySQL & Database Architecture",
+    title: "Mysql",
     duration: "4 Weeks",
     topics: [
       "SQL Fundamentals & Relational Database Management System (RDBMS)",
@@ -56,24 +57,8 @@ const curriculumModules = [
       "Subqueries, Common Table Expressions (CTEs) & Recursive CTEs",
       "Window (Analytical) Functions for Data Analysis",
       "Stored Procedures, User-Defined Functions (UDFs) & Views",
-      "Dynamic SQL Development & Parameterized Queries",
       "Query Optimization, Indexing & SQL Performance Tuning",
-      "Transactions, ACID Properties & Concurrency Control",
-      "Error Handling, Exception Management & Debugging Techniques",
-      "JSON, XML & Semi-Structured Data Processing in SQL",
-      "ETL Development Using SQL",
-      "Data Validation, Data Cleansing & Business Rule Implementation",
-      "Watermark Tables for Incremental Data Processing",
-      "Audit Tables, Logging Frameworks & Data Lineage",
-      "Change Data Capture (CDC) Frameworks & Incremental Loading",
-      "Star Schema & Snowflake Schema Design",
-      "Fact Tables & Dimension Tables Modeling",
-      "Slowly Changing Dimensions (SCD Type 1 & Type 2)",
-      "Incremental Loading Strategies & Delta Processing",
-      "SQL Coding Standards & Enterprise Best Practices",
-      "SQL-Based Data Warehouse Development",
-      "Real-Time SQL Scenarios & Case Studies",
-      "Industry-Level Hands-on Projects & Interview Preparation"
+      "ETL Development & Data Validation in SQL"
     ],
     tools: ["PostgreSQL", "MySQL", "Advanced SQL", "DBeaver"],
     project: "Design & optimize a multi-million record e-commerce SQL database schema."
@@ -84,73 +69,28 @@ const curriculumModules = [
     title: "Python",
     duration: "4 Weeks",
     topics: [
-      "Python Fundamentals & Programming Essentials",
-      "Variables, Data Types, Operators & Expressions",
-      "Conditional Statements, Loops & Control Flow",
-      "Functions, Lambda Functions & Scope Management",
-      "Modules, Packages & Virtual Environments",
-      "Object-Oriented Programming (OOP) Concepts",
-      "Classes, Objects, Inheritance, Polymorphism & Encapsulation",
-      "Lists, Tuples, Dictionaries, Sets & Collections Framework",
-      "String Manipulation & Regular Expressions (Regex)",
-      "File Handling & Data Processing",
-      "Working with CSV, JSON, XML & Excel Files",
-      "Exception Handling, Logging & Debugging Techniques",
-      "Python Libraries for Data Engineering (NumPy, Pandas & OpenPyXL)",
-      "REST API Integration & Data Extraction",
-      "Data Cleaning, Validation & Transformation",
-      "Web Data Collection & API-Based Data Ingestion",
-      "Python Automation & Workflow Development",
-      "ETL Development Using Python",
-      "Reusable Framework Development & Modular Programming",
-      "Database Connectivity with Python (SQL Server, MySQL & PostgreSQL)",
-      "Performance Optimization & Memory Management",
-      "Enterprise Coding Standards & Best Practices",
-      "Unit Testing, Code Documentation & Version Control Integration",
-      "Real-World Data Engineering Projects",
-      "Industry-Level Case Studies & Interview Preparation"
+      "Python Fundamentals, OOP & Data Structures",
+      "Data Wrangling with Pandas & NumPy for Large Datasets",
+      "File Format Handling: CSV, JSON, Parquet, Avro & Delta",
+      "REST API Extraction, Web Scraping & Ingestion",
+      "Python Automation, Logging, Unit Testing & Debugging"
     ],
-    tools: ["Python", "Pandas", "NumPy", "PyTest", "OpenPyXL", "REST APIs"],
-    project: "Build an automated Python ingestion script pulling real-time API market data."
+    tools: ["Python", "Pandas", "NumPy", "PyTest", "REST APIs"],
+    project: "Build an automated Python ingestion script pulling real-time market data."
   },
   {
     id: "mod-3",
     number: "03",
-    title: "Big Data",
+    title: "BigData",
     duration: "6 Weeks",
     topics: [
-      "Introduction to Big Data & Distributed Computing Concepts",
-      "Big Data Architecture & Enterprise Data Ecosystem",
-      "Hadoop Ecosystem Overview & Cluster Architecture",
-      "Hadoop Distributed File System (HDFS)",
-      "YARN Resource Management & Cluster Administration",
-      "Apache Hive for Data Warehousing & SQL Analytics",
-      "Apache Spark Fundamentals & Distributed Processing",
-      "Spark Core, RDDs, DataFrames & Datasets",
-      "Spark SQL for Large-Scale Data Processing",
-      "PySpark Programming for Data Engineering",
-      "Apache Kafka for Real-Time Data Streaming",
-      "Kafka Producers, Consumers & Topic Management",
-      "Batch Processing vs Real-Time Stream Processing",
-      "Data Partitioning, Bucketing & File Formats (Parquet, ORC, Avro)",
-      "Distributed Data Processing & Parallel Computing",
-      "Data Ingestion from Databases, APIs & Cloud Storage",
-      "ETL & ELT Pipeline Development Using Spark",
-      "Data Transformation, Aggregation & Optimization",
-      "Spark Performance Tuning & Query Optimization",
-      "Partitioning, Caching & Memory Management",
-      "Fault Tolerance, Checkpointing & Recovery Mechanisms",
-      "Workflow Orchestration with Apache Airflow",
-      "Data Lake Architecture & Modern Lakehouse Concepts",
-      "Delta Lake Fundamentals & ACID Transactions",
-      "Incremental Data Processing & Change Data Capture (CDC)",
-      "Enterprise Logging, Monitoring & Error Handling",
-      "Big Data Security, Authentication & Authorization",
-      "Production Deployment & Cluster Best Practices",
-      "End-to-End Big Data Pipeline Development",
-      "Industry-Level Big Data Projects & Interview Preparation"
+      "Hadoop Architecture, HDFS & YARN Cluster Administration",
+      "Apache Hive Data Warehousing & Distributed Query Engines",
+      "Apache Spark Fundamentals, RDDs, DataFrames & Datasets",
+      "Spark SQL & PySpark Distributed Processing",
+      "Apache Kafka Streaming & Event-Driven Systems"
     ],
-    tools: ["Hadoop", "HDFS", "YARN", "Apache Hive", "Apache Spark", "PySpark", "Kafka", "Delta Lake"],
+    tools: ["Hadoop", "HDFS", "Apache Hive", "Apache Spark", "PySpark", "Kafka"],
     project: "Process 500GB+ clickstream log files on distributed clusters."
   },
   {
@@ -159,38 +99,14 @@ const curriculumModules = [
     title: "PySpark",
     duration: "4 Weeks",
     topics: [
-      "Introduction to Apache Spark & PySpark",
-      "Apache Spark Architecture & Distributed Computing Fundamentals",
-      "PySpark Environment Setup & Cluster Configuration",
-      "Resilient Distributed Datasets (RDDs) Fundamentals",
-      "DataFrames, Datasets & Spark SQL",
-      "Data Loading from CSV, JSON, Parquet, ORC & Delta Formats",
-      "Data Transformations & Actions",
-      "Lazy Evaluation & Spark Execution Model",
-      "Filtering, Sorting, Mapping & Complex Transformations",
-      "Joins, Aggregations & Advanced Spark Operations",
-      "User Defined Functions (UDFs) & Pandas UDFs",
-      "Window Functions & Analytical Processing",
-      "Partitioning, Repartitioning & Data Distribution Strategies",
-      "Caching, Persistence & Memory Management",
-      "Handling Null Values, Duplicates & Data Cleansing",
-      "Large-Scale Data Processing & Distributed ETL Development",
-      "Incremental Data Processing & Change Data Capture (CDC)",
-      "Performance Optimization & Spark Execution Plans",
-      "Catalyst Optimizer & Tungsten Execution Engine",
-      "Broadcast Joins, Bucketing & Data Skew Optimization",
-      "File Processing Using CSV, JSON, Parquet, ORC & Delta Lake",
-      "Reading & Writing Data to Databases, Cloud Storage & Data Lakes",
-      "Workflow Automation & Production ETL Pipelines",
-      "Spark UI, Debugging, Monitoring & Logging",
-      "Exception Handling & Fault Tolerance in Spark Applications",
-      "Enterprise Coding Standards & PySpark Best Practices",
-      "Real-Time Data Processing with Structured Streaming",
-      "End-to-End Data Engineering Projects Using PySpark",
-      "Industry-Level Case Studies & Interview Preparation"
+      "PySpark Optimization: Broadcast Joins, Bucketing & Catalyst Engine",
+      "Delta Lake Architecture, ACID Transactions & Time Travel",
+      "Databricks Medallion Architecture (Bronze, Silver, Gold)",
+      "Change Data Capture (CDC) & Incremental Pipeline Loading",
+      "PySpark Structured Streaming & Real-Time Analytics"
     ],
-    tools: ["PySpark", "Spark SQL", "Delta Lake", "Databricks", "Parquet"],
-    project: "Build scalable PySpark distributed pipelines with broadcast joins & catalyst optimization."
+    tools: ["PySpark", "Databricks", "Delta Lake", "Spark SQL", "Parquet"],
+    project: "Build scalable PySpark distributed pipelines with Databricks Medallion architecture."
   },
   {
     id: "mod-5",
@@ -198,106 +114,77 @@ const curriculumModules = [
     title: "Airflow",
     duration: "3 Weeks",
     topics: [
-      "Introduction to Apache Airflow & Workflow Orchestration",
-      "Apache Airflow Architecture, Components & Environment Setup",
-      "Airflow Installation, Configuration & Deployment",
-      "DAG Development & Workflow Design Principles",
-      "Task Dependencies, Scheduling & Execution Flow",
-      "Operators (Python, Bash, SQL & Custom Operators)",
-      "Sensors, Hooks & External System Integration",
-      "XCom Communication & Inter-Task Data Sharing",
-      "Variables, Connections & Configuration Management",
-      "Workflow Scheduling, Cron Expressions & Timetables",
-      "Dynamic DAGs & Parameterized Workflows",
-      "Pipeline Automation & End-to-End ETL Orchestration",
-      "Retry Logic, Failure Handling & Error Recovery",
-      "Branching, Trigger Rules & Conditional Workflow Execution",
-      "Monitoring, Logging & Airflow UI",
-      "Email Notifications, Alerts & SLA Management",
-      "Workflow Optimization & Parallel Task Execution",
-      "Performance Tuning & Resource Management",
-      "Integration with Databricks, Snowflake, Spark & Cloud Platforms",
-      "Database, API & File System Integration",
-      "Secrets Management & Secure Credential Handling",
-      "Production Deployment, Version Control & CI/CD Integration",
-      "Enterprise Workflow Orchestration & Scheduling Best Practices",
-      "Real-World ETL Pipeline Development Using Airflow",
-      "Industry-Level Projects & Interview Preparation"
+      "Apache Airflow Architecture, DAG Design & Schedulers",
+      "Operators, Sensors, Hooks & XCom Data Sharing",
+      "Dynamic Workflows, Branching & Parameterized Pipelines",
+      "SLA Management, Error Recovery, Retries & Email Alerts",
+      "Production Airflow Deployment & Cloud Integration"
     ],
     tools: ["Apache Airflow", "Python", "Docker", "Bash", "SQL"],
-    project: "Deploy an end-to-end Airflow DAG orchestrating daily ETL pipelines with error alerts."
+    project: "Deploy an end-to-end Airflow DAG orchestrating daily ETL pipelines."
   },
   {
     id: "mod-6",
     number: "06",
-    title: "Microsoft Azure",
+    title: "Azure",
     duration: "4 Weeks",
     topics: [
-      "Introduction to Microsoft Azure & Cloud Computing Fundamentals",
-      "Azure Resource Management (ARM), Resource Groups & Subscription Management",
-      "Azure Storage Services (Blob Storage, Data Lake Storage Gen2 & File Storage)",
-      "Azure Virtual Machines (VMs), Networking & Identity Management",
-      "Azure SQL Database, Azure Database Services & Managed Instances",
+      "Azure Infrastructure, Resource Management & Subscription Governance",
       "Azure Data Factory (ADF) for Enterprise ETL & ELT Pipelines",
-      "Data Ingestion, Data Movement & Pipeline Orchestration using ADF",
-      "Azure Synapse Analytics for Data Warehousing & Big Data Analytics",
-      "Azure Databricks for Distributed Data Processing & PySpark Development",
-      "Azure Data Lake Storage (ADLS Gen2) Architecture & Best Practices",
-      "Delta Lake, Lakehouse Architecture & Medallion Data Design",
-      "Azure Event Hubs & Real-Time Data Streaming",
-      "Azure Functions & Serverless Data Processing",
-      "Azure Key Vault for Secrets & Credential Management",
-      "Microsoft Entra ID (Azure AD), RBAC & Identity Management",
-      "Azure Monitor, Log Analytics & Performance Monitoring",
-      "Azure DevOps, Git Integration & CI/CD for Data Engineering",
-      "Azure Machine Learning Integration for AI-Powered Data Pipelines",
-      "Data Governance with Microsoft Purview",
-      "Security, Encryption, Compliance & Enterprise Governance",
-      "Cost Optimization, Resource Monitoring & Performance Tuning",
-      "End-to-End Azure Data Engineering Pipeline Development",
-      "Real-Time & Batch Data Processing on Azure",
-      "Production Deployment & Enterprise Best Practices",
-      "Industry-Level Azure Data Engineering Projects & Interview Preparation"
+      "Azure Synapse Analytics for Data Warehousing & Big Data",
+      "Azure Databricks for Distributed PySpark Processing",
+      "ADLS Gen2, Medallion Lakehouse Architecture & Security"
     ],
-    tools: ["Azure Data Factory", "Azure Synapse", "Azure Databricks", "ADLS Gen2", "Azure Event Hubs", "Azure DevOps"],
+    tools: ["Azure ADF", "Azure Synapse", "Azure Databricks", "ADLS Gen2", "Azure DevOps"],
     project: "Architect & deploy an enterprise cloud data lakehouse on Microsoft Azure."
   },
   {
     id: "mod-7",
     number: "07",
-    title: "Hands-on Projects",
+    title: "GCP",
+    duration: "3 Weeks",
+    topics: [
+      "Google Cloud Platform (GCP) Data Ecosystem & Cloud Storage",
+      "Google BigQuery for Serverless Data Warehousing & SQL Analytics",
+      "GCP Dataflow (Apache Beam) for Batch & Stream Data Processing",
+      "Google Dataproc for Managed Hadoop & Spark Clusters",
+      "Pub/Sub for Real-Time Event Ingestion & Cloud Composer (Airflow)"
+    ],
+    tools: ["GCP", "BigQuery", "Dataflow", "Dataproc", "Pub/Sub", "Cloud Composer"],
+    project: "Build an automated serverless BigQuery data warehouse pipeline on GCP."
+  },
+  {
+    id: "mod-8",
+    number: "08",
+    title: "Gen AI",
     duration: "4 Weeks",
     topics: [
-      "End-to-End Azure Data Engineering Pipeline",
-      "Azure Data Factory ETL/ELT Project",
-      "Azure Databricks & PySpark Data Processing Project",
-      "Azure Synapse Data Warehouse Implementation",
-      "Real-Time Streaming Pipeline using Event Hubs",
-      "Azure Data Lake & Delta Lake Project",
-      "Enterprise Data Migration to Azure",
-      "CI/CD Deployment for Azure Data Pipelines",
-      "Production-Ready Lakehouse Architecture Project",
-      "Capstone Project: Enterprise Azure Data Engineering Solution"
+      "Generative AI Fundamentals & LLM Application Architecture",
+      "Vector Embeddings & High-Dimensional Vector Search",
+      "Vector Databases: Pinecone, Milvus, Qdrant & Chroma",
+      "Retrieval-Augmented Generation (RAG) Architecture & Data Workflows",
+      "LangChain & LlamaIndex for AI-Powered Data Pipelines",
+      "Fine-Tuning Data Preparation & Prompt Data Engineering"
     ],
-    tools: ["Azure", "ADF", "Databricks", "PySpark", "Delta Lake", "Event Hubs", "CI/CD"],
-    project: "Complete production-grade capstone project ready for enterprise interview showcases."
+    tools: ["Generative AI", "LangChain", "Vector DBs", "Pinecone", "ChromaDB", "LLMs"],
+    project: "Build an Enterprise RAG Ingestion Pipeline with Vector DBs and PySpark."
   }
 ];
 
 // Tools & Technologies Data
 const techStack = [
+  { name: "Generative AI", category: "AI & LLMs", badge: "Next-Gen", color: "from-purple-500 to-indigo-600" },
   { name: "PySpark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
   { name: "Databricks", category: "Lakehouse", badge: "Enterprise", color: "from-red-500 to-rose-600" },
-  { name: "AWS Redshift", category: "Cloud", badge: "Popular", color: "from-amber-500 to-yellow-600" },
-  { name: "Snowflake", category: "Warehouse", badge: "Trending", color: "from-sky-400 to-blue-600" },
+  { name: "LangChain", category: "AI Framework", badge: "RAG Stack", color: "from-emerald-500 to-teal-600" },
+  { name: "Vector DBs", category: "AI Storage", badge: "Trending", color: "from-pink-500 to-rose-600" },
+  { name: "Snowflake", category: "Warehouse", badge: "Cloud", color: "from-sky-400 to-blue-600" },
   { name: "Apache Airflow", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
   { name: "Apache Kafka", category: "Streaming", badge: "Real-time", color: "from-slate-700 to-slate-900" },
   { name: "Python", category: "Language", badge: "Essential", color: "from-blue-500 to-cyan-500" },
   { name: "Advanced SQL", category: "Database", badge: "Must Have", color: "from-[#1E2B88] to-indigo-600" },
-  { name: "AWS S3 & IAM", category: "Cloud Storage", badge: "Cloud Native", color: "from-orange-400 to-amber-500" },
-  { name: "PostgreSQL", category: "Database", badge: "Relational", color: "from-blue-700 to-indigo-800" },
   { name: "Delta Lake", category: "Storage", badge: "ACID Compliant", color: "from-cyan-500 to-blue-600" },
-  { name: "Docker", category: "DevOps", badge: "Containers", color: "from-blue-600 to-indigo-700" }
+  { name: "Azure ADF", category: "Cloud ETL", badge: "Enterprise", color: "from-blue-600 to-indigo-700" }
 ];
 
 // Faculty Profiles
@@ -307,18 +194,18 @@ const mentors = [
     role: "Lead Data Architect & Founder",
     experience: "12+ Years IT Industry Experience",
     company: "Ex-Fortune 500 Architect",
-    specialty: "PySpark Distributed Systems, Databricks Lakehouse & AWS Cloud Infrastructure",
+    specialty: "PySpark Distributed Systems, Databricks Lakehouse & GenAI Pipelines",
     image: "/students1.jpeg",
-    bio: "Mentored over 5,000+ engineers into top MNCs. Specializes in multi-terabyte ETL optimization and real-time streaming architectures."
+    bio: "Mentored over 5,000+ engineers into top MNCs. Specializes in multi-terabyte ETL optimization, RAG data ingestion, and enterprise cloud streaming architectures."
   },
   {
     name: "Priya Sharma",
-    role: "Senior Cloud Data Engineer",
+    role: "Senior AI Data Engineer",
     experience: "9+ Years Big Data Experience",
     company: "Senior Enterprise Lead",
-    specialty: "AWS Redshift, Snowflake Architecture & Apache Airflow Orchestration",
+    specialty: "AWS & Azure Data Infrastructure, Vector Search & Airflow Orchestration",
     image: "/students2.jpeg",
-    bio: "Expert in cloud migration projects, complex SQL query tuning, and automated CI/CD pipeline deployments."
+    bio: "Expert in cloud data warehousing, vector database indexing, and automated CI/CD pipeline deployments."
   }
 ];
 
@@ -326,6 +213,14 @@ const mentors = [
 const capstoneProjects = [
   {
     id: "p1",
+    tag: "GenAI & RAG Data Pipeline",
+    title: "Enterprise LLM Knowledge Base Ingestion Engine",
+    desc: "Build an automated PySpark and LangChain pipeline to parse terabytes of unstructured documents, generate embeddings, and load vector indices into Pinecone and Azure Synapse.",
+    tech: ["PySpark", "LangChain", "Pinecone", "Azure ADF", "Python"],
+    metrics: "Ingests 10M+ text embeddings/hour with RAG search"
+  },
+  {
+    id: "p2",
     tag: "Real-Time E-Commerce Streaming",
     title: "Multi-Terabyte Clickstream & Order Processing Engine",
     desc: "Build a real-time event ingestion engine using Apache Kafka and PySpark Structured Streaming to process high-velocity user activity logs, storing results in AWS Redshift for analytics dashboards.",
@@ -333,20 +228,12 @@ const capstoneProjects = [
     metrics: "Handles 100,000+ events/sec with sub-second latency"
   },
   {
-    id: "p2",
-    tag: "Financial Fraud Detection",
-    title: "Databricks Delta Lakehouse Fraud Analytics Platform",
-    desc: "Design an ACID-compliant Lakehouse architecture using Databricks and Delta Lake. Implement Time-Travel queries, data versioning, and automated data quality checks for credit card transactions.",
+    id: "p3",
+    tag: "Databricks GenAI Lakehouse",
+    title: "Databricks Delta Lakehouse & AI Analytics Platform",
+    desc: "Design an ACID-compliant Medallion Lakehouse architecture using Databricks and Delta Lake. Implement Time-Travel queries, data versioning, and GenAI feature store preparation.",
     tech: ["Databricks", "Delta Lake", "PySpark SQL", "AWS S3", "Python"],
     metrics: "ACID transactional guarantees across 500GB+ datasets"
-  },
-  {
-    id: "p3",
-    tag: "Healthcare Cloud Warehouse",
-    title: "Snowflake Enterprise Patient Analytics Pipeline",
-    desc: "Construct an automated cloud warehouse pipeline using Snowflake Snowpipe and Apache Airflow. Transform raw clinical records into dimensional Star Schemas optimized for executive decision-making.",
-    tech: ["Snowflake", "Snowpipe", "Apache Airflow", "Advanced SQL", "PostgreSQL"],
-    metrics: "Reduced query execution time by 75% via clustering keys"
   }
 ];
 
@@ -354,45 +241,45 @@ const capstoneProjects = [
 const testimonials = [
   {
     name: "Sarvesh Bhoite",
-    role: "Senior Data Engineer at MNC",
-    hike: "120% Salary Hike",
-    review: "The hands-on PySpark labs and real ETL capstone projects helped me clear technical rounds effortlessly. The 1:1 mentor code reviews were invaluable for my transition.",
+    role: "Senior Data & AI Engineer",
+    hike: "140% Salary Hike",
+    review: "The GenAI data pipeline modules alongside PySpark and Databricks gave me a massive edge in interviews. I cleared a Senior Data Engineer role at a top AI firm effortlessly!",
     avatar: "/students1.jpeg",
-    company: "Fortune 500 MNC"
+    company: "Tier-1 AI Enterprise"
   },
   {
     name: "Aniket Deshmukh",
-    role: "Big Data & Databricks Consultant",
-    hike: "105% Salary Hike",
-    review: "JVM Institute's Data Engineering course is 100% practical. I learned how to debug PySpark OOM errors and write production Airflow DAGs that impressed my interviewers.",
+    role: "Big Data & GenAI Consultant",
+    hike: "120% Salary Hike",
+    review: "JVM Institute's Data Engineering with GenAI course is 100% practical. Learning Vector DBs, PySpark performance tuning, and Airflow DAGs made my profile stand out.",
     avatar: "/students2.jpeg",
-    company: "Tier 1 Tech Firm"
+    company: "Global Tech MNC"
   },
   {
     name: "Pooja Patil",
     role: "Cloud Data Architect",
-    hike: "90% Salary Hike",
-    review: "From SQL window functions to AWS Redshift cluster setup, everything was taught with enterprise depth. The dedicated placement team got me 4 interview calls within 2 weeks!",
+    hike: "100% Salary Hike",
+    review: "From SQL window functions to Databricks and GenAI RAG pipelines, everything was taught with deep enterprise rigor. The placement team arranged 5 interviews in 3 weeks!",
     avatar: "/place1.png",
-    company: "Leading Global Tech"
+    company: "Leading Product Firm"
   }
 ];
 
 // What To Expect Points
 const whatToExpectPoints = [
-  "In-depth coverage of data engineering, from data collection to advanced analytics.",
-  "Real-world projects to build confidence and experience in data engineering tasks.",
-  "Training on tools like Apache Hadoop, Spark, Kafka, and AWS.",
-  "Learn from seasoned professionals with extensive industry experience.",
-  "We will provide you with free study material.",
-  "The course has an availability of 2 hours daily live classes.",
-  "Resume building, interview preparation, and 100 % job placement assistance."
+  "In-depth coverage of Data Engineering combined with cutting-edge Generative AI & Vector Data Workflows.",
+  "Hands-on building of real-time streaming ETLs, Lakehouse architectures, and LLM RAG pipelines.",
+  "Training on industry-standard tools: PySpark, Databricks, Kafka, Airflow, Vector DBs, AWS & Azure.",
+  "Learn from seasoned industry architects with 12+ years of enterprise engineering experience.",
+  "Complete free study material, code templates, and production project repositories.",
+  "Flexible batch options: 2-hour daily live interactive classroom & online sessions.",
+  "Dedicated ATS resume building, 1-on-1 mock interviews, and 100% job placement support."
 ];
 
-export default function DataEngineeringCoursePage() {
+export default function DataEngineeringWithGenAICoursePage() {
   // Modal state for enrollment / syllabus request
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("Data Engineering Master Track Admission");
+  const [modalTitle, setModalTitle] = useState("Data Engineering with GenAI Master Track Admission");
 
   // Accordion open/close state
   const [openModule, setOpenModule] = useState<string | null>("mod-1");
@@ -400,7 +287,7 @@ export default function DataEngineeringCoursePage() {
   // Selected tech stack category
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Testimonial timed slide switcher for Requirement 8
+  // Testimonial timed slide switcher
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
 
   useEffect(() => {
@@ -415,7 +302,7 @@ export default function DataEngineeringCoursePage() {
     setModalOpen(true);
   };
 
-  const categories = ["All", "Big Data", "Cloud", "Warehouse", "Orchestration", "Database"];
+  const categories = ["All", "AI & LLMs", "Big Data", "Cloud", "Warehouse", "Orchestration"];
 
   const filteredTech = selectedCategory === "All"
     ? techStack
@@ -428,7 +315,7 @@ export default function DataEngineeringCoursePage() {
       <main className="flex-grow pt-0">
 
         {/* ========================================================= */}
-        {/* 1. HERO SECTION: EDITORIAL HIGH-IMPACT (Compact for Mobile) */}
+        {/* 1. HERO SECTION: EDITORIAL HIGH-IMPACT                     */}
         {/* ========================================================= */}
         <section className="relative py-6 sm:py-10 lg:py-14 bg-gradient-to-b from-[#F5F3FF] via-[#FAFAFC] to-white dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden flex items-center min-h-[auto] lg:h-[calc(100vh-80px)]">
           
@@ -443,7 +330,7 @@ export default function DataEngineeringCoursePage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-10 items-center">
               
-              {/* Left Column: Animated Headline, Story & Quick Stats (7 Cols) */}
+              {/* Left Column: Animated Headline & Details (7 Cols) */}
               <div className="lg:col-span-7 space-y-2.5 sm:space-y-3.5 text-left">
                 
                 {/* Pill Badge */}
@@ -453,8 +340,8 @@ export default function DataEngineeringCoursePage() {
                   transition={{ duration: 0.5 }}
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-purple-100/90 dark:bg-purple-950/90 border border-purple-200 dark:border-purple-800 text-[#7C3AED] dark:text-[#A78BFA] text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-xs"
                 >
-                  <Zap className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                  <span>CAREER LANDSCAPE 2026 • DATA ENGINEERING MASTER TRACK</span>
+                  <BrainCircuit className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+                  <span>NEXT-GEN AI TRACK • DATA ENGINEERING WITH GEN AI IN PUNE</span>
                 </motion.div>
 
                 {/* Animated Headline */}
@@ -464,7 +351,7 @@ export default function DataEngineeringCoursePage() {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-xl xs:text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-[1.15]"
                 >
-                  <span className="jvm-gradient-text">Data Engineering Course in Pune!</span>
+                  <span className="jvm-gradient-text">Data Engineering with GenAI Course in Pune!</span>
                 </motion.h1>
 
                 {/* Animated Narrative Paragraphs */}
@@ -475,10 +362,10 @@ export default function DataEngineeringCoursePage() {
                   className="space-y-1.5 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal"
                 >
                   <p>
-                    Every modern enterprise is shifting from legacy databases to cloud-native Big Data architectures. Global tech product hubs and MNCs in Pune are actively hiring engineers who build multi-terabyte ETL pipelines using PySpark &amp; AWS.
+                    Modern enterprises are integrating Large Language Models (LLMs) into massive data platforms. Companies in Pune are actively searching for Data Engineers skilled in building PySpark ETLs, Databricks Lakehouses, Vector Databases, and GenAI RAG pipelines.
                   </p>
                   <p className="hidden sm:block">
-                    JVM Institute&apos;s Data Engineering Master Track bridges this skill gap completely with live PySpark scripts, Databricks clusters, Snowflake warehouses, Airflow DAGs, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>.
+                    JVM Institute&apos;s Data Engineering with GenAI Master Track prepares you for high-paying roles with hands-on PySpark, Databricks, Vector DBs, Airflow, Azure &amp; AWS, backed by <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Support</strong>.
                   </p>
                 </motion.div>
 
@@ -493,7 +380,7 @@ export default function DataEngineeringCoursePage() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-purple-600 dark:text-purple-400">120%</div>
+                    <div className="text-base sm:text-2xl font-black text-purple-600 dark:text-purple-400">130%</div>
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Average Salary Hike</div>
                   </motion.div>
 
@@ -501,16 +388,16 @@ export default function DataEngineeringCoursePage() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">3.5x</div>
-                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Data Job Growth</div>
+                    <div className="text-base sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">4.2x</div>
+                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">GenAI Data Demand</div>
                   </motion.div>
 
                   <motion.div 
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-pink-600 dark:text-pink-400">80%</div>
-                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Practical Cloud Labs</div>
+                    <div className="text-base sm:text-2xl font-black text-pink-600 dark:text-pink-400">85%</div>
+                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Practical Hands-On Labs</div>
                   </motion.div>
                 </motion.div>
 
@@ -522,7 +409,7 @@ export default function DataEngineeringCoursePage() {
                   className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3"
                 >
                   <button
-                    onClick={() => openEnrollModal("Hero Batch Enrollment")}
+                    onClick={() => openEnrollModal("GenAI Batch Enrollment")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
@@ -530,7 +417,7 @@ export default function DataEngineeringCoursePage() {
                   </button>
 
                   <button
-                    onClick={() => openEnrollModal("Hero Download Syllabus PDF")}
+                    onClick={() => openEnrollModal("GenAI Download Syllabus PDF")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm shadow-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
@@ -550,8 +437,8 @@ export default function DataEngineeringCoursePage() {
                     <span>ISO Certified</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                    <span>80% Cloud Labs</span>
+                    <BrainCircuit className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+                    <span>GenAI & Vector Labs</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
@@ -575,26 +462,26 @@ export default function DataEngineeringCoursePage() {
                   </div>
 
                   <h3 className="text-base sm:text-2xl font-extrabold tracking-tight leading-snug">
-                    Transform From Beginner to Enterprise Data Architect
+                    Master Enterprise Data Infrastructure &amp; GenAI Architecture
                   </h3>
 
                   <ul className="space-y-1.5 sm:space-y-2.5 text-[11px] sm:text-xs font-medium text-slate-200">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span>Write production PySpark code on Databricks clusters.</span>
+                      <span>Write production PySpark &amp; Databricks Medallion pipelines.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span>Design Star &amp; Snowflake schemas for Redshift &amp; Snowflake.</span>
+                      <span>Build Vector Indexing &amp; RAG data ingestion pipelines.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                      <span>Automate daily pipeline schedules using Apache Airflow DAGs.</span>
+                      <span>Orchestrate automated workflows with Airflow &amp; Azure ADF.</span>
                     </li>
                   </ul>
 
                   <button
-                    onClick={() => openEnrollModal("Hero Prospectus Enrollment")}
+                    onClick={() => openEnrollModal("GenAI Prospectus Enrollment")}
                     className="w-full py-2.5 sm:py-3 rounded-xl bg-white text-slate-900 font-extrabold text-xs sm:text-sm shadow-lg hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Request Detailed Program Prospectus</span>
@@ -610,7 +497,7 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 2. COURSE CURRICULUM (With Scrollbar & Tools Used)       */}
+        {/* 2. COURSE CURRICULUM ACCORDION                              */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 bg-[#FAFAFC] dark:bg-[#070A12] border-t border-purple-100/60 dark:border-slate-800/80 relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -633,7 +520,7 @@ export default function DataEngineeringCoursePage() {
               </h2>
 
               <p className="text-xs sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Click on any module below to explore the detailed topics, tools used, and hands-on capstone deliverables.
+                Explore the modules below covering Data Engineering, PySpark, Airflow, Cloud Warehouses, and Generative AI Data Pipelines.
               </p>
             </motion.div>
 
@@ -702,7 +589,7 @@ export default function DataEngineeringCoursePage() {
                           transition={{ duration: 0.35, ease: "easeInOut" }}
                           className="px-4 sm:px-6 pb-5 pt-1 border-t border-slate-100 dark:border-slate-800/80 space-y-3.5"
                         >
-                          {/* TOPICS COVERED WITH SCROLLBAR FOR REQUIREMENT 2 */}
+                          {/* TOPICS COVERED WITH SCROLLBAR */}
                           <div>
                             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 block mb-2">
                               Topics Covered (Scroll for all):
@@ -722,7 +609,7 @@ export default function DataEngineeringCoursePage() {
                             </div>
                           </div>
 
-                          {/* TOOLS USED AFTER TEXT FOR REQUIREMENT 2 */}
+                          {/* TOOLS USED */}
                           <div className="p-2.5 sm:p-3.5 rounded-xl bg-purple-50/80 dark:bg-purple-950/40 border border-purple-200/80 dark:border-purple-800/60 flex items-center flex-wrap gap-2">
                             <span className="text-[10px] sm:text-xs font-extrabold uppercase text-purple-700 dark:text-purple-300 flex items-center gap-1">
                               <Wrench className="w-3.5 h-3.5 text-purple-600" /> Tools Used:
@@ -759,13 +646,13 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 3. WHAT TO EXPECT FROM JVM DATA ENGINEERING SECTION       */}
+        {/* 3. WHAT TO EXPECT FROM JVM DATA & GENAI COURSE            */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 relative overflow-hidden bg-slate-200/80 dark:bg-[#0E1322] border-t border-b border-slate-300/80 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E2B88] dark:text-white text-center mb-6 sm:mb-10 tracking-tight leading-tight">
-              What to Expect from the JVM Data Engineering Course in Pune
+              What to Expect from the JVM Data Engineering with GenAI Course in Pune
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
@@ -788,7 +675,7 @@ export default function DataEngineeringCoursePage() {
                 <div className="relative w-full h-[200px] xs:h-[240px] sm:h-[360px] rounded-2xl overflow-hidden shadow-xl border-2 border-white dark:border-slate-800">
                   <Image
                     src="/students2.jpeg"
-                    alt="JVM Institute Data Engineering Live Classroom Batch"
+                    alt="JVM Institute Data Engineering with GenAI Live Batch"
                     fill
                     className="object-cover object-center"
                   />
@@ -801,7 +688,7 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 4. COURSE HIGHLIGHTS (DISPLAY TWO CARDS IN ONE LINE)      */}
+        {/* 4. COURSE HIGHLIGHTS & BENEFITS                             */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
@@ -815,7 +702,6 @@ export default function DataEngineeringCoursePage() {
               </h2>
             </div>
 
-            {/* REQUIREMENT 4: Display TWO CARDS IN ONE LINE for Mobile */}
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-8">
               
               <MagicCard className="rounded-xl sm:rounded-none" glowFrom="#7C3AED" glowTo="#E01E6A">
@@ -829,9 +715,9 @@ export default function DataEngineeringCoursePage() {
 
               <MagicCard className="rounded-xl sm:rounded-none" glowFrom="#4F46E5" glowTo="#7C3AED">
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
-                  <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">Cloud Lab Clusters</h3>
+                  <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">GenAI &amp; Vector Labs</h3>
                   <p className="text-[10px] sm:text-sm text-slate-600 dark:text-slate-300 leading-snug sm:leading-relaxed">
-                    Databricks, AWS Redshift &amp; Snowflake sandboxes.
+                    Pinecone, Databricks &amp; Azure Synapse sandboxes.
                   </p>
                 </div>
               </MagicCard>
@@ -840,7 +726,7 @@ export default function DataEngineeringCoursePage() {
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
                   <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">4 Capstone ETLs</h3>
                   <p className="text-[10px] sm:text-sm text-slate-600 dark:text-slate-300 leading-snug sm:leading-relaxed">
-                    Build production pipelines for e-commerce &amp; finance.
+                    Build RAG pipelines &amp; real-time event engines.
                   </p>
                 </div>
               </MagicCard>
@@ -867,7 +753,7 @@ export default function DataEngineeringCoursePage() {
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
                   <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">ISO Certification</h3>
                   <p className="text-[10px] sm:text-sm text-slate-600 dark:text-slate-300 leading-snug sm:leading-relaxed">
-                    Industry-accredited Data Engineering diploma.
+                    Industry-accredited Data &amp; AI Engineering diploma.
                   </p>
                 </div>
               </MagicCard>
@@ -878,7 +764,7 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 5. TOOLS & TECHNOLOGIES STACK SECTION (MAKE SMALL ON MOBILE) */}
+        {/* 5. TOOLS & TECHNOLOGIES STACK SECTION                     */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
@@ -909,7 +795,6 @@ export default function DataEngineeringCoursePage() {
               ))}
             </div>
 
-            {/* REQUIREMENT 5: MAKE TECH STACK COMPACT/SMALL ON MOBILE VIEW (3 Cols) */}
             <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
               {filteredTech.map((item) => (
                 <motion.div
@@ -930,7 +815,7 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 6. HANDS-ON CAPSTONE PROJECTS SHOWCASE (SCROLLBAR FOR MOBILE) */}
+        {/* 6. HANDS-ON CAPSTONE PROJECTS SHOWCASE                    */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
@@ -944,7 +829,6 @@ export default function DataEngineeringCoursePage() {
               </h2>
             </div>
 
-            {/* REQUIREMENT 6: ADD SCROLL BAR FOR DISPLAY THIS PROJECT ON MOBILE */}
             <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-8 pb-4 scrollbar-thin scrollbar-thumb-purple-500/50 md:grid md:grid-cols-3">
               {capstoneProjects.map((p) => (
                 <div key={p.id} className="min-w-[260px] sm:min-w-[320px] md:min-w-0 flex-1 snap-center bg-slate-50 dark:bg-slate-900 p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3 flex flex-col justify-between">
@@ -982,7 +866,7 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 7. PLACEMENT SUPPORT JOURNEY (FIT CLEANLY IN VIEW)         */}
+        {/* 7. PLACEMENT SUPPORT JOURNEY                               */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
@@ -996,7 +880,6 @@ export default function DataEngineeringCoursePage() {
               </h2>
             </div>
 
-            {/* REQUIREMENT 7: 2-COLUMN GRID ON MOBILE VIEW FOR CLEAN FIT */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
               
               <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
@@ -1005,7 +888,7 @@ export default function DataEngineeringCoursePage() {
                 </div>
                 <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">ATS Resume Crafting</h3>
                 <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
-                  Tailored PySpark &amp; Databricks keywords for ATS filters.
+                  Tailored PySpark, Databricks &amp; GenAI keywords for ATS filters.
                 </p>
               </div>
 
@@ -1015,7 +898,7 @@ export default function DataEngineeringCoursePage() {
                 </div>
                 <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">1-on-1 Tech Mocks</h3>
                 <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
-                  Simulated SQL coding &amp; system design architecture rounds.
+                  Simulated SQL coding &amp; RAG system design architecture rounds.
                 </p>
               </div>
 
@@ -1035,7 +918,7 @@ export default function DataEngineeringCoursePage() {
                 </div>
                 <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">Salary Negotiation</h3>
                 <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
-                  Guidance to negotiate maximum compensation packages.
+                  Expert guidance to land maximum offer packages.
                 </p>
               </div>
 
@@ -1045,64 +928,127 @@ export default function DataEngineeringCoursePage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 8. STUDENT SUCCESS STORIES (AUTOMATIC TIMED ROTATION)     */}
+        {/* 8. FACULTY / MENTORS SECTION                               */}
         {/* ========================================================= */}
-        <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
-          <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+        <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
             
-            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
-                REAL TRANSCRIPTIONS
+                LEARN FROM PRACTITIONERS
               </span>
               <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                Student <span className="jvm-gradient-text">Success Stories</span>
+                Industry <span className="jvm-gradient-text">Architect Mentors</span>
               </h2>
             </div>
 
-            {/* REQUIREMENT 8: AUTOMATIC TIMED SLIDE SWITCHER WITHOUT SCROLLBAR */}
-            <div className="relative">
-              <div className="bg-white dark:bg-slate-900 p-5 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-4 transition-all duration-500">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
-                    {testimonials[activeTestimonialIndex].hike}
-                  </span>
-                  <div className="flex text-amber-400">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+              {mentors.map((m) => (
+                <div key={m.name} className="p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-md flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-purple-500/40 shrink-0">
+                    <Image src={m.image} alt={m.name} fill className="object-cover" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <h3 className="text-base sm:text-xl font-extrabold text-slate-900 dark:text-white">{m.name}</h3>
+                    <p className="text-xs font-bold text-purple-600 dark:text-purple-400">{m.role}</p>
+                    <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">{m.experience} • {m.company}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal pt-1">{m.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 9. TESTIMONIALS SLIDER SECTION                             */}
+        {/* ========================================================= */}
+        <section className="py-8 sm:py-20 bg-gradient-to-b from-[#F5F3FF] via-white to-[#FAFAFC] dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+              ALUMNI REVIEWS
+            </span>
+
+            <div className="relative min-h-[160px] sm:min-h-[180px] flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTestimonialIndex}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-3 p-6 rounded-3xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xl"
+                >
+                  <div className="flex items-center justify-center gap-1 text-amber-400">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                      <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                </div>
 
-                <p className="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                  &quot;{testimonials[activeTestimonialIndex].review}&quot;
-                </p>
+                  <p className="text-xs sm:text-base italic text-slate-700 dark:text-slate-200 max-w-2xl mx-auto leading-relaxed">
+                    &quot;{testimonials[activeTestimonialIndex].review}&quot;
+                  </p>
 
-                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-purple-200">
-                    <Image src={testimonials[activeTestimonialIndex].avatar} alt={testimonials[activeTestimonialIndex].name} fill className="object-cover" />
+                  <div className="pt-2">
+                    <h4 className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">
+                      {testimonials[activeTestimonialIndex].name}
+                    </h4>
+                    <span className="text-[11px] font-bold text-purple-600 dark:text-purple-400">
+                      {testimonials[activeTestimonialIndex].role} ({testimonials[activeTestimonialIndex].hike})
+                    </span>
                   </div>
-                  <div>
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">{testimonials[activeTestimonialIndex].name}</div>
-                    <div className="text-[11px] sm:text-xs font-semibold text-purple-600 dark:text-purple-400">{testimonials[activeTestimonialIndex].role}</div>
-                    <div className="text-[10px] text-slate-400">{testimonials[activeTestimonialIndex].company}</div>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-              {/* Indicator Dots */}
-              <div className="flex items-center justify-center gap-2 mt-4">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveTestimonialIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      activeTestimonialIndex === idx
-                        ? "w-6 jvm-gradient-bg"
-                        : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                    }`}
-                  />
-                ))}
-              </div>
+            {/* Indicator Dots */}
+            <div className="flex items-center justify-center gap-2 pt-2">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTestimonialIndex(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                    activeTestimonialIndex === idx ? "bg-purple-600 w-6" : "bg-slate-300 dark:bg-slate-700"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 10. FINAL BOTTOM CTA BANNER SECTION                        */}
+        {/* ========================================================= */}
+        <section className="py-12 sm:py-20 bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white relative overflow-hidden border-t border-purple-500/30">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 relative z-10">
+            
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Ready to Master Data Engineering &amp; Generative AI in Pune?
+            </h2>
+
+            <p className="text-xs sm:text-base text-purple-200 max-w-2xl mx-auto leading-relaxed">
+              Limited seats per batch to ensure personalized 1:1 code reviews and direct placement assistance. Reserve your seat today.
+            </p>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={() => openEnrollModal("Bottom Final CTA Enrollment")}
+                className="w-full sm:w-auto px-7 py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-xl hover:scale-[1.02] transition-transform cursor-pointer"
+              >
+                Enroll Now in Upcoming Batch
+              </button>
+
+              <button
+                onClick={() => openEnrollModal("Bottom Final Prospectus Call")}
+                className="w-full sm:w-auto px-7 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold text-xs sm:text-sm hover:bg-white/20 transition-colors cursor-pointer flex items-center justify-center gap-2"
+              >
+                <PhoneCall className="w-4 h-4 text-purple-300" />
+                <span>Talk to Admission Counselor</span>
+              </button>
             </div>
 
           </div>
@@ -1110,14 +1056,14 @@ export default function DataEngineeringCoursePage() {
 
       </main>
 
-      {/* Global Lead Enquiry Modal */}
-      <LeadEnquiryModal 
+      <Footer />
+
+      {/* Enrollment Lead Enquiry Modal */}
+      <LeadEnquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         courseTitle={modalTitle}
       />
-
-      <Footer />
     </div>
   );
 }

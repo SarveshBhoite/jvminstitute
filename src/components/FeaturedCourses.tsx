@@ -14,17 +14,17 @@ import {
 
 const coursesData = [
   {
-    id: "python-data-analysis",
-    slug: "learn-python-for-data-analysis",
-    title: "Python for Data Analysis & SQL",
-    badge: "Most Popular",
-    description: "Master Python programming, Pandas, NumPy, Data Cleaning, Seaborn visualizations & Advanced SQL queries.",
-    duration: "2 Months",
+    id: "data-engineering-genai",
+    slug: "data-engineering-with-genai-course-in-pune",
+    title: "Data Engineering with GenAI",
+    badge: "Next-Gen Track",
+    description: "Next-generation Data Engineering with PySpark, Databricks, GenAI RAG Pipelines, Vector DBs, Airflow & Azure.",
+    duration: "6 Months",
     mode: "Offline & Online Live",
-    icon: Code2,
-    isTopRanked: false,
+    icon: BrainCircuit,
+    isTopRanked: true,
     
-    highlights: ["Pandas & NumPy Deep Dive", "Real-world EDA Projects", "Interview Questions Prep"],
+    highlights: ["GenAI RAG & Vector DB Labs", "PySpark & Databricks Medallion", "100% Placement Support"],
     glowClass: "hover:border-[#7C248C] hover:shadow-[0_0_35px_rgba(124,36,140,0.35)] dark:hover:shadow-[0_0_40px_rgba(147,51,234,0.4)]",
   },
   {
@@ -42,17 +42,17 @@ const coursesData = [
     glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
   },
   {
-    id: "big-data-spark",
-    slug: "our-courses",
-    title: "PySpark & Big Data Ecosystem",
-    badge: "Advanced Certification",
-    description: "Deep dive into Distributed Computing, Apache Spark Architecture, HDFS, Hive & Cloud Data Lakes.",
-    duration: "2.5 Months",
-    mode: "Weekend Special",
-    icon: BrainCircuit,
+    id: "python-data-analysis",
+    slug: "learn-python-for-data-analysis",
+    title: "Python for Data Analysis & SQL",
+    badge: "Most Popular",
+    description: "Master Python programming, Pandas, NumPy, Data Cleaning, Seaborn visualizations & Advanced SQL queries.",
+    duration: "2 Months",
+    mode: "Offline & Online Live",
+    icon: Code2,
     isTopRanked: false,
     
-    highlights: ["Spark Performance Tuning", "Real-time Streaming", "AWS Cloud Integration"],
+    highlights: ["Pandas & NumPy Deep Dive", "Real-world EDA Projects", "Interview Questions Prep"],
     glowClass: "hover:border-[#1E2B88] hover:shadow-[0_0_35px_rgba(30,43,136,0.35)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.4)]",
   },
 ];
