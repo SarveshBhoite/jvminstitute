@@ -4,6 +4,9 @@ import { blogPostSchema } from "@/validators/blogValidator";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
+
 // GET /api/admin/blogs - List all blog posts
 export async function GET() {
   try {

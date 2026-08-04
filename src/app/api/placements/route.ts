@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
+
 // GET /api/placements - Retrieve student placements from PostgreSQL
 export async function GET() {
   try {

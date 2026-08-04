@@ -108,9 +108,7 @@ export default function Navbar() {
                 className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   pathname.includes("/courses") || 
                   pathname === "/data-engineering-course-in-pune" ||
-                  pathname === "/learn-python-for-data-analysis" ||
-                  pathname === "/why-should-i-learn-python-for-data-analysis" ||
-                  pathname === "/how-to-read-xml-files-into-python"
+                  pathname === "/our-courses"
                     ? "bg-white dark:bg-slate-700 text-[#1E2B88] dark:text-purple-300 shadow-xs font-bold"
                     : "text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:text-[#1E2B88] dark:hover:text-white"
                 }`}
@@ -211,7 +209,6 @@ export default function Navbar() {
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas read_xml & ElementTree tutorial</p>
                     </div>
                   </Link>
-
                   <div className="pt-1 border-t border-slate-100 dark:border-slate-800">
                     <Link 
                       href="/our-courses" 
@@ -259,6 +256,30 @@ export default function Navbar() {
               }`}
             >
               <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" /> Notes & PDFs
+            </Link>
+
+            {/* About Us */}
+            <Link 
+              href="/about-us" 
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/about-us" 
+                  ? "bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-xs font-bold" 
+                  : "text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:text-[#1E2B88] dark:hover:text-white"
+              }`}
+            >
+              About Us
+            </Link>
+
+            {/* Contact Us */}
+            <Link 
+              href="/contact-us" 
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
+                pathname === "/contact-us" 
+                  ? "bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-300 shadow-xs font-bold" 
+                  : "text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 hover:text-[#1E2B88] dark:hover:text-white"
+              }`}
+            >
+              Contact Us
             </Link>
           </nav>
 
@@ -343,30 +364,6 @@ export default function Navbar() {
             </Link>
 
             <Link 
-              href="/learn-python-for-data-analysis" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
-            >
-              Learn Python for Data Analysis
-            </Link>
-
-            <Link 
-              href="/why-should-i-learn-python-for-data-analysis" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
-            >
-              Why Learn Python Guide
-            </Link>
-
-            <Link 
-              href="/how-to-read-xml-files-into-python" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2 rounded-lg text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
-            >
-              Read XML Files into Python
-            </Link>
-
-            <Link 
               href="/our-courses" 
               onClick={() => setMobileMenuOpen(false)}
               className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2 border-t border-slate-100 dark:border-slate-800 pt-3"
@@ -414,6 +411,22 @@ export default function Navbar() {
               <Layers className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Technical Blog
             </Link>
 
+            <Link 
+              href="/about-us" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              About Us
+            </Link>
+
+            <Link 
+              href="/contact-us" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
+            >
+              Contact Us
+            </Link>
+
             <div className="pt-2 grid grid-cols-2 gap-2">
               <Link 
                 href="/download-brochure" 
@@ -432,6 +445,7 @@ export default function Navbar() {
             </div>
           </div>
         )}
+
       </header>
     </>
   );

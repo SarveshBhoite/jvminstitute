@@ -3,6 +3,9 @@ import prisma from "@/lib/prisma";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
+
 // GET /api/blogs - Get all published blog posts for public view
 export async function GET(req: NextRequest) {
   try {

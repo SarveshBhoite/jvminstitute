@@ -3,11 +3,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
 import { 
   CheckCircle2, 
   ArrowRight, 
   Star, 
   ShieldCheck, 
+  Sparkles,
+  Award,
+  Video,
+  Download,
+  PhoneCall,
 } from "lucide-react";
 
 const heroImages = [
@@ -25,6 +31,12 @@ export default function HeroSection() {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const [activePoint, setActivePoint] = useState<number | null>(null);
+
+  const handlePointClick = (index: number) => {
+    setActivePoint((prev) => (prev === index ? null : index));
+  };
 
   return (
     <section className="relative overflow-hidden bg-slate-50 dark:bg-[#0B0F19] transition-colors duration-300">
@@ -83,10 +95,10 @@ export default function HeroSection() {
       </div>
 
       {/* Main Container */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-5 sm:py-8 lg:py-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-4 sm:py-6 lg:py-6">
         
         {/* MOBILE FEATURED IMAGE SLIDESHOW HEADER (Visible on Mobile & Tablet before text content) */}
-        <div className="block lg:hidden mb-5 relative w-full h-[200px] xs:h-[240px] sm:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
+        <div className="block lg:hidden mb-4 relative w-full h-[180px] xs:h-[210px] sm:h-[260px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
           {heroImages.map((img, idx) => (
             <div
               key={img.src}
@@ -109,14 +121,14 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 items-center">
           
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
-          <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
+          <div className="lg:col-span-6 space-y-3.5 text-center lg:text-left">
             
             {/* Top Rating & ISO Badge */}
             <div className="flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1.5 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
                 <span className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400" />
@@ -134,49 +146,67 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15] tracking-tight">
-              Master <span className="jvm-gradient-text">Data Engineering</span> &amp; High-Paying Tech Skills in Pune
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-extrabold font-heading text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.15] tracking-tight">
+              Become an Industry-Ready <span className="jvm-gradient-text">Data Engineer &amp; AI Professional</span> in Pune
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
-              Transform your IT career with live industry projects, real ETL pipelines, Databricks &amp; PySpark mastery, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> from Pune&apos;s most trusted institute.
+            <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
+              Master Data Engineering, Generative AI, Machine Learning, Cloud AI, and Advanced AI technologies through industry-led training, live projects, real business case studies, and comprehensive <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>. Whether you are a fresher, working professional, or engineering, BSC, MBS, or pharmacist student, JVM Institute helps you build practical skills that leading companies expect from today&apos;s technology professionals.
             </p>
 
             {/* Key Value Points Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left pt-1">
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Real PySpark &amp; Databricks Labs</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">1:1 Mock Interviews &amp; Resume Prep</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Weekend &amp; Weekday Batches</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-white dark:bg-slate-800/90 p-2.5 sm:p-3 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Offline Campus &amp; Live Online</span>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2 text-left pt-0.5">
+              {[
+                "Live Instructor-Led Classes",
+                "450+ Learning Hours",
+                "15+ Industry Projects",
+                "Real-Time Case Studies",
+                "1:1 Mentorship",
+                "Resume Building",
+                "LinkedIn Profile Optimization",
+                "GitHub Portfolio",
+                "Mock Interviews",
+                "100% Placement Assistance",
+              ].map((point, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 p-2 rounded-lg border bg-white dark:bg-slate-800/90 border-slate-200/80 dark:border-slate-700/80 shadow-xs"
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
+                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">
+                    {point}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            {/* CTAs Button Group */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 pt-2">
-              <Link 
-                href="/enroll"
-                className="w-full sm:w-auto jvm-gradient-bg text-white font-extrabold px-8 py-3.5 rounded-2xl text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 group cursor-pointer"
+
+            {/* CTAs Button Group - 3 Action Buttons in JVM Website Theme */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-2 sm:gap-2.5 pt-3">
+              <button 
+                onClick={() => openEnrollModal("Book a Free Demo")}
+                className="flex-1 sm:flex-initial jvm-gradient-bg text-white font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 group cursor-pointer whitespace-nowrap border border-white/20"
               >
-                Enroll Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <Link
-                href="/our-courses"
-                className="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold px-6 py-3.5 rounded-2xl text-sm border border-slate-200/90 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2 shadow-xs"
+                <Video className="w-4 h-4 shrink-0 text-white" />
+                <span>Book a Free Demo</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
+              </button>
+
+              <button
+                onClick={() => openEnrollModal("Download Course Brochure")}
+                className="flex-1 sm:flex-initial bg-indigo-50/90 hover:bg-indigo-100/90 dark:bg-slate-800 dark:hover:bg-slate-700 text-[#1E2B88] dark:text-slate-100 font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm border border-[#1E2B88]/25 dark:border-slate-700 transition-all shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer group whitespace-nowrap"
               >
-                Explore All Courses
-              </Link>
+                <Download className="w-4 h-4 text-[#E01E6A] group-hover:translate-y-0.5 transition-transform shrink-0" />
+                <span>Download Brochure</span>
+              </button>
+
+              <button
+                onClick={() => openEnrollModal("Talk to a Career Counselor")}
+                className="flex-1 sm:flex-initial bg-gradient-to-r from-[#E01E6A] to-[#b31454] hover:from-[#c4155b] hover:to-[#9e1049] text-white font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer group whitespace-nowrap border border-white/10"
+              >
+                <PhoneCall className="w-4 h-4 group-hover:rotate-12 transition-transform shrink-0 text-white" />
+                <span>Talk to Counselor</span>
+              </button>
             </div>
 
           </div>
@@ -187,6 +217,9 @@ export default function HeroSection() {
         </div>
 
       </div>
+
+      {/* Global Lead Enquiry Modal for CTAs */}
+      <LeadEnquiryModal />
     </section>
   );
 }

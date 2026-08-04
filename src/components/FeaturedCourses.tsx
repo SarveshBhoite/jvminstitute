@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
 import { 
   Database, 
   Code2, 
@@ -9,37 +10,48 @@ import {
   Sparkles, 
   ArrowRight, 
   Clock, 
-  CheckCircle
+  CheckCircle,
+  Cpu
 } from "lucide-react";
 
 const coursesData = [
   {
     id: "data-engineering-genai",
     slug: "data-engineering-with-genai-course-in-pune",
-    title: "Data Engineering with GenAI",
-    badge: "Next-Gen Track",
-    description: "Next-generation Data Engineering with PySpark, Databricks, GenAI RAG Pipelines, Vector DBs, Airflow & Azure.",
+    title: "Data Engineering with Generative AI",
+    badge: "Flagship Program",
+    description: "Combine modern Data Engineering with Large Language Models, AI-powered automation, Retrieval-Augmented Generation (RAG), AI Data Pipelines, Vector Databases, Prompt Engineering, and Intelligent Analytics.",
     duration: "6 Months",
-    mode: "Offline & Online Live",
-    icon: BrainCircuit,
-    isTopRanked: true,
-    
-    highlights: ["GenAI RAG & Vector DB Labs", "PySpark & Databricks Medallion", "100% Placement Support"],
-    glowClass: "hover:border-[#7C248C] hover:shadow-[0_0_35px_rgba(124,36,140,0.35)] dark:hover:shadow-[0_0_40px_rgba(147,51,234,0.4)]",
-  },
-  {
-    id: "data-engineering",
-    slug: "data-engineering-course-in-pune",
-    title: "Data Engineering Master Program",
-    badge: "Top Ranked in Pune",
-    description: "End-to-end Data Pipeline engineering with PySpark, Databricks, AWS Glue, Snowflake, SQL & Airflow.",
-    duration: "4 Months",
-    mode: "Offline & Online Live",
+    mode: "Offline & Online Mode",
     icon: Database,
     isTopRanked: true,
-   
-    highlights: ["PySpark & Databricks Labs", "4 Live Industry Capstone Projects", "100% Placement Assistance"],
+    highlights: [
+      "Roadmap: SQL → Python → Spark → Databricks → Airflow → GCP → Azure → Gen AI",
+      "Build AI-powered data pipelines, enterprise copilots & intelligent data platforms",
+      "Gain hands-on experience with OpenAI, LangChain, MCP, AI Agents & Azure AI",
+      "Work on 20+ enterprise projects covering ETL pipelines & Lakehouse architecture",
+    ],
     glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
+  },
+  {
+    id: "data-engineering-master",
+    slug: "data-engineering-course-in-pune",
+    title: "Data Engineering Course",
+    badge: "Top Ranked",
+    description: "Master SQL, Python, Linux, Hadoop, Pyspark, Spark, Airflow, Databricks, GCP, Azure, AWS, ETL Pipelines, Data Warehousing, and Big Data technologies through practical implementation.",
+    duration: "6 Months",
+    mode: "Offline & Online",
+    icon: Database,
+    isTopRanked: true,
+    highlights: [
+      "Industry-Ready Data Engineering Curriculum",
+      "Spark, PySpark & Airflow Hands-on",
+      "AWS, Azure & GCP Cloud Training",
+      "Live ETL & Big Data Projects",
+      "Databricks & Data Warehousing",
+      "Placement & Interview Preparation",
+    ],
+    glowClass: "hover:border-[#7C248C] hover:shadow-[0_0_35px_rgba(124,36,140,0.35)] dark:hover:shadow-[0_0_40px_rgba(147,51,234,0.4)]",
   },
   {
     id: "python-data-analysis",
@@ -51,9 +63,89 @@ const coursesData = [
     mode: "Offline & Online Live",
     icon: Code2,
     isTopRanked: false,
-    
     highlights: ["Pandas & NumPy Deep Dive", "Real-world EDA Projects", "Interview Questions Prep"],
     glowClass: "hover:border-[#1E2B88] hover:shadow-[0_0_35px_rgba(30,43,136,0.35)] dark:hover:shadow-[0_0_40px_rgba(99,102,241,0.4)]",
+  },
+  {
+    id: "generative-ai",
+    slug: "our-courses",
+    title: "Generative AI",
+    badge: "Next-Gen AI",
+    description: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    icon: Sparkles,
+    isTopRanked: false,
+    highlights: [
+      "End-to-End Generative AI Learning Path",
+      "Build AI Agents with LangChain & CrewAI",
+      "ChatGPT, OpenAI APIs & Prompt Engineering Hands-on",
+      "RAG, Vector Databases & Enterprise AI Solutions",
+      "Develop Real-World GenAI Applications & Capstone Projects",
+      "Portfolio Development & Placement Support",
+    ],
+    glowClass: "hover:border-purple-500 hover:shadow-[0_0_35px_rgba(147,51,234,0.35)] dark:hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]",
+  },
+  {
+    id: "advanced-ai-ml",
+    slug: "our-courses",
+    title: "Advanced AI & Machine Learning",
+    badge: "Advanced Specialization",
+    description: "Learn Deep Learning, Neural Networks, Computer Vision, Natural Language Processing (NLP), Reinforcement Learning, MLOps, Model Deployment, and AI System Design.",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    icon: BrainCircuit,
+    isTopRanked: false,
+    highlights: [
+      "Comprehensive AI & Machine Learning Curriculum",
+      "Deep Learning with TensorFlow & PyTorch",
+      "Computer Vision & NLP Hands-on Projects",
+      "MLOps, Model Deployment & AI System Design",
+      "Real-World AI Applications & Capstone Projects",
+      "Placement Assistance & Interview Preparation",
+    ],
+    glowClass: "hover:border-indigo-500 hover:shadow-[0_0_35px_rgba(99,102,241,0.35)]",
+  },
+  {
+    id: "cloud-ai",
+    slug: "our-courses",
+    title: "Cloud AI",
+    badge: "Multi-Cloud AI",
+    description: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    icon: Cpu,
+    isTopRanked: false,
+    highlights: [
+      "Multi-Cloud AI Training (AWS, Azure & GCP)",
+      "Docker, Kubernetes & Cloud Infrastructure Hands-on",
+      "Build & Deploy Scalable AI/ML Applications",
+      "MLOps, CI/CD & Production ML Pipelines",
+      "Real-Time Cloud AI Projects & Enterprise Use Cases",
+      "Placement Assistance & Cloud Certification Guidance",
+    ],
+    glowClass: "hover:border-sky-500 hover:shadow-[0_0_35px_rgba(14,165,233,0.35)]",
+  },
+  {
+    id: "basic-ai-ml",
+    slug: "our-courses",
+    title: "Basic AI & ML",
+    badge: "Beginner Friendly",
+    description: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    icon: Code2,
+    isTopRanked: false,
+    highlights: [
+      "Beginner-Friendly AI & Machine Learning Roadmap",
+      "Python Programming & Data Analysis from Scratch",
+      "Statistics, EDA & Data Visualization Hands-on",
+      "Machine Learning Algorithms with Practical Projects",
+      "Real-World Datasets & Business Case Studies",
+      "Career Guidance, Resume Building & Placement Support",
+    ],
+    glowClass: "hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.35)]",
+>>>>>>> b5a0508686d334c40ac8f6f7d03b41cd33f7d6f5
   },
 ];
 
@@ -82,16 +174,16 @@ export default function FeaturedCourses() {
           </p>
         </div>
 
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        {/* Courses Grid - 6 Courses in 3 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {coursesData.map((course) => {
             const IconComponent = course.icon;
             return (
               <div 
                 key={course.id}
-                className={`relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-5 sm:p-8 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
+                className={`relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-5 sm:p-7 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
                   course.isTopRanked 
-                    ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-2xl shadow-purple-900/20 dark:shadow-purple-950/50 ring-2 sm:ring-4 ring-purple-100 dark:ring-purple-950/40 md:-translate-y-2" 
+                    ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-2xl shadow-purple-900/20 dark:shadow-purple-950/50 ring-2 sm:ring-4 ring-purple-100 dark:ring-purple-950/40" 
                     : "border border-slate-200/90 dark:border-slate-800 shadow-md"
                 } ${course.glowClass}`}
               >
@@ -103,25 +195,25 @@ export default function FeaturedCourses() {
                   </div>
                 )}
 
-                <div className="space-y-5 sm:space-y-6 pt-2">
+                <div className="space-y-4 sm:space-y-5 pt-2">
                   {/* Icon & Title */}
                   <div className="flex items-center gap-3.5 sm:gap-4">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 border border-purple-100 dark:border-slate-700 flex items-center justify-center text-[#1E2B88] dark:text-purple-300 shrink-0">
                       <IconComponent className="w-6 h-6 sm:w-7 sm:h-7" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-white leading-snug">
+                      <h3 className="text-base sm:text-lg font-bold font-heading text-slate-900 dark:text-white leading-snug">
                         {course.title}
                       </h3>
                       <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 flex-wrap">
-                        <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {course.duration}</span>
+                        <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-slate-400" /> {course.duration}</span>
                         <span>•</span>
                         <span>{course.mode}</span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
                     {course.description}
                   </p>
 
@@ -129,24 +221,12 @@ export default function FeaturedCourses() {
                   <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
                     <p className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">Course Highlights:</p>
                     {course.highlights.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                        <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
-                        <span>{item}</span>
+                      <div key={idx} className="flex items-start gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                        <CheckCircle className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
-
-                  {/* Fee Options Box 
-                  <div className="bg-slate-50 dark:bg-slate-800/60 p-3 sm:p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-between text-xs font-bold text-slate-800 dark:text-slate-200">
-                    <div>
-                      <span className="text-slate-400 dark:text-slate-400 font-medium block text-[10px] sm:text-[11px]">Full Course Fee:</span>
-                      <span className="text-sm sm:text-base font-extrabold text-[#1E2B88] dark:text-purple-300">{course.fullFee}</span>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-slate-400 dark:text-slate-400 font-medium block text-[10px] sm:text-[11px]">Book Advance Seat:</span>
-                      <span className="text-xs sm:text-sm font-bold text-[#E01E6A] dark:text-pink-400">{course.advanceFee}</span>
-                    </div>
-                  </div> */}
                 </div>
 
                 {/* Card CTA Links */}
@@ -158,12 +238,12 @@ export default function FeaturedCourses() {
                     View Syllabus
                   </Link>
 
-                  <Link 
-                    href="/enroll"
+                  <button 
+                    onClick={() => openEnrollModal(course.title)}
                     className="w-full jvm-gradient-bg text-center py-2.5 sm:py-3 px-2 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer"
                   >
                     Enroll Now <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </button>
                 </div>
 
               </div>
@@ -183,6 +263,8 @@ export default function FeaturedCourses() {
         </div>
 
       </div>
+
+      <LeadEnquiryModal />
     </section>
   );
 }
