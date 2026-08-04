@@ -113,19 +113,19 @@ model EventRegistration {
 }
 
 model Placement {
-  id         String   @id @default(cuid())
-  name       String
-  domain     String
-  placedRole String
-  company    String
-  package    String
-  hike       String   @default("Direct Placement")
-  skills     String
-  image      String   @default("/place1.png")
-  category   String   @default("data_engineering")
-  isFeatured Boolean  @default(true)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id          String   @id @default(cuid())
+  name        String
+  domain      String
+  placedRole  String
+  company     String
+  package     String
+  skills      String
+  image       String   @default("/place1.png")
+  category    String   @default("data_engineering")
+  isFeatured  Boolean  @default(true)
+  testimonial String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("placements")
 }

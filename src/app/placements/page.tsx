@@ -28,11 +28,11 @@ import {
 
 // Auto-rotating hero circle student images
 const HeroCircleImages = [
-  { src: "/place3.jpeg", name: "Rahul Deshmukh", role: "Cloud Engineer", company: "Cognizant", pkg: "7.8 LPA" },
-  { src: "/place1.png", name: "Siddharth Bhoite", role: "Data Engineer", company: "TCS", pkg: "8.5 LPA" },
-  { src: "/place2.png", name: "Priya Sharma", role: "Big Data Engineer", company: "Infosys", pkg: "10.2 LPA" },
-  { src: "/students1.jpeg", name: "Ananya Patil", role: "Data Analyst", company: "Capgemini", pkg: "7.2 LPA" },
-  { src: "/students2.jpeg", name: "Snehal Shinde", role: "Junior Data Engineer", company: "LTIMindtree", pkg: "9.0 LPA" }
+  { src: "/placements/placement_5_ajinkya.jpeg", name: "Ajinkya", role: "Senior Data Engineer", company: "LTI Mindtree", pkg: "16 LPA" },
+  { src: "/placements/placement_3_prathamesh.png", name: "Prathamesh", role: "Data Engineer", company: "Zorba Consulting", pkg: "13 LPA" },
+  { src: "/placements/placement_1_priya.png", name: "Priya", role: "Senior Data Engineer", company: "Cymetrix", pkg: "11.54 LPA" },
+  { src: "/placements/placement_2_shweta.png", name: "Shweta", role: "Software Engineer", company: "Persistent", pkg: "12.5 LPA" },
+  { src: "/placements/placement_7_satyajeet.png", name: "Satyajeet", role: "Lead Software Engineer", company: "Persistent", pkg: "13.20 LPA" }
 ];
 
 // All Directory Placements filterable by IT Domain / Tech Specialization
@@ -47,153 +47,6 @@ const Categories = [
   { id: "cloud_snowflake", label: "Cloud & Snowflake" }
 ];
 
-const AllPlacements = [
-  {
-    id: 1,
-    category: "data_engineering",
-    name: "Siddharth Bhoite",
-    domain: "Data Engineering",
-    placedRole: "Associate Data Engineer",
-    company: "TCS",
-    package: "8.5 LPA",
-    hike: "140% Hike",
-    image: "/place1.png",
-    skills: "PySpark, Databricks, SQL"
-  },
-  {
-    id: 2,
-    category: "pyspark_bigdata",
-    name: "Priya Sharma",
-    domain: "PySpark & Big Data",
-    placedRole: "Big Data PySpark Engineer",
-    company: "Infosys",
-    package: "10.2 LPA",
-    hike: "110% Hike",
-    image: "/place2.png",
-    skills: "AWS Glue, PySpark, Airflow"
-  },
-  {
-    id: 3,
-    category: "cloud_snowflake",
-    name: "Rahul Deshmukh",
-    domain: "Cloud & Snowflake",
-    placedRole: "Cloud Data Engineer",
-    company: "Cognizant",
-    package: "7.8 LPA",
-    hike: "Direct Campus",
-    image: "/place3.jpeg",
-    skills: "Snowflake, SQL, Databricks"
-  },
-  {
-    id: 4,
-    category: "analytics_etl",
-    name: "Ananya Patil",
-    domain: "Data Analytics & ETL",
-    placedRole: "Data Analyst",
-    company: "Capgemini",
-    package: "7.2 LPA",
-    hike: "120% Hike",
-    image: "/students1.jpeg",
-    skills: "Python, SQL, Power BI"
-  },
-  {
-    id: 5,
-    category: "analytics_etl",
-    name: "Vikram Kulkarni",
-    domain: "Data Analytics & ETL",
-    placedRole: "ETL Developer",
-    company: "Wipro",
-    package: "8.0 LPA",
-    hike: "135% Hike",
-    image: "/students2.jpeg",
-    skills: "Airflow, Databricks, PySpark"
-  },
-  {
-    id: 6,
-    category: "data_engineering",
-    name: "Snehal Shinde",
-    domain: "Data Engineering",
-    placedRole: "Junior Data Engineer",
-    company: "LTIMindtree",
-    package: "9.0 LPA",
-    hike: "115% Hike",
-    image: "/students2.jpeg",
-    skills: "PySpark, SQL, AWS"
-  },
-  {
-    id: 7,
-    category: "pyspark_bigdata",
-    name: "Durvesh Bhagate",
-    domain: "PySpark & Big Data",
-    placedRole: "Data Pipeline Engineer",
-    company: "Tech Mahindra",
-    package: "8.2 LPA",
-    hike: "125% Hike",
-    image: "/place1.png",
-    skills: "PySpark, Hadoop, Hive"
-  },
-  {
-    id: 8,
-    category: "data_engineering",
-    name: "Alwin Raj",
-    domain: "Data Engineering",
-    placedRole: "Data Engineer Intern",
-    company: "Accenture",
-    package: "7.5 LPA",
-    hike: "100% Hike",
-    image: "/place3.jpeg",
-    skills: "Python, Databricks, SQL"
-  },
-  {
-    id: 9,
-    category: "pyspark_bigdata",
-    name: "Nikhil Joshi",
-    domain: "PySpark & Big Data",
-    placedRole: "Junior Data Engineer",
-    company: "Persistent Systems",
-    package: "8.8 LPA",
-    hike: "150% Hike",
-    image: "/place1.png",
-    skills: "PySpark, AWS Glue, Airflow"
-  },
-  {
-    id: 10,
-    category: "data_science",
-    name: "Pooja Mehta",
-    domain: "Data Science",
-    placedRole: "Data Scientist",
-    company: "Deloitte",
-    package: "9.2 LPA",
-    hike: "130% Hike",
-    image: "/place2.png",
-    skills: "Python, Machine Learning, Statistics"
-  },
-  {
-    id: 11,
-    category: "ai_ml",
-    name: "Tanmay Solanki",
-    domain: "AI & Machine Learning",
-    placedRole: "AI / ML Engineer",
-    company: "Microsoft",
-    package: "14.5 LPA",
-    hike: "160% Hike",
-    image: "/place3.jpeg",
-    skills: "Scikit-Learn, MLOps, PyTorch"
-  },
-  {
-    id: 12,
-    category: "deep_learning",
-    name: "Rohan Jagtap",
-    domain: "Deep Learning (DL)",
-    placedRole: "Computer Vision & DL Specialist",
-    company: "NVIDIA / Zensar",
-    package: "12.8 LPA",
-    hike: "140% Hike",
-    image: "/students1.jpeg",
-    skills: "TensorFlow, OpenCV, CNN / Transformers"
-  }
-];
-
 // Placement FAQs Data
 const PlacementFaqs = [
   {
@@ -204,7 +57,7 @@ const PlacementFaqs = [
   {
     id: 2,
     question: "What salary can I expect after completing a course at JVM Institute?",
-    answer: "Our Data Engineering & PySpark graduates receive average starting packages ranging between ₹6.5 LPA to ₹12.5 LPA, with career transition hikes up to 150%."
+    answer: "Our Data Engineering & PySpark graduates receive average starting packages ranging between ₹6.5 LPA to ₹16 LPA."
   },
   {
     id: 3,
@@ -234,11 +87,30 @@ const PlacementFaqs = [
 ];
 
 export default function PlacementsPage() {
+  const [placementsList, setPlacementsList] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedStudent, setSelectedStudent] = useState<typeof AllPlacements[0] | null>(null);
+  const [selectedStudent, setSelectedStudent] = useState<any | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(3);
   const [heroImgIndex, setHeroImgIndex] = useState(0);
+
+  useEffect(() => {
+    async function fetchPlacements() {
+      try {
+        const res = await fetch("/api/placements");
+        const data = await res.json();
+        if (data.success && data.placements) {
+          setPlacementsList(data.placements);
+        }
+      } catch (err) {
+        console.error("Error fetching live placements:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPlacements();
+  }, []);
 
   // Auto-rotate hero student photos every 3 seconds
   useEffect(() => {
@@ -250,13 +122,13 @@ export default function PlacementsPage() {
 
   const currentHero = HeroCircleImages[heroImgIndex];
 
-  const filteredPlacements = AllPlacements.filter((student) => {
+  const filteredPlacements = placementsList.filter((student) => {
     const matchesTab = activeTab === "all" || student.category === activeTab;
     const matchesQuery = 
       student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       student.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
       student.placedRole.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.skills.toLowerCase().includes(searchQuery.toLowerCase());
+      (student.skills && student.skills.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesTab && matchesQuery;
   });
 
@@ -512,13 +384,10 @@ export default function PlacementsPage() {
                       {student.package}
                     </div>
 
-                    {/* Bottom Overlay Info (Company + Hike) */}
+                    {/* Bottom Overlay Info (Company) */}
                     <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white z-10">
                       <span className="text-[9px] sm:text-xs font-extrabold bg-slate-950/85 backdrop-blur-md px-2 py-0.5 rounded-md sm:rounded-xl flex items-center gap-1">
                         <Building2 className="w-3 h-3 text-purple-400 shrink-0" /> {student.company}
-                      </span>
-                      <span className="text-[8px] sm:text-[11px] font-black bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 px-1.5 py-0.5 rounded shadow-xs">
-                        {student.hike}
                       </span>
                     </div>
                   </div>
@@ -592,10 +461,6 @@ export default function PlacementsPage() {
                   <strong className="text-purple-600 dark:text-purple-400 font-extrabold">{selectedStudent.domain}</strong>
                 </div>
                 <div className="flex items-center justify-between text-slate-600 dark:text-slate-300">
-                  <span className="font-medium">Salary Hike:</span>
-                  <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">{selectedStudent.hike}</strong>
-                </div>
-                <div className="flex items-center justify-between text-slate-600 dark:text-slate-300">
                   <span className="font-medium">Core Skills:</span>
                   <strong className="text-slate-900 dark:text-white">{selectedStudent.skills}</strong>
                 </div>
@@ -606,7 +471,7 @@ export default function PlacementsPage() {
                   <Quote className="w-4 h-4 text-purple-500" /> Student Growth Advice:
                 </div>
                 <p className="text-slate-600 dark:text-slate-300 italic leading-relaxed text-[11px] sm:text-xs">
-                  &quot;The hands-on PySpark labs &amp; ETL mock interviews at JVM Institute gave me 100% confidence to clear {selectedStudent.company}&apos;s technical rounds.&quot;
+                  {selectedStudent.testimonial ? `"${selectedStudent.testimonial}"` : `"The hands-on PySpark labs & ETL mock interviews at JVM Institute gave me 100% confidence to clear ${selectedStudent.company}'s technical rounds."`}
                 </p>
               </div>
 

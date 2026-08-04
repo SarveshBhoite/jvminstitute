@@ -17,64 +17,62 @@ import {
 } from "lucide-react";
 import SplitText from "./SplitText";
 
-const placedStudents = [
+const fallbackStudents = [
   {
-    id: 1,
-    name: "Siddharth Bhoite",
-    previousRole: "Non-IT Mechanical Graduate",
-    placedRole: "Associate Data Engineer",
-    company: "TCS",
-    package: "8.5 LPA",
-    hike: "140% Salary Hike",
-    image: "/place1.png",
-    testimonial: "I had zero coding experience coming from mechanical engineering. JVM Institute's hands-on PySpark labs, real Databricks projects, and 1:1 mock interviews helped me land an 8.5 LPA offer at TCS!",
-  },
-  {
-    id: 2,
-    name: "Priya Sharma",
-    previousRole: "Manual QA Tester",
-    placedRole: "Big Data & PySpark Engineer",
-    company: "Infosys",
-    package: "10.2 LPA",
-    hike: "110% Salary Hike",
-    image: "/place2.png",
-    testimonial: "The Databricks, Airflow, and Cloud ETL pipeline projects gave me immense confidence during technical interview rounds. Transitioned seamlessly from QA to Data Engineer!",
-  },
-  {
-    id: 3,
-    name: "Rahul Deshmukh",
-    previousRole: "Fresher BE Computer Science",
-    placedRole: "Cloud Data Engineer",
-    company: "Cognizant",
-    package: "7.8 LPA",
-    hike: "Direct Selection",
-    image: "/place3.jpeg",
-    testimonial: "Learning real-world Snowflake architecture and PySpark performance tuning made my resume stand out among 500+ fresher applicants.",
+    id: "1",
+    name: "Priya",
+    previousRole: "Non-IT Career Transition",
+    placedRole: "Senior Data Engineer",
+    company: "Cymetrix",
+    package: "11.54 LPA",
+    image: "/placements/placement_1_priya.png",
+    testimonial: "Coming from a non-IT background, I was unsure about switching careers. JVM Institute made the transition smooth with their step-by-step training approach. The live projects gave me valuable practical exposure, and the trainers continuously motivated me throughout the course. Their placement assistance and mock interviews were incredibly helpful.",
   },
 ];
 
 export default function PlacedStudentsCarousel() {
+  const [placedStudents, setPlacedStudents] = useState<any[]>(fallbackStudents);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  useEffect(() => {
+    async function fetchPlacements() {
+      try {
+        const res = await fetch("/api/placements");
+        const data = await res.json();
+        if (data.success && data.placements && data.placements.length > 0) {
+          const featured = data.placements.filter((p: any) => p.isFeatured !== false);
+          setPlacedStudents(featured.length > 0 ? featured : data.placements);
+        }
+      } catch (err) {
+        console.error("Failed to fetch placements for carousel:", err);
+      }
+    }
+    fetchPlacements();
+  }, []);
+
   // Fast 2.5-second automatic slideshow loop interval
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || placedStudents.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % placedStudents.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, placedStudents]);
 
-  const activeStudent = placedStudents[currentIndex];
+  const activeStudent = placedStudents[currentIndex] || placedStudents[0];
 
   const handleNext = () => {
+    if (placedStudents.length === 0) return;
     setCurrentIndex((prev) => (prev + 1) % placedStudents.length);
   };
 
   const handlePrev = () => {
+    if (placedStudents.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + placedStudents.length) % placedStudents.length);
   };
+
+  if (!activeStudent) return null;
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-slate-900 transition-colors duration-300">
@@ -150,7 +148,9 @@ export default function PlacedStudentsCarousel() {
                       {activeStudent.package}
                     </span>
                   </div>
-                  <p className="text-[11px] sm:text-xs text-slate-300 font-semibold drop-shadow-sm">Earlier: {activeStudent.previousRole}</p>
+                  <p className="text-[11px] sm:text-xs text-slate-300 font-semibold drop-shadow-sm">
+                    {activeStudent.previousRole ? `Earlier: ${activeStudent.previousRole}` : `Domain: ${activeStudent.domain}`}
+                  </p>
                 </div>
               </div>
 
@@ -175,7 +175,7 @@ export default function PlacedStudentsCarousel() {
                   <Quote className="w-6 h-6 sm:w-10 sm:h-10 text-purple-200 dark:text-purple-900/40 absolute -top-2 -left-2 pointer-events-none" />
                   <div className="pl-2 sm:pl-4">
                     <SplitText
-                      text={`"${activeStudent.testimonial}"`}
+                      text={`"${activeStudent.testimonial || activeStudent.review || 'The live PySpark labs and technical mock interviews gave me immense confidence to land my dream Data Engineering role!'}"`}
                       tag="p"
                       className="text-[11px] sm:text-base md:text-lg text-slate-700 dark:text-slate-200 italic leading-snug sm:leading-relaxed"
                       delay={18}
@@ -188,7 +188,7 @@ export default function PlacedStudentsCarousel() {
                 {/* Metric Cards Row */}
                 <div className="grid grid-cols-2 gap-2 sm:gap-3 pt-1">
                   <div className="bg-slate-50 dark:bg-slate-800/70 p-2 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-700">
-                    <span className="text-slate-400 dark:text-slate-400 font-medium text-[9px] sm:text-[11px] block flex items-center gap-1">
+                    <span className="text-slate-400 dark:text-slate-400 font-medium text-[9px] sm:text-[11px] flex items-center gap-1">
                       <Building2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#1E2B88] dark:text-purple-400" /> Placed Company
                     </span>
                     <span className="text-xs sm:text-lg font-extrabold text-slate-900 dark:text-white mt-0.5 block truncate">
@@ -197,11 +197,11 @@ export default function PlacedStudentsCarousel() {
                   </div>
 
                   <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-sm">
-                    <span className="text-emerald-100 font-medium text-[9px] sm:text-[11px] block flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300" /> Career Outcome
+                    <span className="text-emerald-100 font-medium text-[9px] sm:text-[11px] flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300" /> Package Offered
                     </span>
                     <span className="text-xs sm:text-base font-extrabold mt-0.5 block truncate">
-                      {activeStudent.hike}
+                      {activeStudent.package}
                     </span>
                   </div>
                 </div>

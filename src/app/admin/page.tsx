@@ -34,10 +34,11 @@ interface PlacementRecord {
   placedRole: string;
   company: string;
   package: string;
-  hike: string;
   skills: string;
   image: string;
   category: string;
+  isFeatured?: boolean;
+  testimonial?: string;
   createdAt?: string;
 }
 
@@ -76,21 +77,23 @@ export default function AdminPage() {
   // Placements Management state
   const [placements, setPlacements] = useState<PlacementRecord[]>([]);
   const [isAddingPlacement, setIsAddingPlacement] = useState(false);
+  const [editingPlacementId, setEditingPlacementId] = useState<string | null>(null);
   const [savingPlacement, setSavingPlacement] = useState(false);
   const [placementSuccessMsg, setPlacementSuccessMsg] = useState("");
   const [uploadingPlacementImg, setUploadingPlacementImg] = useState(false);
 
-  // New placement form fields
+  // New / Edit placement form fields
   const [formData, setFormData] = useState({
     name: "",
     domain: "Data Engineering",
     placedRole: "",
     company: "",
     package: "",
-    hike: "Direct Placement",
     skills: "",
     image: "/place1.png",
     category: "data_engineering",
+    isFeatured: true,
+    testimonial: "",
   });
 
   // Blog Management state
@@ -250,14 +253,58 @@ export default function AdminPage() {
     setAdminUser(null);
   };
 
+  const handleEditPlacement = (p: PlacementRecord) => {
+    setEditingPlacementId(p.id);
+    setIsAddingPlacement(true);
+    setFormData({
+      name: p.name || "",
+      domain: p.domain || "Data Engineering",
+      placedRole: p.placedRole || "",
+      company: p.company || "",
+      package: p.package || "",
+      skills: p.skills || "",
+      image: p.image || "/place1.png",
+      category: p.category || "data_engineering",
+      isFeatured: p.isFeatured !== false,
+      testimonial: p.testimonial || "",
+    });
+  };
+
+  const handleToggleFeaturedPlacement = async (p: PlacementRecord) => {
+    const updatedFeatured = !p.isFeatured;
+    try {
+      const res = await fetch(`/api/admin/placements/${p.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...p,
+          isFeatured: updatedFeatured,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setPlacements((prev) =>
+          prev.map((item) => (item.id === p.id ? { ...item, isFeatured: updatedFeatured } : item))
+        );
+      } else {
+        alert(data.message || "Failed to update featured status");
+      }
+    } catch (err) {
+      alert("Error updating featured status: " + err);
+    }
+  };
+
   const handleAddPlacementSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSavingPlacement(true);
     setPlacementSuccessMsg("");
 
     try {
-      const res = await fetch("/api/admin/placements", {
-        method: "POST",
+      const url = editingPlacementId ? `/api/admin/placements/${editingPlacementId}` : "/api/admin/placements";
+      const method = editingPlacementId ? "PUT" : "POST";
+
+      const res = await fetch(url, {
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
@@ -265,27 +312,29 @@ export default function AdminPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        alert(data.message || "Failed to add placement student record.");
+        alert(data.message || `Failed to ${editingPlacementId ? "update" : "add"} placement student record.`);
         setSavingPlacement(false);
         return;
       }
 
-      setPlacementSuccessMsg("✅ Placed student added successfully to database & live website!");
+      setPlacementSuccessMsg(`✅ Placed student ${editingPlacementId ? "updated" : "added"} successfully to database & live website!`);
       setIsAddingPlacement(false);
+      setEditingPlacementId(null);
       setFormData({
         name: "",
         domain: "Data Engineering",
         placedRole: "",
         company: "",
         package: "",
-        hike: "Direct Placement",
         skills: "",
         image: "/place1.png",
         category: "data_engineering",
+        isFeatured: true,
+        testimonial: "",
       });
       fetchPlacements();
     } catch (err) {
-      alert("Error adding placement student record: " + err);
+      alert("Error saving placement student record: " + err);
     } finally {
       setSavingPlacement(false);
     }
@@ -648,7 +697,27 @@ export default function AdminPage() {
               </div>
 
               <button
-                onClick={() => setIsAddingPlacement(!isAddingPlacement)}
+                onClick={() => {
+                  if (isAddingPlacement) {
+                    setIsAddingPlacement(false);
+                    setEditingPlacementId(null);
+                  } else {
+                    setEditingPlacementId(null);
+                    setFormData({
+                      name: "",
+                      domain: "Data Engineering",
+                      placedRole: "",
+                      company: "",
+                      package: "",
+                      skills: "",
+                      image: "/place1.png",
+                      category: "data_engineering",
+                      isFeatured: true,
+                      testimonial: "",
+                    });
+                    setIsAddingPlacement(true);
+                  }
+                }}
                 className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
@@ -663,12 +732,12 @@ export default function AdminPage() {
               </div>
             )}
 
-            {/* Add Student Placement Form */}
+            {/* Add / Edit Student Placement Form */}
             {isAddingPlacement && (
               <form onSubmit={handleAddPlacementSubmit} className="bg-slate-800/80 border border-purple-500/30 rounded-2xl p-6 space-y-5 animate-fade-in">
                 <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
-                  <span>Add Placed Student Details</span>
+                  <Sparkles className="w-4 h-4 text-[#E01E6A]" />
+                  <span>{editingPlacementId ? "Edit Placed Student Details" : "Add Placed Student Details"}</span>
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-medium">
@@ -716,18 +785,6 @@ export default function AdminPage() {
                       placeholder="e.g. 8.5 LPA"
                       value={formData.package}
                       onChange={(e) => setFormData({ ...formData, package: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Salary Hike %</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. 140% Hike"
-                      value={formData.hike}
-                      onChange={(e) => setFormData({ ...formData, hike: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
@@ -809,12 +866,48 @@ export default function AdminPage() {
                       )}
                     </div>
                   </div>
+
+                  {/* Featured Placement Switch Toggle */}
+                  <div className="sm:col-span-3 bg-slate-900 border border-slate-700 p-3.5 rounded-xl flex items-center justify-between">
+                    <div>
+                      <label className="text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer">
+                        <Sparkles className="w-4 h-4 text-amber-400" />
+                        <span>Featured Placement (Display Live on Homepage Slideshow)</span>
+                      </label>
+                      <p className="text-[11px] text-slate-400 mt-0.5">
+                        When enabled, this student profile will be included in the homepage slideshow carousel.
+                      </p>
+                    </div>
+                    <input
+                      type="checkbox"
+                      checked={formData.isFeatured}
+                      onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
+                      className="w-5 h-5 accent-purple-600 rounded cursor-pointer"
+                    />
+                  </div>
+
+                  {/* Student Testimonial / Review / Advice */}
+                  <div className="sm:col-span-3">
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">
+                      Student Testimonial / Review / Advice
+                    </label>
+                    <textarea
+                      rows={3}
+                      placeholder="e.g. Coming from a non-IT background, I was unsure about switching careers..."
+                      value={formData.testimonial}
+                      onChange={(e) => setFormData({ ...formData, testimonial: e.target.value })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs"
+                    />
+                  </div>
                 </div>
 
                 <div className="pt-2 flex justify-end gap-3">
                   <button
                     type="button"
-                    onClick={() => setIsAddingPlacement(false)}
+                    onClick={() => {
+                      setIsAddingPlacement(false);
+                      setEditingPlacementId(null);
+                    }}
                     className="px-4 py-2.5 rounded-xl bg-slate-700 text-slate-300 text-xs font-bold cursor-pointer"
                   >
                     Cancel
@@ -824,7 +917,7 @@ export default function AdminPage() {
                     disabled={savingPlacement || uploadingPlacementImg}
                     className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 cursor-pointer"
                   >
-                    {savingPlacement ? "Saving to Database..." : "Save Placed Student"}
+                    {savingPlacement ? "Saving to Database..." : editingPlacementId ? "Update Placed Student" : "Save Placed Student"}
                   </button>
                 </div>
               </form>
@@ -840,21 +933,22 @@ export default function AdminPage() {
                     <th className="p-3.5">Placed Role</th>
                     <th className="p-3.5">Package</th>
                     <th className="p-3.5">Domain</th>
+                    <th className="p-3.5 text-center">Featured (Homepage)</th>
                     <th className="p-3.5 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/60 bg-slate-900/40">
                   {placements.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="p-6 text-center text-slate-500 font-medium">
-                        No admin added placement records yet. Click &quot;Add Placed Student&quot; above to insert records.
+                      <td colSpan={7} className="p-6 text-center text-slate-500 font-medium">
+                        No placement records in database yet. Click &quot;Add Placed Student&quot; above to insert records.
                       </td>
                     </tr>
                   ) : (
                     placements.map((p) => (
                       <tr key={p.id} className="hover:bg-slate-800/40 transition-colors">
                         <td className="p-3.5 font-bold text-white flex items-center gap-2">
-                          <div className="w-7 h-7 rounded-full bg-purple-600/30 text-purple-300 flex items-center justify-center font-bold text-xs">
+                          <div className="w-7 h-7 rounded-full bg-purple-600/30 text-purple-300 flex items-center justify-center font-bold text-xs shrink-0">
                             {p.name.charAt(0)}
                           </div>
                           <span>{p.name}</span>
@@ -871,14 +965,38 @@ export default function AdminPage() {
                             {p.domain}
                           </span>
                         </td>
-                        <td className="p-3.5 text-right">
+                        <td className="p-3.5 text-center">
                           <button
-                            onClick={() => handleDeletePlacement(p.id)}
-                            className="p-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors cursor-pointer"
-                            title="Delete Placement"
+                            type="button"
+                            onClick={() => handleToggleFeaturedPlacement(p)}
+                            className={`px-3 py-1 rounded-full text-[10px] font-extrabold flex items-center gap-1 mx-auto transition-all cursor-pointer ${
+                              p.isFeatured !== false
+                                ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-xs"
+                                : "bg-slate-800 text-slate-500 border border-slate-700"
+                            }`}
+                            title="Toggle Homepage Slideshow Visibility"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Sparkles className="w-3 h-3" />
+                            {p.isFeatured !== false ? "Featured (ON)" : "OFF"}
                           </button>
+                        </td>
+                        <td className="p-3.5 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <button
+                              onClick={() => handleEditPlacement(p)}
+                              className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 hover:bg-purple-600 hover:text-white transition-colors cursor-pointer"
+                              title="Edit Placement"
+                            >
+                              <Edit className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDeletePlacement(p.id)}
+                              className="p-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors cursor-pointer"
+                              title="Delete Placement"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))
