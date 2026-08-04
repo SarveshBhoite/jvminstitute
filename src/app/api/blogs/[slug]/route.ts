@@ -3,6 +3,8 @@ import prisma from "@/lib/prisma";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError, ApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
 // GET /api/blogs/[slug] - Get single blog post by slug
 export async function GET(
   req: NextRequest,

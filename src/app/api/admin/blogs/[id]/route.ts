@@ -4,6 +4,8 @@ import { blogPostSchema } from "@/validators/blogValidator";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError, ApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
 // PUT /api/admin/blogs/[id] - Update existing blog post
 export async function PUT(
   req: NextRequest,

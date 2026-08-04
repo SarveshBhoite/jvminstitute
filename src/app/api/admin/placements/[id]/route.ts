@@ -3,6 +3,8 @@ import prisma from "@/lib/prisma";
 import { apiSuccessResponse } from "@/utils/apiResponse";
 import { handleApiError, ApiError } from "@/utils/errorHandler";
 
+export const dynamic = "force-dynamic";
+
 // PUT /api/admin/placements/[id] - Update a placement record
 export async function PUT(
   req: NextRequest,

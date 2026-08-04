@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
+    "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@prisma/adapter-pg": "^7.9.1",
-    "@prisma/client": "^7.9.0",
+    "@prisma/adapter-pg": "^6.4.0",
+    "@prisma/client": "^6.4.0",
     "@supabase/supabase-js": "^2.109.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/canvas-confetti": "^1.9.0",
@@ -47,7 +48,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",
-    "prisma": "^7.9.0",
+    "prisma": "^6.4.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
