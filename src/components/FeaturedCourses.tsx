@@ -68,7 +68,7 @@ const coursesData = [
   },
   {
     id: "generative-ai",
-    slug: "our-courses",
+    slug: "generative-ai-course-in-pune",
     title: "Generative AI",
     badge: "Next-Gen AI",
     description: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
@@ -88,7 +88,7 @@ const coursesData = [
   },
   {
     id: "advanced-ai-ml",
-    slug: "our-courses",
+    slug: "advanced-ai-ml-course-in-pune",
     title: "Advanced AI & Machine Learning",
     badge: "Advanced Specialization",
     description: "Learn Deep Learning, Neural Networks, Computer Vision, Natural Language Processing (NLP), Reinforcement Learning, MLOps, Model Deployment, and AI System Design.",
@@ -108,7 +108,7 @@ const coursesData = [
   },
   {
     id: "cloud-ai",
-    slug: "our-courses",
+    slug: "cloud-ai-course-in-pune",
     title: "Cloud AI",
     badge: "Multi-Cloud AI",
     description: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
@@ -128,7 +128,7 @@ const coursesData = [
   },
   {
     id: "basic-ai-ml",
-    slug: "our-courses",
+    slug: "basic-ai-ml-course-in-pune",
     title: "Basic AI & ML",
     badge: "Beginner Friendly",
     description: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
@@ -145,7 +145,6 @@ const coursesData = [
       "Career Guidance, Resume Building & Placement Support",
     ],
     glowClass: "hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.35)]",
->>>>>>> b5a0508686d334c40ac8f6f7d03b41cd33f7d6f5
   },
 ];
 
