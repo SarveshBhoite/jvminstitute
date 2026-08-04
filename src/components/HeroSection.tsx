@@ -162,12 +162,9 @@ export default function HeroSection() {
                 "15+ Industry Projects",
                 "Real-Time Case Studies",
                 "1:1 Mentorship",
-                "Resume Building",
-                "LinkedIn Profile Optimization",
-                "GitHub Portfolio",
                 "Mock Interviews",
-                "100% Placement Assistance",
               ].map((point, index) => (
+
                 <div
                   key={index}
                   className="flex items-center gap-2 p-2 rounded-lg border bg-white dark:bg-slate-800/90 border-slate-200/80 dark:border-slate-700/80 shadow-xs"

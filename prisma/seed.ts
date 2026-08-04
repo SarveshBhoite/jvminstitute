@@ -1,7 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/jvm";
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("Seeding database...");
@@ -116,6 +120,20 @@ async function main() {
       },
       {
         name: "Ajinkya",
+=======
+        studentName: "Siddharth Bhoite",
+        domain: "Data Engineering",
+        placedRole: "Associate Data Engineer",
+        company: "TCS",
+        package: "8.5 LPA",
+        hike: "140% Hike",
+        image: "/place1.png",
+        skills: "PySpark, Databricks, SQL",
+        category: "data_engineering",
+      },
+      {
+        studentName: "Priya Sharma",
+>>>>>>> origin/feature/placement
         domain: "PySpark & Big Data",
         placedRole: "Senior Data Engineer",
         company: "LTI Mindtree",
@@ -241,30 +259,6 @@ async function main() {
         isFeatured: true,
       },
     ],
-  });
-
-  // Seed Default Admin Account
-  const defaultAdminEmail = process.env.DEFAULT_ADMIN_EMAIL || "admin@jvminstitute.com";
-  const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD || "Admin@JVM2026!";
-  const defaultAdminName = process.env.DEFAULT_ADMIN_NAME || "JVM Super Admin";
-
-  const hashedDefaultPassword = await bcrypt.hash(defaultAdminPassword, 10);
-
-  await prisma.admin.upsert({
-    where: { email: defaultAdminEmail.toLowerCase().trim() },
-    update: {
-      password: hashedDefaultPassword,
-      fullName: defaultAdminName,
-      role: "SUPER_ADMIN",
-      isActive: true,
-    },
-    create: {
-      email: defaultAdminEmail.toLowerCase().trim(),
-      password: hashedDefaultPassword,
-      fullName: defaultAdminName,
-      role: "SUPER_ADMIN",
-      isActive: true,
-    },
   });
 
   console.log("Database seeded successfully!");

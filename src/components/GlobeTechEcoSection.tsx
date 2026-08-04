@@ -232,7 +232,7 @@ export default function GlobeTechEcoSection() {
                 <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex flex-col items-center justify-center p-2 sm:p-3 overflow-hidden border-2 border-purple-200 dark:border-purple-800 shadow-inner">
                   <div className="w-16 h-16 sm:w-32 sm:h-32 relative mb-0.5 sm:mb-1">
                     <Image
-                      src="/jvm logo.jpeg"
+                      src="/jvm_logo-bg.png"
                       alt="JVM Institute Logo"
                       fill
                       className="object-contain rounded-full"

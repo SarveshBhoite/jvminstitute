@@ -143,6 +143,74 @@ export default function Navbar() {
                     </div>
                   </Link>
 
+
+                  {/* 2. Advanced AI & Machine Learning */}
+                  <Link 
+                    href="/advanced-ai-machine-learning-course-in-pune" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-colors group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
+                  >
+                    <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 shrink-0 mt-0.5">
+                      <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                          Advanced AI &amp; Machine Learning
+                        </span>
+                        <span className="text-[10px] bg-purple-700 text-white px-1.5 py-0.2 rounded font-extrabold">New</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Deep Learning, PyTorch, Vision &amp; NLP</p>
+                    </div>
+                  </Link>
+
+                  {/* 3. Learn Python for Data Analysis */}
+                  <Link 
+                    href="/learn-python-for-data-analysis" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-[#1E2B88] dark:text-indigo-300 shrink-0 mt-0.5">
+                      <Code2 className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                        Learn Python for Data Analysis
+                      </span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas, NumPy, SQL & EDA Projects</p>
+                    </div>
+                  </Link>
+
+                  {/* 4. Why Learn Python Guide */}
+                  <Link 
+                    href="/why-should-i-learn-python-for-data-analysis" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
+                      <HelpCircle className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                        Why Learn Python for Data Analysis?
+                      </span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Career roadmap, salary & job market</p>
+                    </div>
+                  </Link>
+
+                  {/* 5. How to Read XML Files into Python */}
+                  <Link 
+                    href="/how-to-read-xml-files-into-python" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
+                      <FileCode2 className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                        Read XML Files into Python
+                      </span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas read_xml & ElementTree tutorial</p>
+                    </div>
+                  </Link>
+
                   <div className="pt-1 border-t border-slate-100 dark:border-slate-800">
                     <Link 
                       href="/our-courses" 
