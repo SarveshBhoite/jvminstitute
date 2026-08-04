@@ -143,27 +143,26 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-
-                  {/* 2. Advanced AI & Machine Learning */}
+                  {/* 1b. Data Engineering with GenAI */}
                   <Link 
-                    href="/advanced-ai-machine-learning-course-in-pune" 
+                    href="/data-engineering-with-genai-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-colors group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
                   >
-                    <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 shrink-0 mt-0.5">
-                      <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                    <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                          Advanced AI &amp; Machine Learning
+                          Data Engineering with GenAI
                         </span>
-                        <span className="text-[10px] bg-purple-700 text-white px-1.5 py-0.2 rounded font-extrabold">New</span>
+                        <span className="text-[10px] bg-[#7C248C] text-white px-1.5 py-0.2 rounded font-extrabold">New AI</span>
                       </div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Deep Learning, PyTorch, Vision &amp; NLP</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">LLMs, Vector DBs, PySpark & Databricks</p>
                     </div>
                   </Link>
 
-                  {/* 3. Learn Python for Data Analysis */}
+                  {/* 2. Learn Python for Data Analysis */}
                   <Link 
                     href="/learn-python-for-data-analysis" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -179,7 +178,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* 4. Why Learn Python Guide */}
+                  {/* 3. Why Learn Python Guide */}
                   <Link 
                     href="/why-should-i-learn-python-for-data-analysis" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -195,22 +194,37 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* 5. How to Read XML Files into Python */}
+                  {/* Generative AI Course */}
                   <Link 
-                    href="/how-to-read-xml-files-into-python" 
+                    href="/generative-ai-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
                   >
-                    <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
-                      <FileCode2 className="w-4 h-4" />
+                    <div className="p-2 rounded-lg bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4" />
                     </div>
                     <div>
                       <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Read XML Files into Python
+                        Generative AI Course
                       </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas read_xml & ElementTree tutorial</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">ChatGPT, LangChain, RAG & AI Agents</p>
                     </div>
                   </Link>
 
+                  {/* Advanced AI & ML Course */}
+                  <Link 
+                    href="/advanced-ai-ml-course-in-pune" 
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
+                  >
+                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5">
+                      <Code2 className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                        Advanced AI & Machine Learning
+                      </span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">PyTorch, YOLOv8, BERT & MLOps</p>
+                    </div>
+                  </Link>
                   <div className="pt-1 border-t border-slate-100 dark:border-slate-800">
                     <Link 
                       href="/our-courses" 
