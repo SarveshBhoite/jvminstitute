@@ -213,84 +213,57 @@ function TimelineSection({ timelineData }: { timelineData: { year: string; title
 
 export default function AboutUsPage() {
   const facultyList = [
+   
     {
-      name: "Jayesh Bhoite",
-      role: "Lead Data Architect & Founder",
+      name: "Anand Sir ",
+      role: "Mysql & Python Expert",
       experience: "12+ Years Exp",
-      image: "/students1.jpeg",
-      bio: "Former Enterprise Architect specializing in distributed PySpark pipelines, Databricks Lakehouse, and cloud data architecture.",
-      expertise: ["PySpark", "Databricks", "AWS Redshift", "System Design"]
-    },
-    {
-      name: "Priya Sharma",
-      role: "Senior Cloud Data Engineer",
-      experience: "9+ Years Exp",
-      image: "/students2.jpeg",
-      bio: "Expert in AWS Redshift, Snowflake data warehousing, Apache Airflow DAG orchestration, and automated CI/CD deployment pipelines.",
-      expertise: ["Snowflake", "AWS S3", "Apache Airflow", "SQL Tuning"]
-    },
-    {
-      name: "Amit Deshmukh",
-      role: "Big Data & Streaming Lead",
-      experience: "10+ Years Exp",
-      image: "/place1.png",
+      image: "/anand.png",
       bio: "Specializes in high-velocity real-time event streaming architectures using Apache Kafka, PySpark Structured Streaming, and Delta Lake.",
       expertise: ["Apache Kafka", "Real-time Streaming", "Python", "NoSQL"]
     },
     {
-      name: "Neha Kulkarni",
-      role: "Senior BI & Analytics Specialist",
-      experience: "8+ Years Exp",
-      image: "/place2.png",
+      name: "Praveen Sir",
+      role: "Senior cloud architect and GCP expert",
+      experience: "10+ Years Exp",
+      image: "/praveen.png",
       bio: "Focuses on enterprise data modeling, Star & Snowflake schemas, Power BI dashboard integration, and complex SQL window functions.",
       expertise: ["Advanced SQL", "Data Modeling", "Power BI", "PostgreSQL"]
     },
     {
-      name: "Rohan Verma",
-      role: "DevOps & Cloud Infrastructure Lead",
-      experience: "11+ Years Exp",
-      image: "/place3.jpeg",
+      name: "Omkar Sir",
+      role: "AWS & Azure Architect",
+      experience: "8+ Years Exp",
+      image: "/omkar.png",
       bio: "Pioneer in containerized data pipeline deployment with Docker, Kubernetes, Terraform IAC, and multi-cloud security protocols.",
-      expertise: ["Docker", "Kubernetes", "AWS IAM", "Terraform"]
+      expertise: ["Bigdata", "Pyspark", "Cloud", "Databricks","ETL"]
     },
-    {
-      name: "Sneha Patil",
-      role: "Placement Desk & Career Coach",
-      experience: "7+ Years Exp",
-      image: "/jvm logo.jpeg",
-      bio: "Dedicated career strategist preparing candidates for MNC technical interviews, resume ATS optimization, and mock coding rounds.",
-      expertise: ["Mock Interviews", "ATS Resumes", "MNC Referrals", "Salary Negotiation"]
-    }
+   
   ];
 
   const timelineData = [
     {
-      year: "2016",
+      year: "2020",
       title: "Foundation of JVM Institute",
-      description: "Started with a vision to deliver hands-on practical IT training led by active corporate software engineers in Pune."
-    },
-    {
-      year: "2018",
-      title: "Launch of Data Engineering Track",
-      description: "Pioneered specialized PySpark and SQL training curriculum tailored to the rapidly growing Big Data analytics industry."
+      description: "JVM Institute was established in Pune with the mission of providing practical, industry-oriented IT training delivered by experienced technology professionals."
     },
     {
       year: "2021",
-      title: "Databricks & Cloud Integration",
-      description: "Integrated real multi-node Databricks clusters and AWS Redshift sandbox environments into student lab sessions."
+      title: "Launch of Data Engineering Track",
+      description: "JVM Institute was established in Pune with the mission of providing practical, industry-oriented IT training delivered by experienced technology professionals."
     },
     {
       year: "2024",
-      title: "5,000+ Alumni Milestone",
-      description: "Celebrated over 5,000 successful career transitions into Tier-1 product MNCs with 100% placement assistance."
+      title: "AI & Generative AI Expansion",
+      description: "Expanded our training portfolio with Data Engineering & Generative AI, AI & Machine Learning (Basic), AI & Machine Learning (Advanced), and Claude AI programs to address the growing demand for Artificial Intelligence professionals."
     },
+  
     {
       year: "2026",
       title: "ISO 9001:2015 Accreditation",
-      description: "Earned globally recognized ISO accreditation validating our curriculum standard, placement desk, and lab infrastructure."
+      description: "JVM Institute continues to empower students, graduates, and working professionals through practical learning, modern technologies, real-world projects, and career-focused mentorship, helping them build successful careers in Data Engineering, Artificial Intelligence, Machine Learning, and Generative AI."
     }
   ];
-
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300 overflow-x-hidden selection:bg-[#7C248C] selection:text-white">
       {/* Navigation Bar */}
@@ -434,10 +407,10 @@ export default function AboutUsPage() {
 
                 <div className="space-y-2 sm:space-y-4 text-slate-600 dark:text-slate-300 text-xs sm:text-base leading-relaxed">
                   <p>
-                    JVM Institute was established in Pune with a clear vision: to revolutionize technical training by eliminating outdated, purely theoretical curriculum. We recognized that tech companies hire engineers who design scalable data pipelines and write optimized SQL from day one.
+                    JVM Institute Pvt. Ltd. was founded in *2020* in Pune with a vision to bridge the gap between academic learning and real-world industry requirements. We believe that successful technology careers are built through practical experience, industry mentorship, and hands-on project development—not just theoretical knowledge.
                   </p>
                   <p className="hidden sm:block">
-                    Over 5,000+ students have transformed their careers through our rigorous, project-first training philosophy across Data Engineering, Big Data Analytics, Python, and Cloud Computing.
+                    Our journey began with a commitment to delivering high-quality technical education aligned with the evolving needs of the IT industry. As technology advanced, we continuously expanded our programs to prepare students for the careers of tomorrow.
                   </p>
                 </div>
 
