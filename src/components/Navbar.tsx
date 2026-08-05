@@ -162,7 +162,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* 2. Learn Python for Data Analysis */}
+                  {/* 2. Learn Python for Data Analysis 
                   <Link 
                     href="/learn-python-for-data-analysis" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -178,7 +178,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* 3. Why Learn Python Guide */}
+                
                   <Link 
                     href="/why-should-i-learn-python-for-data-analysis" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -194,7 +194,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* Generative AI Course */}
+             
                   <Link 
                     href="/generative-ai-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -210,7 +210,6 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* Advanced AI & ML Course */}
                   <Link 
                     href="/advanced-ai-ml-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -224,7 +223,8 @@ export default function Navbar() {
                       </span>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">PyTorch, YOLOv8, BERT & MLOps</p>
                     </div>
-                  </Link>
+                  </Link> 
+               */}
                   <div className="pt-1 border-t border-slate-100 dark:border-slate-800">
                     <Link 
                       href="/our-courses" 
