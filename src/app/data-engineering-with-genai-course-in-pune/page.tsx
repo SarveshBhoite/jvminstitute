@@ -324,7 +324,7 @@ const curriculumModules = [
     title: "Gen AI",
     duration: "4 Weeks",
     topics: [
-      "Large Language Models (LLMs), Generative AI & Enterprise AI Fundamentals",
+      "Large Language Models (LLMs),  AI & Enterprise AI Fundamentals",
       "Transformer Architecture, Tokens & Attention Mechanism",
       "Prompt Engineering & Advanced Prompting Techniques",
       "Hugging Face Models & Open-Source AI Ecosystem",
@@ -350,14 +350,14 @@ const curriculumModules = [
       "Real-Time AI Applications & Enterprise Integration",
       "Industry-Level GenAI Projects & Interview Preparation"
     ],
-    tools: ["Generative AI", "LangChain", "Vector DBs", "Pinecone", "Milvus", "ChromaDB", "LLMs"],
+    tools: ["Gen AI", "LangChain", "Vector DBs", "Pinecone", "Milvus", "ChromaDB", "LLMs"],
     project: "Build an Enterprise RAG Ingestion Pipeline with Vector DBs and PySpark."
   }
 ];
 
 // Tools & Technologies Data
 const techStack = [
-  { name: "Generative AI", category: "AI & LLMs", badge: "Next-Gen", color: "from-purple-500 to-indigo-600" },
+  { name: "Gen AI", category: "AI & LLMs", badge: "Next-Gen", color: "from-purple-500 to-indigo-600" },
   { name: "PySpark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
   { name: "Databricks", category: "Lakehouse", badge: "Enterprise", color: "from-red-500 to-rose-600" },
   { name: "LangChain", category: "AI Framework", badge: "RAG Stack", color: "from-emerald-500 to-teal-600" },
@@ -451,7 +451,7 @@ const testimonials = [
 
 // What To Expect Points
 const whatToExpectPoints = [
-  "In-depth coverage of Data Engineering combined with cutting-edge Generative AI & Vector Data Workflows.",
+  "In-depth coverage of Data Engineering combined with cutting-edge Gen AI & Vector Data Workflows.",
   "Hands-on building of real-time streaming ETLs, Lakehouse architectures, and LLM RAG pipelines.",
   "Training on industry-standard tools: PySpark, Databricks, Kafka, Airflow, Vector DBs, AWS & Azure.",
   "Learn from seasoned industry architects with 12+ years of enterprise engineering experience.",
@@ -502,21 +502,21 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* 1. HERO SECTION: EDITORIAL HIGH-IMPACT                     */}
         {/* ========================================================= */}
         <section className="relative py-6 sm:py-10 lg:py-14 bg-gradient-to-b from-[#F5F3FF] via-[#FAFAFC] to-white dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden flex items-center min-h-[auto] lg:h-[calc(100vh-80px)]">
-          
-          {/* Animated Ambient Glow Spheres */} 
-          <motion.div 
+
+          {/* Animated Ambient Glow Spheres */}
+          <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0" 
+            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0"
           />
-          
+
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-10 items-center">
-              
+
               {/* Left Column: Animated Headline & Details (7 Cols) */}
               <div className="lg:col-span-7 space-y-2.5 sm:space-y-3.5 text-left">
-                
+
                 {/* Pill Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -529,24 +529,24 @@ export default function DataEngineeringWithGenAICoursePage() {
                 </motion.div>
 
                 {/* Animated Headline */}
-                <motion.h1 
+                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-xl xs:text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-[1.15]"
                 >
-                  <span className="jvm-gradient-text">Master Data Engineering &amp; Generative AI in Pune!</span>
+                  <span className="jvm-gradient-text">Master Data Engineering &amp; Gen AI in Pune!</span>
                 </motion.h1>
 
                 {/* Animated Narrative Paragraphs */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="space-y-1.5 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal"
                 >
                   <p>
-                    Transform into a high-demand Data &amp; AI Engineer by mastering PySpark distributed pipelines, Databricks Medallion Lakehouse, Apache Airflow orchestration, Multi-Cloud Data Warehouses (AWS, Azure &amp; GCP), and Generative AI RAG Workflows with Vector Databases.
+                    Transform into a high-demand Data &amp; AI Engineer by mastering PySpark distributed pipelines, Databricks Medallion Lakehouse, Apache Airflow orchestration, Multi-Cloud Data Warehouses (AWS, Azure &amp; GCP), and Gen AI RAG Workflows with Vector Databases.
                   </p>
                   <p className="hidden sm:block">
                     JVM Institute&apos;s industry-accredited program bridges Big Data engineering with enterprise LLM architectures, featuring 85%+ live hands-on cloud labs and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Support</strong> with direct MNC interview referrals in Pune.
@@ -554,13 +554,13 @@ export default function DataEngineeringWithGenAICoursePage() {
                 </motion.div>
 
                 {/* Interactive Animated Metric Stat Cards */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="grid grid-cols-3 gap-2 sm:gap-3.5 pt-1"
                 >
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -568,7 +568,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Average Salary Hike</div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -576,7 +576,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">GenAI Data Hiring</div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -586,7 +586,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                 </motion.div>
 
                 {/* Animated CTAs Button Group */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -610,7 +610,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                 </motion.div>
 
                 {/* Trust Badges Bar */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -633,14 +633,14 @@ export default function DataEngineeringWithGenAICoursePage() {
               </div>
 
               {/* Right Column: Premium Glowing Card (5 Cols) */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="lg:col-span-5"
               >
                 <div className="bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl border border-purple-500/30 relative overflow-hidden space-y-3 sm:space-y-4">
-                  
+
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-purple-200 text-[9px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                     ✦ WHAT YOU WILL ACHIEVE
                   </div>
@@ -685,7 +685,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 bg-[#FAFAFC] dark:bg-[#070A12] border-t border-purple-100/60 dark:border-slate-800/80 relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Animated Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -704,7 +704,7 @@ export default function DataEngineeringWithGenAICoursePage() {
               </h2>
 
               <p className="text-xs sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Explore the modules below covering Data Engineering, PySpark, Airflow, Cloud Warehouses, and Generative AI Data Pipelines.
+                Explore the modules below covering Data Engineering, PySpark, Airflow, Cloud Warehouses, and Gen AI Data Pipelines.
               </p>
             </motion.div>
 
@@ -720,11 +720,10 @@ export default function DataEngineeringWithGenAICoursePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.45, delay: index * 0.07 }}
-                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${
-                      isOpen
-                        ? "bg-white dark:bg-slate-900/95 border-purple-500/50 dark:border-purple-500/50 shadow-xl"
-                        : "bg-white/90 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800/90 shadow-sm"
-                    }`}
+                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${isOpen
+                      ? "bg-white dark:bg-slate-900/95 border-purple-500/50 dark:border-purple-500/50 shadow-xl"
+                      : "bg-white/90 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800/90 shadow-sm"
+                      }`}
                   >
                     <button
                       onClick={() => setOpenModule(isOpen ? null : mod.id)}
@@ -732,11 +731,10 @@ export default function DataEngineeringWithGenAICoursePage() {
                     >
                       <div className="flex items-center gap-3 sm:gap-5">
                         <span
-                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${
-                            isOpen
-                              ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-md"
-                              : "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
-                          }`}
+                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${isOpen
+                            ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-md"
+                            : "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
+                            }`}
                         >
                           {mod.number}
                         </span>
@@ -754,11 +752,10 @@ export default function DataEngineeringWithGenAICoursePage() {
                       </div>
 
                       <div
-                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${
-                          isOpen
-                            ? "bg-purple-600 text-white rotate-180"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-600"
-                        }`}
+                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${isOpen
+                          ? "bg-purple-600 text-white rotate-180"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-600"
+                          }`}
                       >
                         <ChevronDown className="w-4 h-4" />
                       </div>
@@ -834,16 +831,16 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 relative overflow-hidden bg-slate-200/80 dark:bg-[#0E1322] border-t border-b border-slate-300/80 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E2B88] dark:text-white text-center mb-6 sm:mb-10 tracking-tight leading-tight">
               What to Expect from the JVM Data Engineering with GenAI Course in Pune
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
-              
+
               <div className="lg:col-span-7 space-y-1 text-left">
                 {whatToExpectPoints.map((point, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-start gap-2.5 py-2 sm:py-3 border-b border-slate-300/80 dark:border-slate-800/80 last:border-b-0"
                   >
@@ -876,7 +873,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 LEARNING ADVANTAGE
@@ -887,7 +884,7 @@ export default function DataEngineeringWithGenAICoursePage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-8">
-              
+
               <MagicCard className="rounded-xl sm:rounded-none" glowFrom="#7C3AED" glowTo="#E01E6A">
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
                   <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">6 Months Track</h3>
@@ -952,7 +949,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 ENTERPRISE TECH ECOSYSTEM
@@ -968,11 +965,10 @@ export default function DataEngineeringWithGenAICoursePage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    selectedCategory === cat
-                      ? "jvm-gradient-bg text-white shadow-xs"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
+                    ? "jvm-gradient-bg text-white shadow-xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -1003,7 +999,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 PORTFOLIO BUILDERS
@@ -1054,7 +1050,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 CAREER DESK
@@ -1065,7 +1061,7 @@ export default function DataEngineeringWithGenAICoursePage() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
-              
+
               <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
                 <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
                   01
@@ -1116,7 +1112,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 LEARN FROM PRACTITIONERS
@@ -1150,7 +1146,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-20 bg-gradient-to-b from-[#F5F3FF] via-white to-[#FAFAFC] dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            
+
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
               ALUMNI REVIEWS
             </span>
@@ -1193,9 +1189,8 @@ export default function DataEngineeringWithGenAICoursePage() {
                 <button
                   key={idx}
                   onClick={() => setActiveTestimonialIndex(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                    activeTestimonialIndex === idx ? "bg-purple-600 w-6" : "bg-slate-300 dark:bg-slate-700"
-                  }`}
+                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${activeTestimonialIndex === idx ? "bg-purple-600 w-6" : "bg-slate-300 dark:bg-slate-700"
+                    }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
@@ -1209,9 +1204,9 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         <section className="py-12 sm:py-20 bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white relative overflow-hidden border-t border-purple-500/30">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 relative z-10">
-            
+
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              Ready to Master Data Engineering &amp; Generative AI in Pune?
+              Ready to Master Data Engineering &amp;  AI in Pune?
             </h2>
 
             <p className="text-xs sm:text-base text-purple-200 max-w-2xl mx-auto leading-relaxed">

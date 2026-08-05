@@ -194,7 +194,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-             
+                  {/* Gen AI Course */}
                   <Link 
                     href="/generative-ai-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -204,11 +204,12 @@ export default function Navbar() {
                     </div>
                     <div>
                       <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Generative AI Course
+                        Gen AI Course
                       </span>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">ChatGPT, LangChain, RAG & AI Agents</p>
                     </div>
                   </Link>
+
 
                   <Link 
                     href="/advanced-ai-ml-course-in-pune" 

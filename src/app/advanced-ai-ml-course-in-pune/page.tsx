@@ -68,13 +68,13 @@ const curriculumModules = [
       "MLOps Fundamentals & Machine Learning Lifecycle",
       "Experiment Tracking & Model Management",
       "Docker for AI (Containerization & Docker Architecture)",
-      "Cloud AI Services (Azure AI, Google Vertex AI & AWS SageMaker)",
+      "Cloude AI Services (Azure AI, Google Vertex AI & AWS SageMaker)",
       "REST API Development & AI Service Integration",
       "GitHub, Version Control & Enterprise Collaboration",
       "Continuous Integration (CI) & Continuous Deployment (CD) for AI Applications",
       "Production AI Deployment & Enterprise Best Practices"
     ],
-    tools: ["PyTorch", "TensorFlow", "Keras", "OpenCV", "Hugging Face", "Docker", "MLflow", "Cloud AI"],
+    tools: ["PyTorch", "TensorFlow", "Keras", "OpenCV", "Hugging Face", "Docker", "MLflow", "Cloude AI"],
     project: "Build & deploy end-to-end Deep Learning, Computer Vision, NLP & RAG enterprise applications."
   }
 ];
