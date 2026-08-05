@@ -19,8 +19,12 @@ import {
   Layers,
   Sparkles,
   Code2,
+  Database,
+  BrainCircuit,
+  Cpu,
   FileCode2,
   HelpCircle,
+
   Sun,
   Moon
 } from "lucide-react";
@@ -119,94 +123,139 @@ export default function Navbar() {
               </button>
 
               {coursesDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-80 bg-white dark:bg-[#0F172A] rounded-2xl p-2.5 shadow-2xl border border-slate-200/90 dark:border-slate-800 space-y-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                    Flagship & Training Tracks
+                <div className="absolute top-full left-0 mt-1 w-[620px] bg-white dark:bg-[#0F172A] rounded-3xl p-4 shadow-2xl border border-slate-200/90 dark:border-slate-800 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="px-3 py-1.5 mb-2 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <span>Industry Specialized Programs</span>
+                    <span className="text-[10px] text-purple-600 dark:text-purple-400 font-bold">6 Career Tracks</span>
                   </div>
 
-                  {/* 1. Top Ranked Data Engineering */}
-                  <Link 
-                    href="/data-engineering-course-in-pune" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-colors group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
-                  >
-                    <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-[#1E2B88] dark:text-purple-300 shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                          Data Engineering in Pune
-                        </span>
-                        <span className="text-[10px] bg-[#1E2B88] text-white px-1.5 py-0.2 rounded font-extrabold">Top 3</span>
-                      </div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">PySpark, Databricks, AWS & Snowflake</p>
-                    </div>
-                  </Link>
+                  {/* 2-Column Grid (3 courses in Left Column, 3 courses in Right Column) */}
+                  <div className="grid grid-cols-2 gap-3">
+                    
+                    {/* Left Column (Courses 1 - 3) */}
+                    <div className="space-y-1.5">
+                      {/* 1. Data Engineering */}
+                      <Link 
+                        href="/data-engineering-course-in-pune" 
+                        className="flex items-start gap-3 p-2.5 rounded-2xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-all group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
+                      >
+                        <div className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-950/60 text-[#1E2B88] dark:text-purple-300 shrink-0 mt-0.5">
+                          <Database className="w-4 h-4 text-[#E01E6A] dark:text-pink-400" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                              Data Engineering
+                            </span>
+                            <span className="text-[9px] bg-[#1E2B88] text-white px-1.5 py-0.2 rounded font-extrabold">Top 1</span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">PySpark, Databricks, AWS & SQL</p>
+                        </div>
+                      </Link>
 
-                  {/* 1b. Data Engineering with GenAI */}
-                  <Link 
-                    href="/data-engineering-with-genai-course-in-pune" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-colors group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
-                  >
-                    <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                          Data Engineering with GenAI
-                        </span>
-                        <span className="text-[10px] bg-[#7C248C] text-white px-1.5 py-0.2 rounded font-extrabold">New AI</span>
-                      </div>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">LLMs, Vector DBs, PySpark & Databricks</p>
-                    </div>
-                  </Link>
+                      {/* 2. Data Engineering with Gen AI */}
+                      <Link 
+                        href="/data-engineering-with-genai-course-in-pune" 
+                        className="flex items-start gap-3 p-2.5 rounded-2xl hover:bg-purple-50 dark:hover:bg-slate-800/80 transition-all group border border-transparent hover:border-purple-100 dark:hover:border-slate-700"
+                      >
+                        <div className="p-2.5 rounded-xl bg-purple-100 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 shrink-0 mt-0.5">
+                          <Sparkles className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                              Data Engineering & GenAI
+                            </span>
+                            <span className="text-[9px] bg-[#7C248C] text-white px-1.5 py-0.2 rounded font-extrabold">Flagship</span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">LLMs, Vector DBs, PySpark & Azure</p>
+                        </div>
+                      </Link>
 
-                  {/* 2. Gen AI Course */}
-                  <Link 
-                    href="/generative-ai-course-in-pune" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4" />
+                      {/* 3. Basic AI & ML */}
+                      <Link 
+                        href="/basic-ai-ml-course-in-pune" 
+                        className="flex items-start gap-3 p-2.5 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all group"
+                      >
+                        <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
+                          <Code2 className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                            Basic AI & Machine Learning
+                          </span>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Python, Statistics, EDA & ML Intro</p>
+                        </div>
+                      </Link>
                     </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Gen AI Course
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">ChatGPT, LangChain, RAG & AI Agents</p>
+
+                    {/* Right Column (Courses 4 - 6) */}
+                    <div className="space-y-1.5">
+                      {/* 4. Advanced AI & Machine Learning */}
+                      <Link 
+                        href="/advanced-ai-ml-course-in-pune" 
+                        className="flex items-start gap-3 p-2.5 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all group"
+                      >
+                        <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5">
+                          <BrainCircuit className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                            Advanced AI & ML
+                          </span>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">PyTorch, Deep Learning & MLOps</p>
+                        </div>
+                      </Link>
+
+                      {/* 5. Cloud AI Course */}
+                      <Link 
+                        href="/claude-ai-course-in-pune" 
+                        className="flex items-start gap-3 p-2.5 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all group"
+                      >
+                        <div className="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5">
+                          <Cpu className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                            Claude & Cloud AI
+                          </span>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">Claude 3.5, Context & Multi-Cloud AI</p>
+                        </div>
+                      </Link>
+
+                      {/* 6. Generative AI Specialization */}
+                      <Link 
+                        href="/generative-ai-course-in-pune" 
+                        className="flex items-start gap-3 p-2.5 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all group"
+                      >
+                        <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
+                          <Sparkles className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
+                            Generative AI Specialization
+                          </span>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">ChatGPT, LangChain, RAG & CrewAI</p>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
 
-                  {/* 3. Advanced AI & Machine Learning */}
-                  <Link 
-                    href="/advanced-ai-ml-course-in-pune" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5">
-                      <Code2 className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Advanced AI & Machine Learning
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">PyTorch, YOLOv8, BERT & MLOps</p>
-                    </div>
-                  </Link> 
+                  </div>
 
-                  <div className="pt-1 border-t border-slate-100 dark:border-slate-800">
-
-
+                  {/* Footer Catalog Bar */}
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <span className="text-[11px] text-slate-400 font-semibold px-2">Need guidance on choosing a track?</span>
                     <Link 
                       href="/our-courses" 
-                      className="flex items-center justify-between p-2 rounded-xl text-xs font-bold text-[#1E2B88] dark:text-purple-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                      className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-[#1E2B88] hover:bg-purple-900 transition-colors shadow-sm"
                     >
-                      <span>Explore All Courses Catalog</span>
+                      <span>Explore Catalog</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>
               )}
+
             </div>
 
             {/* Placements */}

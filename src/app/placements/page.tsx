@@ -320,23 +320,29 @@ export default function PlacementsPage() {
             </div>
           </div>
 
-          {/* Interactive Horizontal Scrollable Filter Pills for Mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2 sm:pb-0 gap-2 sm:gap-3 mb-8 sm:mb-12 justify-start sm:justify-center">
-            {Categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`snap-start shrink-0 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 shadow-xs flex items-center gap-1.5 ${
-                  activeTab === cat.id
-                    ? "jvm-gradient-bg text-white shadow-md scale-105"
-                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-purple-50 dark:hover:bg-slate-700"
-                }`}
-              >
-                <Filter className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                {cat.label}
-              </button>
-            ))}
+          {/* Interactive Responsive Filter Pills */}
+          <div className="w-full mb-8 sm:mb-12">
+            <div className="flex flex-nowrap lg:flex-wrap overflow-x-auto lg:overflow-x-visible scrollbar-none no-scrollbar py-3 px-4 sm:px-6 md:px-8 gap-2.5 sm:gap-3 items-center justify-start lg:justify-center w-full">
+              {Categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  className={`shrink-0 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 shadow-xs flex items-center gap-1.5 whitespace-nowrap ${
+                    activeTab === cat.id
+                      ? "jvm-gradient-bg text-white shadow-md ring-2 ring-purple-500/30"
+                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-purple-50 dark:hover:bg-slate-700"
+                  }`}
+                >
+                  <Filter className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
+
+
+
+
 
 
           {/* Empty State */}

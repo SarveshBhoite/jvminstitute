@@ -161,14 +161,14 @@ const courseCatalog: Record<string, {
       { name: "Pinecone", category: "Vector Storage", badge: "Cloud DB", color: "from-sky-500 to-blue-600" }
     ]
   },
-  "cloud-ai": {
-    title: "Cloude AI & Multi-Cloud MLOps Course in Pune!",
-    badge: "CAREER LANDSCAPE 2026 • MULTI-CLOUDE AI TRACK",
+  "claude-ai": {
+    title: "Claude AI & Multi-Cloud MLOps Course in Pune!",
+    badge: "CAREER LANDSCAPE 2026 • MULTI-CLAUDE AI TRACK",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
     hike: "125%",
     growth: "3.8x",
     labs: "85%",
-    achieveHeading: "Transform From DevOps to Multi-Cloude AI Architect",
+    achieveHeading: "Transform From DevOps to Multi-Claude AI Architect",
     achieveBullets: [
       "Deploy scalable ML models on AWS SageMaker, GCP Vertex AI & Azure ML.",
       "Orchestrate containerized AI workloads with Docker & Kubernetes.",
@@ -178,7 +178,7 @@ const courseCatalog: Record<string, {
       {
         id: "c1",
         number: "01",
-        title: "AWS Cloude AI & SageMaker Pipelines",
+        title: "AWS Claude AI & SageMaker Pipelines",
         duration: "2 Weeks",
         topics: ["AWS Bedrock & Rekognition Services", "SageMaker Model Training & Endpoints", "Auto-scaling AI Clusters on AWS"],
         tools: ["AWS SageMaker", "AWS Bedrock", "Python"],
@@ -187,7 +187,7 @@ const courseCatalog: Record<string, {
       {
         id: "c2",
         number: "02",
-        title: "Docker, Kubernetes & Cloude AI Orchestration",
+        title: "Docker, Kubernetes & Claude AI Orchestration",
         duration: "2 Weeks",
         topics: ["Dockerizing Machine Learning APIs", "Kubernetes Pods, Ingress & HPA", "KubeFlow Pipelines on GCP Vertex AI"],
         tools: ["Docker", "Kubernetes", "GCP Vertex AI"],

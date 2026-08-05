@@ -76,9 +76,9 @@ const curriculumModules = [
       "Prompt Engineering Fundamentals & Prompt Design",
       "Prompt Types & AI Productivity Techniques",
       "Git & GitHub (Version Control & Collaboration)",
-      "Introduction to Cloude AI (Azure AI, Google Vertex AI & AWS AI)"
+      "Introduction to Cloud AI (Azure AI, Google Vertex AI & AWS AI)"
     ],
-    tools: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib", "Seaborn", "Git", "Cloude AI"],
+    tools: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib", "Seaborn", "Git", "Claude AI"],
     project: "Build and deploy machine learning models and predictive AI applications."
   }
 ];
@@ -89,7 +89,7 @@ const techStack = [
   { name: "Scikit-Learn", category: "Machine Learning", badge: "ML Library", color: "from-orange-500 to-amber-600" },
   { name: "Matplotlib & Seaborn", category: "Visualization", badge: "Graphics", color: "from-emerald-500 to-teal-600" },
   { name: "Jupyter & Git", category: "Environment", badge: "Interactive Labs", color: "from-purple-500 to-indigo-600" },
-  { name: "Cloude AI", category: "Cloud Services", badge: "Azure/AWS/GCP", color: "from-[#1E2B88] to-indigo-600" }
+  { name: "Claude AI", category: "Cloud Services", badge: "Azure/AWS/GCP", color: "from-[#1E2B88] to-indigo-600" }
 ];
 
 const capstoneProjects = [

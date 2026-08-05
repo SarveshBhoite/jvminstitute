@@ -169,13 +169,13 @@ const coursesData = [
     entranceAnim: { x: -50, opacity: 0 }
   },
   {
-    id: "cloud-ai",
+    id: "claude-ai",
     badge: "☁️ Multi-Cloud Mastery",
     badgeColor: "bg-sky-100 text-sky-700 dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800",
-    title: "Cloude AI",
+    title: "Claude AI",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
     image: "/students2.jpeg",
-    url: "/cloud-ai-course-in-pune",
+    url: "/claude-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
     level: "All Levels Welcome",
@@ -183,13 +183,13 @@ const coursesData = [
     rating: "4.8",
     reviewsCount: "740+",
     placement: "Cloud Certification & Job Support",
-    technologies: ["AWS AI", "Azure AI", "GCP Cloude AI", "Docker", "Kubernetes", "Scalable ML Pipelines", "MLOps", "CI/CD"],
+    technologies: ["AWS AI", "Azure AI", "GCP Claude AI", "Docker", "Kubernetes", "Scalable ML Pipelines", "MLOps", "CI/CD"],
     highlights: [
-      "Multi-Cloude AI Training (AWS, Azure & GCP)",
+      "Multi-Cloud AI Training (AWS, Azure & GCP)",
       "Docker, Kubernetes & Cloud Infrastructure Hands-on",
       "Build & Deploy Scalable AI/ML Applications",
       "MLOps, CI/CD & Production ML Pipelines",
-      "Real-Time Cloude AI Projects & Enterprise Use Cases",
+      "Real-Time Claude AI Projects & Enterprise Use Cases",
       "Placement Assistance & Cloud Certification Guidance"
     ],
     entranceAnim: { scale: 0.95, opacity: 0 }

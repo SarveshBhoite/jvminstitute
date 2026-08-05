@@ -139,7 +139,7 @@ const capstoneProjects = [
 const testimonials = [
   {
     name: "Sneha Jadhav",
-    role: "Cloude AI Engineer",
+    role: "Cloud AI Engineer",
     hike: "115% Salary Hike",
     review: "Learning AWS SageMaker, Azure OpenAI, and GCP Vertex AI together gave me an unbeatable multi-cloud advantage in my interviews!",
     avatar: "/students1.jpeg",
@@ -148,7 +148,7 @@ const testimonials = [
 ];
 
 const whatToExpectPoints = [
-  "Comprehensive Multi-Cloude AI training covering AWS (SageMaker), Azure (OpenAI), and GCP (Vertex AI).",
+  "Comprehensive Multi-Claude AI training covering AWS (SageMaker), Azure (OpenAI), and GCP (Vertex AI).",
   "Hands-on Docker containerization & Kubernetes (EKS/AKS) deployment labs.",
   "Serverless AI model serving using GCP Cloud Run and AWS Lambda.",
   "End-to-end MLOps pipeline construction with automated CI/CD workflows.",
@@ -209,7 +209,7 @@ export default function CloudAICoursePage() {
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-purple-100/90 dark:bg-purple-950/90 border border-purple-200 dark:border-purple-800 text-[#7C3AED] dark:text-[#A78BFA] text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-xs"
                 >
                   <Cloud className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                  <span>MULTI-CLOUD SPECIALIZATION • CLOUDE AI COURSE IN PUNE</span>
+                  <span>MULTI-CLOUD SPECIALIZATION • CLAUDE AI COURSE IN PUNE</span>
                 </motion.div>
 
                 <motion.h1
@@ -217,7 +217,7 @@ export default function CloudAICoursePage() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xl xs:text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-[1.15]"
                 >
-                  <span className="jvm-gradient-text">Master Multi-Cloude AI (AWS, Azure &amp; GCP) in Pune!</span>
+                  <span className="jvm-gradient-text">Master Multi-Claude AI (AWS, Azure &amp; GCP) in Pune!</span>
                 </motion.h1>
 
                 <motion.div
@@ -229,7 +229,7 @@ export default function CloudAICoursePage() {
                     Deploy enterprise Machine Learning &amp; AI models using AWS SageMaker, Azure OpenAI, GCP Vertex AI, Docker containerization, and Kubernetes infrastructure.
                   </p>
                   <p className="hidden sm:block">
-                    JVM Institute&apos;s Cloude AI track provides 100% practical cloud lab environments and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> with leading IT product firms.
+                    JVM Institute&apos;s Claude AI track provides 100% practical cloud lab environments and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> with leading IT product firms.
                   </p>
                 </motion.div>
 
@@ -244,7 +244,7 @@ export default function CloudAICoursePage() {
                   </div>
                   <div className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left">
                     <div className="text-base sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">4.0x</div>
-                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Cloude AI Demand</div>
+                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Claude AI Demand</div>
                   </div>
                   <div className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left">
                     <div className="text-base sm:text-2xl font-black text-pink-600 dark:text-pink-400">100%</div>
@@ -254,7 +254,7 @@ export default function CloudAICoursePage() {
 
                 <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
                   <button
-                    onClick={() => openEnrollModal("Cloude AI Batch Enrollment")}
+                    onClick={() => openEnrollModal("Claude AI Batch Enrollment")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
@@ -262,7 +262,7 @@ export default function CloudAICoursePage() {
                   </button>
 
                   <button
-                    onClick={() => openEnrollModal("Download Cloude  AI Syllabus")}
+                    onClick={() => openEnrollModal("Download Claude  AI Syllabus")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm shadow-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
