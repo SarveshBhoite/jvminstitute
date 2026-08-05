@@ -63,21 +63,21 @@ const contactDetails = [
     icon: Phone,
     title: "Call & Helpline",
     subtitle: "Admission & Course Support",
-    details: ["+91 98765 43210 (Admissions)", "+91 87654 32109 (Student Support)"],
+    details: ["+91 84462 84162 (Admissions)", "+91 84462 84162 (Student Support)"],
     badge: "Direct Call",
     color: "from-pink-500 to-rose-600",
     actionText: "Call Now",
-    actionUrl: "tel:+919876543210"
+    actionUrl: "tel:+91 84462 84162"
   },
   {
     icon: Mail,
     title: "Email Support",
     subtitle: "Inquiries & Corporate Training",
-    details: ["admissions@jvminstitute.com", "info@jvminstitute.com"],
+    details: ["infojvminstitute@gmail.com", "info@jvminstitute.com"],
     badge: "24/7 Response",
     color: "from-purple-500 to-indigo-600",
     actionText: "Send Mail",
-    actionUrl: "mailto:admissions@jvminstitute.com"
+    actionUrl: "mailto:infojvminstitute@gmail.com"
   },
   {
     icon: Clock,
@@ -545,7 +545,7 @@ export default function ContactUsPage() {
                           <input
                             type="tel"
                             required
-                            placeholder="+91 98765 43210"
+                            placeholder="+91 84462 84162"
                             value={formState.phone}
                             onFocus={() => setFocusedField("phone")}
                             onBlur={() => setFocusedField(null)}
@@ -697,12 +697,12 @@ export default function ContactUsPage() {
                   <div className="space-y-3 pt-2">
                     <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                       <MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0 mt-0.5" />
-                      <span>Commercial Plaza, 3rd Floor, Opposite Deccan Bus Stand, Karve Road / FC Road, Pune 411004.</span>
+                      <span>Floor 2, S.No: 82, Suman Ankur, Sahyadri Farms, Lalit Estate, Baner, Pune, Maharashtra 411045.</span>
                     </div>
 
                     <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                       <Navigation className="w-5 h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
-                      <span>5 Mins Walk from Deccan Bus Depot & Metro Station</span>
+                      <span>5 Mins Walking distance </span>
                     </div>
                   </div>
 

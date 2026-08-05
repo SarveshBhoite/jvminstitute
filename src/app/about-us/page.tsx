@@ -213,27 +213,12 @@ function TimelineSection({ timelineData }: { timelineData: { year: string; title
 
 export default function AboutUsPage() {
   const facultyList = [
-    {
-      name: "Jayesh Bhoite",
-      role: "Lead Data Architect & Founder",
-      experience: "12+ Years Exp",
-      image: "/students1.jpeg",
-      bio: "Former Enterprise Architect specializing in distributed PySpark pipelines, Databricks Lakehouse, and cloud data architecture.",
-      expertise: ["PySpark", "Databricks", "AWS Redshift", "System Design"]
-    },
-    {
-      name: "Priya Sharma",
-      role: "Senior Cloud Data Engineer",
-      experience: "9+ Years Exp",
-      image: "/students2.jpeg",
-      bio: "Expert in AWS Redshift, Snowflake data warehousing, Apache Airflow DAG orchestration, and automated CI/CD deployment pipelines.",
-      expertise: ["Snowflake", "AWS S3", "Apache Airflow", "SQL Tuning"]
-    },
+   
     {
       name: "Anand Sir ",
       role: "Mysql & Python Expert",
       experience: "12+ Years Exp",
-      image: "/place1.png",
+      image: "/anand.png",
       bio: "Specializes in high-velocity real-time event streaming architectures using Apache Kafka, PySpark Structured Streaming, and Delta Lake.",
       expertise: ["Apache Kafka", "Real-time Streaming", "Python", "NoSQL"]
     },
@@ -241,7 +226,7 @@ export default function AboutUsPage() {
       name: "Praveen Sir",
       role: "Senior cloud architect and GCP expert",
       experience: "10+ Years Exp",
-      image: "/place2.png",
+      image: "/praveen.png",
       bio: "Focuses on enterprise data modeling, Star & Snowflake schemas, Power BI dashboard integration, and complex SQL window functions.",
       expertise: ["Advanced SQL", "Data Modeling", "Power BI", "PostgreSQL"]
     },
@@ -249,7 +234,7 @@ export default function AboutUsPage() {
       name: "Omkar Sir",
       role: "AWS & Azure Architect",
       experience: "8+ Years Exp",
-      image: "/place3.jpeg",
+      image: "/omkar.png",
       bio: "Pioneer in containerized data pipeline deployment with Docker, Kubernetes, Terraform IAC, and multi-cloud security protocols.",
       expertise: ["Bigdata", "Pyspark", "Cloud", "Databricks","ETL"]
     },
