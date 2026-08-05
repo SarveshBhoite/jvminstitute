@@ -407,7 +407,7 @@ export default function AboutUsPage() {
 
                 <div className="space-y-2 sm:space-y-4 text-slate-600 dark:text-slate-300 text-xs sm:text-base leading-relaxed">
                   <p>
-                    JVM Institute Pvt. Ltd. was founded in *2020* in Pune with a vision to bridge the gap between academic learning and real-world industry requirements. We believe that successful technology careers are built through practical experience, industry mentorship, and hands-on project development—not just theoretical knowledge.
+                    JVM Institute Pvt. Ltd. was founded in 2020 in Pune with a vision to bridge the gap between academic learning and real-world industry requirements. We believe that successful technology careers are built through practical experience, industry mentorship, and hands-on project development—not just theoretical knowledge.
                   </p>
                   <p className="hidden sm:block">
                     Our journey began with a commitment to delivering high-quality technical education aligned with the evolving needs of the IT industry. As technology advanced, we continuously expanded our programs to prepare students for the careers of tomorrow.
