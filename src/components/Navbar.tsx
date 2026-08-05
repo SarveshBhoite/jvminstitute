@@ -162,39 +162,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-                  {/* 2. Learn Python for Data Analysis 
-                  <Link 
-                    href="/learn-python-for-data-analysis" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-[#1E2B88] dark:text-indigo-300 shrink-0 mt-0.5">
-                      <Code2 className="w-4 h-4 text-[#7C248C] dark:text-purple-400" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Learn Python for Data Analysis
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Pandas, NumPy, SQL & EDA Projects</p>
-                    </div>
-                  </Link>
-
-                
-                  <Link 
-                    href="/why-should-i-learn-python-for-data-analysis" 
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
-                  >
-                    <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
-                      <HelpCircle className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                        Why Learn Python for Data Analysis?
-                      </span>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">Career roadmap, salary & job market</p>
-                    </div>
-                  </Link>
-
-                  {/* Gen AI Course */}
+                  {/* 2. Gen AI Course */}
                   <Link 
                     href="/generative-ai-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -210,7 +178,7 @@ export default function Navbar() {
                     </div>
                   </Link>
 
-
+                  {/* 3. Advanced AI & Machine Learning */}
                   <Link 
                     href="/advanced-ai-ml-course-in-pune" 
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors group"
@@ -225,8 +193,10 @@ export default function Navbar() {
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">PyTorch, YOLOv8, BERT & MLOps</p>
                     </div>
                   </Link> 
-               */}
+
                   <div className="pt-1 border-t border-slate-100 dark:border-slate-800">
+
+
                     <Link 
                       href="/our-courses" 
                       className="flex items-center justify-between p-2 rounded-xl text-xs font-bold text-[#1E2B88] dark:text-purple-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
