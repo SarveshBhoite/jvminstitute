@@ -122,7 +122,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Top Ranking Courses & SEO Pages */}
+          {/* Column 3: Top Ranking Programs */}
           <div className="space-y-4">
             <h4 className="text-sm font-extrabold text-white uppercase tracking-wider font-heading">
               Top Ranked Programs
@@ -130,26 +130,37 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
                 <Link href="/data-engineering-course-in-pune" className="text-purple-300 hover:text-white font-semibold flex items-center gap-1">
-                  Data Engineering in Pune <span className="text-[10px] bg-purple-900 text-purple-200 px-1.5 py-0.5 rounded font-extrabold">Top 3</span>
+                  Data Engineering in Pune <span className="text-[10px] bg-purple-900 text-purple-200 px-1.5 py-0.5 rounded font-extrabold">Top 1</span>
                 </Link>
               </li>
               <li>
-                <Link href="/learn-python-for-data-analysis" className="hover:text-white transition-colors">
-                  Learn Python for Data Analysis
+                <Link href="/data-engineering-with-genai-course-in-pune" className="hover:text-white transition-colors">
+                  Data Engineering & GenAI
                 </Link>
               </li>
               <li>
-                <Link href="/why-should-i-learn-python-for-data-analysis" className="hover:text-white transition-colors">
-                  Why Learn Python Guide
+                <Link href="/basic-ai-ml-course-in-pune" className="hover:text-white transition-colors">
+                  Basic AI & Machine Learning
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors">
-                  Engineering Blog & Articles
+                <Link href="/advanced-ai-ml-course-in-pune" className="hover:text-white transition-colors">
+                  Advanced AI & Machine Learning
+                </Link>
+              </li>
+              <li>
+                <Link href="/claude-ai-course-in-pune" className="hover:text-white transition-colors">
+                  Claude & Cloud AI Course
+                </Link>
+              </li>
+              <li>
+                <Link href="/generative-ai-course-in-pune" className="hover:text-white transition-colors">
+                  Generative AI Specialization
                 </Link>
               </li>
             </ul>
           </div>
+
 
           {/* Column 4: Contact & Office Location */}
           <div className="space-y-4">
