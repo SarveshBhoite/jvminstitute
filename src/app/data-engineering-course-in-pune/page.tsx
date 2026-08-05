@@ -712,11 +712,12 @@ export default function DataEngineeringCoursePage() {
                                 {mod.topics.map((t, idx) => (
                                   <li
                                     key={idx}
-                                    className="flex items-start gap-2 p-2 rounded-lg bg-slate-50/70 dark:bg-slate-850/60 border border-slate-100 dark:border-slate-800/50"
+                                    className="flex items-start gap-2 p-2 rounded-lg bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80"
                                   >
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                                    <span className="leading-snug text-[11px] sm:text-xs">{t}</span>
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                                    <span className="leading-snug text-[11px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100">{t}</span>
                                   </li>
+
                                 ))}
                               </ul>
                             </div>
