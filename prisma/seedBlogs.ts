@@ -175,7 +175,7 @@ const blog1Html = `
           <li><strong>Programming:</strong> Python, R</li>
           <li><strong>Mathematics:</strong> Statistics, Probability, Linear Algebra, Calculus basics</li>
           <li><strong>Machine Learning:</strong> Regression, Classification, Clustering, Neural Networks</li>
-          <li><strong>AI Technologies:</strong> Deep Learning, Natural Language Processing, Computer Vision, Generative AI</li>
+          <li><strong>AI Technologies:</strong> Deep Learning, Natural Language Processing, Computer Vision, Gen AI</li>
           <li><strong>Data Visualization:</strong> Tableau, Power BI, Matplotlib</li>
         </ul>
       </div>
@@ -381,7 +381,7 @@ const blog1Html = `
     <p>Both fields have strong future potential due to:</p>
     <ul class="list-disc pl-6 space-y-1.5">
       <li>Artificial Intelligence growth</li>
-      <li>Generative AI adoption</li>
+      <li>Gen AI adoption</li>
       <li>Cloud computing expansion</li>
       <li>Big Data requirements</li>
       <li>Automation</li>
@@ -727,7 +727,7 @@ const blog2Html = `
     </div>
 
     <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">13. Generative AI and Machine Learning Fundamentals</h3>
+      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">13. Gen AI and Machine Learning Fundamentals</h3>
       <p>With the growth of AI applications, Data Engineers are increasingly working on AI-ready data platforms.</p>
       <p>Modern Data Engineers should understand:</p>
       <ul class="list-disc pl-6 space-y-1">
@@ -796,7 +796,7 @@ const blog2Html = `
       </li>
       <li>
         <span class="font-bold text-purple-700 dark:text-purple-400">Step 6: Advanced Skills</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: Generative AI, Real-time processing, System design</span>
+        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: Gen AI, Real-time processing, System design</span>
       </li>
     </ol>
   </section>
@@ -814,7 +814,7 @@ const blog2Html = `
       <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Airflow</li>
       <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Kafka</li>
       <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Data Modeling</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Generative AI Data Workflows</li>
+      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Gen AI Data Workflows</li>
     </ul>
   </section>
 
@@ -834,7 +834,7 @@ const blog2Html = `
         <div>• PySpark</div>
         <div>• Cloud Technologies</div>
         <div>• Big Data Fundamentals</div>
-        <div>• Generative AI Concepts</div>
+        <div>• Gen AI Concepts</div>
         <div>• Real-world Projects</div>
         <div>• Interview Preparation</div>
         <div>• Placement Assistance</div>
@@ -931,7 +931,7 @@ async function seedNewBlogs() {
     update: {
       title: "Top Skills Required for Data Engineers in 2026 – Complete Guide",
       metaTitle: "Top Skills Required for Data Engineers in 2026 – Complete Guide | JVM Institute",
-      excerpt: "Explore the top skills required for Data Engineers in 2026, from Python, SQL, and Data Warehousing to Apache Spark, Cloud Computing, and Generative AI workflows.",
+      excerpt: "Explore the top skills required for Data Engineers in 2026, from Python, SQL, and Data Warehousing to Apache Spark, Cloud Computing, and Gen AI workflows.",
       longDescriptionHtml: blog2Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
@@ -948,7 +948,7 @@ async function seedNewBlogs() {
       slug: "top-skills-required-for-data-engineers-in-2026-complete-guide",
       title: "Top Skills Required for Data Engineers in 2026 – Complete Guide",
       metaTitle: "Top Skills Required for Data Engineers in 2026 – Complete Guide | JVM Institute",
-      excerpt: "Explore the top skills required for Data Engineers in 2026, from Python, SQL, and Data Warehousing to Apache Spark, Cloud Computing, and Generative AI workflows.",
+      excerpt: "Explore the top skills required for Data Engineers in 2026, from Python, SQL, and Data Warehousing to Apache Spark, Cloud Computing, and Gen AI workflows.",
       longDescriptionHtml: blog2Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",

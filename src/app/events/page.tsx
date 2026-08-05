@@ -144,7 +144,7 @@ const ALL_EVENTS: EventItem[] = [
       company: "Enterprise AI Lab",
       avatar: "/place3.jpeg"
     },
-    description: "Explore LangChain, LlamaIndex, Vector Databases (Pinecone/Milvus), and PySpark text processing to deploy enterprise-grade Generative AI agents.",
+    description: "Explore LangChain, LlamaIndex, Vector Databases (Pinecone/Milvus), and PySpark text processing to deploy enterprise-grade Gen AI agents.",
     tags: ["GenAI", "LangChain", "Vector DB", "PySpark", "Python"],
     seatsTotal: 200,
     seatsFilled: 172

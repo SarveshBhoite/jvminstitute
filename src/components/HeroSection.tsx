@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Star, 
-  ShieldCheck, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Star,
+  ShieldCheck,
   Sparkles,
   Award,
   Video,
@@ -40,20 +40,19 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-slate-50 dark:bg-[#0B0F19] transition-colors duration-300">
-      
+
       {/* Background Ambient Glows */}
       <div className="ambient-glow w-72 h-72 sm:w-96 sm:h-96 bg-[#1E2B88] dark:bg-[#4F46E5] top-0 left-[-10%] opacity-20 z-0 pointer-events-none"></div>
 
       {/* DESKTOP FULL RIGHT-SIDE IMAGE CONTAINER WITH AUTOMATIC FADE SLIDESHOW */}
       <div className="absolute top-0 right-0 bottom-0 w-full lg:w-1/2 z-0 hidden lg:block overflow-hidden">
-        
+
         {/* Auto Fade Images Layer */}
         {heroImages.map((img, idx) => (
           <div
             key={img.src}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              currentImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
           >
             <Image
               src={img.src}
@@ -69,25 +68,25 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40 z-10 pointer-events-none"></div>
 
         {/* --- ORGANIC FULL-CURVE WAVY RIBBON DIVIDER --- */}
-        <svg 
-          className="absolute -left-1 top-0 bottom-0 h-full w-36 text-[#E01E6A] pointer-events-none drop-shadow-xl z-20" 
-          viewBox="0 0 100 100" 
+        <svg
+          className="absolute -left-1 top-0 bottom-0 h-full w-36 text-[#E01E6A] pointer-events-none drop-shadow-xl z-20"
+          viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
           <path d="M100,0 C20,15 70,60 100,100 L0,100 L0,0 Z" fill="currentColor" />
         </svg>
 
-        <svg 
-          className="absolute -left-2 top-0 bottom-0 h-full w-32 text-[#1E2B88] pointer-events-none drop-shadow-lg z-20" 
-          viewBox="0 0 100 100" 
+        <svg
+          className="absolute -left-2 top-0 bottom-0 h-full w-32 text-[#1E2B88] pointer-events-none drop-shadow-lg z-20"
+          viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
           <path d="M95,0 C15,18 65,65 95,100 L0,100 L0,0 Z" fill="currentColor" />
         </svg>
 
-        <svg 
-          className="absolute -left-3 top-0 bottom-0 h-full w-28 text-slate-50 dark:text-[#0B0F19] pointer-events-none z-20" 
-          viewBox="0 0 100 100" 
+        <svg
+          className="absolute -left-3 top-0 bottom-0 h-full w-28 text-slate-50 dark:text-[#0B0F19] pointer-events-none z-20"
+          viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
           <path d="M90,0 C10,22 60,70 90,100 L0,100 L0,0 Z" fill="currentColor" />
@@ -96,15 +95,14 @@ export default function HeroSection() {
 
       {/* Main Container */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-4 sm:py-6 lg:py-6">
-        
+
         {/* MOBILE FEATURED IMAGE SLIDESHOW HEADER (Visible on Mobile & Tablet before text content) */}
         <div className="block lg:hidden mb-4 relative w-full h-[180px] xs:h-[210px] sm:h-[260px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
           {heroImages.map((img, idx) => (
             <div
               key={img.src}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                currentImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImageIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
             >
               <Image
                 src={img.src}
@@ -122,10 +120,10 @@ export default function HeroSection() {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 items-center">
-          
+
           {/* Left Column: Heading, Value Points & CTAs (6 cols) */}
           <div className="lg:col-span-6 space-y-3.5 text-center lg:text-left">
-            
+
             {/* Top Rating & ISO Badge */}
             <div className="flex justify-center lg:justify-start">
               <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
@@ -151,7 +149,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
-              Master Data Engineering, Generative AI, Machine Learning, Cloud AI, and Advanced AI technologies through industry-led training, live projects, real business case studies, and comprehensive <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>. Whether you are a fresher, working professional, or engineering, BSC, MBS, or pharmacist student, JVM Institute helps you build practical skills that leading companies expect from today&apos;s technology professionals.
+              Master Data Engineering, Gen AI, Machine Learning, , and Advanced AI technologies through industry-led training, live projects, real business case studies, and comprehensive <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>. Whether you are a fresher, working professional, or engineering, BSC, MBS, or pharmacist student, JVM Institute helps you build practical skills that leading companies expect from today&apos;s technology professionals.
             </p>
 
             {/* Key Value Points Grid */}
@@ -180,7 +178,7 @@ export default function HeroSection() {
 
             {/* CTAs Button Group - 3 Action Buttons in JVM Website Theme */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-2 sm:gap-2.5 pt-3">
-              <button 
+              <button
                 onClick={() => openEnrollModal("Book a Free Demo")}
                 className="flex-1 sm:flex-initial jvm-gradient-bg text-white font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 group cursor-pointer whitespace-nowrap border border-white/20"
               >

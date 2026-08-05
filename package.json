@@ -21,7 +21,7 @@
     "bcryptjs": "^3.0.3",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
-    "cloudinary": "^2.10.0",
+    "cloudeinary": "^2.10.0",
     "clsx": "^2.1.1",
     "countup.js": "^2.10.1",
     "embla-carousel-react": "^8.6.0",

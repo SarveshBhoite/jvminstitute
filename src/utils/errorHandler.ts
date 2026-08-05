@@ -1,5 +1,6 @@
 import { ZodError } from "zod";
 import { Prisma } from "@prisma/client";
+
 import { apiErrorResponse } from "./apiResponse";
 
 export class ApiError extends Error {

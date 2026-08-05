@@ -119,13 +119,13 @@ const curriculumModules = [
   {
     id: "mod-5",
     number: "05",
-    title: "MLOps, Docker for AI & Cloud AI Services",
+    title: "MLOps, Docker for AI & Cloude AI Services",
     duration: "4 Weeks",
     topics: [
       "MLOps Fundamentals & Machine Learning Lifecycle Management",
       "Experiment Tracking & Model Management (MLflow)",
       "Docker for AI (Containerization & Docker Architecture)",
-      "Cloud AI Services (Azure AI, Google Vertex AI & AWS SageMaker)",
+      "Cloude AI Services (Azure AI, Google Vertex AI & AWS SageMaker)",
       "REST API Development (FastAPI) & AI Service Integration"
     ],
     tools: ["Docker", "MLflow", "FastAPI", "AWS SageMaker", "Azure AI", "Vertex AI"],
@@ -170,7 +170,7 @@ const capstoneProjects = [
   },
   {
     id: "p3",
-    tag: "Generative AI & RAG",
+    tag: "Gen AI & RAG",
     icon: MessageSquare,
     title: "Enterprise AI Chatbot",
     desc: "Construct an interactive conversational RAG assistant backed by Vector Databases (ChromaDB/Pinecone) and LLMs (GPT/Llama) to retrieve knowledge from thousands of company documents.",
@@ -206,7 +206,7 @@ const techStack = [
   { name: "YOLO (v8/v9)", category: "Computer Vision", badge: "Object Detection", color: "from-emerald-500 to-teal-600" },
   { name: "Vector Databases", category: "RAG & AI", badge: "Chroma/Pinecone", color: "from-purple-500 to-indigo-600" },
   { name: "Docker for AI", category: "MLOps", badge: "Containers", color: "from-blue-600 to-cyan-600" },
-  { name: "AWS SageMaker", category: "Cloud AI Services", badge: "Cloud Platform", color: "from-amber-500 to-yellow-600" },
+  { name: "AWS SageMaker", category: "Cloude AI Services", badge: "Cloud Platform", color: "from-amber-500 to-yellow-600" },
   { name: "FastAPI", category: "REST API Dev", badge: "High Speed", color: "from-teal-500 to-emerald-600" },
   { name: "LangChain", category: "RAG & Agents", badge: "AI Agents", color: "from-pink-500 to-rose-600" },
   { name: "MLflow", category: "MLOps", badge: "Experiment Track", color: "from-sky-500 to-blue-600" },
@@ -495,7 +495,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 { icon: Laptop, title: "Computer Vision & Object Detection", desc: "Build image classification, YOLOv9 object detection, image segmentation, and transfer learning models." },
                 { icon: Cpu, title: "NLP, LLMs & RAG Architecture", desc: "Build Enterprise Knowledge Retrieval systems with Prompt Engineering, Vector DBs, and LLM fine-tuning." },
                 { icon: Terminal, title: "AI Agents & Autonomous Systems", desc: "Design autonomous AI agent workflows, enterprise automation, and intelligent corporate tools." },
-                { icon: Award, title: "MLOps, Docker & Cloud AI", desc: "Learn MLflow experiment tracking, Docker containerization, and AWS SageMaker cloud deployment." },
+                { icon: Award, title: "MLOps, Docker & Cloude AI", desc: "Learn MLflow experiment tracking, Docker containerization, and AWS SageMaker cloud deployment." },
                 { icon: Briefcase, title: "100% Placement & CI/CD Support", desc: "Automate CI/CD pipelines, 1-on-1 mock technical interviews, and direct referrals to 50+ tech MNCs." }
               ].map((item, idx) => (
                 <div key={idx} className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 flex items-start gap-4">

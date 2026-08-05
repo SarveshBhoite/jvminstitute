@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverComponentsExternalPackages: ["@prisma/client", "prisma"],
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       config.cache = false;
@@ -21,7 +24,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
+        hostname: "res.cloudeinary.com",
       },
     ],
   },

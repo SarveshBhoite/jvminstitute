@@ -139,7 +139,7 @@ const capstoneProjects = [
 const testimonials = [
   {
     name: "Sneha Jadhav",
-    role: "Cloud AI Engineer",
+    role: "Cloude AI Engineer",
     hike: "115% Salary Hike",
     review: "Learning AWS SageMaker, Azure OpenAI, and GCP Vertex AI together gave me an unbeatable multi-cloud advantage in my interviews!",
     avatar: "/students1.jpeg",
@@ -148,7 +148,7 @@ const testimonials = [
 ];
 
 const whatToExpectPoints = [
-  "Comprehensive Multi-Cloud AI training covering AWS (SageMaker), Azure (OpenAI), and GCP (Vertex AI).",
+  "Comprehensive Multi-Cloude AI training covering AWS (SageMaker), Azure (OpenAI), and GCP (Vertex AI).",
   "Hands-on Docker containerization & Kubernetes (EKS/AKS) deployment labs.",
   "Serverless AI model serving using GCP Cloud Run and AWS Lambda.",
   "End-to-end MLOps pipeline construction with automated CI/CD workflows.",
@@ -156,7 +156,7 @@ const whatToExpectPoints = [
 ];
 
 export default function CloudAICoursePage() {
-    const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("Data Engineering Master Track Admission");
 
   // Accordion open/close state
@@ -193,15 +193,15 @@ export default function CloudAICoursePage() {
 
         {/* HERO SECTION */}
         <section className="relative py-6 sm:py-10 lg:py-14 bg-gradient-to-b from-[#F5F3FF] via-[#FAFAFC] to-white dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden flex items-center min-h-[auto] lg:h-[calc(100vh-80px)]">
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0" 
+            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0"
           />
-          
+
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-10 items-center">
-              
+
               <div className="lg:col-span-7 space-y-2.5 sm:space-y-3.5 text-left">
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -209,18 +209,18 @@ export default function CloudAICoursePage() {
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-purple-100/90 dark:bg-purple-950/90 border border-purple-200 dark:border-purple-800 text-[#7C3AED] dark:text-[#A78BFA] text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-xs"
                 >
                   <Cloud className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                  <span>MULTI-CLOUD SPECIALIZATION • CLOUD AI COURSE IN PUNE</span>
+                  <span>MULTI-CLOUD SPECIALIZATION • CLOUDE AI COURSE IN PUNE</span>
                 </motion.div>
 
-                <motion.h1 
+                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xl xs:text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-[1.15]"
                 >
-                  <span className="jvm-gradient-text">Master Multi-Cloud AI (AWS, Azure &amp; GCP) in Pune!</span>
+                  <span className="jvm-gradient-text">Master Multi-Cloude AI (AWS, Azure &amp; GCP) in Pune!</span>
                 </motion.h1>
 
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="space-y-1.5 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal"
@@ -229,11 +229,11 @@ export default function CloudAICoursePage() {
                     Deploy enterprise Machine Learning &amp; AI models using AWS SageMaker, Azure OpenAI, GCP Vertex AI, Docker containerization, and Kubernetes infrastructure.
                   </p>
                   <p className="hidden sm:block">
-                    JVM Institute&apos;s Cloud AI track provides 100% practical cloud lab environments and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> with leading IT product firms.
+                    JVM Institute&apos;s Cloude AI track provides 100% practical cloud lab environments and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong> with leading IT product firms.
                   </p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="grid grid-cols-3 gap-2 sm:gap-3.5 pt-1"
@@ -244,7 +244,7 @@ export default function CloudAICoursePage() {
                   </div>
                   <div className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left">
                     <div className="text-base sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">4.0x</div>
-                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Cloud AI Demand</div>
+                    <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Cloude AI Demand</div>
                   </div>
                   <div className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left">
                     <div className="text-base sm:text-2xl font-black text-pink-600 dark:text-pink-400">100%</div>
@@ -254,7 +254,7 @@ export default function CloudAICoursePage() {
 
                 <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
                   <button
-                    onClick={() => openEnrollModal("Cloud AI Batch Enrollment")}
+                    onClick={() => openEnrollModal("Cloude AI Batch Enrollment")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
@@ -262,7 +262,7 @@ export default function CloudAICoursePage() {
                   </button>
 
                   <button
-                    onClick={() => openEnrollModal("Download Cloud AI Syllabus")}
+                    onClick={() => openEnrollModal("Download Cloude  AI Syllabus")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm shadow-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
@@ -294,7 +294,7 @@ export default function CloudAICoursePage() {
                     </li>
                   </ul>
                   <button
-                    onClick={() => openEnrollModal("Prospectus Cloud AI")}
+                    onClick={() => openEnrollModal("Prospectus ")}
                     className="w-full py-2.5 sm:py-3 rounded-xl bg-white text-slate-900 font-extrabold text-xs sm:text-sm shadow-lg hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Request Detailed Syllabus</span>
@@ -308,12 +308,12 @@ export default function CloudAICoursePage() {
         </section>
 
         {/* SYLLABUS ACCORDION */}
-               {/* ========================================================= */}
+        {/* ========================================================= */}
         {/* 2. COURSE CURRICULUM (With Scrollbar & Tools Used)       */}
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 bg-[#FAFAFC] dark:bg-[#070A12] border-t border-purple-100/60 dark:border-slate-800/80 relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Animated Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -348,11 +348,10 @@ export default function CloudAICoursePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.45, delay: index * 0.07 }}
-                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${
-                      isOpen
+                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${isOpen
                         ? "bg-white dark:bg-slate-900/95 border-purple-500/50 dark:border-purple-500/50 shadow-xl"
                         : "bg-white/90 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800/90 shadow-sm"
-                    }`}
+                      }`}
                   >
                     <button
                       onClick={() => setOpenModule(isOpen ? null : mod.id)}
@@ -360,11 +359,10 @@ export default function CloudAICoursePage() {
                     >
                       <div className="flex items-center gap-3 sm:gap-5">
                         <span
-                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${
-                            isOpen
+                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${isOpen
                               ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-md"
                               : "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
-                          }`}
+                            }`}
                         >
                           {mod.number}
                         </span>
@@ -382,11 +380,10 @@ export default function CloudAICoursePage() {
                       </div>
 
                       <div
-                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${
-                          isOpen
+                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${isOpen
                             ? "bg-purple-600 text-white rotate-180"
                             : "bg-slate-100 dark:bg-slate-800 text-slate-600"
-                        }`}
+                          }`}
                       >
                         <ChevronDown className="w-4 h-4" />
                       </div>
@@ -462,16 +459,16 @@ export default function CloudAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 relative overflow-hidden bg-slate-200/80 dark:bg-[#0E1322] border-t border-b border-slate-300/80 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E2B88] dark:text-white text-center mb-6 sm:mb-10 tracking-tight leading-tight">
               What to Expect from the JVM Data Engineering Course in Pune
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
-              
+
               <div className="lg:col-span-7 space-y-1 text-left">
                 {whatToExpectPoints.map((point, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-start gap-2.5 py-2 sm:py-3 border-b border-slate-300/80 dark:border-slate-800/80 last:border-b-0"
                   >
@@ -504,7 +501,7 @@ export default function CloudAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 LEARNING ADVANTAGE
@@ -516,7 +513,7 @@ export default function CloudAICoursePage() {
 
             {/* REQUIREMENT 4: Display TWO CARDS IN ONE LINE for Mobile */}
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-8">
-              
+
               <MagicCard className="rounded-xl sm:rounded-none" glowFrom="#7C3AED" glowTo="#E01E6A">
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
                   <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">6 Months Track</h3>
@@ -581,7 +578,7 @@ export default function CloudAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 ENTERPRISE TECH ECOSYSTEM
@@ -597,11 +594,10 @@ export default function CloudAICoursePage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    selectedCategory === cat
+                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
                       ? "jvm-gradient-bg text-white shadow-xs"
                       : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -633,7 +629,7 @@ export default function CloudAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 PORTFOLIO BUILDERS
@@ -685,7 +681,7 @@ export default function CloudAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 CAREER DESK
@@ -697,7 +693,7 @@ export default function CloudAICoursePage() {
 
             {/* REQUIREMENT 7: 2-COLUMN GRID ON MOBILE VIEW FOR CLEAN FIT */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
-              
+
               <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
                 <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
                   01
@@ -748,7 +744,7 @@ export default function CloudAICoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 REAL TRANSCRIPTIONS
@@ -794,11 +790,10 @@ export default function CloudAICoursePage() {
                   <button
                     key={idx}
                     onClick={() => setActiveTestimonialIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      activeTestimonialIndex === idx
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeTestimonialIndex === idx
                         ? "w-6 jvm-gradient-bg"
                         : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -810,7 +805,7 @@ export default function CloudAICoursePage() {
       </main>
 
       {/* Global Lead Enquiry Modal */}
-      <LeadEnquiryModal 
+      <LeadEnquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         courseTitle={modalTitle}

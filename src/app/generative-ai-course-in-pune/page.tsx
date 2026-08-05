@@ -25,7 +25,7 @@ import Footer from "@/components/Footer";
 import MagicCard from "@/components/ui/magic-card";
 import LeadEnquiryModal from "@/components/LeadEnquiryModal";
 
-// Module Curriculum Data for Generative AI Course
+// Module Curriculum Data for Gen AI Course
 const curriculumModules = [
   {
     id: "mod-1",
@@ -90,7 +90,7 @@ const curriculumModules = [
 ];
 
 const techStack = [
-  { name: "Generative AI", category: "AI Core", badge: "Flagship", color: "from-purple-500 to-indigo-600" },
+  { name: "Gen AI", category: "AI Core", badge: "Flagship", color: "from-purple-500 to-indigo-600" },
   { name: "ChatGPT & OpenAI", category: "LLM APIs", badge: "Industry Lead", color: "from-emerald-500 to-teal-600" },
   { name: "LangChain", category: "Framework", badge: "RAG Stack", color: "from-amber-500 to-yellow-600" },
   { name: "CrewAI & LangGraph", category: "Agents", badge: "Agentic AI", color: "from-pink-500 to-rose-600" },
@@ -136,9 +136,9 @@ const whatToExpectPoints = [
   "Resume building, AI portfolio creation, and direct placement assistance."
 ];
 
-export default function GenerativeAICoursePage() {
+export default function GenAICoursePage() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("Generative AI Course Admission");
+  const [modalTitle, setModalTitle] = useState("Gen AI Course Admission");
   const [openModule, setOpenModule] = useState<string | null>("mod-1");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -176,7 +176,7 @@ export default function GenerativeAICoursePage() {
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-purple-100/90 dark:bg-purple-950/90 border border-purple-200 dark:border-purple-800 text-[#7C3AED] dark:text-[#A78BFA] text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-xs"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                  <span>NEXT-GEN AI CERTIFICATION • GENERATIVE AI COURSE IN PUNE</span>
+                  <span>NEXT-GEN AI CERTIFICATION • GEN AI COURSE IN PUNE</span>
                 </motion.div>
 
                 <motion.h1 
@@ -184,7 +184,7 @@ export default function GenerativeAICoursePage() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xl xs:text-2xl sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-[1.15]"
                 >
-                  <span className="jvm-gradient-text">Master Generative AI, RAG &amp; AI Agents in Pune!</span>
+                  <span className="jvm-gradient-text">Master Gen AI, RAG &amp; AI Agents in Pune!</span>
                 </motion.h1>
 
                 <motion.div 
@@ -196,7 +196,7 @@ export default function GenerativeAICoursePage() {
                     Build production-ready AI applications using OpenAI APIs, LangChain, LlamaIndex, Pinecone Vector Databases, and CrewAI autonomous agentic workflows.
                   </p>
                   <p className="hidden sm:block">
-                    JVM Institute&apos;s industry-accredited Generative AI track offers hands-on project labs, prompt engineering techniques, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Support</strong> with MNC referral opportunities.
+                    JVM Institute&apos;s industry-accredited Gen AI track offers hands-on project labs, prompt engineering techniques, and <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Support</strong> with MNC referral opportunities.
                   </p>
                 </motion.div>
 
@@ -282,7 +282,7 @@ export default function GenerativeAICoursePage() {
                 CURRICULUM
               </span>
               <h2 className="text-2xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                Generative AI <span className="jvm-gradient-text">Modules</span>
+                Gen AI <span className="jvm-gradient-text">Modules</span>
               </h2>
             </div>
 

@@ -110,9 +110,9 @@ const courseCatalog: Record<string, {
       { name: "Docker", category: "MLOps", badge: "Deployment", color: "from-blue-500 to-cyan-600" }
     ]
   },
-  "generative-ai": {
-    title: "Generative AI Course in Pune!",
-    badge: "CAREER LANDSCAPE 2026 • GENERATIVE AI & AGENTIC TRACK",
+  "gen-ai": {
+    title: "Gen AI Course in Pune!",
+    badge: "CAREER LANDSCAPE 2026 • GEN AI & AGENTIC TRACK",
     desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
     hike: "140%",
     growth: "5.0x",
@@ -153,7 +153,7 @@ const courseCatalog: Record<string, {
       }
     ],
     techStack: [
-      { name: "OpenAI API", category: "LLMs", badge: "Generative AI", color: "from-[#1E2B88] to-indigo-600" },
+      { name: "OpenAI API", category: "LLMs", badge: "Gen AI", color: "from-[#1E2B88] to-indigo-600" },
       { name: "LangChain", category: "Framework", badge: "RAG Engine", color: "from-pink-500 to-rose-600" },
       { name: "CrewAI", category: "AI Agents", badge: "Multi-Agent", color: "from-purple-500 to-indigo-600" },
       { name: "ChromaDB", category: "Vector DB", badge: "Embeddings", color: "from-emerald-500 to-teal-600" },
@@ -162,13 +162,13 @@ const courseCatalog: Record<string, {
     ]
   },
   "cloud-ai": {
-    title: "Cloud AI & Multi-Cloud MLOps Course in Pune!",
-    badge: "CAREER LANDSCAPE 2026 • MULTI-CLOUD AI TRACK",
+    title: "Cloude AI & Multi-Cloud MLOps Course in Pune!",
+    badge: "CAREER LANDSCAPE 2026 • MULTI-CLOUDE AI TRACK",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
     hike: "125%",
     growth: "3.8x",
     labs: "85%",
-    achieveHeading: "Transform From DevOps to Multi-Cloud AI Architect",
+    achieveHeading: "Transform From DevOps to Multi-Cloude AI Architect",
     achieveBullets: [
       "Deploy scalable ML models on AWS SageMaker, GCP Vertex AI & Azure ML.",
       "Orchestrate containerized AI workloads with Docker & Kubernetes.",
@@ -178,7 +178,7 @@ const courseCatalog: Record<string, {
       {
         id: "c1",
         number: "01",
-        title: "AWS Cloud AI & SageMaker Pipelines",
+        title: "AWS Cloude AI & SageMaker Pipelines",
         duration: "2 Weeks",
         topics: ["AWS Bedrock & Rekognition Services", "SageMaker Model Training & Endpoints", "Auto-scaling AI Clusters on AWS"],
         tools: ["AWS SageMaker", "AWS Bedrock", "Python"],
@@ -187,7 +187,7 @@ const courseCatalog: Record<string, {
       {
         id: "c2",
         number: "02",
-        title: "Docker, Kubernetes & Cloud AI Orchestration",
+        title: "Docker, Kubernetes & Cloude AI Orchestration",
         duration: "2 Weeks",
         topics: ["Dockerizing Machine Learning APIs", "Kubernetes Pods, Ingress & HPA", "KubeFlow Pipelines on GCP Vertex AI"],
         tools: ["Docker", "Kubernetes", "GCP Vertex AI"],

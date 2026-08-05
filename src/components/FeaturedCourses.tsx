@@ -3,36 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
-import { 
-  Database, 
-  Code2, 
-  BrainCircuit, 
-  Sparkles, 
-  ArrowRight, 
-  Clock, 
+import {
+  Database,
+  Code2,
+  BrainCircuit,
+  Sparkles,
+  ArrowRight,
+  Clock,
   CheckCircle,
   Cpu
 } from "lucide-react";
 
 const coursesData = [
-  {
-    id: "data-engineering-genai",
-    slug: "data-engineering-with-genai-course-in-pune",
-    title: "Data Engineering with Generative AI",
-    badge: "Flagship Program",
-    description: "Combine modern Data Engineering with Large Language Models, AI-powered automation, Retrieval-Augmented Generation (RAG), AI Data Pipelines, Vector Databases, Prompt Engineering, and Intelligent Analytics.",
-    duration: "6 Months",
-    mode: "Offline & Online Mode",
-    icon: Database,
-    isTopRanked: true,
-    highlights: [
-      "Roadmap: SQL → Python → Spark → Databricks → Airflow → GCP → Azure → Gen AI",
-      "Build AI-powered data pipelines, enterprise copilots & intelligent data platforms",
-      "Gain hands-on experience with OpenAI, LangChain, MCP, AI Agents & Azure AI",
-      "Work on 20+ enterprise projects covering ETL pipelines & Lakehouse architecture",
-    ],
-    glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
-  },
   {
     id: "data-engineering-master",
     slug: "data-engineering-course-in-pune",
@@ -54,24 +36,42 @@ const coursesData = [
     glowClass: "hover:border-[#7C248C] hover:shadow-[0_0_35px_rgba(124,36,140,0.35)] dark:hover:shadow-[0_0_40px_rgba(147,51,234,0.4)]",
   },
   {
-    id: "generative-ai",
-    slug: "generative-ai-course-in-pune",
-    title: "Generative AI",
-    badge: "Next-Gen AI",
-    description: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
+    id: "data-engineering-genai",
+    slug: "data-engineering-with-genai-course-in-pune",
+    title: "Data Engineering with Gen AI",
+    badge: "Flagship Program",
+    description: "Combine modern Data Engineering with Large Language Models, AI-powered automation, Retrieval-Augmented Generation (RAG), AI Data Pipelines, Vector Databases, Prompt Engineering, and Intelligent Analytics.",
+    duration: "6 Months",
+    mode: "Offline & Online Mode",
+    icon: Database,
+    isTopRanked: true,
+    highlights: [
+      "Roadmap: SQL → Python → Spark → Databricks → Airflow → GCP → Azure → Gen AI",
+      "Build AI-powered data pipelines, enterprise copilots & intelligent data platforms",
+      "Gain hands-on experience with OpenAI, LangChain, MCP, AI Agents & Azure AI",
+      "Work on 20+ enterprise projects covering ETL pipelines & Lakehouse architecture",
+    ],
+    glowClass: "hover:border-[#E01E6A] hover:shadow-[0_0_35px_rgba(224,30,106,0.35)] dark:hover:shadow-[0_0_40px_rgba(224,30,106,0.4)]",
+  },
+  {
+    id: "basic-ai-ml",
+    slug: "basic-ai-ml-course-in-pune",
+    title: "Basic AI & ML",
+    badge: "Beginner Friendly",
+    description: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
     duration: "1 Month",
     mode: "Offline & Online",
-    icon: Sparkles,
+    icon: Code2,
     isTopRanked: false,
     highlights: [
-      "End-to-End Generative AI Learning Path",
-      "Build AI Agents with LangChain & CrewAI",
-      "ChatGPT, OpenAI APIs & Prompt Engineering Hands-on",
-      "RAG, Vector Databases & Enterprise AI Solutions",
-      "Develop Real-World GenAI Applications & Capstone Projects",
-      "Portfolio Development & Placement Support",
+      "Beginner-Friendly AI & Machine Learning Roadmap",
+      "Python Programming & Data Analysis from Scratch",
+      "Statistics, EDA & Data Visualization Hands-on",
+      "Machine Learning Algorithms with Practical Projects",
+      "Real-World Datasets & Business Case Studies",
+      "Career Guidance, Resume Building & Placement Support",
     ],
-    glowClass: "hover:border-purple-500 hover:shadow-[0_0_35px_rgba(147,51,234,0.35)] dark:hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]",
+    glowClass: "hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.35)]",
   },
   {
     id: "advanced-ai-ml",
@@ -94,57 +94,58 @@ const coursesData = [
     glowClass: "hover:border-indigo-500 hover:shadow-[0_0_35px_rgba(99,102,241,0.35)]",
   },
   {
-    id: "cloud-ai",
-    slug: "cloud-ai-course-in-pune",
-    title: "Cloud AI",
-    badge: "Multi-Cloud AI",
-    description: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
+    id: "cloude-ai",
+    slug: "cloude-ai-course-in-pune",
+    title: "Cloude AI",
+    badge: "Multi-Cloude AI",
+    description: "Master Claude AI for prompt engineering, AI automation, enterprise productivity, AI agents, RAG applications, and Claude API development. Learn to build intelligent AI-powered solutions for business, software development, content creation, research, and workflow automation.",
     duration: "1 Month",
     mode: "Offline & Online",
     icon: Cpu,
     isTopRanked: false,
     highlights: [
-      "Multi-Cloud AI Training (AWS, Azure & GCP)",
-      "Docker, Kubernetes & Cloud Infrastructure Hands-on",
-      "Build & Deploy Scalable AI/ML Applications",
-      "MLOps, CI/CD & Production ML Pipelines",
-      "Real-Time Cloud AI Projects & Enterprise Use Cases",
-      "Placement Assistance & Cloud Certification Guidance",
+      "Master Claude AI from Beginner to Advanced",
+      "Advanced Prompt Engineering & Context Engineering",
+      "Build AI Agents with Model Context Protocol (MCP)",
+      "Claude API Integration & Enterprise AI Applications",
+      "Develop RAG (Retrieval-Augmented Generation) Solutions",
+      "Real-World Projects, Portfolio Building & Placement Assistance",
     ],
     glowClass: "hover:border-sky-500 hover:shadow-[0_0_35px_rgba(14,165,233,0.35)]",
   },
   {
-    id: "basic-ai-ml",
-    slug: "basic-ai-ml-course-in-pune",
-    title: "Basic AI & ML",
-    badge: "Beginner Friendly",
-    description: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
+    id: "gen-ai",
+    slug: "gen-ai-course-in-pune",
+    title: "Gen AI",
+    badge: "Next-Gen AI",
+    description: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
     duration: "1 Month",
     mode: "Offline & Online",
-    icon: Code2,
+    icon: Sparkles,
     isTopRanked: false,
     highlights: [
-      "Beginner-Friendly AI & Machine Learning Roadmap",
-      "Python Programming & Data Analysis from Scratch",
-      "Statistics, EDA & Data Visualization Hands-on",
-      "Machine Learning Algorithms with Practical Projects",
-      "Real-World Datasets & Business Case Studies",
-      "Career Guidance, Resume Building & Placement Support",
+      "End-to-End Gen AI Learning Path",
+      "Build AI Agents with LangChain & CrewAI",
+      "ChatGPT, OpenAI APIs & Prompt Engineering Hands-on",
+      "RAG, Vector Databases & Enterprise AI Solutions",
+      "Develop Real-World GenAI Applications & Capstone Projects",
+      "Portfolio Development & Placement Support",
     ],
-    glowClass: "hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.35)]",
+    glowClass: "hover:border-purple-500 hover:shadow-[0_0_35px_rgba(147,51,234,0.35)] dark:hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]",
   },
 ];
+
 
 export default function FeaturedCourses() {
   return (
     <section className="py-12 sm:py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-slate-100/90 via-purple-50/40 to-slate-100/90 dark:from-[#0B0F19] dark:via-[#131B2E] dark:to-[#0B0F19] transition-colors duration-500 border-y border-purple-100/60 dark:border-purple-900/30">
-      
+
       {/* Background Animated Gradient Glow Blobs */}
       <div className="absolute top-1/4 -left-20 w-72 h-72 sm:w-96 sm:h-96 bg-purple-500/10 dark:bg-purple-600/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-1/4 -right-20 w-72 h-72 sm:w-96 sm:h-96 bg-pink-500/10 dark:bg-pink-600/20 rounded-full blur-3xl pointer-events-none animate-pulse duration-1000"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-purple-200 dark:border-purple-800/80 text-[11px] sm:text-xs font-extrabold text-[#7C248C] dark:text-purple-300 uppercase tracking-wider shadow-xs">
@@ -165,13 +166,12 @@ export default function FeaturedCourses() {
           {coursesData.map((course) => {
             const IconComponent = course.icon;
             return (
-              <div 
+              <div
                 key={course.id}
-                className={`relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-5 sm:p-7 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
-                  course.isTopRanked 
-                    ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-2xl shadow-purple-900/20 dark:shadow-purple-950/50 ring-2 sm:ring-4 ring-purple-100 dark:ring-purple-950/40" 
-                    : "border border-slate-200/90 dark:border-slate-800 shadow-md"
-                } ${course.glowClass}`}
+                className={`relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-5 sm:p-7 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${course.isTopRanked
+                  ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-2xl shadow-purple-900/20 dark:shadow-purple-950/50 ring-2 sm:ring-4 ring-purple-100 dark:ring-purple-950/40"
+                  : "border border-slate-200/90 dark:border-slate-800 shadow-md"
+                  } ${course.glowClass}`}
               >
                 {/* Top Badge */}
                 {course.badge && (
@@ -217,14 +217,14 @@ export default function FeaturedCourses() {
 
                 {/* Card CTA Links */}
                 <div className="pt-4 grid grid-cols-2 gap-2.5 mt-3">
-                  <Link 
+                  <Link
                     href={`/${course.slug}`}
                     className="w-full text-center py-2.5 sm:py-3 px-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center gap-1"
                   >
                     View Syllabus
                   </Link>
 
-                  <button 
+                  <button
                     onClick={() => openEnrollModal(course.title)}
                     className="w-full jvm-gradient-bg text-center py-2.5 sm:py-3 px-2 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer"
                   >
@@ -239,11 +239,11 @@ export default function FeaturedCourses() {
 
         {/* View All Courses Banner */}
         <div className="mt-12 text-center">
-          <Link 
-            href="/our-courses" 
+          <Link
+            href="/our-courses"
             className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2B88] dark:text-purple-300 hover:text-[#7C248C] dark:hover:text-purple-200 transition-colors group"
           >
-            Explore Full Curriculum & Certificate Catalog 
+            Explore Full Curriculum & Certificate Catalog
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
