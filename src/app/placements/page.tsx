@@ -321,7 +321,7 @@ export default function PlacementsPage() {
           </div>
 
           {/* Interactive Horizontal Scrollable Filter Pills for Mobile */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-thin pb-2 sm:pb-0 gap-2 sm:gap-3 mb-8 sm:mb-12 justify-start sm:justify-center">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2 sm:pb-0 gap-2 sm:gap-3 mb-8 sm:mb-12 justify-start sm:justify-center">
             {Categories.map((cat) => (
               <button
                 key={cat.id}
@@ -337,6 +337,7 @@ export default function PlacementsPage() {
               </button>
             ))}
           </div>
+
 
           {/* Empty State */}
           {filteredPlacements.length === 0 && (

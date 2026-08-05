@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
-import LineSidebar from "@/components/LineSidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -1015,7 +1014,6 @@ export default function EventsPage() {
       </section>
 
       <Footer />
-      <LineSidebar />
       <LeadEnquiryModal />
 
       {/* Full Page Event Registration View */}
