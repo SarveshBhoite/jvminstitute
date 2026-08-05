@@ -108,12 +108,12 @@ const mentors = [
   },
   {
     name: "Priya Sharma",
-    role: "Senior Cloude Data Engineer",
+    role: "Senior Cloud Data Engineer",
     experience: "9+ Years Big Data Experience",
     company: "Senior Enterprise Lead",
     specialty: "AWS Redshift, Snowflake Architecture & Apache Airflow Orchestration",
     image: "/students2.jpeg",
-    bio: "Expert in cloude migration projects, complex SQL query tuning, and automated CI/CD pipeline deployments."
+    bio: "Expert in cloud migration projects, complex SQL query tuning, and automated CI/CD pipeline deployments."
   }
 ];
 
