@@ -41,9 +41,10 @@ export default function PlacedStudentsCarousel() {
         const res = await fetch("/api/placements");
         const data = await res.json();
         if (data.success && data.placements && data.placements.length > 0) {
-          const featured = data.placements.filter((p: any) => p.isFeatured !== false);
+          const featured = data.placements.filter((p: any) => p.isFeatured === true);
           setPlacedStudents(featured.length > 0 ? featured : data.placements);
         }
+
       } catch (err) {
         console.error("Failed to fetch placements for carousel:", err);
       }
@@ -207,22 +208,23 @@ export default function PlacedStudentsCarousel() {
                 </div>
 
                 {/* Slideshow Controls & Navigation Indicators */}
-                <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800">
-                  {/* Indicator Dots */}
-                  <div className="flex items-center gap-2">
+                <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 gap-4">
+                  {/* Indicator Dots (Capped & Scrollable so layout container stays fixed) */}
+                  <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none max-w-[200px] sm:max-w-[320px] py-1">
                     {placedStudents.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`h-2.5 rounded-full transition-all duration-300 ${
+                        className={`h-2.5 shrink-0 rounded-full transition-all duration-300 ${
                           currentIndex === index
-                            ? "w-8 jvm-gradient-bg"
+                            ? "w-7 jvm-gradient-bg"
                             : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
                         }`}
                         aria-label={`Go to slide ${index + 1}`}
                       />
                     ))}
                   </div>
+
 
                   {/* Prev/Next Buttons */}
                   <div className="flex items-center gap-2">
