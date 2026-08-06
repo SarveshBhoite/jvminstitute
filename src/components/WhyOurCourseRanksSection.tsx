@@ -45,11 +45,11 @@ export default function WhyOurCourseRanksSection() {
             </h2>
 
             <p className="text-xs sm:text-base md:text-lg text-slate-900 dark:text-slate-200 font-medium leading-relaxed">
-              Join the ranks of over <span className="text-[#E01E6A] font-extrabold dark:text-pink-400">10K+ professionals</span> who have propelled their careers forward with JVM Institute. At JVM, we firmly believe in the potential of every individual to excel with the right guidance and tools.
+              Join the ranks of over <span className="text-[#E01E6A] font-extrabold dark:text-pink-400">9K+ professionals</span> who have propelled their careers forward with JVM Institute. At JVM we firmly believe in the potential of every individual to excel with the right guidance and tools.
             </p>
 
             <p className="text-xs sm:text-base text-slate-800 dark:text-slate-300 leading-relaxed hidden sm:block">
-              Our mission is to equip every student with the necessary tools and confidence for success. With top-tier faculty, immersive hands-on experiences, unparalleled program support, and comprehensive career mentorship sessions, we ensure that every student reaches their full potential.
+              Our mission is to equip every student with the necessary tools and confidence for success. With top-tier faculty, immersive hands-on experiences, unparalleled program support and comprehensive career mentorship sessions, we ensure that every student reaches their full potential.
             </p>
 
             {/* Highlights Grid */}
@@ -59,7 +59,7 @@ export default function WhyOurCourseRanksSection() {
                   <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">10K+ Alumni</div>
+                  <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">8K+ Alumni</div>
                   <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Across Top MNCs</div>
                 </div>
               </div>

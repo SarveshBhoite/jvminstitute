@@ -196,7 +196,7 @@ export default function KeyFeaturesBentoSection() {
                 Masterclasses
               </h3>
               <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate">
-                Snowflake &amp; Airflow
+                Clouds and Airflow
               </p>
             </div>
           </div>
@@ -240,8 +240,8 @@ export default function KeyFeaturesBentoSection() {
               <div className="text-xs sm:text-2xl font-black text-emerald-400 leading-tight">
                 {count25.count}+ Real Projects
               </div>
-              <p className="text-[10px] sm:text-xs text-slate-300 mt-0.5 truncate">
-                PySpark &amp; AWS ETL
+              <p className="text-[10px] sm:text-xs text-slate-300 mt-0.5 font-medium">
+                PySpark, GCP, Azure, AWS
               </p>
             </div>
             <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400 shrink-0">

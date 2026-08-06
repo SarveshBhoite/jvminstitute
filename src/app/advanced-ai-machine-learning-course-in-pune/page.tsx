@@ -199,18 +199,126 @@ const capstoneProjects = [
 
 // Tools & Technologies Data
 const techStack = [
-  { name: "PyTorch", category: "Deep Learning", badge: "Core AI Engine", color: "from-orange-500 to-red-600" },
-  { name: "TensorFlow", category: "Deep Learning", badge: "Production ML", color: "from-amber-500 to-orange-600" },
-  { name: "OpenCV", category: "Computer Vision", badge: "Vision Library", color: "from-[#1E2B88] to-indigo-600" },
-  { name: "Hugging Face", category: "NLP & LLMs", badge: "Transformers", color: "from-yellow-400 to-amber-500" },
-  { name: "YOLO (v8/v9)", category: "Computer Vision", badge: "Object Detection", color: "from-emerald-500 to-teal-600" },
-  { name: "Vector Databases", category: "RAG & AI", badge: "Chroma/Pinecone", color: "from-purple-500 to-indigo-600" },
-  { name: "Docker for AI", category: "MLOps", badge: "Containers", color: "from-blue-600 to-cyan-600" },
-  { name: "AWS SageMaker", category: "Cloud AI Services", badge: "Cloud Platform", color: "from-amber-500 to-yellow-600" },
-  { name: "FastAPI", category: "REST API Dev", badge: "High Speed", color: "from-teal-500 to-emerald-600" },
-  { name: "LangChain", category: "RAG & Agents", badge: "AI Agents", color: "from-pink-500 to-rose-600" },
-  { name: "MLflow", category: "MLOps", badge: "Experiment Track", color: "from-sky-500 to-blue-600" },
-  { name: "CI/CD Pipelines", category: "Deployment", badge: "Enterprise", color: "from-indigo-600 to-purple-600" }
+  // Database Technologies
+  { name: "MySQL", category: "Database", badge: "Relational DB", color: "from-blue-600 to-cyan-600" },
+  { name: "SQL", category: "Database", badge: "Core Querying", color: "from-indigo-600 to-blue-600" },
+  { name: "Oracle Database", category: "Database", badge: "Enterprise DB", color: "from-red-600 to-orange-600" },
+  { name: "PostgreSQL", category: "Database", badge: "Recommended DB", color: "from-sky-600 to-indigo-600" },
+  { name: "Microsoft SQL Server", category: "Database", badge: "Enterprise SQL", color: "from-[#1E2B88] to-purple-600" },
+
+  // Programming & APIs
+  { name: "Python", category: "Programming", badge: "Core Language", color: "from-yellow-500 to-amber-600" },
+  { name: "Advanced Python", category: "Programming", badge: "OOP & Modules", color: "from-amber-600 to-orange-600" },
+  { name: "REST APIs", category: "Programming", badge: "Web Services", color: "from-emerald-500 to-teal-600" },
+  { name: "JSON & XML Processing", category: "Programming", badge: "Data Exchange", color: "from-slate-600 to-slate-800" },
+
+  // Data Analysis
+  { name: "NumPy", category: "Data Analysis", badge: "Numerical Computing", color: "from-blue-500 to-indigo-600" },
+  { name: "Pandas", category: "Data Analysis", badge: "Data Wrangling", color: "from-purple-600 to-indigo-700" },
+  { name: "Matplotlib", category: "Data Analysis", badge: "Visualization", color: "from-sky-500 to-blue-600" },
+  { name: "Seaborn", category: "Data Analysis", badge: "Statistical Plots", color: "from-teal-500 to-cyan-600" },
+
+  // Big Data Technologies
+  { name: "Apache Hadoop", category: "Big Data", badge: "HDFS & YARN", color: "from-yellow-600 to-amber-700" },
+  { name: "Apache Spark", category: "Big Data", badge: "Distributed Engine", color: "from-orange-500 to-red-600" },
+  { name: "PySpark", category: "Big Data", badge: "Big Data Processing", color: "from-amber-500 to-orange-600" },
+  { name: "Spark SQL", category: "Big Data", badge: "In-Memory SQL", color: "from-orange-600 to-rose-600" },
+  { name: "Delta Lake", category: "Big Data", badge: "Recommended Lakehouse", color: "from-sky-400 to-blue-600" },
+  { name: "Apache Kafka", category: "Big Data", badge: "Real-time Streaming", color: "from-slate-700 to-slate-900" },
+  { name: "Snowflake", category: "Big Data", badge: "Cloud Data Warehouse", color: "from-sky-400 to-blue-600" },
+
+  // Workflow Orchestration
+  { name: "Apache Airflow", category: "Orchestration", badge: "DAG Pipelines", color: "from-teal-600 to-emerald-600" },
+  { name: "Airflow DAG Development", category: "Orchestration", badge: "Pipeline Automation", color: "from-emerald-600 to-green-600" },
+
+  // Data Engineering
+  { name: "ETL & ELT Pipelines", category: "Data Engineering", badge: "Data Pipelines", color: "from-purple-600 to-pink-600" },
+  { name: "Data Warehousing", category: "Data Engineering", badge: "DWH Architecture", color: "from-indigo-600 to-purple-700" },
+  { name: "Data Lake Architecture", category: "Data Engineering", badge: "Cloud Storage", color: "from-blue-600 to-indigo-600" },
+  { name: "Data Lakehouse", category: "Data Engineering", badge: "Modern Storage", color: "from-cyan-600 to-blue-700" },
+  { name: "Data Modeling", category: "Data Engineering", badge: "Schema Design", color: "from-violet-600 to-purple-600" },
+  { name: "Data Quality", category: "Data Engineering", badge: "Validation & Tests", color: "from-emerald-500 to-teal-600" },
+  { name: "Data Governance", category: "Data Engineering", badge: "Compliance & Security", color: "from-slate-700 to-slate-900" },
+  { name: "dbt (Data Build Tool)", category: "Data Engineering", badge: "Analytics Engineering", color: "from-orange-500 to-amber-600" },
+
+  // Microsoft Azure
+  { name: "Azure IAM", category: "Azure", badge: "Access Control", color: "from-blue-500 to-indigo-600" },
+  { name: "Azure Storage Account", category: "Azure", badge: "Blob & ADLS Gen2", color: "from-sky-500 to-blue-600" },
+  { name: "Azure Data Factory (ADF)", category: "Azure", badge: "ETL Orchestration", color: "from-blue-600 to-cyan-600" },
+  { name: "Azure Databricks", category: "Azure", badge: "Unified Analytics", color: "from-red-500 to-rose-600" },
+  { name: "Azure Functions", category: "Azure", badge: "Serverless Code", color: "from-[#1E2B88] to-indigo-600" },
+  { name: "Azure Synapse Analytics", category: "Azure", badge: "Cloud Warehouse", color: "from-cyan-600 to-blue-700" },
+  { name: "Azure Event Grid", category: "Azure", badge: "Event Routing", color: "from-indigo-500 to-purple-600" },
+  { name: "Azure Event Hub", category: "Azure", badge: "Recommended Streaming", color: "from-purple-600 to-pink-600" },
+  { name: "Azure Logic Apps", category: "Azure", badge: "Recommended Workflow", color: "from-teal-500 to-emerald-600" },
+  { name: "Azure Key Vault", category: "Azure", badge: "Recommended Secrets", color: "from-amber-500 to-orange-600" },
+  { name: "Azure Monitor", category: "Azure", badge: "Observability", color: "from-slate-600 to-slate-800" },
+  { name: "Azure DevOps (CI/CD)", category: "Azure", badge: "Pipeline CI/CD", color: "from-blue-600 to-indigo-700" },
+  { name: "Azure Triggers & Scheduling", category: "Azure", badge: "Automation", color: "from-sky-500 to-blue-600" },
+
+  // Google Cloud Platform
+  { name: "GCP IAM", category: "GCP", badge: "Security & Roles", color: "from-red-500 to-yellow-500" },
+  { name: "GCP Cloud Storage", category: "GCP", badge: "Object Storage", color: "from-blue-500 to-cyan-500" },
+  { name: "GCP Cloud Functions", category: "GCP", badge: "Serverless", color: "from-yellow-500 to-amber-600" },
+  { name: "Dataproc", category: "GCP", badge: "Managed Spark/Hadoop", color: "from-amber-600 to-orange-600" },
+  { name: "Dataflow", category: "GCP", badge: "Apache Beam ETL", color: "from-blue-600 to-indigo-600" },
+  { name: "Dataplex", category: "GCP", badge: "Data Fabric", color: "from-purple-600 to-indigo-600" },
+  { name: "Datastream", category: "GCP", badge: "CDC Service", color: "from-[#E01E6A] to-pink-600" },
+  { name: "Cloud Data Fusion", category: "GCP", badge: "Visual ETL", color: "from-cyan-500 to-blue-600" },
+  { name: "BigQuery", category: "GCP", badge: "Cloud Warehouse", color: "from-blue-600 to-indigo-600" },
+  { name: "BigQuery Scheduler", category: "GCP", badge: "Query Automation", color: "from-indigo-500 to-purple-600" },
+  { name: "Cloud Scheduler", category: "GCP", badge: "Cron Jobs", color: "from-teal-500 to-emerald-600" },
+  { name: "Cloud Composer (Airflow)", category: "GCP", badge: "Managed Airflow", color: "from-emerald-600 to-teal-600" },
+  { name: "GCP Pub/Sub", category: "GCP", badge: "Recommended Messaging", color: "from-orange-500 to-red-600" },
+  { name: "Vertex AI", category: "GCP", badge: "Recommended MLOps", color: "from-indigo-600 to-purple-600" },
+  { name: "GCP Secret Manager", category: "GCP", badge: "Recommended Secrets", color: "from-amber-500 to-orange-500" },
+  { name: "Cloud Run", category: "GCP", badge: "Recommended Serverless", color: "from-blue-500 to-cyan-600" },
+
+  // Machine Learning & AI
+  { name: "Python for AI", category: "AI & ML", badge: "Core AI Language", color: "from-yellow-500 to-amber-600" },
+  { name: "Scikit-Learn", category: "AI & ML", badge: "Classic ML", color: "from-orange-500 to-amber-600" },
+  { name: "Feature Engineering", category: "AI & ML", badge: "Data Prep", color: "from-indigo-500 to-purple-600" },
+  { name: "Supervised ML (Regression & Classification)", category: "AI & ML", badge: "Predictive Models", color: "from-blue-600 to-indigo-600" },
+  { name: "Clustering", category: "AI & ML", badge: "Unsupervised ML", color: "from-purple-500 to-indigo-600" },
+  { name: "Deep Learning", category: "AI & ML", badge: "Neural Networks", color: "from-purple-600 to-pink-600" },
+  { name: "TensorFlow & Keras", category: "AI & ML", badge: "Production Deep Learning", color: "from-amber-500 to-orange-600" },
+  { name: "PyTorch", category: "AI & ML", badge: "Core AI Engine", color: "from-orange-500 to-red-600" },
+  { name: "Computer Vision & OpenCV", category: "AI & ML", badge: "Vision Library", color: "from-[#1E2B88] to-indigo-600" },
+  { name: "YOLO (v8/v9)", category: "AI & ML", badge: "Object Detection", color: "from-emerald-500 to-teal-600" },
+  { name: "Natural Language Processing (NLP)", category: "AI & ML", badge: "Text & NLP", color: "from-teal-500 to-emerald-600" },
+  { name: "Time Series Forecasting", category: "AI & ML", badge: "Predictive Analytics", color: "from-cyan-600 to-blue-600" },
+  { name: "Recommendation Systems", category: "AI & ML", badge: "RecSys Engine", color: "from-pink-500 to-rose-600" },
+  { name: "MLOps Fundamentals & MLflow", category: "AI & ML", badge: "Model Deployment", color: "from-blue-600 to-cyan-600" },
+
+  // Generative AI
+  { name: "Large Language Models (LLMs)", category: "Generative AI", badge: "Foundation Models", color: "from-purple-600 to-indigo-600" },
+  { name: "Prompt Engineering", category: "Generative AI", badge: "Context Tuning", color: "from-pink-500 to-rose-600" },
+  { name: "ChatGPT & OpenAI APIs", category: "Generative AI", badge: "OpenAI Platform", color: "from-emerald-500 to-teal-600" },
+  { name: "Claude AI", category: "Generative AI", badge: "Anthropic Claude", color: "from-[#D97757] to-amber-600" },
+  { name: "Google Gemini", category: "Generative AI", badge: "Multimodal AI", color: "from-blue-500 to-indigo-600" },
+  { name: "Retrieval-Augmented Generation (RAG)", category: "Generative AI", badge: "Enterprise RAG", color: "from-indigo-600 to-purple-600" },
+  { name: "Vector Databases (FAISS, ChromaDB, Pinecone)", category: "Generative AI", badge: "Vector Search", color: "from-purple-500 to-indigo-600" },
+  { name: "LangChain & LlamaIndex", category: "Generative AI", badge: "Orchestration & RAG", color: "from-pink-500 to-rose-600" },
+  { name: "AI Agents & CrewAI", category: "Generative AI", badge: "Multi-Agent Systems", color: "from-violet-600 to-purple-600" },
+  { name: "Model Context Protocol (MCP)", category: "Generative AI", badge: "Agent Protocol", color: "from-blue-600 to-indigo-600" },
+  { name: "Function Calling & AI Automation", category: "Generative AI", badge: "Enterprise Copilots", color: "from-cyan-500 to-blue-600" },
+
+  // DevOps & CI/CD
+  { name: "Git & GitHub", category: "DevOps", badge: "Version Control", color: "from-slate-700 to-slate-900" },
+  { name: "GitHub Actions", category: "DevOps", badge: "Recommended CI/CD", color: "from-blue-600 to-indigo-600" },
+  { name: "Docker for AI & Data", category: "DevOps", badge: "Containers", color: "from-blue-600 to-cyan-600" },
+  { name: "Kubernetes", category: "DevOps", badge: "Orchestration Intro", color: "from-indigo-600 to-purple-600" },
+  { name: "CI/CD Pipelines", category: "DevOps", badge: "Automated Deploy", color: "from-teal-500 to-emerald-600" },
+
+  // Business Intelligence
+  { name: "Power BI", category: "BI", badge: "Dashboarding", color: "from-amber-500 to-yellow-600" },
+  { name: "Tableau", category: "BI", badge: "Optional BI", color: "from-blue-600 to-indigo-600" },
+
+  // Industry & Career
+  { name: "Agile & Scrum Methodology", category: "Industry Practices", badge: "SDLC Framework", color: "from-indigo-600 to-blue-600" },
+  { name: "Coding Standards & System Design", category: "Industry Practices", badge: "Enterprise Code", color: "from-purple-600 to-pink-600" },
+  { name: "Interview Prep & Resume Building", category: "Industry Practices", badge: "Placement Support", color: "from-emerald-500 to-teal-600" },
+  { name: "GitHub Portfolio Development", category: "Industry Practices", badge: "Proof of Work", color: "from-slate-700 to-slate-900" }
 ];
 
 // Faculty / Mentors
@@ -282,7 +390,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
     setModalOpen(true);
   };
 
-  const categories = ["All", "Deep Learning", "Computer Vision", "NLP & LLMs", "RAG & AI", "MLOps"];
+  const categories = ["All", ...Array.from(new Set(techStack.map(t => t.category)))];
 
   const filteredTech = selectedCategory === "All"
     ? techStack
@@ -588,16 +696,16 @@ export default function AdvancedAIMachineLearningCoursePage() {
               <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">Technologies &amp; Tools Covered</h2>
             </div>
 
-            {/* Category Filter Pills */}
+            {/* Category Filter Pills (Soft rounded pills matching screenshot) */}
             <div className="flex flex-wrap justify-center gap-2 mb-8">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
                     selectedCategory === cat
-                      ? "jvm-gradient-bg text-white shadow-md"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200"
+                      ? "bg-[#7C248C] text-white shadow-sm"
+                      : "bg-[#F1F3FB] dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
                   }`}
                 >
                   {cat}
@@ -605,17 +713,19 @@ export default function AdvancedAIMachineLearningCoursePage() {
               ))}
             </div>
 
-            {/* Tech Stack Cards Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {filteredTech.map((tech) => (
-                <div key={tech.name} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-2 hover:border-purple-400 transition-colors">
-                  <div className={`w-8 h-8 mx-auto rounded-lg bg-gradient-to-r ${tech.color} flex items-center justify-center text-white font-bold text-xs shadow-xs`}>
-                    {tech.name.substring(0, 2).toUpperCase()}
+            {/* Tech Stack Cards Grid (Matching screenshot layout) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {filteredTech.map((tech, index) => (
+                <div
+                  key={`${tech.name}-${index}`}
+                  className="p-5 rounded-2xl bg-[#FAFAFE] dark:bg-[#111827] border border-slate-200/70 dark:border-slate-800/80 text-left space-y-1.5 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700 transition-all cursor-pointer flex flex-col justify-center min-h-[90px]"
+                >
+                  <div className="text-xs font-bold text-[#8B31B0] dark:text-[#A78BFA] tracking-wide">
+                    {tech.category}
                   </div>
-                  <div className="text-xs font-bold text-slate-900 dark:text-white">{tech.name}</div>
-                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300">
-                    {tech.badge}
-                  </span>
+                  <div className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white leading-tight">
+                    {tech.name}
+                  </div>
                 </div>
               ))}
             </div>

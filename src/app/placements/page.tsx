@@ -23,7 +23,10 @@ import {
   MessageSquare,
   X,
   Plus,
-  Minus
+  Minus,
+  ArrowUpDown,
+  ArrowUp,
+  ArrowDown
 } from "lucide-react";
 
 // Auto-rotating hero circle student images
@@ -91,6 +94,7 @@ export default function PlacementsPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<"default" | "desc" | "asc">("desc");
   const [selectedStudent, setSelectedStudent] = useState<any | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(3);
   const [heroImgIndex, setHeroImgIndex] = useState(0);
@@ -122,15 +126,29 @@ export default function PlacementsPage() {
 
   const currentHero = HeroCircleImages[heroImgIndex];
 
-  const filteredPlacements = placementsList.filter((student) => {
-    const matchesTab = activeTab === "all" || student.category === activeTab;
-    const matchesQuery = 
-      student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      student.placedRole.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (student.skills && student.skills.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesTab && matchesQuery;
-  });
+  const getPackageNumeric = (pkgStr: string): number => {
+    if (!pkgStr) return 0;
+    const match = pkgStr.match(/[\d.]+/);
+    return match ? parseFloat(match[0]) : 0;
+  };
+
+  const filteredPlacements = placementsList
+    .filter((student) => {
+      const matchesTab = activeTab === "all" || student.category === activeTab;
+      const matchesQuery = 
+        student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        student.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        student.placedRole.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (student.skills && student.skills.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesTab && matchesQuery;
+    })
+    .sort((a, b) => {
+      const pkgA = getPackageNumeric(a.package || a.pkg || "");
+      const pkgB = getPackageNumeric(b.package || b.pkg || "");
+      if (sortOrder === "desc") return pkgB - pkgA;
+      if (sortOrder === "asc") return pkgA - pkgB;
+      return 0;
+    });
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300">
@@ -337,6 +355,50 @@ export default function PlacementsPage() {
                   {cat.label}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Package (LPA) Sequence Sort Bar */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 bg-white dark:bg-slate-900/90 p-3 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 max-w-2xl mx-auto shadow-xs">
+            <span className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 px-1">
+              <ArrowUpDown className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              Package (LPA) Sequence:
+            </span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                onClick={() => setSortOrder("desc")}
+                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  sortOrder === "desc"
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md ring-2 ring-purple-400/30"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-slate-700"
+                }`}
+              >
+                <ArrowDown className="w-3.5 h-3.5 text-pink-300" />
+                Descending (High → Low)
+              </button>
+
+              <button
+                onClick={() => setSortOrder("asc")}
+                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  sortOrder === "asc"
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md ring-2 ring-purple-400/30"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-slate-700"
+                }`}
+              >
+                <ArrowUp className="w-3.5 h-3.5 text-emerald-300" />
+                Ascending (Low → High)
+              </button>
+
+              <button
+                onClick={() => setSortOrder("default")}
+                className={`px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                  sortOrder === "default"
+                    ? "bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-800"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200"
+                }`}
+              >
+                Default
+              </button>
             </div>
           </div>
 

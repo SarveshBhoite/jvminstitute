@@ -81,18 +81,126 @@ const curriculumModules = [
 
 // Tools & Technologies Data
 const techStack = [
-  { name: "PySpark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
-  { name: "Databricks", category: "Lakehouse", badge: "Enterprise", color: "from-red-500 to-rose-600" },
-  { name: "AWS Redshift", category: "Cloud", badge: "Popular", color: "from-amber-500 to-yellow-600" },
-  { name: "Snowflake", category: "Warehouse", badge: "Trending", color: "from-sky-400 to-blue-600" },
-  { name: "Apache Airflow", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
-  { name: "Apache Kafka", category: "Streaming", badge: "Real-time", color: "from-slate-700 to-slate-900" },
-  { name: "Python", category: "Language", badge: "Essential", color: "from-blue-500 to-cyan-500" },
-  { name: "Advanced SQL", category: "Database", badge: "Must Have", color: "from-[#1E2B88] to-indigo-600" },
-  { name: "AWS S3 & IAM", category: "Cloud Storage", badge: "Cloud Native", color: "from-orange-400 to-amber-500" },
-  { name: "PostgreSQL", category: "Database", badge: "Relational", color: "from-blue-700 to-indigo-800" },
-  { name: "Delta Lake", category: "Storage", badge: "ACID Compliant", color: "from-cyan-500 to-blue-600" },
-  { name: "Docker", category: "DevOps", badge: "Containers", color: "from-blue-600 to-indigo-700" }
+  // Database Technologies
+  { name: "MySQL", category: "Database", badge: "Relational DB", color: "from-blue-600 to-cyan-600" },
+  { name: "SQL", category: "Database", badge: "Core Querying", color: "from-indigo-600 to-blue-600" },
+  { name: "Oracle Database", category: "Database", badge: "Enterprise DB", color: "from-red-600 to-orange-600" },
+  { name: "PostgreSQL", category: "Database", badge: "Recommended DB", color: "from-sky-600 to-indigo-600" },
+  { name: "Microsoft SQL Server", category: "Database", badge: "Enterprise SQL", color: "from-[#1E2B88] to-purple-600" },
+
+  // Programming & APIs
+  { name: "Python", category: "Programming", badge: "Core Language", color: "from-yellow-500 to-amber-600" },
+  { name: "Advanced Python", category: "Programming", badge: "OOP & Modules", color: "from-amber-600 to-orange-600" },
+  { name: "REST APIs", category: "Programming", badge: "Web Services", color: "from-emerald-500 to-teal-600" },
+  { name: "JSON & XML Processing", category: "Programming", badge: "Data Exchange", color: "from-slate-600 to-slate-800" },
+
+  // Data Analysis
+  { name: "NumPy", category: "Data Analysis", badge: "Numerical Computing", color: "from-blue-500 to-indigo-600" },
+  { name: "Pandas", category: "Data Analysis", badge: "Data Wrangling", color: "from-purple-600 to-indigo-700" },
+  { name: "Matplotlib", category: "Data Analysis", badge: "Visualization", color: "from-sky-500 to-blue-600" },
+  { name: "Seaborn", category: "Data Analysis", badge: "Statistical Plots", color: "from-teal-500 to-cyan-600" },
+
+  // Big Data Technologies
+  { name: "Apache Hadoop", category: "Big Data", badge: "HDFS & YARN", color: "from-yellow-600 to-amber-700" },
+  { name: "Apache Spark", category: "Big Data", badge: "Distributed Engine", color: "from-orange-500 to-red-600" },
+  { name: "PySpark", category: "Big Data", badge: "Big Data Processing", color: "from-amber-500 to-orange-600" },
+  { name: "Spark SQL", category: "Big Data", badge: "In-Memory SQL", color: "from-orange-600 to-rose-600" },
+  { name: "Delta Lake", category: "Big Data", badge: "Recommended Lakehouse", color: "from-sky-400 to-blue-600" },
+  { name: "Apache Kafka", category: "Big Data", badge: "Real-time Streaming", color: "from-slate-700 to-slate-900" },
+  { name: "Snowflake", category: "Big Data", badge: "Cloud Data Warehouse", color: "from-sky-400 to-blue-600" },
+
+  // Workflow Orchestration
+  { name: "Apache Airflow", category: "Orchestration", badge: "DAG Pipelines", color: "from-teal-600 to-emerald-600" },
+  { name: "Airflow DAG Development", category: "Orchestration", badge: "Pipeline Automation", color: "from-emerald-600 to-green-600" },
+
+  // Data Engineering
+  { name: "ETL & ELT Pipelines", category: "Data Engineering", badge: "Data Pipelines", color: "from-purple-600 to-pink-600" },
+  { name: "Data Warehousing", category: "Data Engineering", badge: "DWH Architecture", color: "from-indigo-600 to-purple-700" },
+  { name: "Data Lake Architecture", category: "Data Engineering", badge: "Cloud Storage", color: "from-blue-600 to-indigo-600" },
+  { name: "Data Lakehouse", category: "Data Engineering", badge: "Modern Storage", color: "from-cyan-600 to-blue-700" },
+  { name: "Data Modeling", category: "Data Engineering", badge: "Schema Design", color: "from-violet-600 to-purple-600" },
+  { name: "Data Quality", category: "Data Engineering", badge: "Validation & Tests", color: "from-emerald-500 to-teal-600" },
+  { name: "Data Governance", category: "Data Engineering", badge: "Compliance & Security", color: "from-slate-700 to-slate-900" },
+  { name: "dbt (Data Build Tool)", category: "Data Engineering", badge: "Analytics Engineering", color: "from-orange-500 to-amber-600" },
+
+  // Microsoft Azure
+  { name: "Azure IAM", category: "Azure", badge: "Access Control", color: "from-blue-500 to-indigo-600" },
+  { name: "Azure Storage Account", category: "Azure", badge: "Blob & ADLS Gen2", color: "from-sky-500 to-blue-600" },
+  { name: "Azure Data Factory (ADF)", category: "Azure", badge: "ETL Orchestration", color: "from-blue-600 to-cyan-600" },
+  { name: "Azure Databricks", category: "Azure", badge: "Unified Analytics", color: "from-red-500 to-rose-600" },
+  { name: "Azure Functions", category: "Azure", badge: "Serverless Code", color: "from-[#1E2B88] to-indigo-600" },
+  { name: "Azure Synapse Analytics", category: "Azure", badge: "Cloud Warehouse", color: "from-cyan-600 to-blue-700" },
+  { name: "Azure Event Grid", category: "Azure", badge: "Event Routing", color: "from-indigo-500 to-purple-600" },
+  { name: "Azure Event Hub", category: "Azure", badge: "Recommended Streaming", color: "from-purple-600 to-pink-600" },
+  { name: "Azure Logic Apps", category: "Azure", badge: "Recommended Workflow", color: "from-teal-500 to-emerald-600" },
+  { name: "Azure Key Vault", category: "Azure", badge: "Recommended Secrets", color: "from-amber-500 to-orange-600" },
+  { name: "Azure Monitor", category: "Azure", badge: "Observability", color: "from-slate-600 to-slate-800" },
+  { name: "Azure DevOps (CI/CD)", category: "Azure", badge: "Pipeline CI/CD", color: "from-blue-600 to-indigo-700" },
+  { name: "Azure Triggers & Scheduling", category: "Azure", badge: "Automation", color: "from-sky-500 to-blue-600" },
+
+  // Google Cloud Platform
+  { name: "GCP IAM", category: "GCP", badge: "Security & Roles", color: "from-red-500 to-yellow-500" },
+  { name: "GCP Cloud Storage", category: "GCP", badge: "Object Storage", color: "from-blue-500 to-cyan-500" },
+  { name: "GCP Cloud Functions", category: "GCP", badge: "Serverless", color: "from-yellow-500 to-amber-600" },
+  { name: "Dataproc", category: "GCP", badge: "Managed Spark/Hadoop", color: "from-amber-600 to-orange-600" },
+  { name: "Dataflow", category: "GCP", badge: "Apache Beam ETL", color: "from-blue-600 to-indigo-600" },
+  { name: "Dataplex", category: "GCP", badge: "Data Fabric", color: "from-purple-600 to-indigo-600" },
+  { name: "Datastream", category: "GCP", badge: "CDC Service", color: "from-[#E01E6A] to-pink-600" },
+  { name: "Cloud Data Fusion", category: "GCP", badge: "Visual ETL", color: "from-cyan-500 to-blue-600" },
+  { name: "BigQuery", category: "GCP", badge: "Cloud Warehouse", color: "from-blue-600 to-indigo-600" },
+  { name: "BigQuery Scheduler", category: "GCP", badge: "Query Automation", color: "from-indigo-500 to-purple-600" },
+  { name: "Cloud Scheduler", category: "GCP", badge: "Cron Jobs", color: "from-teal-500 to-emerald-600" },
+  { name: "Cloud Composer (Airflow)", category: "GCP", badge: "Managed Airflow", color: "from-emerald-600 to-teal-600" },
+  { name: "GCP Pub/Sub", category: "GCP", badge: "Recommended Messaging", color: "from-orange-500 to-red-600" },
+  { name: "Vertex AI", category: "GCP", badge: "Recommended MLOps", color: "from-indigo-600 to-purple-600" },
+  { name: "GCP Secret Manager", category: "GCP", badge: "Recommended Secrets", color: "from-amber-500 to-orange-500" },
+  { name: "Cloud Run", category: "GCP", badge: "Recommended Serverless", color: "from-blue-500 to-cyan-600" },
+
+  // Machine Learning & AI
+  { name: "Python for AI", category: "AI & ML", badge: "Core AI Language", color: "from-yellow-500 to-amber-600" },
+  { name: "Scikit-Learn", category: "AI & ML", badge: "Classic ML", color: "from-orange-500 to-amber-600" },
+  { name: "Feature Engineering", category: "AI & ML", badge: "Data Prep", color: "from-indigo-500 to-purple-600" },
+  { name: "Supervised ML (Regression & Classification)", category: "AI & ML", badge: "Predictive Models", color: "from-blue-600 to-indigo-600" },
+  { name: "Clustering", category: "AI & ML", badge: "Unsupervised ML", color: "from-purple-500 to-indigo-600" },
+  { name: "Deep Learning", category: "AI & ML", badge: "Neural Networks", color: "from-purple-600 to-pink-600" },
+  { name: "TensorFlow & Keras", category: "AI & ML", badge: "Production Deep Learning", color: "from-amber-500 to-orange-600" },
+  { name: "PyTorch", category: "AI & ML", badge: "Core AI Engine", color: "from-orange-500 to-red-600" },
+  { name: "Computer Vision & OpenCV", category: "AI & ML", badge: "Vision Library", color: "from-[#1E2B88] to-indigo-600" },
+  { name: "YOLO (v8/v9)", category: "AI & ML", badge: "Object Detection", color: "from-emerald-500 to-teal-600" },
+  { name: "Natural Language Processing (NLP)", category: "AI & ML", badge: "Text & NLP", color: "from-teal-500 to-emerald-600" },
+  { name: "Time Series Forecasting", category: "AI & ML", badge: "Predictive Analytics", color: "from-cyan-600 to-blue-600" },
+  { name: "Recommendation Systems", category: "AI & ML", badge: "RecSys Engine", color: "from-pink-500 to-rose-600" },
+  { name: "MLOps Fundamentals & MLflow", category: "AI & ML", badge: "Model Deployment", color: "from-blue-600 to-cyan-600" },
+
+  // Generative AI
+  { name: "Large Language Models (LLMs)", category: "Generative AI", badge: "Foundation Models", color: "from-purple-600 to-indigo-600" },
+  { name: "Prompt Engineering", category: "Generative AI", badge: "Context Tuning", color: "from-pink-500 to-rose-600" },
+  { name: "ChatGPT & OpenAI APIs", category: "Generative AI", badge: "OpenAI Platform", color: "from-emerald-500 to-teal-600" },
+  { name: "Claude AI", category: "Generative AI", badge: "Anthropic Claude", color: "from-[#D97757] to-amber-600" },
+  { name: "Google Gemini", category: "Generative AI", badge: "Multimodal AI", color: "from-blue-500 to-indigo-600" },
+  { name: "Retrieval-Augmented Generation (RAG)", category: "Generative AI", badge: "Enterprise RAG", color: "from-indigo-600 to-purple-600" },
+  { name: "Vector Databases (FAISS, ChromaDB, Pinecone)", category: "Generative AI", badge: "Vector Search", color: "from-purple-500 to-indigo-600" },
+  { name: "LangChain & LlamaIndex", category: "Generative AI", badge: "Orchestration & RAG", color: "from-pink-500 to-rose-600" },
+  { name: "AI Agents & CrewAI", category: "Generative AI", badge: "Multi-Agent Systems", color: "from-violet-600 to-purple-600" },
+  { name: "Model Context Protocol (MCP)", category: "Generative AI", badge: "Agent Protocol", color: "from-blue-600 to-indigo-600" },
+  { name: "Function Calling & AI Automation", category: "Generative AI", badge: "Enterprise Copilots", color: "from-cyan-500 to-blue-600" },
+
+  // DevOps & CI/CD
+  { name: "Git & GitHub", category: "DevOps", badge: "Version Control", color: "from-slate-700 to-slate-900" },
+  { name: "GitHub Actions", category: "DevOps", badge: "Recommended CI/CD", color: "from-blue-600 to-indigo-600" },
+  { name: "Docker for AI & Data", category: "DevOps", badge: "Containers", color: "from-blue-600 to-cyan-600" },
+  { name: "Kubernetes", category: "DevOps", badge: "Orchestration Intro", color: "from-indigo-600 to-purple-600" },
+  { name: "CI/CD Pipelines", category: "DevOps", badge: "Automated Deploy", color: "from-teal-500 to-emerald-600" },
+
+  // Business Intelligence
+  { name: "Power BI", category: "BI", badge: "Dashboarding", color: "from-amber-500 to-yellow-600" },
+  { name: "Tableau", category: "BI", badge: "Optional BI", color: "from-blue-600 to-indigo-600" },
+
+  // Industry & Career
+  { name: "Agile & Scrum Methodology", category: "Industry Practices", badge: "SDLC Framework", color: "from-indigo-600 to-blue-600" },
+  { name: "Coding Standards & System Design", category: "Industry Practices", badge: "Enterprise Code", color: "from-purple-600 to-pink-600" },
+  { name: "Interview Prep & Resume Building", category: "Industry Practices", badge: "Placement Support", color: "from-emerald-500 to-teal-600" },
+  { name: "GitHub Portfolio Development", category: "Industry Practices", badge: "Proof of Work", color: "from-slate-700 to-slate-900" }
 ];
 
 // Faculty Profiles
@@ -108,12 +216,40 @@ const mentors = [
   },
   {
     name: "Priya Sharma",
-    role: "Senior Cloud Data Engineer",
-    experience: "9+ Years Big Data Experience",
-    company: "Senior Enterprise Lead",
-    specialty: "AWS Redshift, Snowflake Architecture & Apache Airflow Orchestration",
+    role: "Senior Cloud & DevOps Architect",
+    experience: "10+ Years Industry Experience",
+    company: "Ex-Cloud Architect Lead",
+    specialty: "AWS Infrastructure, Azure Data Factory & Apache Airflow DAG Orchestration",
     image: "/students2.jpeg",
-    bio: "Expert in cloud migration projects, complex SQL query tuning, and automated CI/CD pipeline deployments."
+    bio: "Cloud infrastructure authority specializing in multi-cloud data warehousing, automated CI/CD pipelines, and enterprise data lake migration."
+  }
+];
+
+// Student Success Stories
+const testimonials = [
+  {
+    name: "Sarvesh Bhoite",
+    role: "Senior Data Engineer at MNC",
+    hike: "120% Salary Hike",
+    review: "The hands-on PySpark labs, Databricks Delta Lake projects, and real AWS ETL pipeline deployment at JVM Institute completely transformed my confidence. Jayesh Sir's guidance helped me clear top MNC technical rounds!",
+    avatar: "/students1.jpeg",
+    company: "Fortune 500 Tech Hub"
+  },
+  {
+    name: "Aniket Deshmukh",
+    role: "Cloud Data Architect",
+    hike: "95% Salary Hike",
+    review: "Transitioning from traditional SQL to modern PySpark, Airflow DAGs, and AWS Redshift was seamless thanks to the structured curriculum and 1:1 mentor doubt sessions.",
+    avatar: "/students2.jpeg",
+    company: "Global IT Services Leader"
+  },
+  {
+    name: "Pooja Patil",
+    role: "Lead Analytics Consultant",
+    hike: "85% Salary Hike",
+    review: "JVM Institute's 25+ real enterprise projects and mock technical interview preparation gave me the exact hands-on edge required to land a senior role.",
+    avatar: "/place1.png",
+    company: "Leading Product Firm"
   }
 ];
 
@@ -145,33 +281,7 @@ const capstoneProjects = [
   }
 ];
 
-// Success Testimonials
-const testimonials = [
-  {
-    name: "Sarvesh Bhoite",
-    role: "Senior Data Engineer at MNC",
-    hike: "120% Salary Hike",
-    review: "The hands-on PySpark labs and real ETL capstone projects helped me clear technical rounds effortlessly. The 1:1 mentor code reviews were invaluable for my transition.",
-    avatar: "/students1.jpeg",
-    company: "Fortune 500 MNC"
-  },
-  {
-    name: "Aniket Deshmukh",
-    role: "Big Data & Databricks Consultant",
-    hike: "105% Salary Hike",
-    review: "JVM Institute's Data Engineering course is 100% practical. I learned how to debug PySpark OOM errors and write production Airflow DAGs that impressed my interviewers.",
-    avatar: "/students2.jpeg",
-    company: "Tier 1 Tech Firm"
-  },
-  {
-    name: "Pooja Patil",
-    role: "Cloud Data Architect",
-    hike: "90% Salary Hike",
-    review: "From SQL window functions to AWS Redshift cluster setup, everything was taught with enterprise depth. The dedicated placement team got me 4 interview calls within 2 weeks!",
-    avatar: "/place1.png",
-    company: "Leading Global Tech"
-  }
-];
+
 
 // What To Expect Points
 const whatToExpectPoints = [

@@ -153,12 +153,22 @@ const courseCatalog: Record<string, {
       }
     ],
     techStack: [
-      { name: "OpenAI API", category: "LLMs", badge: "Gen AI", color: "from-[#1E2B88] to-indigo-600" },
-      { name: "LangChain", category: "Framework", badge: "RAG Engine", color: "from-pink-500 to-rose-600" },
-      { name: "CrewAI", category: "AI Agents", badge: "Multi-Agent", color: "from-purple-500 to-indigo-600" },
+      { name: "LLMs", category: "Foundation Models", badge: "Core AI", color: "from-purple-600 to-indigo-600" },
+      { name: "Prompt Engineering", category: "Techniques", badge: "Prompting", color: "from-pink-500 to-rose-600" },
+      { name: "ChatGPT", category: "OpenAI", badge: "ChatGPT & API", color: "from-emerald-500 to-teal-600" },
+      { name: "Claude AI", category: "Anthropic", badge: "Claude 3.5", color: "from-[#D97757] to-amber-600" },
+      { name: "Google Gemini", category: "Multimodal", badge: "Gemini Pro", color: "from-blue-500 to-indigo-600" },
+      { name: "RAG", category: "Architecture", badge: "Retrieval", color: "from-indigo-600 to-purple-600" },
+      { name: "FAISS", category: "Vector DB", badge: "Facebook AI", color: "from-blue-600 to-cyan-600" },
       { name: "ChromaDB", category: "Vector DB", badge: "Embeddings", color: "from-emerald-500 to-teal-600" },
-      { name: "LlamaIndex", category: "Data Ingestion", badge: "RAG", color: "from-amber-500 to-orange-600" },
-      { name: "Pinecone", category: "Vector Storage", badge: "Cloud DB", color: "from-sky-500 to-blue-600" }
+      { name: "LangChain", category: "Framework", badge: "Orchestration", color: "from-amber-500 to-orange-600" },
+      { name: "LlamaIndex", category: "Data Ingestion", badge: "RAG Index", color: "from-rose-500 to-pink-600" },
+      { name: "AI Agents", category: "Autonomous", badge: "Agentic AI", color: "from-purple-500 to-indigo-600" },
+      { name: "CrewAI", category: "Multi-Agent", badge: "Team Agents", color: "from-violet-600 to-purple-600" },
+      { name: "MCP", category: "Protocol", badge: "Model Context", color: "from-teal-500 to-emerald-600" },
+      { name: "Function Calling", category: "Integration", badge: "Tools & APIs", color: "from-cyan-500 to-blue-600" },
+      { name: "AI Automation", category: "Workflows", badge: "Automation", color: "from-amber-500 to-yellow-600" },
+      { name: "Enterprise AI Applications", category: "Deployment", badge: "Production", color: "from-[#1E2B88] to-indigo-600" }
     ]
   },
   "claude-ai": {
