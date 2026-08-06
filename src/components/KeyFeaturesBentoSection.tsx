@@ -112,7 +112,7 @@ export default function KeyFeaturesBentoSection() {
             </div>
 
             <div className="pt-2 sm:pt-5 mt-2 sm:mt-4 border-t border-white/10 flex items-center justify-between text-[10px] sm:text-xs text-emerald-400 font-bold relative z-10">
-              <span className="flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> 150% Avg Hike</span>
+              <span className="flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> 120% Avg Hike</span>
               <span className="bg-emerald-500 text-white font-extrabold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[9px] sm:text-xs">Active Pipeline</span>
             </div>
           </div>

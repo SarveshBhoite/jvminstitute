@@ -47,7 +47,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed pr-4">
-              Pune&apos;s leading training institute empowering engineers, non-IT graduates, and career changers with practical PySpark, Databricks, Cloud ETL, and SQL skills. ISO Certified 9001:2015.
+              Pune&apos;s leading training institute empowering engineers, non-IT graduates, and career changers with practical PySpark, Databricks, Cloud ETL, and SQL skills. ISO Certified 9001:2020.
             </p>
 
             <div className="flex items-center gap-3 pt-1">
@@ -116,9 +116,9 @@ export default function Footer() {
               <li>
                 <Link href="/study-material" className="hover:text-white transition-colors">Study Material Store</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/events" className="hover:text-white transition-colors">Workshops & Events</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

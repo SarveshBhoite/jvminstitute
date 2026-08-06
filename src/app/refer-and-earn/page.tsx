@@ -485,7 +485,7 @@ export default function ReferAndEarnPage() {
                           <input
                             type="tel"
                             required
-                            placeholder="9876543210"
+                            placeholder="8446284162"
                             value={referrerPhone}
                             onChange={(e) => setReferrerPhone(e.target.value)}
                             className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"

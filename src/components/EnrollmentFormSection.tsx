@@ -143,7 +143,7 @@ export default function EnrollmentFormSection() {
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+91 98765 43210" 
+                        placeholder="+91 8446284162" 
                         className="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
                       />
                     </div>

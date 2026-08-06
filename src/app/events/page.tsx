@@ -1218,7 +1218,7 @@ export default function EventsPage() {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 9876543210"
+                        placeholder="+91 8446284162"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800/90 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-slate-500"

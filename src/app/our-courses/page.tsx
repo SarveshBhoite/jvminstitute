@@ -78,8 +78,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "Beginner to Advanced",
     projects: "4 Capstone Projects",
-    rating: "4.9",
-    reviewsCount: "1,240+",
     placement: "100% Placement Support",
     technologies: ["SQL", "Python", "Linux", "Hadoop", "PySpark", "Spark", "Airflow", "Databricks", "GCP", "Azure", "AWS", "ETL Pipelines", "Data Warehousing"],
     highlights: [
@@ -104,8 +102,6 @@ const coursesData = [
     mode: "Offline & Online Mode",
     level: "All Levels Welcome",
     projects: "20+ Enterprise Projects",
-    rating: "4.9",
-    reviewsCount: "980+",
     placement: "100% Placement Support",
     technologies: ["SQL", "Python", "Spark", "Databricks", "Airflow", "GCP", "Azure", "Gen AI", "OpenAI", "LangChain", "MCP", "AI Agents", "Vector Databases", "RAG"],
     highlights: [
@@ -128,8 +124,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "All Levels Welcome",
     projects: "GenAI Capstone Projects",
-    rating: "4.9",
-    reviewsCount: "1,150+",
     placement: "Placement Assistance & Portfolio Support",
     technologies: ["LLMs", "Prompt Engineering", "ChatGPT", "Claude AI", "Google Gemini", "RAG", "FAISS", "ChromaDB", "LangChain", "LlamaIndex", "AI Agents", "CrewAI", "MCP", "Function Calling", "AI Automation", "Enterprise AI Applications"],
     highlights: [
@@ -154,8 +148,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "Beginner Level",
     projects: "Business Analytics Case Studies",
-    rating: "4.9",
-    reviewsCount: "920+",
     placement: "Career Guidance & Resume Support",
     technologies: ["Python", "Statistics", "Machine Learning", "Data Visualization", "EDA", "Predictive Analytics", "Pandas", "Scikit-Learn"],
     highlights: [
@@ -180,8 +172,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "Intermediate to Advanced",
     projects: "Computer Vision & NLP Labs",
-    rating: "4.9",
-    reviewsCount: "860+",
     placement: "Placement Assistance & Interview Prep",
     technologies: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "Reinforcement Learning", "MLOps", "AI System Design"],
     highlights: [
@@ -206,8 +196,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "All Levels Welcome",
     projects: "Production Cloud ML Pipelines",
-    rating: "4.8",
-    reviewsCount: "740+",
     placement: "Cloud Certification & Job Support",
     technologies: ["AWS AI", "Azure AI", "GCP Claude AI", "Docker", "Kubernetes", "Scalable ML Pipelines", "MLOps", "CI/CD"],
     highlights: [
@@ -483,7 +471,7 @@ export default function OurCoursesPage() {
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Learners Mentored</div>
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">91%</div>
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">120%</div>
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Avg Salary Hike</div>
                   </div>
                   <div>
@@ -605,10 +593,6 @@ export default function OurCoursesPage() {
 
                           {/* Rating & Enrolled Overlay */}
                           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-semibold">
-                            <span className="flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700 shadow-sm">
-                              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                              <span>{course.rating} ({course.reviewsCount})</span>
-                            </span>
 
                             <span className="bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700 shadow-sm">
                               {course.duration}
@@ -1347,7 +1331,7 @@ export default function OurCoursesPage() {
                   <input
                     type="tel"
                     required
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 8446284162"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   />
                 </div>

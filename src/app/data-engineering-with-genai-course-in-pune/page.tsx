@@ -1089,7 +1089,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                 </div>
                 <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">Hiring Referrals</h3>
                 <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
-                  Direct routing to 50+ partner MNCs in Pune &amp; Bangalore.
+                  Direct routing to 250+ partner MNCs in PAN India.
                 </p>
               </div>
 

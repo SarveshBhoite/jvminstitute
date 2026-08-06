@@ -59,7 +59,7 @@ const PlacementFaqs = [
   {
     id: 2,
     question: "What salary can I expect after completing a course at JVM Institute?",
-    answer: "Our Data Engineering & PySpark graduates receive average starting packages ranging between ₹6.5 LPA to ₹16 LPA."
+    answer: "Our Data Engineering & PySpark graduates receive average starting packages ranging between ₹10 LPA to ₹40 LPA."
   },
   {
     id: 3,

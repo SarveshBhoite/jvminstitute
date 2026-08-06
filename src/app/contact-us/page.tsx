@@ -429,7 +429,7 @@ export default function ContactUsPage() {
                   </div>
 
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/918446284162"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-2 rounded-xl bg-white text-emerald-800 text-xs font-extrabold shadow-md hover:bg-emerald-50 hover:scale-105 active:scale-95 transition-all flex-shrink-0 flex items-center gap-1"
@@ -750,7 +750,7 @@ export default function ContactUsPage() {
                   />
                   
                   {/* Floating Overlay Badge */}
-                  <div className="absolute top-4 left-4 bg-slate-900/90 text-white backdrop-blur-md px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 shadow-lg flex items-center gap-2">
+                  <div className="absolute bottom-4 right-4 bg-slate-900/90 text-white backdrop-blur-md px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 shadow-lg flex items-center gap-2">
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
                     <span>Campus Open for Walk-ins Today</span>
                   </div>
