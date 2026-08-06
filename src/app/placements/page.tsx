@@ -45,7 +45,6 @@ const Categories = [
   { id: "data_analytics", label: "Data Analytics" },
   { id: "data_science", label: "Data Science" },
   { id: "ai_ml", label: "AI & Machine Learning" },
-  { id: "deep_learning", label: "Deep Learning (DL)" },
   { id: "pyspark_bigdata", label: "PySpark & Big Data" },
   { id: "cloud_snowflake", label: "Cloud & Snowflake" }
 ];
@@ -358,7 +357,7 @@ export default function PlacementsPage() {
             </div>
           </div>
 
-          {/* Package (LPA) Sequence Sort Bar */}
+          {/* Package (LPA) Sequence Sort Bar 
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 bg-white dark:bg-slate-900/90 p-3 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 max-w-2xl mx-auto shadow-xs">
             <span className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 px-1">
               <ArrowUpDown className="w-4 h-4 text-purple-600 dark:text-purple-400" />
