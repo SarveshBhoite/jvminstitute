@@ -250,7 +250,7 @@ const FEATURED_SPEAKERS: SpeakerItem[] = [
 const EVENT_FAQS = [
   {
     q: "Are live webinars and workshops at JVM Institute free to attend?",
-    a: "Yes! Most of our weekend masterclasses, tech webinars, and live coding bootcamps are 100% free for students and working professionals. Premium hands-on bootcamps may require prior registration due to limited seats."
+    a: "Yes! Most of our weekend masterclasses, tech webinars and live coding bootcamps are 100% free for students and working professionals. Premium hands-on bootcamps may require prior registration due to limited seats."
   },
   {
     q: "Will I receive a Certificate of Participation for attending events?",
@@ -258,7 +258,7 @@ const EVENT_FAQS = [
   },
   {
     q: "What if I miss the live event session?",
-    a: "Don't worry! All registered participants receive lifetime access to the recorded video session, code repository, presentation slides, and notes within 24 hours after the live session ends."
+    a: "Don't worry! All registered participants receive lifetime access to the recorded video session, code repository, presentation slides and notes within 24 hours after the live session ends."
   },
   {
     q: "Where are in-person workshops conducted in Pune?",
@@ -479,7 +479,7 @@ export default function EventsPage() {
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Join interactive webinars, real-time PySpark & Snowflake bootcamps, and hackathons hosted by Lead Architects & Principal Engineers from top tier tech giants.
+              Join interactive webinars, real-time PySpark & Snowflake bootcamps and hackathons hosted by Lead Architects & Principal Engineers from top tier tech giants.
             </p>
 
             {/* Quick Metrics Bar */}
@@ -650,7 +650,7 @@ export default function EventsPage() {
               Explore All Workshops & Events
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-1">
-              Browse upcoming live masterclasses, hackathons, and past recording archives.
+              Browse upcoming live masterclasses, hackathons and past recording archives.
             </p>
           </div>
 
@@ -909,7 +909,7 @@ export default function EventsPage() {
               Learn from Industry Experts
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">
-              Our masterclasses are taught by practicing Lead Architects, Principal Engineers, and Senior Consultants.
+              Our masterclasses are taught by practicing Lead Architects, Principal Engineers and Senior Consultants.
             </p>
           </div>
 

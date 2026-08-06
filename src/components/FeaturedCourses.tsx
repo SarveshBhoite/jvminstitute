@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
 import ClaudeIcon from "@/components/icons/ClaudeIcon";
+import DataEngineeringIcon from "@/components/icons/DataEngineeringIcon";
 import {
   Database,
   Code2,
@@ -24,7 +25,7 @@ const coursesData = [
     description: "Master SQL, Python, Linux, Hadoop, Pyspark, Spark, Airflow, Databricks, GCP, Azure, AWS, ETL Pipelines, Data Warehousing, and Big Data technologies through practical implementation.",
     duration: "6 Months",
     mode: "Offline & Online",
-    icon: Database,
+    icon: DataEngineeringIcon,
     isTopRanked: true,
     highlights: [
       "Industry-Ready Data Engineering Curriculum",

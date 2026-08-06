@@ -135,7 +135,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/data-engineering-with-genai-course-in-pune" className="hover:text-white transition-colors">
-                  Data Engineering & GenAI
+                  Data Engineering with GenAI
                 </Link>
               </li>
               <li>
@@ -182,7 +182,7 @@ export default function Footer() {
               </div>
               <div className="pt-2 border-t border-slate-900 flex items-center gap-1.5 text-[11px] text-slate-400">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>ISO 9001:2015 Registered Institute</span>
+                <span>ISO 9001:2020 Registered Institute</span>
               </div>
             </div>
           </div>
@@ -198,6 +198,8 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+            <span>•</span>
+            <Link href="/refund-policy" className="hover:text-slate-300 transition-colors">Refund Policy</Link>
             <span>•</span>
             <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors">Terms of Use</Link>
             <span>•</span>

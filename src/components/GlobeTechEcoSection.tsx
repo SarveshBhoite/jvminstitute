@@ -184,7 +184,7 @@ export default function GlobeTechEcoSection() {
           </h2>
 
           <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-300">
-            JVM Institute curriculum integrates real cloud infrastructure, streaming tools, and big data engines used by Fortune 500 tech teams.
+            JVM Institute curriculum integrates real cloud infrastructure, streaming tools and big data engines used by Fortune 500 tech teams.
           </p>
         </div>
 
@@ -228,19 +228,16 @@ export default function GlobeTechEcoSection() {
               </div>
 
               {/* Central Globe Core with Large JVM Institute Logo */}
-              <div className="relative w-36 h-36 sm:w-56 sm:h-56 rounded-full bg-gradient-to-br from-purple-500/30 via-pink-500/30 to-indigo-500/30 p-2 shadow-2xl flex flex-col items-center justify-center text-center z-20 backdrop-blur-md">
-                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex flex-col items-center justify-center p-2 sm:p-3 overflow-hidden border-2 border-purple-200 dark:border-purple-800 shadow-inner">
-                  <div className="w-16 h-16 sm:w-32 sm:h-32 relative mb-0.5 sm:mb-1">
+              <div className="relative w-44 h-44 sm:w-64 sm:h-64 rounded-full bg-gradient-to-br from-purple-500/30 via-pink-500/30 to-indigo-500/30 p-2 shadow-2xl flex flex-col items-center justify-center text-center z-20 backdrop-blur-md">
+                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center p-3 sm:p-4 overflow-hidden border-2 border-purple-200 dark:border-purple-800 shadow-inner">
+                  <div className="w-28 h-28 sm:w-44 sm:h-44 relative">
                     <Image
                       src="/jvm_logo-bg.png"
                       alt="JVM Institute Logo"
                       fill
-                      className="object-contain rounded-full"
+                      className="object-contain"
                     />
                   </div>
-                  <span className="text-[10px] sm:text-sm font-extrabold text-slate-900 dark:text-white tracking-wider uppercase font-heading">
-                    JVM Institute
-                  </span>
                 </div>
               </div>
 

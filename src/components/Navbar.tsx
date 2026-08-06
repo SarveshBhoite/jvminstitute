@@ -164,7 +164,7 @@ export default function Navbar() {
                         <div>
                           <div className="flex items-center gap-1.5">
                             <span className="text-xs font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-[#1E2B88] dark:group-hover:text-purple-300">
-                              Data Engineering & GenAI
+                              Data Engineering with GenAI
                             </span>
                             <span className="text-[9px] bg-[#7C248C] text-white px-1.5 py-0.2 rounded font-extrabold">Flagship</span>
                           </div>

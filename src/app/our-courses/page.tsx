@@ -123,7 +123,7 @@ const coursesData = [
     title: "Gen AI",
     desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
     image: "/place3.jpeg",
-    url: "/gen -ai-course-in-pune",
+    url: "/generative-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
     level: "All Levels Welcome",
@@ -131,7 +131,7 @@ const coursesData = [
     rating: "4.9",
     reviewsCount: "1,150+",
     placement: "Placement Assistance & Portfolio Support",
-    technologies: ["ChatGPT", "OpenAI APIs", "LangChain", "CrewAI", "Vector Databases", "AI Agents", "Prompt Engineering", "RAG"],
+    technologies: ["LLMs", "Prompt Engineering", "ChatGPT", "Claude AI", "Google Gemini", "RAG", "FAISS", "ChromaDB", "LangChain", "LlamaIndex", "AI Agents", "CrewAI", "MCP", "Function Calling", "AI Automation", "Enterprise AI Applications"],
     highlights: [
       "End-to-End Gen AI Learning Path",
       "Build AI Agents with LangChain & CrewAI",
@@ -883,14 +883,25 @@ export default function OurCoursesPage() {
                     transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      "/icon/python.png",
+                      "/icon/sql.png",
+                      "/icon/aws.png",
+                      "/icon/azure.png",
+                      "/icon/mysql.png",
+                      "/icon/claude-colour.png",
+                      "/icon/data-engineering.png",
+                      "/icon/python.png",
+                      "/icon/sql.png",
+                      "/icon/aws.png"
+                    ].map((src, i) => (
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
                       >
                         <Image
-                          src="/react.png"
+                          src={src}
                           alt="Technology Logo"
                           width={64}
                           height={64}
@@ -908,14 +919,25 @@ export default function OurCoursesPage() {
                     transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      "/icon/mysql.png",
+                      "/icon/azure.png",
+                      "/icon/python.png",
+                      "/icon/aws.png",
+                      "/icon/sql.png",
+                      "/icon/data-engineering.png",
+                      "/icon/claude-colour.png",
+                      "/icon/mysql.png",
+                      "/icon/azure.png",
+                      "/icon/python.png"
+                    ].map((src, i) => (
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.18, rotate: -10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
                       >
                         <Image
-                          src="/react.png"
+                          src={src}
                           alt="Technology Logo"
                           width={64}
                           height={64}
@@ -933,14 +955,25 @@ export default function OurCoursesPage() {
                     transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      "/icon/sql.png",
+                      "/icon/python.png",
+                      "/icon/mysql.png",
+                      "/icon/claude-colour.png",
+                      "/icon/aws.png",
+                      "/icon/azure.png",
+                      "/icon/data-engineering.png",
+                      "/icon/sql.png",
+                      "/icon/python.png",
+                      "/icon/mysql.png"
+                    ].map((src, i) => (
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
                       >
                         <Image
-                          src="/react.png"
+                          src={src}
                           alt="Technology Logo"
                           width={64}
                           height={64}
@@ -958,14 +991,25 @@ export default function OurCoursesPage() {
                     transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      "/icon/aws.png",
+                      "/icon/data-engineering.png",
+                      "/icon/azure.png",
+                      "/icon/python.png",
+                      "/icon/sql.png",
+                      "/icon/mysql.png",
+                      "/icon/claude-colour.png",
+                      "/icon/aws.png",
+                      "/icon/data-engineering.png",
+                      "/icon/azure.png"
+                    ].map((src, i) => (
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.18, rotate: -10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
                       >
                         <Image
-                          src="/react.png"
+                          src={src}
                           alt="Technology Logo"
                           width={64}
                           height={64}
@@ -983,14 +1027,25 @@ export default function OurCoursesPage() {
                     transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      "/icon/azure.png",
+                      "/icon/aws.png",
+                      "/icon/claude-colour.png",
+                      "/icon/mysql.png",
+                      "/icon/python.png",
+                      "/icon/sql.png",
+                      "/icon/data-engineering.png",
+                      "/icon/azure.png",
+                      "/icon/aws.png",
+                      "/icon/claude-colour.png"
+                    ].map((src, i) => (
                       <motion.div
                         key={i}
                         whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
                       >
                         <Image
-                          src="/react.png"
+                          src={src}
                           alt="Technology Logo"
                           width={64}
                           height={64}
