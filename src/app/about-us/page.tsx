@@ -17,6 +17,7 @@ import {
   Building2,
   BookOpen,
   Target,
+  Eye,
   Clock,
   Compass,
   MapPin,
@@ -456,37 +457,6 @@ export default function AboutUsPage() {
                   </p>
                 </div>
 
-                {/* 2. MOBILE ONLY: IMAGE COLLAGE DISPLAYED RIGHT AFTER STORY & PHILOSOPHY */}
-                <div className="block lg:hidden my-4 relative">
-                  <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800 h-[200px] xs:h-[230px]">
-                    <Image
-                      src="/place1.png"
-                      alt="JVM Institute Campus Placement Drive"
-                      width={600}
-                      height={400}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-2 left-3 text-white">
-                      <span className="px-2 py-0.5 rounded-md bg-pink-600/90 text-[9px] font-bold tracking-wider uppercase">Campus Hiring</span>
-                      <h4 className="text-xs font-bold mt-0.5">Direct MNC Drives</h4>
-                    </div>
-                  </div>
-
-                  {/* Secondary Floating Stats Card on Mobile */}
-                  <div className="absolute -bottom-3 -right-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2 rounded-xl shadow-xl max-w-[150px] z-20">
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shrink-0">
-                        <Users className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-extrabold text-slate-900 dark:text-white">98.4%</div>
-                        <p className="text-[9px] text-slate-500 dark:text-slate-400 font-medium">Placement Track</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* 3. CORE HIGHLIGHTS DISPLAYED RIGHT AFTER IMAGE */}
                 <div className="pt-2 sm:pt-4 space-y-2 sm:space-y-4">
                   
@@ -531,6 +501,52 @@ export default function AboutUsPage() {
 
             </div>
           </div>
+
+          {/* ========================================================= */}
+          {/* STANDALONE FULL-WIDTH OUR MISSION & OUR VISION SECTION   */}
+          {/* ========================================================= */}
+          <div className="mt-12 sm:mt-16 pt-10 sm:pt-14 border-t border-slate-200/80 dark:border-slate-800/80 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {/* Mission Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-50/90 via-purple-50/40 to-white dark:from-indigo-950/50 dark:via-purple-950/20 dark:to-slate-900 border border-indigo-200/80 dark:border-indigo-800/60 shadow-md space-y-3 relative overflow-hidden group hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center gap-3 text-indigo-700 dark:text-indigo-300">
+                  <div className="p-3 rounded-2xl bg-indigo-600 text-white shadow-md">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">Our Mission</h3>
+                </div>
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                  To provide high-quality, practical, and industry-focused technical education that equips learners with the skills, confidence, and experience required to excel in today&apos;s technology-driven world.
+                </p>
+              </motion.div>
+
+              {/* Vision Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-50/90 via-pink-50/40 to-white dark:from-purple-950/50 dark:via-pink-950/20 dark:to-slate-900 border border-purple-200/80 dark:border-purple-800/60 shadow-md space-y-3 relative overflow-hidden group hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center gap-3 text-purple-700 dark:text-purple-300">
+                  <div className="p-3 rounded-2xl bg-[#7C248C] text-white shadow-md">
+                    <Eye className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">Our Vision</h3>
+                </div>
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                  To become one of India&apos;s most trusted institutes for Data Engineering, Artificial Intelligence, Machine Learning, and Generative AI by delivering world-class education, innovation, and career transformation through practical learning.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
         </section>
 
         {/* ========================================================= */}
