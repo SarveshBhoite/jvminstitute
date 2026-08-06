@@ -52,7 +52,7 @@ const PlacementFaqs = [
   {
     id: 1,
     question: "Does JVM Institute guarantee placement?",
-    answer: "Yes! We offer 100% Placement Support with unlimited interview calls across 150+ corporate hiring partners in Pune, Bangalore, Hyderabad, and Mumbai until you get placed."
+    answer: "Yes! We offer 100% Placement Support with unlimited interview calls across 250+ corporate hiring partners in Pune, Bangalore, Hyderabad, and Mumbai until you get placed."
   },
   {
     id: 2,
@@ -62,12 +62,12 @@ const PlacementFaqs = [
   {
     id: 3,
     question: "Which companies hire from JVM Institute?",
-    answer: "150+ top MNCs and product startups hire our students — including Infosys, TCS, Wipro, Cognizant, Accenture, Capgemini, LTIMindtree, Persistent, Hexaware, Mphasis, Tech Mahindra, Zensar, and funded startups."
+    answer: "250+ top MNCs and product startups hire our students — including Infosys, TCS, Wipro, Cognizant, Accenture, Capgemini, LTIMindtree, Persistent, Hexaware, Mphasis, Tech Mahindra, Zensar, and funded startups."
   },
   {
     id: 4,
     question: "How long does placement take after course completion?",
-    answer: "Most students receive job offers within 30 to 60 days of course completion after passing our 1:1 technical mock interviews and resume preparation."
+    answer: "Most students receive job offers within 15 to 30 days of course completion after passing our 1:1 technical mock interviews and resume preparation."
   },
   {
     id: 5,
@@ -77,7 +77,7 @@ const PlacementFaqs = [
   {
     id: 6,
     question: "Can non-IT students get placed through JVM Institute?",
-    answer: "Absolutely! Over 45% of our placed students come from non-IT backgrounds (B.Sc, B.Com, Mechanical, E&TC). Our zero-to-hero curriculum covers Python and SQL from absolute scratch."
+    answer: "Absolutely! Over 60% of our placed students come from non-IT backgrounds (B.Sc, B.Com, Mechanical, E&TC). Our zero-to-hero curriculum covers Python and SQL from absolute scratch."
   },
   {
     id: 7,

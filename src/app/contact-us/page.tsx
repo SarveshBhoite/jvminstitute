@@ -63,7 +63,7 @@ const contactDetails = [
     icon: Phone,
     title: "Call & Helpline",
     subtitle: "Admission & Course Support",
-    details: ["+91 84462 84162 (Admissions)", "+91 84462 84162 (Student Support)"],
+    details: ["+91 84462 84162 (Admissions)", "+91 9923754115(Student Support)"],
     badge: "Direct Call",
     color: "from-pink-500 to-rose-600",
     actionText: "Call Now",
@@ -73,7 +73,7 @@ const contactDetails = [
     icon: Mail,
     title: "Email Support",
     subtitle: "Inquiries & Corporate Training",
-    details: ["infojvminstitute@gmail.com", "info@jvminstitute.com"],
+    details: ["infojvminstitute@gmail.com", ],
     badge: "24/7 Response",
     color: "from-purple-500 to-indigo-600",
     actionText: "Send Mail",
@@ -83,7 +83,7 @@ const contactDetails = [
     icon: Clock,
     title: "Office Timings",
     subtitle: "Walk-in & Counseling Hours",
-    details: ["Monday - Saturday: 9:00 AM - 7:30 PM", "Sunday: 10:00 AM - 2:00 PM (Batch Only)"],
+    details: ["Monday - Saturday: 9:00 AM - 7:30 PM", "Sunday: 10:00 AM - 4:00 PM (Batch Only)"],
     badge: "Open Today",
     color: "from-emerald-500 to-teal-600",
     actionText: "Book Appointment",
@@ -95,7 +95,7 @@ const contactDetails = [
 const faqItems = [
   {
     q: "How can I schedule a campus visit or live demo class?",
-    a: "You can schedule a campus visit by filling out our inquiry form or calling our admission desk at +91 98765 43210. Our counselors will reserve a slot for you to tour our labs and attend a live demo session with senior faculty."
+    a: "You can schedule a campus visit by filling out our inquiry form or calling our admission desk at +91  84462 84162 . Our counselors will reserve a slot for you to tour our labs and attend a live demo session with senior faculty."
   },
   {
     q: "What batch timings are available for working professionals vs students?",
@@ -103,7 +103,7 @@ const faqItems = [
   },
   {
     q: "Do you offer 100% placement assistance and interview preparation?",
-    a: "Yes! Every student receives dedicated 1-on-1 placement support, including ATS resume crafting, PySpark & SQL technical mock interviews, LinkedIn profile optimization, and direct referrals to our 50+ hiring partners."
+    a: "Yes! Every student receives dedicated 1-on-1 placement support, including ATS resume crafting, PySpark & SQL technical mock interviews, LinkedIn profile optimization, and direct referrals to our 250+ hiring partners."
   },
   {
     q: "Can non-IT graduates or freshers enroll in Data Engineering & PySpark?",
@@ -686,7 +686,7 @@ export default function ContactUsPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 dark:text-white">JVM Institute Main Campus</h3>
-                      <p className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">Deccan Gymkhana, Pune</p>
+                      <p className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">Baner, Pune</p>
                     </div>
                   </div>
 
@@ -708,7 +708,7 @@ export default function ContactUsPage() {
 
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-3">
                     <a
-                      href="https://maps.google.com"
+                      href="https://www.google.com/maps/place/JVM+institute+Pvt.+Ltd./@18.5630083,73.779778,17z"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-6 py-3 rounded-xl jvm-gradient-bg text-white font-bold text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
@@ -740,13 +740,13 @@ export default function ContactUsPage() {
                 <div className="relative h-[360px] sm:h-[420px] rounded-2xl overflow-hidden">
                   <iframe
                     title="JVM Institute Location Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.2568778648834!2d73.84088927503759!3d18.51731678257448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0773b069dcf%3A0x7d67ffaa8705f1df!2sDeccan%20Gymkhana%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2445957460745!2d73.779778!3d18.5630083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf22b43aa78d%3A0x8c2c806d229dcf4a!2sJVM%20institute%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1785994689965!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: "contrast(1.05)" }}
-                    allowFullScreen={false}
+                    allowFullScreen={true}
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                    referrerPolicy="strict-origin-when-cross-origin"
                   />
                   
                   {/* Floating Overlay Badge */}
