@@ -102,7 +102,7 @@ function TimelineSection({ timelineData }: { timelineData: { year: string; title
     { badge: "Foundation", icon: Building2, color: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 border-indigo-200 dark:border-indigo-800" },
     { badge: "Curriculum Innovation", icon: Zap, color: "text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 border-purple-200 dark:border-purple-800" },
     { badge: "Cloud Scale", icon: Cloud, color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border-blue-200 dark:border-blue-800" },
-    { badge: "5K+ Milestone", icon: Users, color: "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/60 border-pink-200 dark:border-pink-800" },
+    { badge: "8K+ Milestone", icon: Users, color: "text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/60 border-pink-200 dark:border-pink-800" },
     { badge: "ISO Accredited", icon: Award, color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-800" },
   ];
 
@@ -214,31 +214,73 @@ function TimelineSection({ timelineData }: { timelineData: { year: string; title
 export default function AboutUsPage() {
   const facultyList = [
    
-    {
-      name: "Anand Sir ",
-      role: "Mysql & Python Expert",
-      experience: "12+ Years Exp",
-      image: "/anand.png",
-      bio: "Specializes in high-velocity real-time event streaming architectures using Apache Kafka, PySpark Structured Streaming, and Delta Lake.",
-      expertise: ["Apache Kafka", "Real-time Streaming", "Python", "NoSQL"]
-    },
-    {
-      name: "Praveen Sir",
-      role: "Senior cloud architect and GCP expert",
-      experience: "10+ Years Exp",
-      image: "/praveen.png",
-      bio: "Focuses on enterprise data modeling, Star & Snowflake schemas, Power BI dashboard integration, and complex SQL window functions.",
-      expertise: ["Advanced SQL", "Data Modeling", "Power BI", "PostgreSQL"]
-    },
-    {
-      name: "Omkar Sir",
-      role: "AWS & Azure Architect",
-      experience: "8+ Years Exp",
-      image: "/omkar.png",
-      bio: "Pioneer in containerized data pipeline deployment with Docker, Kubernetes, Terraform IAC, and multi-cloud security protocols.",
-      expertise: ["Bigdata", "Pyspark", "Cloud", "Databricks","ETL"]
-    },
-   
+   {
+  name: "Anand Sir",
+  role: "MySQL & Python Expert",
+  experience: "12+ Years Exp",
+  image: "/anand.png",
+  bio: "Experienced MySQL and Python trainer with expertise in database design, SQL optimization, Python programming, automation, and backend development. Passionate about helping students build strong programming and database management skills.",
+  expertise: [
+    "MySQL",
+    "Advanced SQL",
+    "Python",
+    "Database Design",
+    "Database Optimization",
+    "Python Automation",
+    "Backend Development"
+  ]
+},
+{
+  name: "Praveen Sir",
+  role: "Senior Cloud Architect & GCP Expert",
+  experience: "10+ Years Exp",
+  image: "/praveen.png",
+  bio: "Senior Cloud Architect specializing in Google Cloud Platform (GCP), cloud infrastructure, DevOps, cloud security, and scalable enterprise solutions. Experienced in designing and deploying secure cloud-native applications.",
+  expertise: [
+    "Google Cloud Platform (GCP)",
+    "Cloud Architecture",
+    "Cloud Computing",
+    "DevOps",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Cloud Security"
+  ]
+},
+{
+  name: "Omkar Sir",
+  role: "Big Data, PySpark, Cloud, Databricks & ETL Expert",
+  experience: "8+ Years Exp",
+  image: "/omkar.png",
+  bio: "Big Data professional with expertise in PySpark, Databricks, ETL development, cloud platforms, and distributed data processing. Skilled in building scalable data pipelines and modern data engineering solutions.",
+  expertise: [
+    "Big Data",
+    "Apache Spark",
+    "PySpark",
+    "Databricks",
+    "ETL",
+    "Apache Kafka",
+    "Azure",
+    "AWS",
+    "Data Engineering"
+  ]
+},
+{
+  name: "Kiran Sir",
+  role: "Placement Cell Expert",
+  experience: "10+ Years Exp",
+  image: "/kiran.png",
+  bio: "Dedicated placement mentor with extensive experience in career guidance, resume building, mock interviews, aptitude training, and helping students secure placements in leading IT companies.",
+  expertise: [
+    "Career Guidance",
+    "Resume Building",
+    "Mock Interviews",
+    "Interview Preparation",
+    "Aptitude Training",
+    "Soft Skills",
+    "Placement Assistance"
+  ]
+},
   ];
 
   const timelineData = [
@@ -260,7 +302,7 @@ export default function AboutUsPage() {
   
     {
       year: "2026",
-      title: "ISO 9001:2015 Accreditation",
+      title: "Current position",
       description: "JVM Institute continues to empower students, graduates, and working professionals through practical learning, modern technologies, real-world projects, and career-focused mentorship, helping them build successful careers in Data Engineering, Artificial Intelligence, Machine Learning, and Generative AI."
     }
   ];
@@ -532,7 +574,7 @@ export default function AboutUsPage() {
                     <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div className="text-4xl sm:text-6xl font-black tracking-tight text-white mb-1 sm:mb-2">
-                    <AnimatedCounter value={5000} suffix="+" />
+                    <AnimatedCounter value={8000} suffix="+" />
                   </div>
                   <h3 className="text-base sm:text-xl font-bold text-indigo-200">Students Trained &amp; Mentored</h3>
                 </div>
@@ -567,7 +609,7 @@ export default function AboutUsPage() {
                     <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5">
-                    <AnimatedCounter value={10} suffix="+" />
+                    <AnimatedCounter value={7} suffix="+" />
                   </div>
                   <h4 className="text-xs sm:text-base font-bold text-slate-800 dark:text-slate-200">Years Educational Trust</h4>
                 </div>
