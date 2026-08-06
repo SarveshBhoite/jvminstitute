@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
+import ClaudeIcon from "@/components/icons/ClaudeIcon";
 import {
   Database,
   Code2,
@@ -101,7 +102,7 @@ const coursesData = [
     description: "Master Claude AI for prompt engineering, AI automation, enterprise productivity, AI agents, RAG applications, and Claude API development. Learn to build intelligent AI-powered solutions for business, software development, content creation, research, and workflow automation.",
     duration: "1 Month",
     mode: "Offline & Online",
-    icon: Cpu,
+    icon: ClaudeIcon,
     isTopRanked: false,
     highlights: [
       "Master Claude AI from Beginner to Advanced",
@@ -111,7 +112,7 @@ const coursesData = [
       "Develop RAG (Retrieval-Augmented Generation) Solutions",
       "Real-World Projects, Portfolio Building & Placement Assistance",
     ],
-    glowClass: "hover:border-sky-500 hover:shadow-[0_0_35px_rgba(14,165,233,0.35)]",
+    glowClass: "hover:border-[#D97757] hover:shadow-[0_0_35px_rgba(217,119,87,0.35)] dark:hover:shadow-[0_0_40px_rgba(217,119,87,0.4)]",
   },
   {
     id: "gen-ai",

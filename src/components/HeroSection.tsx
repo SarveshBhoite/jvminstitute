@@ -149,7 +149,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
-              Master Data Engineering, Gen AI, Machine Learning, , and Advanced AI technologies through industry-led training, live projects, real business case studies, and comprehensive <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>. Whether you are a fresher, working professional, or engineering, BSC, MBS, or pharmacist student, JVM Institute helps you build practical skills that leading companies expect from today&apos;s technology professionals.
+              Master Data Engineering, Gen AI, Machine Learning and Advanced AI technologies through industry-led training, live projects, real business case studies and comprehensive <strong className="text-slate-900 dark:text-white font-bold underline decoration-[#E01E6A] dark:decoration-pink-500">100% Placement Assistance</strong>. Whether you are a fresher, working professional, or engineering, BSC, MBS, or pharmacist student, JVM Institute helps you build practical skills that leading companies expect from today&apos;s technology professionals.
             </p>
 
             {/* Key Value Points Grid */}
