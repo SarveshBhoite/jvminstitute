@@ -555,7 +555,7 @@ export default function DataEngineeringCoursePage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-                    <span>50+ Hiring Partners</span>
+                    <span>250+ Hiring Partners</span>
                   </div>
                 </motion.div>
 
