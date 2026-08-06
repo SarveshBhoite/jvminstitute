@@ -245,7 +245,7 @@ export default function PlacementsPage() {
               {/* Stat 1 — Students Placed */}
               <div className="flex flex-col items-center lg:items-start group px-2 sm:px-4">
                 <span className="text-xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
-                  2,000<span className="jvm-gradient-text">+</span>
+                  8000<span className="jvm-gradient-text">+</span>
                 </span>
                 <span className="text-[9px] sm:text-xs font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1 text-center sm:text-left">
                   Students Placed

@@ -30,63 +30,39 @@ const curriculumModules = [
   {
     id: "mod-1",
     number: "01",
-    title: "Python for AI & LLM Foundations",
+    title: "Gen AI",
     duration: "1 Week",
     topics: [
-      "Python Essentials & Advanced Data Structures",
-      "API Integrations & Asynchronous Requests in Python",
-      "JSON Data Manipulation & Data Ingestion",
-      "Environment Setup: Conda, venv & Jupyter Notebooks",
-      "Python AI Ecosystem: Hugging Face Datasets & Transformers Basics"
+      "Large Language Models (LLMs), Generative AI & Enterprise AI Fundamentals",
+      "Transformer Architecture, Tokens & Attention Mechanism",
+      " Prompt Engineering & Advanced Prompting Techniques",
+      "Hugging Face Models & Open-Source AI Ecosystem",
+      "AI Development Best Practices & LLM Application Design",
+      "LangChain Framework for Enterprise AI Applications",
+      "Embeddings, Semantic Search & Vector Search",
+      "Vector Databases (FAISS, ChromaDB, Pinecone & Milvus)",
+      " Retrieval-Augmented Generation (RAG) Architecture & Enterprise Knowledge Retrieval",
+      "Document Processing, Chunking & Context Management",
+      " AI Agents, Multi-Agent Systems & Agentic AI Workflows",
+      "MCP (Model Context Protocol) & Tool Integration",
+      "Function Calling & External API Integration with LLMs",
+      "AI/BI Genie, Natural Language Analytics & Business Intelligence",
+       "AI-Powered SQL Generation & Intelligent Data Assistants",
+      "Model Serving, AI Inference & Production AI Deployment",
+      "LLM Monitoring, Evaluation & Performance Optimization",
+       "Delta Live Tables (DLT) & AI Data Pipeline Development",
+       " Lakehouse Monitoring & Data Quality Management",
+       "Unity Catalog, Data Governance & Metadata Management",
+       "AI Governance, Security, Privacy & Responsible AI Practices",
+       "Enterprise AI Workflow Automation & Intelligent Data Engineering",
+      " Building End-to-End Production AI Applications",
+       "Real-Time AI Applications & Enterprise Integration",
+       "Industry-Level GenAI Projects & Interview Preparation",
     ],
     tools: ["Python", "Jupyter", "REST APIs", "JSON", "Hugging Face"],
     project: "Build an automated Python script to fetch, clean & structure datasets for AI models."
   },
-  {
-    id: "mod-2",
-    number: "02",
-    title: "Prompt Engineering & OpenAI API Integration",
-    duration: "1 Week",
-    topics: [
-      "Principles of Effective Prompt Engineering",
-      "Zero-Shot, Few-Shot & Chain-of-Thought (CoT) Prompting",
-      "OpenAI GPT-4o API Integration & Parameter Tuning (Temperature, Top_P)",
-      "Structured JSON Outputs & Function Calling with LLMs",
-      "Security & Prompt Injection Defenses"
-    ],
-    tools: ["OpenAI API", "ChatGPT", "GPT-4o", "Prompt Engineering", "Python"],
-    project: "Develop an AI-powered automated Customer Support Copilot using OpenAI APIs."
-  },
-  {
-    id: "mod-3",
-    number: "03",
-    title: "LangChain, LlamaIndex & Vector DBs (RAG Architecture)",
-    duration: "1 Week",
-    topics: [
-      "LangChain Fundamentals: Chains, Prompts & Memory Management",
-      "Text Splitting, Chunking Strategies & Vector Embeddings",
-      "Vector Databases: Pinecone, ChromaDB & FAISS Deep-Dive",
-      "Retrieval-Augmented Generation (RAG) Architecture Implementation",
-      "LlamaIndex for Document Indexing & Enterprise Knowledge Search"
-    ],
-    tools: ["LangChain", "LlamaIndex", "Pinecone", "ChromaDB", "FAISS"],
-    project: "Architect an Enterprise RAG Document Q&A Search Engine for PDFs & Docs."
-  },
-  {
-    id: "mod-4",
-    number: "04",
-    title: "Autonomous AI Agents & Multi-Agent Systems",
-    duration: "1 Week",
-    topics: [
-      "Introduction to Agentic Workflows & Tool-Calling Agents",
-      "Building Custom AI Agents with LangGraph & CrewAI",
-      "Multi-Agent Orchestration, Role Delegation & Task Management",
-      "Integrating External Tools, Web Search & SQL Assistants with Agents",
-      "Production Deployment, Monitoring & Evaluation of GenAI Applications"
-    ],
-    tools: ["CrewAI", "LangGraph", "LangChain", "Python", "FastAPI"],
-    project: "Deploy an Autonomous Multi-Agent AI Research Team for automated market analysis."
-  }
+
 ];
 
 const techStack = [
@@ -317,12 +293,13 @@ export default function GenAICoursePage() {
                         >
                           <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                             {mod.topics.map((t, idx) => (
-                              <li key={idx} className="flex items-start gap-2">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                                <span>{t}</span>
+                              <li key={idx} className="flex items-start gap-2 p-2 rounded-lg bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                                <span className="leading-snug text-[11px] sm:text-xs font-semibold text-slate-800 dark:text-slate-100">{t}</span>
                               </li>
                             ))}
                           </ul>
+
                           <div className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-[11px] font-bold text-purple-700 dark:text-purple-300 flex items-center gap-2">
                             <Wrench className="w-3.5 h-3.5 text-purple-600" />
                             <span>Tools Used: {mod.tools.join(", ")}</span>

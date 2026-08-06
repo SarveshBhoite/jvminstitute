@@ -116,7 +116,7 @@ const coursesData = [
   },
   {
     id: "gen-ai",
-    slug: "gen-ai-course-in-pune",
+    slug: "generative-ai-course-in-pune",
     title: "Gen AI",
     badge: "Next-Gen AI",
     description: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",

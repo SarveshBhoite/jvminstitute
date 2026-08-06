@@ -1,26 +1,53 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Building2 } from "lucide-react";
 import LogoLoop, { LogoItem } from "./LogoLoop";
 
-const ReactLogoNode = () => (
-  <div className="flex items-center justify-center p-2 filter drop-shadow-md hover:scale-125 transition-transform cursor-pointer">
-    <svg className="w-14 h-14 sm:w-16 sm:h-16" viewBox="-11.5 -10.23174 23 20.46348" fill="none">
-      <circle cx="0" cy="0" r="2.05" fill="#00D8FF" />
-      <g stroke="#00D8FF" strokeWidth="1" fill="none">
-        <ellipse rx="11" ry="4.2" />
-        <ellipse rx="11" ry="4.2" transform="rotate(60)" />
-        <ellipse rx="11" ry="4.2" transform="rotate(120)" />
-      </g>
-    </svg>
-  </div>
-);
+// List of real company logos stored in /public/logo/
+const companyLogos = [
+  { src: "/logo/TCS.NS.png", title: "TCS" },
+  { src: "/logo/INFY.png", title: "Infosys" },
+  { src: "/logo/PERSISTENT.NS.png", title: "Persistent Systems" },
+  { src: "/logo/HCLTECH.NS_BIG.png", title: "HCL Tech" },
+  { src: "/logo/CAP.PA_BIG.png", title: "Capgemini" },
+  { src: "/logo/deloitte_BIG.png", title: "Deloitte" },
+  { src: "/logo/LTIM.NS.png", title: "LTIMindtree" },
+  { src: "/logo/LTTS.NS.png", title: "L&T Technology Services" },
+  { src: "/logo/CTSH.png", title: "Cognizant" },
+  { src: "/logo/TECHM.NS_BIG.png", title: "Tech Mahindra" },
+  { src: "/logo/HEXAWARE.NS.png", title: "Hexaware" },
+  { src: "/logo/MPHASIS.NS.png", title: "Mphasis" },
+  { src: "/logo/KPITTECH.NS.png", title: "KPIT Technologies" },
+  { src: "/logo/JPM.png", title: "JPMorgan Chase" },
+  { src: "/logo/GS.png", title: "Goldman Sachs" },
+  { src: "/logo/MS.png", title: "Morgan Stanley" },
+  { src: "/logo/BAC.png", title: "Bank of America" },
+  { src: "/logo/citibank-4-logo-png-transparent.png", title: "Citibank" },
+  { src: "/logo/UBER.png", title: "Uber" },
+  { src: "/logo/WMT.png", title: "Walmart" },
+  { src: "/logo/meesho_BIG.png", title: "Meesho" },
+  { src: "/logo/openai_BIG.png", title: "OpenAI" },
+  { src: "/logo/anthropic.png", title: "Anthropic" },
+  { src: "/logo/icons8-google-48.png", title: "Google" },
+  { src: "/logo/icons8-microsoft-48.png", title: "Microsoft" },
+  { src: "/logo/icons8-amazon-48.png", title: "Amazon" },
+  { src: "/logo/icons8-apple-50.png", title: "Apple" },
+  { src: "/logo/icons8-meta-94.png", title: "Meta" },
+  { src: "/logo/icons8-nvidia-50.png", title: "NVIDIA" },
+  { src: "/logo/icons8-ibm-48.png", title: "IBM" },
+  { src: "/logo/icons8-salesforce-50.png", title: "Salesforce" },
+  { src: "/logo/icons8-sap-48.png", title: "SAP" },
+  { src: "/logo/icons8-intel-24.png", title: "Intel" },
+  { src: "/logo/icons8-amd-50.png", title: "AMD" },
+  { src: "/logo/icons8-dell-50.png", title: "Dell" },
+  { src: "/logo/icons8-hp-50.png", title: "HP" },
+];
 
-const partnerLogos: LogoItem[] = Array.from({ length: 12 }).map((_, idx) => ({
-  node: <ReactLogoNode key={idx} />,
-  title: `Hiring Partner ${idx + 1}`,
+const partnerLogos: LogoItem[] = companyLogos.map((logo) => ({
+  src: logo.src,
+  alt: logo.title,
+  title: logo.title,
 }));
 
 export default function HiringPartnersTicker() {
@@ -35,14 +62,14 @@ export default function HiringPartnersTicker() {
         </p>
       </div>
 
-      {/* React Bits LogoLoop Component with Larger Pure Image Logos */}
+      {/* Real Company Logos Continuous Ticker */}
       <div className="w-full relative">
         <LogoLoop
           logos={partnerLogos}
-          speed={60}
+          speed={50}
           direction="left"
-          logoHeight={76}
-          gap={52}
+          logoHeight={48}
+          gap={48}
           pauseOnHover={true}
           scaleOnHover={true}
           fadeOut={true}
@@ -53,3 +80,4 @@ export default function HiringPartnersTicker() {
     </section>
   );
 }
+
