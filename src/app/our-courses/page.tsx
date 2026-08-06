@@ -123,7 +123,7 @@ const coursesData = [
     title: "Gen AI",
     desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
     image: "/place3.jpeg",
-    url: "/gen -ai-course-in-pune",
+    url: "/generative-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
     level: "All Levels Welcome",
@@ -880,22 +880,48 @@ export default function OurCoursesPage() {
                 <div className="relative overflow-hidden h-full flex justify-center">
                   <motion.div
                     animate={{ y: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      { name: "Oracle Database", src: "/logo/oracle.jpg" },
+                      { name: "PostgreSQL", src: "/logo/PostgreSQL.jpg" },
+                      { name: "Microsoft SQL Server", src: "/logo/Microsoft SQL Server.jpg" },
+                      { name: "NumPy", src: "/logo/NumPy.jpg" },
+                      { name: "Pandas", src: "/logo/Pandas.jpg" },
+                      { name: "Matplotlib", src: "/logo/Matplotlib.jpg" },
+                      { name: "Seaborn", src: "/logo/Seaborn.jpg" },
+                      { name: "Apache Hadoop", src: "/logo/Apache Hadoop.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Apache Airflow", src: "/logo/Apache Airflow.jpg" },
+                    ].concat([
+                      { name: "Oracle Database", src: "/logo/oracle.jpg" },
+                      { name: "PostgreSQL", src: "/logo/PostgreSQL.jpg" },
+                      { name: "Microsoft SQL Server", src: "/logo/Microsoft SQL Server.jpg" },
+                      { name: "NumPy", src: "/logo/NumPy.jpg" },
+                      { name: "Pandas", src: "/logo/Pandas.jpg" },
+                      { name: "Matplotlib", src: "/logo/Matplotlib.jpg" },
+                      { name: "Seaborn", src: "/logo/Seaborn.jpg" },
+                      { name: "Apache Hadoop", src: "/logo/Apache Hadoop.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Apache Airflow", src: "/logo/Apache Airflow.jpg" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: 6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src="/react.png"
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -905,22 +931,50 @@ export default function OurCoursesPage() {
                 <div className="relative overflow-hidden h-full flex justify-center">
                   <motion.div
                     animate={{ y: ["-50%", "0%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "Cloud Storage", src: "/logo/Cloud Storage.jpg" },
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                      { name: "OpenCV", src: "/logo/OpenCV.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "Git", src: "/logo/Git.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                    ].concat([
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "Cloud Storage", src: "/logo/Cloud Storage.jpg" },
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                      { name: "OpenCV", src: "/logo/OpenCV.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "Git", src: "/logo/Git.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: -10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: -6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src="/react.png"
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -930,72 +984,150 @@ export default function OurCoursesPage() {
                 <div className="relative overflow-hidden h-full flex justify-center">
                   <motion.div
                     animate={{ y: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      { name: "Apache Airflow", src: "/logo/Apache Airflow.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Apache Hadoop", src: "/logo/Apache Hadoop.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "OpenCV", src: "/logo/OpenCV.jpg" },
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                    ].concat([
+                      { name: "Apache Airflow", src: "/logo/Apache Airflow.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Apache Hadoop", src: "/logo/Apache Hadoop.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "OpenCV", src: "/logo/OpenCV.jpg" },
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: 6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src="/react.png"
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
                 </div>
 
-                {/* Column 4 (OPPOSITE Downwards - Hidden on smallest mobile, visible on sm+) */}
+                {/* Column 4 (OPPOSITE Downwards) */}
                 <div className="relative overflow-hidden h-full hidden sm:flex justify-center">
                   <motion.div
                     animate={{ y: ["-50%", "0%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      { name: "PostgreSQL", src: "/logo/PostgreSQL.jpg" },
+                      { name: "Oracle Database", src: "/logo/oracle.jpg" },
+                      { name: "Microsoft SQL Server", src: "/logo/Microsoft SQL Server.jpg" },
+                      { name: "Pandas", src: "/logo/Pandas.jpg" },
+                      { name: "NumPy", src: "/logo/NumPy.jpg" },
+                      { name: "Seaborn", src: "/logo/Seaborn.jpg" },
+                      { name: "Matplotlib", src: "/logo/Matplotlib.jpg" },
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "Cloud Storage", src: "/logo/Cloud Storage.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                    ].concat([
+                      { name: "PostgreSQL", src: "/logo/PostgreSQL.jpg" },
+                      { name: "Oracle Database", src: "/logo/oracle.jpg" },
+                      { name: "Microsoft SQL Server", src: "/logo/Microsoft SQL Server.jpg" },
+                      { name: "Pandas", src: "/logo/Pandas.jpg" },
+                      { name: "NumPy", src: "/logo/NumPy.jpg" },
+                      { name: "Seaborn", src: "/logo/Seaborn.jpg" },
+                      { name: "Matplotlib", src: "/logo/Matplotlib.jpg" },
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "Cloud Storage", src: "/logo/Cloud Storage.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: -10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: -6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src="/react.png"
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
                 </div>
 
-                {/* Column 5 (Upwards - Hidden on smallest mobile, visible on sm+) */}
+                {/* Column 5 (Upwards) */}
                 <div className="relative overflow-hidden h-full hidden sm:flex justify-center">
                   <motion.div
                     animate={{ y: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 16, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
-                    {[...Array(10)].map((_, i) => (
+                    {[
+                      { name: "Git", src: "/logo/Git.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                    ].concat([
+                      { name: "Git", src: "/logo/Git.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: 6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src="/react.png"
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
