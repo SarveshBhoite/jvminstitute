@@ -142,6 +142,32 @@ const coursesData = [
     ],
     entranceAnim: { x: 50, opacity: 0 }
   },
+    {
+    id: "basic-ai-ml",
+    badge: "🌱 Beginner Friendly",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    title: "Basic AI & ML",
+    desc: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
+    image: "/course.jpg",
+    url: "/basic-ai-ml-course-in-pune",
+    duration: "1 Month",
+    mode: "Offline & Online",
+    level: "Beginner Level",
+    projects: "Business Analytics Case Studies",
+    rating: "4.9",
+    reviewsCount: "920+",
+    placement: "Career Guidance & Resume Support",
+    technologies: ["Python", "Statistics", "Machine Learning", "Data Visualization", "EDA", "Predictive Analytics", "Pandas", "Scikit-Learn"],
+    highlights: [
+      "Beginner-Friendly AI & Machine Learning Roadmap",
+      "Python Programming & Data Analysis from Scratch",
+      "Statistics, EDA & Data Visualization Hands-on",
+      "Machine Learning Algorithms with Practical Projects",
+      "Real-World Datasets & Business Case Studies",
+      "Career Guidance, Resume Building & Placement Support"
+    ],
+    entranceAnim: { x: 50, opacity: 0 }
+  },
   {
     id: "advanced-ai-ml",
     badge: "🧠 Deep Specialization",
@@ -169,10 +195,10 @@ const coursesData = [
     entranceAnim: { x: -50, opacity: 0 }
   },
   {
-    id: "cloud-ai",
+    id: "claude-ai",
     badge: "☁️ Multi-Cloud Mastery",
     badgeColor: "bg-sky-100 text-sky-700 dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800",
-    title: "Cloud AI",
+    title: "Claude AI",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
     image: "/students2.jpeg",
     url: "/cloud-ai-course-in-pune",
@@ -194,32 +220,7 @@ const coursesData = [
     ],
     entranceAnim: { scale: 0.95, opacity: 0 }
   },
-  {
-    id: "basic-ai-ml",
-    badge: "🌱 Beginner Friendly",
-    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
-    title: "Basic AI & ML",
-    desc: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
-    image: "/course.jpg",
-    url: "/basic-ai-ml-course-in-pune",
-    duration: "1 Month",
-    mode: "Offline & Online",
-    level: "Beginner Level",
-    projects: "Business Analytics Case Studies",
-    rating: "4.9",
-    reviewsCount: "920+",
-    placement: "Career Guidance & Resume Support",
-    technologies: ["Python", "Statistics", "Machine Learning", "Data Visualization", "EDA", "Predictive Analytics", "Pandas", "Scikit-Learn"],
-    highlights: [
-      "Beginner-Friendly AI & Machine Learning Roadmap",
-      "Python Programming & Data Analysis from Scratch",
-      "Statistics, EDA & Data Visualization Hands-on",
-      "Machine Learning Algorithms with Practical Projects",
-      "Real-World Datasets & Business Case Studies",
-      "Career Guidance, Resume Building & Placement Support"
-    ],
-    entranceAnim: { x: 50, opacity: 0 }
-  }
+
 ];
 
 // Learning Journey Timeline Items
@@ -257,8 +258,8 @@ const timelineMilestones = [
   {
     icon: Briefcase,
     title: "100% Dedicated Placement Support",
-    desc: "ATS resume crafting, 1-on-1 technical mock interviews, and direct referrals to 50+ hiring partners.",
-    highlight: "50+ Hiring Partners"
+    desc: "ATS resume crafting, 1-on-1 technical mock interviews, and direct referrals to 250+ hiring partners.",
+    highlight: "250+ Hiring Partners"
   }
 ];
 
@@ -443,7 +444,7 @@ export default function OurCoursesPage() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-slate-600 dark:text-slate-300 text-xs sm:text-base max-w-xl leading-relaxed font-normal"
                 >
-                  Master PySpark, AWS Cloud, DevOps, and Advanced Data Analytics with 80% practical live cloud labs, enterprise capstone projects, and 100% placement support in Pune.
+                  Master PySpark, AWS Cloud, Azure, GCP, and Advanced Data Analytics with 80% practical live cloud labs, enterprise capstone projects and 100% placement support in Pune.
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -486,7 +487,7 @@ export default function OurCoursesPage() {
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Avg Salary Hike</div>
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">150+</div>
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">250+</div>
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Hiring Partners</div>
                   </div>
                 </motion.div>
