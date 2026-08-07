@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { blogPosts } from "../src/data/blogData";
 
 const prisma = new PrismaClient();
 
@@ -963,13 +964,22 @@ async function seedNewBlogs() {
     },
   });
 
-  // Blog 3: How to Read XML Files into Python Pandas DataFrames (With Code)
+  const getContentJson = (slug: string) => {
+    const post = blogPosts.find((p) => p.slug === slug);
+    if (!post) return "[]";
+    return JSON.stringify({
+      content: post.content || [],
+      tableOfContents: post.tableOfContents || [],
+    });
+  };
+
+  // Blog 3: Unlocking the Power of Data: The Journey of a Data Engineer
   await prisma.blogPost.upsert({
     where: { slug: "how-to-read-xml-files-into-python" },
     update: {
-      title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
-      metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
-      excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      title: "Unlocking the Power of Data: The Journey of a Data Engineer",
+      metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
+      excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
@@ -979,13 +989,13 @@ async function seedNewBlogs() {
       image: "/powerofdata.png",
       tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("how-to-read-xml-files-into-python"),
     },
     create: {
       slug: "how-to-read-xml-files-into-python",
-      title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
-      metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
-      excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      title: "Unlocking the Power of Data: The Journey of a Data Engineer",
+      metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
+      excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
@@ -995,17 +1005,17 @@ async function seedNewBlogs() {
       image: "/powerofdata.png",
       tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("how-to-read-xml-files-into-python"),
     },
   });
 
-  // Blog 4: Learn Python for Data Analysis: Complete Roadmap for Beginners
+  // Blog 4: Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master
   await prisma.blogPost.upsert({
     where: { slug: "learn-python-for-data-analysis" },
     update: {
-      title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
-      metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
-      excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
+      metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
+      excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
       category: "Data Engineering",
       authorName: "JVM Admin",
       authorRole: "Lead Data Engineering Editorial Team @ JVM",
@@ -1015,13 +1025,13 @@ async function seedNewBlogs() {
       image: "/top5dataengineeringtool.png",
       tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("learn-python-for-data-analysis"),
     },
     create: {
       slug: "learn-python-for-data-analysis",
-      title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
-      metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
-      excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
+      metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
+      excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
       category: "Data Engineering",
       authorName: "JVM Admin",
       authorRole: "Lead Data Engineering Editorial Team @ JVM",
@@ -1031,17 +1041,17 @@ async function seedNewBlogs() {
       image: "/top5dataengineeringtool.png",
       tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("learn-python-for-data-analysis"),
     },
   });
 
-  // Blog 5: Why Should I Learn Python for Data Analysis in 2026?
+  // Blog 5: 5 Essential Skills Every Data Analyst Should Master
   await prisma.blogPost.upsert({
     where: { slug: "why-should-i-learn-python-for-data-analysis" },
     update: {
-      title: "Why Should I Learn Python for Data Analysis in 2026?",
-      metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
-      excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      title: "5 Essential Skills Every Data Analyst Should Master",
+      metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
+      excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
       category: "Career Guidance",
       authorName: "Rohit Sharma",
       authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
@@ -1051,13 +1061,13 @@ async function seedNewBlogs() {
       image: "/5essentialsskills.png",
       tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("why-should-i-learn-python-for-data-analysis"),
     },
     create: {
       slug: "why-should-i-learn-python-for-data-analysis",
-      title: "Why Should I Learn Python for Data Analysis in 2026?",
-      metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
-      excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      title: "5 Essential Skills Every Data Analyst Should Master",
+      metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
+      excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
       category: "Career Guidance",
       authorName: "Rohit Sharma",
       authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
@@ -1067,7 +1077,7 @@ async function seedNewBlogs() {
       image: "/5essentialsskills.png",
       tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("why-should-i-learn-python-for-data-analysis"),
     },
   });
 

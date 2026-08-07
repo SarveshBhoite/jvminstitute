@@ -45,12 +45,14 @@ export const blogCategories = [
 export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
   if (!dbBlog) return null as any;
 
+  const staticPost = blogPosts.find((p) => p.slug === dbBlog.slug);
+
   let content = [];
   let tableOfContents = [];
   if (dbBlog.contentJson) {
     try {
       const parsed = typeof dbBlog.contentJson === "string" ? JSON.parse(dbBlog.contentJson) : dbBlog.contentJson;
-      if (Array.isArray(parsed)) {
+      if (Array.isArray(parsed) && parsed.length > 0) {
         content = parsed;
       } else if (parsed && typeof parsed === "object") {
         content = parsed.content || [];
@@ -59,6 +61,15 @@ export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
     } catch (e) {
       content = [];
     }
+  }
+
+  if (content.length === 0 && (!dbBlog.longDescriptionHtml || dbBlog.longDescriptionHtml.trim() === "") && staticPost) {
+    content = staticPost.content || [];
+    tableOfContents = staticPost.tableOfContents || [];
+  }
+
+  if (tableOfContents.length === 0 && staticPost && staticPost.tableOfContents) {
+    tableOfContents = staticPost.tableOfContents;
   }
 
   const tags = typeof dbBlog.tags === "string"
@@ -74,14 +85,14 @@ export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
     category: dbBlog.category || "Data Engineering",
     featured: dbBlog.featured ?? false,
     author: {
-      name: dbBlog.authorName || "JVM Technical Team",
-      role: dbBlog.authorRole || "Senior Data Architect @ JVM",
-      avatar: dbBlog.authorAvatar || "/place1.png",
+      name: dbBlog.authorName || staticPost?.author?.name || "JVM Technical Team",
+      role: dbBlog.authorRole || staticPost?.author?.role || "Senior Data Architect @ JVM",
+      avatar: dbBlog.authorAvatar || staticPost?.author?.avatar || "/place1.png",
       bio: "",
     },
     publishedAt: dbBlog.publishedAt || "Aug 2026",
     readTime: dbBlog.readTime || "5 min read",
-    image: dbBlog.image || "/course.jpg",
+    image: dbBlog.image || staticPost?.image || "/course.jpg",
     tags: tags.length > 0 ? tags : ["Data Engineering"],
     tableOfContents: tableOfContents,
     content: content,
@@ -92,8 +103,8 @@ export const blogPosts: BlogPost[] = [
   {
     id: "9",
     slug: "how-to-read-xml-files-into-python",
-    title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
-    excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+    title: "Unlocking the Power of Data: The Journey of a Data Engineer",
+    excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
     category: "Data Engineering",
     featured: true,
     author: {
@@ -194,8 +205,8 @@ print("Parsed Data Summary:\\n", df.head())`
   {
     id: "8",
     slug: "learn-python-for-data-analysis",
-    title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
-    excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+    title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
+    excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
     category: "Data Engineering",
     featured: true,
     author: {
@@ -299,8 +310,8 @@ transformed_df.show(5)`
   {
     id: "7",
     slug: "why-should-i-learn-python-for-data-analysis",
-    title: "Why Should I Learn Python for Data Analysis in 2026?",
-    excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+    title: "5 Essential Skills Every Data Analyst Should Master",
+    excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
     category: "Career Guidance",
     featured: true,
     author: {

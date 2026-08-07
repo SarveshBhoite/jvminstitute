@@ -16,8 +16,8 @@ import {
 const rankedBlogArticles = [
   {
     slug: "learn-python-for-data-analysis",
-    title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
-    excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+    title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
+    excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
     category: "Python Roadmap",
     readTime: "8 min read",
     badge: "Top Ranked Guide",
@@ -27,8 +27,8 @@ const rankedBlogArticles = [
   },
   {
     slug: "why-should-i-learn-python-for-data-analysis",
-    title: "Why Should I Learn Python for Data Analysis in 2026?",
-    excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+    title: "5 Essential Skills Every Data Analyst Should Master",
+    excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
     category: "Career Insights",
     readTime: "6 min read",
     badge: "High Demand Skill",
@@ -38,8 +38,8 @@ const rankedBlogArticles = [
   },
   {
     slug: "how-to-read-xml-files-into-python",
-    title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
-    excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+    title: "Unlocking the Power of Data: The Journey of a Data Engineer",
+    excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
     category: "Code Tutorial",
     readTime: "5 min read",
     badge: "Hands-on Code",
