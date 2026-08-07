@@ -885,7 +885,7 @@ const blog2Html = `
 `;
 
 async function seedNewBlogs() {
-  console.log("Seeding 2 new blogs into Prisma database...");
+  console.log("Seeding all 5 blogs into Prisma database...");
 
   // Blog 1: Data Engineering vs Data Science – Complete Guide (2026)
   await prisma.blogPost.upsert({
@@ -901,7 +901,7 @@ async function seedNewBlogs() {
       authorAvatar: "/place1.png",
       publishedAt: "Aug 03, 2026",
       readTime: "8 min read",
-      image: "/course.jpg",
+      image: "/dataengineervsdatascience.png",
       tags: "Data Engineering, Data Science, Python, SQL, Cloud, AI",
       featured: true,
       contentJson: "[]",
@@ -918,7 +918,7 @@ async function seedNewBlogs() {
       authorAvatar: "/place1.png",
       publishedAt: "Aug 03, 2026",
       readTime: "8 min read",
-      image: "/course.jpg",
+      image: "/dataengineervsdatascience.png",
       tags: "Data Engineering, Data Science, Python, SQL, Cloud, AI",
       featured: true,
       contentJson: "[]",
@@ -939,7 +939,7 @@ async function seedNewBlogs() {
       authorAvatar: "/place2.png",
       publishedAt: "Aug 03, 2026",
       readTime: "10 min read",
-      image: "/course.jpg",
+      image: "/topskillsfordataengineer.png",
       tags: "Data Engineering, Python, SQL, Spark, Cloud, Kafka, GenAI",
       featured: true,
       contentJson: "[]",
@@ -956,14 +956,122 @@ async function seedNewBlogs() {
       authorAvatar: "/place2.png",
       publishedAt: "Aug 03, 2026",
       readTime: "10 min read",
-      image: "/course.jpg",
+      image: "/topskillsfordataengineer.png",
       tags: "Data Engineering, Python, SQL, Spark, Cloud, Kafka, GenAI",
       featured: true,
       contentJson: "[]",
     },
   });
 
-  console.log("Successfully seeded both 2026 Data Engineering blogs!");
+  // Blog 3: How to Read XML Files into Python Pandas DataFrames (With Code)
+  await prisma.blogPost.upsert({
+    where: { slug: "how-to-read-xml-files-into-python" },
+    update: {
+      title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
+      metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
+      excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/powerofdata.png",
+      tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
+      featured: true,
+      contentJson: "[]",
+    },
+    create: {
+      slug: "how-to-read-xml-files-into-python",
+      title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
+      metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
+      excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/powerofdata.png",
+      tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
+      featured: true,
+      contentJson: "[]",
+    },
+  });
+
+  // Blog 4: Learn Python for Data Analysis: Complete Roadmap for Beginners
+  await prisma.blogPost.upsert({
+    where: { slug: "learn-python-for-data-analysis" },
+    update: {
+      title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
+      metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
+      excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      category: "Data Engineering",
+      authorName: "JVM Admin",
+      authorRole: "Lead Data Engineering Editorial Team @ JVM",
+      authorAvatar: "/place2.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/top5dataengineeringtool.png",
+      tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
+      featured: true,
+      contentJson: "[]",
+    },
+    create: {
+      slug: "learn-python-for-data-analysis",
+      title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
+      metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
+      excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      category: "Data Engineering",
+      authorName: "JVM Admin",
+      authorRole: "Lead Data Engineering Editorial Team @ JVM",
+      authorAvatar: "/place2.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/top5dataengineeringtool.png",
+      tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
+      featured: true,
+      contentJson: "[]",
+    },
+  });
+
+  // Blog 5: Why Should I Learn Python for Data Analysis in 2026?
+  await prisma.blogPost.upsert({
+    where: { slug: "why-should-i-learn-python-for-data-analysis" },
+    update: {
+      title: "Why Should I Learn Python for Data Analysis in 2026?",
+      metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
+      excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      category: "Career Guidance",
+      authorName: "Rohit Sharma",
+      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "July 30, 2026",
+      readTime: "5 min read",
+      image: "/5essentialsskills.png",
+      tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
+      featured: true,
+      contentJson: "[]",
+    },
+    create: {
+      slug: "why-should-i-learn-python-for-data-analysis",
+      title: "Why Should I Learn Python for Data Analysis in 2026?",
+      metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
+      excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      category: "Career Guidance",
+      authorName: "Rohit Sharma",
+      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "July 30, 2026",
+      readTime: "5 min read",
+      image: "/5essentialsskills.png",
+      tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
+      featured: true,
+      contentJson: "[]",
+    },
+  });
+
+  console.log("Successfully seeded all 5 blogs with their matching images!");
 }
 
 seedNewBlogs()

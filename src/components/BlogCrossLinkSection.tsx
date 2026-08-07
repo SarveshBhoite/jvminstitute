@@ -21,7 +21,7 @@ const rankedBlogArticles = [
     category: "Python Roadmap",
     readTime: "8 min read",
     badge: "Top Ranked Guide",
-    image: "/place1.png",
+    image: "/top5dataengineeringtool.png",
     accentColor: "from-purple-500/20 via-indigo-500/10 to-transparent",
     tagColor: "bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-200 dark:border-purple-800",
   },
@@ -32,7 +32,7 @@ const rankedBlogArticles = [
     category: "Career Insights",
     readTime: "6 min read",
     badge: "High Demand Skill",
-    image: "/place2.png",
+    image: "/5essentialsskills.png",
     accentColor: "from-pink-500/20 via-rose-500/10 to-transparent",
     tagColor: "bg-pink-500/10 text-pink-600 dark:text-pink-300 border-pink-200 dark:border-pink-800",
   },
@@ -43,7 +43,7 @@ const rankedBlogArticles = [
     category: "Code Tutorial",
     readTime: "5 min read",
     badge: "Hands-on Code",
-    image: "/place3.jpeg",
+    image: "/powerofdata.png",
     accentColor: "from-emerald-500/20 via-teal-500/10 to-transparent",
     tagColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
   },
@@ -143,7 +143,7 @@ export default function BlogCrossLinkSection() {
                     </div>
 
                     <h3 className="text-base sm:text-xl font-bold font-heading text-slate-900 dark:text-white leading-snug group-hover:text-[#1E2B88] dark:group-hover:text-purple-300 transition-colors line-clamp-2">
-                      <Link href={`/${article.slug}`}>
+                      <Link href={`/blog/${article.slug}`}>
                         {article.title}
                       </Link>
                     </h3>
@@ -162,7 +162,7 @@ export default function BlogCrossLinkSection() {
                   </span>
 
                   <Link 
-                    href={`/${article.slug}`}
+                    href={`/blog/${article.slug}`}
                     className="text-[11px] sm:text-xs font-extrabold text-[#1E2B88] dark:text-purple-300 group-hover:text-[#E01E6A] dark:group-hover:text-pink-400 flex items-center gap-1 transition-colors"
                   >
                     Read Article <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

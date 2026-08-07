@@ -92,8 +92,8 @@ export const blogPosts: BlogPost[] = [
   {
     id: "9",
     slug: "how-to-read-xml-files-into-python",
-    title: "Unlocking the Power of Data: The Journey of a Data Engineer",
-    excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
+    title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
+    excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
     category: "Data Engineering",
     featured: true,
     author: {
@@ -104,7 +104,7 @@ export const blogPosts: BlogPost[] = [
     },
     publishedAt: "May 30, 2024",
     readTime: "6 min read",
-    image: "/students2.jpeg",
+    image: "/powerofdata.png",
     tags: ["Data Engineering", "ETL Pipelines", "Python", "SQL", "Cloud Architect"],
     tableOfContents: [
       { id: "introduction", title: "Introduction: Power of Data" },
@@ -194,8 +194,8 @@ print("Parsed Data Summary:\\n", df.head())`
   {
     id: "8",
     slug: "learn-python-for-data-analysis",
-    title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
-    excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
+    title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
+    excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
     category: "Data Engineering",
     featured: true,
     author: {
@@ -206,7 +206,7 @@ print("Parsed Data Summary:\\n", df.head())`
     },
     publishedAt: "May 30, 2024",
     readTime: "6 min read",
-    image: "/course.jpg",
+    image: "/top5dataengineeringtool.png",
     tags: ["Apache Spark", "AWS Glue", "Apache Hadoop", "Airflow", "SQL", "ETL"],
     tableOfContents: [
       { id: "apache-spark", title: "1. Apache Spark" },
@@ -299,8 +299,8 @@ transformed_df.show(5)`
   {
     id: "7",
     slug: "why-should-i-learn-python-for-data-analysis",
-    title: "5 Essential Skills Every Data Analyst Should Master",
-    excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
+    title: "Why Should I Learn Python for Data Analysis in 2026?",
+    excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
     category: "Career Guidance",
     featured: true,
     author: {
@@ -311,7 +311,7 @@ transformed_df.show(5)`
     },
     publishedAt: "July 30, 2026",
     readTime: "5 min read",
-    image: "/students1.jpeg",
+    image: "/5essentialsskills.png",
     tags: ["Data Analyst", "Python", "Data Visualization", "SQL", "Career Skills"],
     tableOfContents: [
       { id: "data-manipulation", title: "1. Proficiency in Data Manipulation" },

@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 async function seed() {
   console.log("Reading clean_placements_seed.json...");
   const placements = JSON.parse(fs.readFileSync('clean_placements_seed.json', 'utf-8'));
-  
+
   // Sort descending by package_num
   placements.sort((a, b) => (b.package_num || 0) - (a.package_num || 0));
 
@@ -13,7 +13,7 @@ async function seed() {
   await prisma.placement.deleteMany({});
 
   console.log(`Inserting ${placements.length} placements...`);
-  
+
   const records = placements.map(p => ({
     name: p.name,
     domain: p.domain || "Data Engineering",
@@ -33,14 +33,14 @@ async function seed() {
 
   const count = await prisma.placement.count();
   console.log(`Successfully seeded ${count} placements into the database!`);
-  
+
   // Print Top 10
   const top10 = await prisma.placement.findMany({
     take: 10
   });
   console.log("\nTop Seeding Order (Highest Package First):");
   records.slice(0, 10).forEach((r, i) => {
-    console.log(`${i+1}. ${r.name} | ${r.company} | ${r.package} | ${r.placedRole}`);
+    console.log(`${i + 1}. ${r.name} | ${r.company} | ${r.package} | ${r.placedRole}`);
   });
 
   await prisma.$disconnect();
