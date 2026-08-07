@@ -1274,13 +1274,15 @@ export default function OurCoursesPage() {
                     <ArrowRight className="w-5 h-5 ml-2 text-indigo-600" />
                   </button>
 
-                  <button
-                    onClick={() => openCourseModal("Syllabus PDF Download")}
+                  <a
+                    href="https://wa.me/918446284162?text=Hello%20JVM%20Institute!%20I%20want%20to%20download%20the%20detailed%20course%20brochure%20and%20syllabus%20PDF."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-transparent border-2 border-white/60 text-white font-bold text-base hover:bg-white/10 hover:border-white transition-all gap-2 cursor-pointer"
                   >
                     <Download className="w-5 h-5" />
                     <span>Download Brochure</span>
-                  </button>
+                  </a>
                 </div>
               </div>
 

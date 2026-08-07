@@ -1,13 +1,9 @@
-import React from "react";
+import { redirect } from "next/navigation";
 
 export default function DownloadBrochurePage() {
-  return (
-    <div className="min-h-screen py-16 px-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold jvm-gradient-text mb-4">Download Course Brochure</h1>
-      <p className="text-slate-600 text-lg">
-        Fill out your details to receive the detailed syllabus PDF and career handbook instantly.
-      </p>
-    </div>
+  const whatsappUrl = `https://wa.me/918446284162?text=${encodeURIComponent(
+    "Hello JVM Institute team! I would like to inquire about your Data Engineering & Tech courses, upcoming batches, and fee details."
+  )}`;
 
-  );
+  redirect(whatsappUrl);
 }

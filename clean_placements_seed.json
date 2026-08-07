@@ -1,5 +1,15 @@
 [
   {
+    "name": "Dhiraj Dande",
+    "company": "Accenture / TCS / Deloitte",
+    "role": "Data Engineer",
+    "package_num": 24.75,
+    "package_formatted": "24.75 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "Being from an IT background, I wanted to enhance my Data Engineering skills and move to higher-paying opportunities. I joined JVM Institute to upgrade my expertise in SQL, Python, PySpark, AWS, and modern Data Engineering technologies. The structured learning, real-time projects, and interview preparation helped me strengthen my technical skills and confidence. As a result, I received multiple offers from leading companies: Accenture – 24.75 LPA, TCS – 23 LPA, Deloitte – 23 LPA."
+  },
+  {
     "raw_img": "media/image13.jpeg",
     "name": "Pranoti Thorat",
     "role": "Data Engineer",
@@ -8,22 +18,52 @@
     "review": " I joined JVM Institute to upgrade my Data Engineering skills and prepare for better career opportunities. The trainers provided excellent guidance, practical knowledge, and continuous support throughout my learning journey. The mock interviews, assignments, and real-time project discussions helped me build confidence and improve my technical skills. The placement support was outstanding and played a key role in my success. I am grateful to JVM Institute for helping me achieve multiple opportunities with leading companies. Thank you to the entire JVM team for their dedication and support in my career growth.",
     "package_num": 22.5,
     "package_formatted": "22.5 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_26_pranotithorat.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
     "raw_img": "media/image3.jpeg",
     "name": "Parth Ghodekar",
     "package": "tcs 18.25 and ey 20 lakh",
-    "role": "IT Analyst / Data Engineer",
-    "review": "I come from an IT background and wanted to achieve better career growth in Data Engineering. To upgrade my skills, I joined JVM Institute and gained hands-on experience in SQL, Python, PySpark, Cloud, and Big Data technologies. I secured an offer from TCS as an IT Analyst with 18.25 LPA and later achieved another milestone by receiving an offer from EY with a package of 20 LPA.",
-    "company": "EY / TCS",
+    "role": "Data Engineer",
+    "review": "The practical training, live projects, and continuous mentorship at JVM Institute played a crucial role in enhancing my technical skills and landing my dream IT job.",
+    "company": "I Come From An It Background And Wanted To Achieve Better Career Growth In Data Engineering. To Upgrade My Skills, I Joined Jvm Institute And Gained Hands-On Experience In Sql, Python, Pyspark, Cloud, And Big Data Technologies. The Structured Training, Mock Interviews, And Continuous Support Helped Me Strengthen My Technical Knowledge And Confidence. With Consistent Effort And Guidance From The Jvm Team, I Secured An Offer From *Tcs As An It Analyst With 18.25 Lpa. Later, I Achieved Another Milestone By Receiving An Offer From **Ey With A Package Of 20 Lpa*. Thank You Jvm Institute For Helping Me Reach The Next Level In My Career.",
     "package_num": 20.0,
     "package_formatted": "20 LPA",
-    "category": "data_analytics",
     "image": "/placements/placement_29_parthghodekar.jpeg",
-    "domain": "Data Analytics"
+    "category": "data_engineering",
+    "domain": "Data Engineering"
+  },
+  {
+    "name": "Rushabh Deshmukh",
+    "company": "Quantiphi",
+    "role": "Senior Data Engineer",
+    "package_num": 18.25,
+    "package_formatted": "18.25 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "After spending a few years preparing for government exams, I decided to explore opportunities in the IT industry. Coming from a non-IT background, I was unsure how to start my career transition. JVM Institute helped me build a strong foundation in Data Engineering with practical training in SQL, Python, PySpark, and AWS."
+  },
+  {
+    "name": "Kranti Waghmare",
+    "company": "HCL Tech",
+    "role": "Senior Lead",
+    "package_num": 18.0,
+    "package_formatted": "18 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "I joined JVM Institute to upgrade my skills in Data Engineering, and it was a great learning experience. The trainers explain concepts in a simple and practical way with hands-on projects. Regular mock interviews and doubt-solving sessions helped me gain confidence."
+  },
+  {
+    "name": "Mrudula Deshmukh",
+    "company": "Photon / Cognizant / HCLTech",
+    "role": "Senior Data Engineer",
+    "package_num": 17.0,
+    "package_formatted": "17 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "I was already working in the IT industry, but I wanted to upgrade my skills and move into the Data Engineering domain with better career opportunities. The knowledge and guidance provided by JVM Institute helped me crack multiple interviews and receive offers from top companies like Cognizant (16 LPA), Photon (17 LPA), and HCLTech (15.5 LPA)."
   },
   {
     "raw_img": "media/image10.jpeg",
@@ -34,8 +74,8 @@
     "review": " I joined JVM Institute to upgrade my skills and stay updated with the latest industry technologies. The training was practical, well-structured, and focused on real-world applications. The trainers were highly knowledgeable and always ready to help with doubts. The hands-on assignments and mock interviews helped me improve both my technical and professional skills. I gained confidence in technologies like SQL, Python, PySpark, and Cloud platforms. The learning experience was excellent and added great value to my career growth. Thank you, JVM Institute, for helping me enhance my skills and advance my career.",
     "package_num": 16.5,
     "package_formatted": "16.5 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_23_rushikeshkulkarni.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -47,8 +87,8 @@
     "review": " I joined JVM Institute to upgrade my technical skills and improve my career prospects. The curriculum covered everything from SQL and Python to Cloud and Big Data technologies. The trainers were knowledgeable, supportive, and always encouraged us to learn beyond the classroom. The placement support and interview guidance were outstanding. It was truly a career-changing experience for me",
     "package_num": 16.0,
     "package_formatted": "16 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_5_ajinkya.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -60,8 +100,8 @@
     "review": " I joined JVM Institute to upgrade my skills and stay updated with the latest technologies in Data Engineering. The course covered SQL, Python, PySpark, AWS, Azure, and GCP in a practical way with hands-on projects and real-time examples. The trainers were highly supportive and always available to clear doubts. The structured learning approach, assignments, and mock interviews helped me strengthen my technical knowledge and confidence. Thanks to JVM Institute, I have significantly improved my skills and am better prepared for new career opportunities and professional growth. I highly recommend JVM Institute to anyone looking to enhance their Data Engineering expertise.",
     "package_num": 15.0,
     "package_formatted": "15 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_18_shreyas.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -73,8 +113,8 @@
     "review": " JVM Institute is a great place for professionals who want to upgrade their skills. The course content is relevant to current industry requirements, and the trainers provide excellent mentorship. The hands-on approach to learning helped me gain confidence and practical knowledge. I am grateful for the support and guidance provided by the entire team.",
     "package_num": 14.0,
     "package_formatted": "14 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_20_shilpashinde.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -86,21 +126,21 @@
     "review": " Coming from a non-IT background, I always dreamed of building a successful career in the technology industry but wasn't sure where to begin. JVM Institute provided me with the right guidance, structured learning path, and practical exposure through real-time projects. The trainers were incredibly supportive and helped me understand complex concepts in a simple way. The mock interviews, resume preparation, and continuous mentorship boosted my confidence and made me industry-ready. With the skills and knowledge gained at JVM Institute, I successfully secured a position as a Lead Software Engineer at Persistent with a package of 13.66 LPA. I am truly grateful to JVM Institute for helping me transform my career and achieve this milestone",
     "package_num": 13.66,
     "package_formatted": "13.66 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_8_rohini.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
     "raw_img": "media/image1.jpeg",
     "name": "Jayshree",
-    "company": "EY",
+    "company": "Ey",
     "package": "13.5",
     "role": "Senior Consultant",
-    "review": "I come from a non-IT background and was looking for a way to build a career in IT. After joining JVM Institute's Data Engineering course, my journey completely changed. The live classes and mock interviews helped me secure a 13.5 LPA offer at EY.",
+    "review": " I come from a non-IT background and was looking for a way to build a career in the IT industry. After joining JVM Institute's Data Engineering course, my journey completely changed. The trainers explained every concept from the basics, making it easy for me to understand technologies like SQL, Python, Big Data, AWS, Azure, and PySpark. The live classes, daily assignments, mock interviews, and continuous support helped me gain confidence and improve my technical skills. The placement guidance and interview preparation sessions were especially helpful in making me job-ready. Today, I have successfully transitioned into the IT field, something I once thought was very difficult. I am grateful to JVM Institute and the entire team for their support, guidance, and dedication. I highly recommend JVM Institute to anyone looking to start or upgrade their career in Data Engineering.",
     "package_num": 13.5,
     "package_formatted": "13.5 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_14_jayshree.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -112,20 +152,20 @@
     "review": " JVM Institute helped me bridge my skill gap and gain hands-on experience with industry-relevant tools and technologies. The trainers are experienced, supportive, and dedicated to student success. The training improved my confidence and technical abilities. Thank you JVM Institute for this wonderful learning experience.",
     "package_num": 13.5,
     "package_formatted": "13.5 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_22_saurabhkumatkar.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
     "name": "Vaishnavi Kadam",
     "package": "13.25",
     "role": "Senior Data Engineer",
-    "review": "I wanted to move into a high-demand technology field and JVM Institute made the journey easy. The trainers explained every concept clearly and helped me build strong Data Engineering skills through hands-on projects.",
-    "company": "Tier-1 Tech MNC",
+    "company": "Quantiphi",
+    "review": " I wanted to move into a high-demand technology field and JVM Institute made the journey easy. The trainers explained every concept clearly and helped me build strong Data Engineering skills.",
     "package_num": 13.25,
     "package_formatted": "13.25 LPA",
-    "category": "data_engineering",
     "image": "/place1.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -137,9 +177,39 @@
     "review": " After spending several years in the preparing for goverment exams, I wanted a career with better growth opportunities. JVM Institute helped me learn industry-relevant technologies such as SQL, Python, AWS, and PySpark. The trainers provided personal attention and cleared every doubt patiently. The practical assignments and placement support made a huge difference. I successfully switched from Banking to IT and started my Data Engineering career.",
     "package_num": 13.2,
     "package_formatted": "13.2 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_7_satyajeet.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
+  },
+  {
+    "name": "Twinkle Chopda",
+    "company": "Volkswagen Group",
+    "role": "Data Engineer",
+    "package_num": 13.0,
+    "package_formatted": "13 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "Being a Civil Engineer, I was looking for better career growth opportunities. JVM Institute helped me upskill in Data Engineering and guided me through interviews. Today, I am proud to have successfully transitioned into the IT industry."
+  },
+  {
+    "name": "Aditya Abhyankar",
+    "company": "Neutrino",
+    "role": "Data Engineer",
+    "package_num": 13.0,
+    "package_formatted": "13 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "I was working at TCS with a lower package and wanted better career growth. Joining JVM Institute was a turning point in my career. The Data Engineering training was practical and industry-focused."
+  },
+  {
+    "name": "Praful Deshmukh",
+    "company": "Merkle / Ex-Infosys",
+    "role": "Data Engineer",
+    "package_num": 13.0,
+    "package_formatted": "13 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "I was working at Infosys and wanted to upgrade my skills to move into a better Data Engineering role. Joining JVM Institute was one of the best decisions for my career growth."
   },
   {
     "raw_img": "media/image3.png",
@@ -150,21 +220,21 @@
     "review": " My journey with JVM Institute has been truly life-changing. The training program provided in-depth knowledge of SQL, Python, PySpark, AWS, Azure, and real-time Data Engineering projects. The trainers were highly supportive and ensured that every concept was understood clearly through practical implementation. The mock interviews, resume preparation, and placement support helped me build confidence and perform well in interviews. With the guidance of JVM Institute, I successfully secured multiple offers from leading companies including Zorba Consulting (13 LPA), Datametica (12.2 LPA), and IPG Mediabrands (12 LPA). I am sincerely grateful to JVM Institute for helping me achieve these career milestones and would highly recommend it to anyone aspiring to build a successful career in Data Engineering.",
     "package_num": 13.0,
     "package_formatted": "13 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_3_prathamesh.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
     "raw_img": "media/image4.jpeg",
     "name": "Sayali Karpe",
     "package": "13 lakh",
-    "role": "Senior GCP Data Engineer",
-    "review": "I stayed at home for a long time searching for a job but was unable to find the right opportunity. That's when I found JVM Institute and enrolled in their Data Engineering course. The trainers guided me from the basics and helped me build strong technical skills. Today I am successfully placed in the IT industry with 13 LPA.",
-    "company": "Global IT Solutions",
+    "role": "Senior Gcp Data Engineer",
+    "review": "The practical training, live projects, and continuous mentorship at JVM Institute played a crucial role in enhancing my technical skills and landing my dream IT job.",
+    "company": "I Stayed At Home For A Long Time Searching For A Job But Was Unable To Find The Right Opportunity. I Was Worried About My Career And Unsure Of What To Do Next. That'S When I Found Jvm Institute And Decided To Enroll In Their Data Engineering Course. The Trainers Guided Me From The Basics And Helped Me Build Strong Technical Skills. With Their Training, Mock Interviews, And Placement Support, I Gained Confidence And Industry-Ready Knowledge. Today, I Am Successfully Placed In The It Industry With A High Package. Thank You, Jvm Institute, For Completely Transforming My Career.",
     "package_num": 13.0,
     "package_formatted": "13 LPA",
-    "category": "cloud_snowflake",
     "image": "/placements/placement_30_sayalikarpe.jpeg",
+    "category": "cloud_snowflake",
     "domain": "Cloud & Snowflake"
   },
   {
@@ -176,9 +246,19 @@
     "review": " My experience with JVM Institute was fantastic. The trainers not only taught technical concepts but also guided us on resume building and interview preparation. The hands-on assignments and projects strengthened my practical knowledge. The supportive learning environment kept me motivated throughout the course. Thanks to JVM Institute, I was able to achieve my career goals successfully.",
     "package_num": 12.75,
     "package_formatted": "12.75 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_10_ankit.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
+  },
+  {
+    "name": "Ruchi Bhoyar",
+    "company": "Incedo",
+    "role": "Senior Software Engineer",
+    "package_num": 12.5,
+    "package_formatted": "12.5 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "My journey from Marketing to Data Engineering was truly life-changing with JVM Institute. Coming from a marketing background, I had no technical knowledge and was unsure how to enter the IT industry."
   },
   {
     "raw_img": "media/image2.png",
@@ -189,8 +269,8 @@
     "review": " After a career break, I wanted to restart my professional journey in a growing field. JVM Institute gave me the confidence and skills needed to enter the IT industry. The trainers were extremely supportive and explained every topic in a simple manner. The live projects and interview preparation sessions helped me gain practical experience. Today, I am successfully working in the Data Engineering domain and grateful to JVM Institute for making this transition possible",
     "package_num": 12.5,
     "package_formatted": "12.5 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_2_shweta.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -202,9 +282,29 @@
     "review": "I To advance my career, I wanted to upgrade my skills, and JVM Institute exceeded my expectations. The training sessions were interactive, practical, and highly informative. The trainers were always available to guide and motivate us. I gained valuable knowledge and confidence that will help me in my professional journey. Highly recommended for skill enhancement.",
     "package_num": 12.5,
     "package_formatted": "12.5 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_19_kamranshaikh.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
+  },
+  {
+    "name": "Sonam Ugale",
+    "company": "PwC",
+    "role": "Data Engineer",
+    "package_num": 12.0,
+    "package_formatted": "12 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "Coming from a non-technical background, I had very little knowledge of Data Engineering and was unsure about my career transition. The trainers at JVM Institute guided me step by step."
+  },
+  {
+    "name": "Deepali Lahange",
+    "company": "Randstad",
+    "role": "Data Engineer",
+    "package_num": 12.0,
+    "package_formatted": "12 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "I wanted to upskill myself in the latest Data Engineering technologies, and JVM Institute was the right choice. The learning environment is very supportive and interactive."
   },
   {
     "raw_img": "media/image4.jpeg",
@@ -215,8 +315,8 @@
     "review": " I joined JVM Institute to upgrade my technical skills and improve my career prospects. The curriculum covered everything from SQL and Python to Cloud and Big Data technologies. The trainers were knowledgeable, supportive, and always encouraged us to learn beyond the classroom. The placement support and interview guidance were outstanding. It was truly a career-changing experience for me.",
     "package_num": 12.0,
     "package_formatted": "12 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_4_abhishek.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -228,8 +328,8 @@
     "review": " entering the software industry seemed challenging at first. JVM Institute's structured training program and practical learning approach made the transition smooth and achievable. The trainers patiently guided me through every concept and provided constant support throughout the course. The interview preparation sessions and real-world projects helped me develop the skills required by top companies. Today, I am proud to have secured a Developer role at Wipro with a package of 12 LPA. I sincerely thank JVM Institute for helping me build a successful IT career.",
     "package_num": 12.0,
     "package_formatted": "12 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_12_pooja.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -241,8 +341,8 @@
     "review": " I joined JVM Institute to upgrade my skills and strengthen my knowledge in Data Engineering. The trainers provided excellent guidance, practical learning, and continuous support throughout the course. The hands-on assignments, mock interviews, and real-time scenarios helped me build confidence and improve my technical skills. The placement support was outstanding and helped me secure multiple opportunities with reputed companies. I am grateful to the entire JVM team for their dedication and mentorship. Thank you, JVM Institute, for playing a key role in my career growth and success",
     "package_num": 12.0,
     "package_formatted": "12 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_21_sanketpawar.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -254,8 +354,8 @@
     "review": " JVM Institute provides excellent training with supportive trainers and practical learning. The concepts are explained clearly, and the placement guidance is very helpful. Thank you JVM Institute for helping me enhance my skills and grow my career.",
     "package_num": 11.75,
     "package_formatted": "11.75 LPA",
-    "category": "cloud_snowflake",
     "image": "/placements/placement_25_shripadjoshi.png",
+    "category": "cloud_snowflake",
     "domain": "Cloud & Snowflake"
   },
   {
@@ -267,8 +367,8 @@
     "review": " As a non-IT student, I was initially worried about entering the IT industry. However, JVM Institute provided excellent training and continuous support at every step. The trainers were knowledgeable, patient, and always ready to help. The practical approach to learning helped me understand concepts quickly. The mock interviews and placement assistance were extremely valuable. Today, I feel confident in my technical skills and career path. Thank you, JVM Institute, for helping me achieve my goal.",
     "package_num": 11.6,
     "package_formatted": "11.6 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_17_pruthviraj.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -280,8 +380,8 @@
     "review": " Coming from a non-IT background, I was unsure about switching careers. JVM Institute made the transition smooth with their step-by-step training approach. The live projects gave me valuable practical exposure, and the trainers continuously motivated me throughout the course. Their placement assistance and mock interviews were incredibly helpful. Thanks to JVM Institute, I successfully started my journey in the IT industry.",
     "package_num": 11.54,
     "package_formatted": "11.54 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_1_priya.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -292,9 +392,19 @@
     "review": " JVM Institute has been a great platform for enhancing my technical skills. The course content is up-to-date, and the trainers explain concepts with real-world examples. The learning environment is supportive, and the regular practice sessions helped me improve significantly. Thank you JVM Institute for helping me take my skills to the next level.",
     "package_num": 11.5,
     "package_formatted": "11.5 LPA",
-    "category": "data_engineering",
     "image": "/place1.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
+  },
+  {
+    "name": "Atharv Patil",
+    "company": "Top IT Enterprise",
+    "role": "Data Engineer",
+    "package_num": 11.25,
+    "package_formatted": "11.25 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "The practical training, live projects, and continuous mentorship at JVM Institute played a crucial role in enhancing my technical skills and landing my dream IT job."
   },
   {
     "raw_img": "media/image6.jpeg",
@@ -305,8 +415,8 @@
     "review": " I am extremely grateful to JVM Institute for helping me achieve this milestone in my career. The practical training, real-time projects, and continuous mentorship played a crucial role in enhancing my technical skills. The trainers were always supportive and guided me throughout the learning journey. The mock interviews and placement assistance boosted my confidence and prepared me for opportunities in top companies. Thanks to JVM Institute, I successfully received offers from Prodapt (11 LPA) and Senzcraft (10 LPA). I highly recommend JVM Institute to anyone looking to build a successful career in the IT industry",
     "package_num": 11.0,
     "package_formatted": "11 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_6_nikhil.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -318,8 +428,8 @@
     "review": " I came from a non-IT background with a strong desire to build a career in technology. JVM Institute helped me bridge the gap with hands-on training, practical assignments, and expert mentorship. The trainers focused on real-world scenarios and ensured that every concept was understood thoroughly. The placement support and mock interviews prepared me to confidently face recruitment challenges. Thanks to JVM Institute, I successfully secured a Technical Lead position at HCLTech with a package of 11 LPA. This achievement would not have been possible without their guidance and support.",
     "package_num": 11.0,
     "package_formatted": "11 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_11_vaishnavi.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -331,8 +441,8 @@
     "review": " Coming from a non-IT background, I was uncertain about how to start my journey in the technology field. JVM Institute provided me with the right guidance, practical training, and industry-focused learning. The trainers helped me build a strong foundation in SQL, Python, PySpark, and Cloud technologies through real-time projects. The mock interviews and placement support significantly improved my confidence. With the continuous mentorship from JVM Institute, I successfully secured a Data Engineer position at CodeChavo with a package of 11 LPA. I am thankful to JVM Institute for helping me achieve this career transformation.",
     "package_num": 11.0,
     "package_formatted": "11 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_13_kartik.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -344,9 +454,29 @@
     "review": " I joined JVM Institute to upgrade my skills and stay updated with the latest industry technologies. The training was practical, well-structured, and focused on real-world applications. The trainers were highly knowledgeable and always ready to help with doubts. The hands-on assignments and mock interviews helped me improve both my technical and professional skills. I gained confidence in technologies like SQL, Python, PySpark, and Cloud platforms. The learning experience was excellent and added great value to my career growth. Thank you, JVM Institute, for helping me enhance my skills and advance my career.",
     "package_num": 11.0,
     "package_formatted": "11 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_15_aartishinde.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
+  },
+  {
+    "name": "Deepti Shengule",
+    "company": "Polestar Solutions",
+    "role": "Senior Analyst",
+    "package_num": 10.0,
+    "package_formatted": "10 LPA",
+    "domain": "Data Analytics",
+    "category": "data_analytics",
+    "review": "I was looking to upgrade my skills and chose JVM Institute for Data Engineering training. It turned out to be one of the best decisions for my career."
+  },
+  {
+    "name": "Karan Sagare",
+    "company": "Primotech",
+    "role": "Data Engineer",
+    "package_num": 10.0,
+    "package_formatted": "10 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "JVM Institute provides excellent training with supportive trainers and practical learning. The concepts are explained clearly, and the placement guidance is very helpful."
   },
   {
     "raw_img": "media/image9.jpeg",
@@ -357,8 +487,8 @@
     "review": " Coming from an Non IT background, I had limited technical knowledge. JVM Institute helped me understand Data Engineering concepts from scratch through hands-on learning and real-world projects. The trainers focused on practical implementation rather than just theory. The placement support and mock interviews played a huge role in my success. Thanks to JVM Institute, I was able to make a successful career transition into IT.",
     "package_num": 10.0,
     "package_formatted": "10 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_9_rahul.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -367,11 +497,11 @@
     "package": "10 lakh",
     "company": "Bitwise",
     "role": "Data Engineer",
-    "review": "The trainers focused on practical implementation rather than just theory. The placement support and mock interviews played a huge role in my success at Bitwise.",
+    "review": " Coming from a marketing background, I always wanted to build a career in the IT industry but didn't know where to start. Joining JVM Institute was the best decision I made. The Data Engineering course was designed in a simple and practical way, making it easy for a non-technical person like me to learn SQL, Python, PySpark, and AWS. The trainers provided constant support, mock interviews, and real-time project experience. With their guidance, I successfully transitioned from Marketing to Data Engineering and secured a great job opportunity with a much better package. Thank you, JVM Institute, for helping me transform my career.",
     "package_num": 10.0,
     "package_formatted": "10 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_32_mansichaudhary.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   },
   {
@@ -383,45 +513,19 @@
     "review": " As a non-IT graduate, I had very little technical knowledge when I joined JVM Institute. The trainers were incredibly supportive and ensured that every concept was understood clearly. The hands-on projects, assignments, and mock interviews prepared me for real-world challenges. The placement team guided me throughout the process. Today, I am working as a Data Engineer and enjoying a rewarding career in IT.",
     "package_num": 10.0,
     "package_formatted": "10 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_34_durgeshjadhav.jpeg",
-    "domain": "Data Engineering"
-  },
-  {
-    "raw_img": "media/image2.jpeg",
-    "name": "Kamlesh Gaikwad",
-    "review": "I was already working in the IT industry, but I realized that upgrading my skills was necessary for better growth. JVM Institute helped me learn advanced Data Engineering concepts, Cloud Technologies, and Real-Time Project implementation.",
-    "company": "Enterprise Tech MNC",
-    "role": "Data Engineer",
-    "package_num": 10.0,
-    "package_formatted": "10 LPA",
     "category": "data_engineering",
-    "image": "/placements/placement_28_kamleshgaikwad.jpeg",
     "domain": "Data Engineering"
   },
   {
-    "raw_img": "media/image5.jpeg",
-    "name": "Sagar Lahane",
-    "review": "I enrolled in JVM Institute to enhance my skills and prepare for better opportunities. The personalized attention and hands-on training helped me gain expertise in Data Engineering technologies.",
-    "role": "Business Analyst",
-    "company": "Enterprise Solutions",
-    "package_num": 10.0,
-    "package_formatted": "10 LPA",
-    "category": "data_analytics",
-    "image": "/placements/placement_31_sagarlahane.jpeg",
-    "domain": "Data Analytics"
-  },
-  {
-    "raw_img": "media/image7.jpeg",
-    "name": "Pratiksha Raut",
-    "review": "JVM Institute provided excellent hands-on projects and interview preparation. The supportive learning environment enabled me to crack my interview at Harman.",
-    "company": "Harman",
+    "name": "Vivek Ingale",
+    "company": "Simple Logic",
     "role": "Software Engineer",
-    "package_num": 10.0,
-    "package_formatted": "10 LPA",
+    "package_num": 9.5,
+    "package_formatted": "9.5 LPA",
+    "domain": "Data Engineering",
     "category": "data_engineering",
-    "image": "/placements/placement_33_pratiksharaut.jpeg",
-    "domain": "Data Engineering"
+    "review": "I joined JVM Institute to upgrade my skills in Data Engineering. The course was well-structured and covered all the latest technologies."
   },
   {
     "raw_img": "media/image11.jpeg",
@@ -432,22 +536,32 @@
     "review": " I joined JVM Institute to upgrade my technical skills, and it was a great experience. The trainers are knowledgeable, supportive, and explain concepts clearly. The practical training and hands-on assignments helped me gain confidence and improve my skills. Thank you JVM Institute for contributing to my professional growth and career development.",
     "package_num": 9.0,
     "package_formatted": "9 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_24_rushikeshadhav.jpeg",
+    "category": "data_engineering",
     "domain": "Data Engineering"
+  },
+  {
+    "name": "Sandesh Fule",
+    "company": "Bitwise",
+    "role": "Data Engineer",
+    "package_num": 8.0,
+    "package_formatted": "8 LPA",
+    "domain": "Data Engineering",
+    "category": "data_engineering",
+    "review": "Being a Civil Engineer, I was looking for better career growth opportunities. JVM Institute helped me upskill in Data Engineering and guided me through interviews."
   },
   {
     "raw_img": "media/image1.png",
     "name": "Trupti Musale",
     "package": "6 lakh",
-    "company": "Softenger Pvt. Ltd.",
-    "review": "Coming from a Commerce background, I never thought I could build a career in the IT industry. After joining JVM Institute, I learned Data Engineering from scratch, including SQL, Python, PySpark, and AWS. I successfully transitioned from Commerce to Data Engineering!",
-    "role": "Data Engineer",
+    "company": "Softenger Pvt.Ltd",
+    "review": "The practical training, live projects, and continuous mentorship at JVM Institute played a crucial role in enhancing my technical skills and landing my dream IT job.",
+    "role": "Coming From A Commerce Background, I Never Thought I Could Build A Career In The It Industry. I Was Looking For Better Career Opportunities But Didn'T Know Where To Start. After Joining Jvm Institute, I Learned Data Engineering From Scratch, Including Sql, Python, Pyspark, And Aws. The Trainers Were Very Supportive And Made Complex Concepts Easy To Understand. The Real-Time Projects, Mock Interviews, And Placement Assistance Helped Me Gain Confidence. With The Guidance Of Jvm Institute, I Successfully Transitioned From Commerce To Data Engineering And Secured A Great Job Opportunity. Thank You, Jvm Institute, For Helping Me Transform My Career.",
     "package_num": 6.0,
     "package_formatted": "6 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_27_truptimusale.png",
-    "domain": "Data Engineering"
+    "category": "pyspark_bigdata",
+    "domain": "PySpark & Big Data"
   },
   {
     "raw_img": "media/image11.png",
@@ -458,8 +572,55 @@
     "review": " Before joining JVM Institute, I had basic technical knowledge but lacked the practical skills required for a Data Engineering career. The trainers guided me through SQL, Python, PySpark, and Cloud technologies with real-time projects. The personalized attention and regular mock interviews boosted my confidence. The placement support was excellent throughout the journey. Today, I am working as a Data Engineer and grateful to JVM Institute for helping me achieve my career goals.",
     "package_num": 4.0,
     "package_formatted": "4 LPA",
-    "category": "data_engineering",
     "image": "/placements/placement_37_prasanth.png",
+    "category": "data_engineering",
+    "domain": "Data Engineering"
+  },
+  {
+    "raw_img": "media/image2.jpeg",
+    "name": "Kamlesh Gaikwad",
+    "review": " I was already working in the IT industry, but I realized that upgrading my skills was necessary for better growth. JVM Institute helped me learn advanced Data Engineering concepts, cloud technologies, and real-time project implementation. The trainers provided excellent guidance and interview preparation. With continuous practice and support, I gained confidence and secured a better opportunity with a higher package. Thank you JVM Institute for helping me grow professionally.",
+    "company": "Cognizant",
+    "role": "Senior Associate",
+    "package_num": 0.0,
+    "package_formatted": "10 LPA",
+    "image": "/placements/placement_28_kamleshgaikwad.jpeg",
+    "category": "data_engineering",
+    "domain": "Data Engineering"
+  },
+  {
+    "raw_img": "media/image5.jpeg",
+    "name": "Sagar Lahane",
+    "company": "Cognizant",
+    "review": " I enrolled in JVM Institute to enhance my skills and prepare for better opportunities. The personalized attention and hands-on training helped me gain expertise in Data Engineering technologies.",
+    "role": "Business Analyst",
+    "package_num": 0.0,
+    "package_formatted": "10 LPA",
+    "image": "/placements/placement_31_sagarlahane.jpeg",
+    "category": "data_analytics",
+    "domain": "Data Analytics"
+  },
+  {
+    "raw_img": "media/image7.jpeg",
+    "name": "Pratiksha Raut",
+    "review": "12.5 lakh I joined JVM Institute to upgrade my skills and stay competitive in today's fast-changing IT industry. The Data Engineering course provided hands-on training in SQL, Python, PySpark, AWS, and real-time projects. The trainers were knowledgeable, supportive, and always available to clear doubts. The mock interviews and placement preparation sessions significantly improved my confidence. With the skills I gained at JVM Institute, I was able to explore better career opportunities and achieve professional growth. I highly recommend JVM Institute to anyone looking to upskill and advance their career.",
+    "company": "Harman",
+    "role": "Software Engineer",
+    "package_num": 0.0,
+    "package_formatted": "10 LPA",
+    "image": "/placements/placement_33_pratiksharaut.jpeg",
+    "category": "data_engineering",
+    "domain": "Data Engineering"
+  },
+  {
+    "name": "Kenexai",
+    "role": "Data Engineer",
+    "review": "The practical training, live projects, and continuous mentorship at JVM Institute played a crucial role in enhancing my technical skills and landing my dream IT job.",
+    "company": "I Was Working As A Teacher And Wanted To Explore Better Career Opportunities In The It Industry. However, Coming From A Non-Technical Background, I Was Unsure How To Make The Transition. After Joining Jvm Institute, I Learned Data Engineering From The Ground Up, Including Sql, Python, Pyspark, And Aws. The Trainers Provided Excellent Guidance, Hands-On Projects, And Continuous Support Throughout My Journey. The Mock Interviews And Placement Assistance Helped Me Build Confidence And Prepare For The Industry. With The Support Of Jvm Institute, I Successfully Transitioned From Teaching To A Data Engineer Role With A Great Package. I Am Truly Grateful For This Life-Changing Opportunity.",
+    "package_num": 0.0,
+    "package_formatted": "10 LPA",
+    "image": "/place1.png",
+    "category": "data_engineering",
     "domain": "Data Engineering"
   }
 ]

@@ -348,7 +348,7 @@ const testimonials = [
   {
     name: "Sarvesh Bhoite",
     role: "AI Engineer at Tier 1 Tech MNC",
-    hike: "130% Salary Hike",
+    hike: "120% Salary Hike",
     review: "The Advanced AI & Machine Learning program at JVM Institute gave me deep hands-on expertise in PyTorch, CNNs, Transformers, RAG, and MLOps. Building the AI Resume Screening & Medical Vision projects cleared my technical rounds easily!",
     avatar: "/students1.jpeg",
     company: "Fortune 500 AI Hub"
@@ -356,7 +356,7 @@ const testimonials = [
   {
     name: "Pooja Patil",
     role: "Computer Vision Specialist",
-    hike: "115% Salary Hike",
+    hike: "1% Salary Hike",
     review: "From neural network backpropagation math to deploying YOLO object detection models inside Docker containers on AWS SageMaker, the syllabus covered 100% of real enterprise requirements.",
     avatar: "/place1.png",
     company: "Global Product Giant"
@@ -394,7 +394,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
 
   const filteredTech = selectedCategory === "All"
     ? techStack
-    : techStack.filter(t => t.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+    : techStack.filter(t => t.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300 overflow-x-hidden selection:bg-[#7C248C] selection:text-white">

@@ -498,11 +498,11 @@ export default function DataEngineeringCoursePage() {
     setModalOpen(true);
   };
 
-  const categories = ["All", "Big Data", "Cloud", "Warehouse", "Orchestration", "Database"];
+  const categories = ["All", ...Array.from(new Set(techStack.map((t) => t.category)))];
 
   const filteredTech = selectedCategory === "All"
     ? techStack
-    : techStack.filter(t => t.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+    : techStack.filter(t => t.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300 overflow-x-hidden selection:bg-[#7C248C] selection:text-white">

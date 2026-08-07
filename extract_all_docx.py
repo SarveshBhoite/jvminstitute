@@ -8,7 +8,7 @@ import re
 output_img_dir = 'public/placements'
 os.makedirs(output_img_dir, exist_ok=True)
 
-docx_files = ['jvm.imgs.docx', 'jvm.img1.docx', 'jvm.img3.docx']
+docx_files = ['jvm.imgs.docx', 'jvm.img1.docx', 'jvm.img3.docx', 'jvm.img3 copy.docx']
 
 def parse_package_num(pkg_str):
     if not pkg_str:

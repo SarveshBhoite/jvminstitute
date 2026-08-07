@@ -202,13 +202,15 @@ export default function HeroSection() {
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
               </button>
 
-              <button
-                onClick={() => openEnrollModal("Download Course Brochure")}
+              <a
+                href="https://wa.me/918446284162?text=Hello%20JVM%20Institute!%20I%20want%20to%20download%20the%20detailed%20course%20brochure%20and%20syllabus%20PDF."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial bg-indigo-50/90 hover:bg-indigo-100/90 dark:bg-slate-800 dark:hover:bg-slate-700 text-[#1E2B88] dark:text-slate-100 font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm border border-[#1E2B88]/25 dark:border-slate-700 transition-all shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer group whitespace-nowrap"
               >
                 <Download className="w-4 h-4 text-[#E01E6A] group-hover:translate-y-0.5 transition-transform shrink-0" />
                 <span>Download Brochure</span>
-              </button>
+              </a>
 
               <button
                 onClick={handleCallCounselor}
