@@ -61,7 +61,7 @@ export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
     }
   }
 
-  const tags = typeof dbBlog.tags === "string" 
+  const tags = typeof dbBlog.tags === "string"
     ? dbBlog.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
     : (Array.isArray(dbBlog.tags) ? dbBlog.tags : []);
 
@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
         heading: "2. The Skills of a Data Engineer",
         paragraphs: [
           "To excel as a data engineer, mastering a core set of technical competencies is essential: proficiency in programming languages (Python, PySpark, SQL), data modeling (Star & Snowflake schemas), automated ETL/ELT orchestration, and cloud infrastructure.",
-          "At JVM Institute, our hands-on training programs empower students to master these skills with live Databricks clusters and production Airflow DAGs. Over 1,200+ JVM alumni have successfully transitioned into high-paying engineering roles across Tier-1 tech MNCs."
+          "At JVM Institute, our hands-on training programs empower students to master these skills with live Databricks clusters and production Airflow DAGs. Over 200+ JVM alumni have successfully transitioned into high-paying engineering roles across Tier-1 tech MNCs."
         ],
         codeBlock: {
           language: "python",

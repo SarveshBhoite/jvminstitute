@@ -97,7 +97,7 @@ export default function LeadEnquiryModal({
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-fadeIn">
       <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-        
+
         {/* Top Decorative Background Glow */}
         <div className="absolute -top-20 -left-20 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -119,6 +119,24 @@ export default function LeadEnquiryModal({
                 <Sparkles className="w-3.5 h-3.5 text-[#E01E6A]" /> Student Enrollment Form
               </div>
 
+              {/* Google Reviews Badge */}
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700">
+                  <span className="font-extrabold text-sm tracking-tight flex items-center">
+                    <span className="text-[#4285F4]">G</span>
+                    <span className="text-[#EA4335]">o</span>
+                    <span className="text-[#FBBC05]">o</span>
+                    <span className="text-[#4285F4]">g</span>
+                    <span className="text-[#34A853]">l</span>
+                    <span className="text-[#EA4335]">e</span>
+                  </span>
+                  <span className="text-amber-500 font-extrabold flex items-center gap-0.5">
+                    ★ 4.9/5
+                  </span>
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold">(200+ Reviews)</span>
+                </div>
+              </div>
+
               <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
                 Enroll Now &amp; Reserve Seat
               </h3>
@@ -135,12 +153,12 @@ export default function LeadEnquiryModal({
                 <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
                   <User className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" /> Student Full Name <span className="text-red-500">*</span>
                 </label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Rahul Sharma" 
+                  placeholder="e.g. Rahul Sharma"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
                 />
               </div>
@@ -150,12 +168,12 @@ export default function LeadEnquiryModal({
                 <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" /> Email Address (Mail ID) <span className="text-red-500">*</span>
                 </label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="rahul.sharma@gmail.com" 
+                  placeholder="rahul.sharma@gmail.com"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
                 />
               </div>
@@ -165,12 +183,12 @@ export default function LeadEnquiryModal({
                 <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Contact Number (WhatsApp) <span className="text-red-500">*</span>
                 </label>
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+91 98765 43210" 
+                  placeholder="+91 8446284162"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
                 />
               </div>
@@ -180,7 +198,7 @@ export default function LeadEnquiryModal({
                 <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
                   <BookOpen className="w-3.5 h-3.5 text-pink-600 dark:text-pink-400" /> Select Course Name <span className="text-red-500">*</span>
                 </label>
-                <select 
+                <select
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold"
@@ -203,18 +221,18 @@ export default function LeadEnquiryModal({
                     Optional — Extra ₹1,000 Off
                   </span>
                 </div>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={referralCode}
                   onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
-                  placeholder="e.g. JVMREF2025" 
+                  placeholder="e.g. JVMREF2025"
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-mono font-bold tracking-wider uppercase"
                 />
               </div>
 
               {/* Submit Button */}
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="w-full jvm-gradient-bg text-white font-extrabold py-4 px-4 rounded-xl text-sm transition-all shadow-xl hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2 cursor-pointer"
               >
                 <Send className="w-4 h-4" /> Submit Enrollment Application

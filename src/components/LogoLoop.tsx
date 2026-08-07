@@ -291,7 +291,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           '[--logoloop-gap:32px]',
           '[--logoloop-logoHeight:28px]',
           '[--logoloop-fadeColorAuto:#ffffff]',
-          'dark:[--logoloop-fadeColorAuto:#0b0b0b]',
+          'dark:[--logoloop-fadeColorAuto:#0F172A]',
           scaleOnHover && 'py-[calc(var(--logoloop-logoHeight)*0.1)]',
           className
         ),
@@ -339,26 +339,28 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             {itemObj.node as React.ReactNode}
           </span>
         ) : (
-          <img
-            className={cx(
-              'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
-              '[-webkit-user-drag:none] pointer-events-none',
-              '[image-rendering:-webkit-optimize-contrast]',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
-            )}
-            src={itemObj.src as string}
-            srcSet={itemObj.srcSet as string | undefined}
-            sizes={itemObj.sizes as string | undefined}
-            width={itemObj.width as number | undefined}
-            height={itemObj.height as number | undefined}
-            alt={(itemObj.alt as string | undefined) ?? ''}
-            title={itemObj.title as string | undefined}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
+          <div className="px-3.5 py-2 rounded-2xl bg-white dark:bg-slate-100 shadow-md border border-slate-200/80 dark:border-slate-200 flex items-center justify-center transition-all duration-300">
+            <img
+              className={cx(
+                'h-[var(--logoloop-logoHeight)] w-auto block object-contain max-w-[120px]',
+                '[-webkit-user-drag:none] pointer-events-none',
+                '[image-rendering:-webkit-optimize-contrast]',
+                'motion-reduce:transition-none',
+                scaleOnHover &&
+                  'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-110'
+              )}
+              src={itemObj.src as string}
+              srcSet={itemObj.srcSet as string | undefined}
+              sizes={itemObj.sizes as string | undefined}
+              width={itemObj.width as number | undefined}
+              height={itemObj.height as number | undefined}
+              alt={(itemObj.alt as string | undefined) ?? ''}
+              title={itemObj.title as string | undefined}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          </div>
         );
 
         const itemAriaLabel = isNodeItem

@@ -45,7 +45,7 @@ const courseCatalog: Record<string, {
     title: "Advanced AI & Machine Learning Course in Pune!",
     badge: "CAREER LANDSCAPE 2026 • ADVANCED AI & MACHINE LEARNING TRACK",
     desc: "Learn Deep Learning, Neural Networks, Computer Vision, Natural Language Processing (NLP), Reinforcement Learning, MLOps, Model Deployment, and AI System Design.",
-    hike: "130%",
+    hike: "120%",
     growth: "4.2x",
     labs: "85%",
     achieveHeading: "Transform From Beginner to AI & Machine Learning Specialist",
@@ -114,7 +114,7 @@ const courseCatalog: Record<string, {
     title: "Gen AI Course in Pune!",
     badge: "CAREER LANDSCAPE 2026 • GEN AI & AGENTIC TRACK",
     desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
-    hike: "140%",
+    hike: "120%",
     growth: "5.0x",
     labs: "90%",
     achieveHeading: "Transform From Developer to Enterprise GenAI Architect",
@@ -175,7 +175,7 @@ const courseCatalog: Record<string, {
     title: "Claude AI & Multi-Cloud MLOps Course in Pune!",
     badge: "CAREER LANDSCAPE 2026 • MULTI-CLAUDE AI TRACK",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
-    hike: "125%",
+    hike: "120%",
     growth: "3.8x",
     labs: "85%",
     achieveHeading: "Transform From DevOps to Multi-Claude AI Architect",
@@ -215,7 +215,7 @@ const courseCatalog: Record<string, {
     title: "Basic AI & Machine Learning Course in Pune!",
     badge: "CAREER LANDSCAPE 2026 • BEGINNER AI TRACK",
     desc: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
-    hike: "110%",
+    hike: "120%",
     growth: "3.2x",
     labs: "80%",
     achieveHeading: "Transform From Non-Tech to Machine Learning Developer",
@@ -349,7 +349,7 @@ export default function DynamicCourseDetailPage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-                    <span>50+ Hiring Partners</span>
+                    <span>250+ Hiring Partners</span>
                   </div>
                 </div>
               </div>

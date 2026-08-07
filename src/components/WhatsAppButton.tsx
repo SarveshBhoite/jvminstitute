@@ -6,7 +6,7 @@ import { Phone } from "lucide-react";
 
 export default function WhatsAppButton() {
   // Replace with official JVM Institute WhatsApp contact number
-  const whatsappNumber = "919876543210"; 
+  const whatsappNumber = "918446284162"; 
   const defaultMessage = encodeURIComponent(
     "Hello JVM Institute team! I would like to inquire about your Data Engineering & Tech courses, upcoming batches, and fee details."
   );

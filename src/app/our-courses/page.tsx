@@ -78,8 +78,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "Beginner to Advanced",
     projects: "4 Capstone Projects",
-    rating: "4.9",
-    reviewsCount: "1,240+",
     placement: "100% Placement Support",
     technologies: ["SQL", "Python", "Linux", "Hadoop", "PySpark", "Spark", "Airflow", "Databricks", "GCP", "Azure", "AWS", "ETL Pipelines", "Data Warehousing"],
     highlights: [
@@ -104,8 +102,6 @@ const coursesData = [
     mode: "Offline & Online Mode",
     level: "All Levels Welcome",
     projects: "20+ Enterprise Projects",
-    rating: "4.9",
-    reviewsCount: "980+",
     placement: "100% Placement Support",
     technologies: ["SQL", "Python", "Spark", "Databricks", "Airflow", "GCP", "Azure", "Gen AI", "OpenAI", "LangChain", "MCP", "AI Agents", "Vector Databases", "RAG"],
     highlights: [
@@ -128,8 +124,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "All Levels Welcome",
     projects: "GenAI Capstone Projects",
-    rating: "4.9",
-    reviewsCount: "1,150+",
     placement: "Placement Assistance & Portfolio Support",
     technologies: ["LLMs", "Prompt Engineering", "ChatGPT", "Claude AI", "Google Gemini", "RAG", "FAISS", "ChromaDB", "LangChain", "LlamaIndex", "AI Agents", "CrewAI", "MCP", "Function Calling", "AI Automation", "Enterprise AI Applications"],
     highlights: [
@@ -154,8 +148,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "Beginner Level",
     projects: "Business Analytics Case Studies",
-    rating: "4.9",
-    reviewsCount: "920+",
     placement: "Career Guidance & Resume Support",
     technologies: ["Python", "Statistics", "Machine Learning", "Data Visualization", "EDA", "Predictive Analytics", "Pandas", "Scikit-Learn"],
     highlights: [
@@ -180,8 +172,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "Intermediate to Advanced",
     projects: "Computer Vision & NLP Labs",
-    rating: "4.9",
-    reviewsCount: "860+",
     placement: "Placement Assistance & Interview Prep",
     technologies: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "Reinforcement Learning", "MLOps", "AI System Design"],
     highlights: [
@@ -206,8 +196,6 @@ const coursesData = [
     mode: "Offline & Online",
     level: "All Levels Welcome",
     projects: "Production Cloud ML Pipelines",
-    rating: "4.8",
-    reviewsCount: "740+",
     placement: "Cloud Certification & Job Support",
     technologies: ["AWS AI", "Azure AI", "GCP Claude AI", "Docker", "Kubernetes", "Scalable ML Pipelines", "MLOps", "CI/CD"],
     highlights: [
@@ -483,7 +471,7 @@ export default function OurCoursesPage() {
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Learners Mentored</div>
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">91%</div>
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">120%</div>
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Avg Salary Hike</div>
                   </div>
                   <div>
@@ -605,10 +593,6 @@ export default function OurCoursesPage() {
 
                           {/* Rating & Enrolled Overlay */}
                           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-semibold">
-                            <span className="flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700 shadow-sm">
-                              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                              <span>{course.rating} ({course.reviewsCount})</span>
-                            </span>
 
                             <span className="bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700 shadow-sm">
                               {course.duration}
@@ -880,33 +864,48 @@ export default function OurCoursesPage() {
                 <div className="relative overflow-hidden h-full flex justify-center">
                   <motion.div
                     animate={{ y: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
                     {[
-                      "/icon/python.png",
-                      "/icon/sql.png",
-                      "/icon/aws.png",
-                      "/icon/azure.png",
-                      "/icon/mysql.png",
-                      "/icon/claude-colour.png",
-                      "/icon/data-engineering.png",
-                      "/icon/python.png",
-                      "/icon/sql.png",
-                      "/icon/aws.png"
-                    ].map((src, i) => (
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Claude AI", src: "/icon/claude-colour.png" },
+                      { name: "Data Engineering", src: "/icon/data-engineering.png" },
+                      { name: "Oracle Database", src: "/logo/oracle.jpg" },
+                      { name: "PostgreSQL", src: "/logo/PostgreSQL.jpg" },
+                      { name: "Microsoft SQL Server", src: "/logo/Microsoft SQL Server.jpg" },
+                    ].concat([
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Claude AI", src: "/icon/claude-colour.png" },
+                      { name: "Data Engineering", src: "/icon/data-engineering.png" },
+                      { name: "Oracle Database", src: "/logo/oracle.jpg" },
+                      { name: "PostgreSQL", src: "/logo/PostgreSQL.jpg" },
+                      { name: "Microsoft SQL Server", src: "/logo/Microsoft SQL Server.jpg" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: 6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src={src}
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -916,33 +915,48 @@ export default function OurCoursesPage() {
                 <div className="relative overflow-hidden h-full flex justify-center">
                   <motion.div
                     animate={{ y: ["-50%", "0%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
                     {[
-                      "/icon/mysql.png",
-                      "/icon/azure.png",
-                      "/icon/python.png",
-                      "/icon/aws.png",
-                      "/icon/sql.png",
-                      "/icon/data-engineering.png",
-                      "/icon/claude-colour.png",
-                      "/icon/mysql.png",
-                      "/icon/azure.png",
-                      "/icon/python.png"
-                    ].map((src, i) => (
+                      { name: "NumPy", src: "/logo/NumPy.jpg" },
+                      { name: "Pandas", src: "/logo/Pandas.jpg" },
+                      { name: "Matplotlib", src: "/logo/Matplotlib.jpg" },
+                      { name: "Seaborn", src: "/logo/Seaborn.jpg" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                      { name: "Data Engineering", src: "/icon/data-engineering.png" },
+                    ].concat([
+                      { name: "NumPy", src: "/logo/NumPy.jpg" },
+                      { name: "Pandas", src: "/logo/Pandas.jpg" },
+                      { name: "Matplotlib", src: "/logo/Matplotlib.jpg" },
+                      { name: "Seaborn", src: "/logo/Seaborn.jpg" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                      { name: "Data Engineering", src: "/icon/data-engineering.png" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: -10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: -6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src={src}
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -952,105 +966,150 @@ export default function OurCoursesPage() {
                 <div className="relative overflow-hidden h-full flex justify-center">
                   <motion.div
                     animate={{ y: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
                     {[
-                      "/icon/sql.png",
-                      "/icon/python.png",
-                      "/icon/mysql.png",
-                      "/icon/claude-colour.png",
-                      "/icon/aws.png",
-                      "/icon/azure.png",
-                      "/icon/data-engineering.png",
-                      "/icon/sql.png",
-                      "/icon/python.png",
-                      "/icon/mysql.png"
-                    ].map((src, i) => (
+                      { name: "Apache Hadoop", src: "/logo/Apache Hadoop.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Apache Airflow", src: "/logo/Apache Airflow.jpg" },
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "Cloud Storage", src: "/logo/Cloud Storage.jpg" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Claude AI", src: "/icon/claude-colour.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                    ].concat([
+                      { name: "Apache Hadoop", src: "/logo/Apache Hadoop.jpg" },
+                      { name: "Apache Spark", src: "/logo/Apache Spark.jpg" },
+                      { name: "Apache Airflow", src: "/logo/Apache Airflow.jpg" },
+                      { name: "Google Cloud Platform", src: "/logo/Google Cloud Platform.jpg" },
+                      { name: "Cloud Storage", src: "/logo/Cloud Storage.jpg" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Claude AI", src: "/icon/claude-colour.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: 6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src={src}
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
                 </div>
 
-                {/* Column 4 (OPPOSITE Downwards - Hidden on smallest mobile, visible on sm+) */}
+                {/* Column 4 (OPPOSITE Downwards) */}
                 <div className="relative overflow-hidden h-full hidden sm:flex justify-center">
                   <motion.div
                     animate={{ y: ["-50%", "0%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
                     {[
-                      "/icon/aws.png",
-                      "/icon/data-engineering.png",
-                      "/icon/azure.png",
-                      "/icon/python.png",
-                      "/icon/sql.png",
-                      "/icon/mysql.png",
-                      "/icon/claude-colour.png",
-                      "/icon/aws.png",
-                      "/icon/data-engineering.png",
-                      "/icon/azure.png"
-                    ].map((src, i) => (
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                      { name: "OpenCV", src: "/logo/OpenCV.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "Data Engineering", src: "/icon/data-engineering.png" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                    ].concat([
+                      { name: "Scikit-learn", src: "/logo/Scikit-learn.jpg" },
+                      { name: "OpenCV", src: "/logo/OpenCV.jpg" },
+                      { name: "ChatGPT", src: "/logo/ChatGPT.jpg" },
+                      { name: "Claude AI", src: "/logo/claude-color.png" },
+                      { name: "Google Gemini", src: "/logo/Google Gemini.jpg" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "Data Engineering", src: "/icon/data-engineering.png" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: -10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: -6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src={src}
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
                 </div>
 
-                {/* Column 5 (Upwards - Hidden on smallest mobile, visible on sm+) */}
+                {/* Column 5 (Upwards) */}
                 <div className="relative overflow-hidden h-full hidden sm:flex justify-center">
                   <motion.div
                     animate={{ y: ["0%", "-50%"] }}
-                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 16, ease: "linear" }}
                     className="space-y-5 flex flex-col items-center"
                   >
                     {[
-                      "/icon/azure.png",
-                      "/icon/aws.png",
-                      "/icon/claude-colour.png",
-                      "/icon/mysql.png",
-                      "/icon/python.png",
-                      "/icon/sql.png",
-                      "/icon/data-engineering.png",
-                      "/icon/azure.png",
-                      "/icon/aws.png",
-                      "/icon/claude-colour.png"
-                    ].map((src, i) => (
+                      { name: "Git", src: "/logo/Git.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "Claude AI", src: "/icon/claude-colour.png" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                    ].concat([
+                      { name: "Git", src: "/logo/Git.jpg" },
+                      { name: "Docker", src: "/logo/Docker.jpg" },
+                      { name: "Kubernetes", src: "/logo/Kubernetes.jpg" },
+                      { name: "Power BI", src: "/logo/Power BI.jpg" },
+                      { name: "Azure", src: "/icon/azure.png" },
+                      { name: "AWS", src: "/icon/aws.png" },
+                      { name: "Claude AI", src: "/icon/claude-colour.png" },
+                      { name: "MySQL", src: "/icon/mysql.png" },
+                      { name: "Python", src: "/icon/python.png" },
+                      { name: "SQL", src: "/icon/sql.png" },
+                    ]).map((tech, i) => (
                       <motion.div
                         key={i}
-                        whileHover={{ scale: 1.18, rotate: 10 }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex items-center justify-center p-3 sm:p-4 transition-all cursor-pointer group relative"
+                        whileHover={{ scale: 1.18, rotate: 6 }}
+                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-500/80 hover:ring-4 hover:ring-purple-500/20 flex flex-col items-center justify-center p-3 transition-all cursor-pointer group relative"
+                        title={tech.name}
                       >
                         <Image
-                          src={src}
-                          alt="Technology Logo"
-                          width={64}
-                          height={64}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          src={tech.src}
+                          alt={tech.name}
+                          width={56}
+                          height={56}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 rounded-lg"
                         />
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-8 bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-lg whitespace-nowrap z-30 pointer-events-none">
+                          {tech.name}
+                        </span>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -1272,7 +1331,7 @@ export default function OurCoursesPage() {
                   <input
                     type="tel"
                     required
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 8446284162"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   />
                 </div>

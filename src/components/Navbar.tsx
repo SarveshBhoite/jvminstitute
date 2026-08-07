@@ -431,13 +431,13 @@ export default function Navbar() {
               <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" /> Free Notes & PDFs
             </Link>
 
-            <Link 
+            {/* <Link 
               href="/events" 
               onClick={() => setMobileMenuOpen(false)}
               className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
             >
               <Calendar className="w-4 h-4 text-purple-600 dark:text-purple-400" /> Workshops & Events
-            </Link>
+            </Link> */}
 
             <Link 
               href="/blog" 

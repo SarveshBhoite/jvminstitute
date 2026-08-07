@@ -127,18 +127,27 @@ export default function HeroSection() {
             {/* Top Rating & ISO Badge */}
             <div className="flex justify-center lg:justify-start">
               <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/95 dark:bg-slate-800/95 border border-purple-100 dark:border-slate-700 px-3 sm:px-3.5 py-1 rounded-full shadow-xs text-xs font-bold text-slate-800 dark:text-slate-200">
+                {/* Full Google Multi-color Wordmark */}
+                <span className="font-extrabold text-sm tracking-tight flex items-center">
+                  <span className="text-[#4285F4]">G</span>
+                  <span className="text-[#EA4335]">o</span>
+                  <span className="text-[#FBBC05]">o</span>
+                  <span className="text-[#4285F4]">g</span>
+                  <span className="text-[#34A853]">l</span>
+                  <span className="text-[#EA4335]">e</span>
+                </span>
                 <span className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400" />
                   ))}
                 </span>
                 <span className="text-[11px] sm:text-xs md:text-sm font-extrabold">
-                  4.9/5 (1,200+ Reviews)
+                  4.9/5 (200+ Reviews)
                 </span>
                 <span className="text-slate-300 dark:text-slate-600">|</span>
                 <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                  <span>ISO Certified</span>
+                  ISO 9001:2020
                 </span>
               </div>
             </div>

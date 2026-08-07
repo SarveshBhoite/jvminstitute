@@ -325,8 +325,8 @@ export default function DataEngineeringCoursePage() {
   const filteredTech = selectedCategory === "All"
     ? techStack
     : techStack.filter(t => t.category.toLowerCase().includes(selectedCategory.toLowerCase()));
-    
- return (
+
+  return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300 overflow-x-hidden selection:bg-[#7C248C] selection:text-white">
       <Navbar />
 
@@ -336,21 +336,21 @@ export default function DataEngineeringCoursePage() {
         {/* 1. HERO SECTION: EDITORIAL HIGH-IMPACT (Compact for Mobile) */}
         {/* ========================================================= */}
         <section className="relative py-6 sm:py-10 lg:py-14 bg-gradient-to-b from-[#F5F3FF] via-[#FAFAFC] to-white dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden flex items-center min-h-[auto] lg:h-[calc(100vh-80px)]">
-          
-          {/* Animated Ambient Glow Spheres */} 
-          <motion.div 
+
+          {/* Animated Ambient Glow Spheres */}
+          <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0" 
+            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0"
           />
-          
+
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-10 items-center">
-              
+
               {/* Left Column: Animated Headline, Story & Quick Stats (7 Cols) */}
               <div className="lg:col-span-7 space-y-2.5 sm:space-y-3.5 text-left">
-                
+
                 {/* Pill Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -363,7 +363,7 @@ export default function DataEngineeringCoursePage() {
                 </motion.div>
 
                 {/* Animated Headline */}
-                <motion.h1 
+                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
@@ -373,7 +373,7 @@ export default function DataEngineeringCoursePage() {
                 </motion.h1>
 
                 {/* Animated Narrative Paragraphs */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -388,13 +388,13 @@ export default function DataEngineeringCoursePage() {
                 </motion.div>
 
                 {/* Interactive Animated Metric Stat Cards */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="grid grid-cols-3 gap-2 sm:gap-3.5 pt-1"
                 >
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -402,7 +402,7 @@ export default function DataEngineeringCoursePage() {
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Average Salary Hike</div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -410,7 +410,7 @@ export default function DataEngineeringCoursePage() {
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Data Job Growth</div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -420,7 +420,7 @@ export default function DataEngineeringCoursePage() {
                 </motion.div>
 
                 {/* Animated CTAs Button Group */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -444,7 +444,7 @@ export default function DataEngineeringCoursePage() {
                 </motion.div>
 
                 {/* Trust Badges Bar */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -460,21 +460,21 @@ export default function DataEngineeringCoursePage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-                    <span>50+ Hiring Partners</span>
+                    <span>250+ Hiring Partners</span>
                   </div>
                 </motion.div>
 
               </div>
 
               {/* Right Column: Premium Glowing Card (5 Cols) */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="lg:col-span-5"
               >
                 <div className="bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl border border-purple-500/30 relative overflow-hidden space-y-3 sm:space-y-4">
-                  
+
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-purple-200 text-[9px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                     ✦ WHAT YOU WILL ACHIEVE
                   </div>
@@ -519,7 +519,7 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 bg-[#FAFAFC] dark:bg-[#070A12] border-t border-purple-100/60 dark:border-slate-800/80 relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Animated Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -554,11 +554,10 @@ export default function DataEngineeringCoursePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.45, delay: index * 0.07 }}
-                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${
-                      isOpen
-                        ? "bg-white dark:bg-slate-900/95 border-purple-500/50 dark:border-purple-500/50 shadow-xl"
-                        : "bg-white/90 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800/90 shadow-sm"
-                    }`}
+                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${isOpen
+                      ? "bg-white dark:bg-slate-900/95 border-purple-500/50 dark:border-purple-500/50 shadow-xl"
+                      : "bg-white/90 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800/90 shadow-sm"
+                      }`}
                   >
                     <button
                       onClick={() => setOpenModule(isOpen ? null : mod.id)}
@@ -566,11 +565,10 @@ export default function DataEngineeringCoursePage() {
                     >
                       <div className="flex items-center gap-3 sm:gap-5">
                         <span
-                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${
-                            isOpen
-                              ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-md"
-                              : "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
-                          }`}
+                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${isOpen
+                            ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-md"
+                            : "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
+                            }`}
                         >
                           {mod.number}
                         </span>
@@ -588,11 +586,10 @@ export default function DataEngineeringCoursePage() {
                       </div>
 
                       <div
-                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${
-                          isOpen
-                            ? "bg-purple-600 text-white rotate-180"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-600"
-                        }`}
+                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${isOpen
+                          ? "bg-purple-600 text-white rotate-180"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-600"
+                          }`}
                       >
                         <ChevronDown className="w-4 h-4" />
                       </div>
@@ -668,16 +665,16 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-16 relative overflow-hidden bg-slate-200/80 dark:bg-[#0E1322] border-t border-b border-slate-300/80 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-[#1E2B88] dark:text-white text-center mb-6 sm:mb-10 tracking-tight leading-tight">
               What to Expect from the JVM Data Engineering Course in Pune
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
-              
+
               <div className="lg:col-span-7 space-y-1 text-left">
                 {whatToExpectPoints.map((point, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-start gap-2.5 py-2 sm:py-3 border-b border-slate-300/80 dark:border-slate-800/80 last:border-b-0"
                   >
@@ -710,7 +707,7 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 LEARNING ADVANTAGE
@@ -722,7 +719,7 @@ export default function DataEngineeringCoursePage() {
 
             {/* REQUIREMENT 4: Display TWO CARDS IN ONE LINE for Mobile */}
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-8">
-              
+
               <MagicCard className="rounded-xl sm:rounded-none" glowFrom="#7C3AED" glowTo="#E01E6A">
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
                   <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">6 Months Track</h3>
@@ -736,7 +733,7 @@ export default function DataEngineeringCoursePage() {
                 <div className="p-3.5 sm:p-8 space-y-1.5 sm:space-y-3">
                   <h3 className="text-xs sm:text-xl font-extrabold text-slate-900 dark:text-white">Cloud Lab Clusters</h3>
                   <p className="text-[10px] sm:text-sm text-slate-600 dark:text-slate-300 leading-snug sm:leading-relaxed">
-                    Databricks, AWS Redshift &amp; Snowflake sandboxes.
+                    Databricks, AWS, Azure, GCP &amp; Snowflake sandboxes.
                   </p>
                 </div>
               </MagicCard>
@@ -787,7 +784,7 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 ENTERPRISE TECH ECOSYSTEM
@@ -803,11 +800,10 @@ export default function DataEngineeringCoursePage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    selectedCategory === cat
-                      ? "jvm-gradient-bg text-white shadow-xs"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
+                    ? "jvm-gradient-bg text-white shadow-xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -839,7 +835,7 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 PORTFOLIO BUILDERS
@@ -891,7 +887,7 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 CAREER DESK
@@ -903,7 +899,7 @@ export default function DataEngineeringCoursePage() {
 
             {/* REQUIREMENT 7: 2-COLUMN GRID ON MOBILE VIEW FOR CLEAN FIT */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
-              
+
               <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
                 <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
                   01
@@ -930,7 +926,7 @@ export default function DataEngineeringCoursePage() {
                 </div>
                 <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">Hiring Referrals</h3>
                 <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
-                  Direct routing to 50+ partner MNCs in Pune &amp; Bangalore.
+                  Direct routing to 250+ partner MNCs in PAN India.
                 </p>
               </div>
 
@@ -954,7 +950,7 @@ export default function DataEngineeringCoursePage() {
         {/* ========================================================= */}
         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-            
+
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
                 REAL TRANSCRIPTIONS
@@ -1000,11 +996,10 @@ export default function DataEngineeringCoursePage() {
                   <button
                     key={idx}
                     onClick={() => setActiveTestimonialIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      activeTestimonialIndex === idx
-                        ? "w-6 jvm-gradient-bg"
-                        : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeTestimonialIndex === idx
+                      ? "w-6 jvm-gradient-bg"
+                      : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                      }`}
                   />
                 ))}
               </div>
@@ -1016,7 +1011,7 @@ export default function DataEngineeringCoursePage() {
       </main>
 
       {/* Global Lead Enquiry Modal */}
-      <LeadEnquiryModal 
+      <LeadEnquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         courseTitle={modalTitle}

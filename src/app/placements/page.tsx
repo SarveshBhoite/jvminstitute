@@ -45,7 +45,6 @@ const Categories = [
   { id: "data_analytics", label: "Data Analytics" },
   { id: "data_science", label: "Data Science" },
   { id: "ai_ml", label: "AI & Machine Learning" },
-  { id: "deep_learning", label: "Deep Learning (DL)" },
   { id: "pyspark_bigdata", label: "PySpark & Big Data" },
   { id: "cloud_snowflake", label: "Cloud & Snowflake" }
 ];
@@ -60,7 +59,7 @@ const PlacementFaqs = [
   {
     id: 2,
     question: "What salary can I expect after completing a course at JVM Institute?",
-    answer: "Our Data Engineering & PySpark graduates receive average starting packages ranging between ₹6.5 LPA to ₹16 LPA."
+    answer: "Our Data Engineering & PySpark graduates receive average starting packages ranging between ₹10 LPA to ₹40 LPA."
   },
   {
     id: 3,
@@ -358,7 +357,7 @@ export default function PlacementsPage() {
             </div>
           </div>
 
-          {/* Package (LPA) Sequence Sort Bar */}
+          {/* Package (LPA) Sequence Sort Bar 
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 bg-white dark:bg-slate-900/90 p-3 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 max-w-2xl mx-auto shadow-xs">
             <span className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 px-1">
               <ArrowUpDown className="w-4 h-4 text-purple-600 dark:text-purple-400" />

@@ -468,7 +468,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
-                    <div className="text-base sm:text-2xl font-black text-purple-600 dark:text-purple-400">130%</div>
+                    <div className="text-base sm:text-2xl font-black text-purple-600 dark:text-purple-400">120%</div>
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Average Salary Hike</div>
                   </motion.div>
 
@@ -530,7 +530,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Users className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-                    <span>50+ Hiring Partners</span>
+                    <span>250+ Hiring Partners</span>
                   </div>
                 </motion.div>
 
