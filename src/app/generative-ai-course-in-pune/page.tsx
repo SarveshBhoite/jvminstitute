@@ -283,13 +283,13 @@ export default function GenAICoursePage() {
                 </motion.div>
 
                 <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
-                  <button
-                    onClick={() => openEnrollModal("GenAI Course Enrollment")}
+                  <Link
+                    href="/enroll"
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
 
                   <button
                     onClick={() => openEnrollModal("Download GenAI Syllabus")}
@@ -593,206 +593,244 @@ export default function GenAICoursePage() {
         {/* ========================================================= */}
         {/* 5. TECHNOLOGIES & TOOLS COVERED (16 SKILLS GRID)          */}
         {/* ========================================================= */}
-        <section className="py-12 sm:py-16 bg-slate-50/70 dark:bg-[#0F172A]/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-8">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                Tech Stack Mastery
+        <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                ENTERPRISE TECH ECOSYSTEM
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">
-                Technologies &amp; Tools Covered
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Tools &amp; Technologies <span className="jvm-gradient-text">You Will Master</span>
               </h2>
             </div>
 
-            {/* Category Filter Pills (Soft rounded pills matching screenshot) */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {/* Category Filter Chips */}
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-10">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                    selectedCategory === cat
-                      ? "bg-[#7C248C] text-white shadow-sm"
-                      : "bg-[#F1F3FB] dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
+                    ? "jvm-gradient-bg text-white shadow-xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    }`}
                 >
                   {cat}
                 </button>
               ))}
             </div>
 
-            {/* Tech Stack Cards Grid (Matching screenshot layout) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {filteredTech.map((tech, index) => (
-                <div
-                  key={`${tech.name}-${index}`}
-                  className="p-5 rounded-2xl bg-[#FAFAFE] dark:bg-[#111827] border border-slate-200/70 dark:border-slate-800/80 text-left space-y-1.5 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700 transition-all cursor-pointer flex flex-col justify-center min-h-[90px]"
+            {/* REQUIREMENT 5: MAKE TECH STACK COMPACT/SMALL ON MOBILE VIEW (3 Cols) */}
+            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
+              {filteredTech.map((item) => (
+                <motion.div
+                  key={item.name}
+                  whileHover={{ scale: 1.03 }}
+                  className="p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs text-center sm:text-left overflow-hidden"
                 >
-                  <div className="text-xs font-bold text-[#8B31B0] dark:text-[#A78BFA] tracking-wide">
-                    {tech.category}
-                  </div>
-                  <div className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white leading-tight">
-                    {tech.name}
-                  </div>
-                </div>
+                  <span className="text-[9px] sm:text-xs font-bold text-purple-600 dark:text-purple-400 block truncate">{item.category}</span>
+
+                  <h3 className="text-xs sm:text-lg font-extrabold text-slate-900 dark:text-white mt-0.5 truncate">
+                    {item.name}
+                  </h3>
+                </motion.div>
               ))}
             </div>
+
           </div>
         </section>
 
         {/* ========================================================= */}
         {/* 6. ENTERPRISE CAPSTONE PROJECTS                           */}
         {/* ========================================================= */}
-        <section className="py-12 sm:py-16 bg-white dark:bg-[#0B0F19]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                Practical Portfolio
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">
-                Enterprise Capstone Projects
-              </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
-                Build real, industry-grade GenAI &amp; Agentic projects to showcase to top recruiters.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {capstoneProjects.map((proj) => (
-                <div
-                  key={proj.id}
-                  className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3 flex flex-col justify-between shadow-xs hover:shadow-lg transition-shadow"
-                >
-                  <div>
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 uppercase tracking-wider">
-                      {proj.tag}
-                    </span>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white mt-3">
-                      {proj.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-                      {proj.desc}
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 pt-3 border-t border-slate-200/60 dark:border-slate-800">
-                    <div className="flex flex-wrap gap-1.5">
-                      {proj.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="px-2 py-0.5 rounded text-[10px] font-semibold bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200/50"
-                        >
-                          {t}
-                        </span>
+         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
+                  <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+        
+                    <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
+                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                        PORTFOLIO BUILDERS
+                      </span>
+                      <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        Enterprise <span className="jvm-gradient-text">Capstone Projects</span>
+                      </h2>
+                    </div>
+        
+                    {/* REQUIREMENT 6: ADD SCROLL BAR FOR DISPLAY THIS PROJECT ON MOBILE */}
+                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-8 pb-4 scrollbar-thin scrollbar-thumb-purple-500/50 md:grid md:grid-cols-3">
+                      {capstoneProjects.map((p) => (
+                        <div key={p.id} className="min-w-[260px] sm:min-w-[320px] md:min-w-0 flex-1 snap-center bg-slate-50 dark:bg-slate-900 p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3 flex flex-col justify-between">
+                          <div className="space-y-2">
+                            <span className="px-2.5 py-0.5 rounded-full text-[9px] sm:text-[11px] font-extrabold bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300">
+                              {p.tag}
+                            </span>
+                            <h3 className="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-white leading-snug">
+                              {p.title}
+                            </h3>
+                            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                              {p.desc}
+                            </p>
+                          </div>
+        
+                          <div className="space-y-2 pt-2 border-t border-slate-200/60 dark:border-slate-800">
+                            <div className="flex flex-wrap gap-1">
+                              {p.tech.map((t) => (
+                                <span key={t} className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60">
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+        
+                            <div className="text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span>{p.metrics}</span>
+                            </div>
+                          </div>
+                        </div>
                       ))}
                     </div>
-                    <div className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>{proj.metrics}</span>
-                    </div>
+        
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                </section>
 
+
+        {/* 7. PLACEMENT SUPPORT JOURNEY (FIT CLEANLY IN VIEW)         */}
         {/* ========================================================= */}
-        {/* 7. MENTORS & FACULTY                                      */}
-        {/* ========================================================= */}
-        <section className="py-12 sm:py-16 bg-slate-50/70 dark:bg-[#0F172A]/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                Learn from Architects
+        <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                CAREER DESK
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">
-                Expert Mentors &amp; Faculty
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Dedicated <span className="jvm-gradient-text">100% Placement Support Journey</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {mentors.map((mentor, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-xs"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0 border-2 border-purple-400">
-                      <Image
-                        src={mentor.image}
-                        alt={mentor.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                        {mentor.name}
-                      </h3>
-                      <p className="text-xs font-semibold text-purple-600 dark:text-purple-400">
-                        {mentor.role}
-                      </p>
-                      <span className="text-[11px] text-slate-500 font-medium block mt-0.5">
-                        {mentor.experience} • {mentor.company}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                    {mentor.bio}
-                  </p>
+            {/* REQUIREMENT 7: 2-COLUMN GRID ON MOBILE VIEW FOR CLEAN FIT */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
+
+              <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
+                  01
                 </div>
-              ))}
+                <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">ATS Resume Crafting</h3>
+                <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                  Tailored PySpark &amp; Databricks keywords for ATS filters.
+                </p>
+              </div>
+
+              <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
+                  02
+                </div>
+                <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">1-on-1 Tech Mocks</h3>
+                <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                  Simulated SQL coding &amp; system design architecture rounds.
+                </p>
+              </div>
+
+              <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
+                  03
+                </div>
+                <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">Hiring Referrals</h3>
+                <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                  Direct routing to 250+ partner MNCs in PAN India.
+                </p>
+              </div>
+
+              <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-1.5 sm:space-y-3">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xs sm:text-sm">
+                  04
+                </div>
+                <h3 className="text-xs sm:text-base font-extrabold text-slate-900 dark:text-white leading-tight">Salary Negotiation</h3>
+                <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                  Guidance to negotiate maximum compensation packages.
+                </p>
+              </div>
+
             </div>
+
           </div>
         </section>
 
-        {/* ========================================================= */}
-        {/* 8. STUDENT TESTIMONIALS                                   */}
-        {/* ========================================================= */}
-        <section className="py-12 sm:py-16 bg-white dark:bg-[#0B0F19]">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-              Student Success Stories
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1 mb-8">
-              What Our Graduates Say
-            </h2>
 
-            <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md relative overflow-hidden">
-              <div className="flex items-center justify-center gap-1 text-amber-400 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400" />
+        {/* ========================================================= */}
+        {/* 8. STUDENT SUCCESS STORIES (AUTOMATIC TIMED ROTATION)     */}
+        {/* ========================================================= */}
+        <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
+          <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                REAL TRANSCRIPTIONS
+              </span>
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Student <span className="jvm-gradient-text">Success Stories</span>
+              </h2>
+            </div>
+
+            {/* REQUIREMENT 8: AUTOMATIC TIMED SLIDE SWITCHER WITHOUT SCROLLBAR */}
+            <div className="relative">
+              <div className="bg-white dark:bg-slate-900 p-5 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-4 transition-all duration-500">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
+                    {testimonials[activeTestimonialIndex].hike}
+                  </span>
+                  <div className="flex text-amber-400">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                  &quot;{testimonials[activeTestimonialIndex].review}&quot;
+                </p>
+
+                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-purple-200">
+                    <Image src={testimonials[activeTestimonialIndex].avatar} alt={testimonials[activeTestimonialIndex].name} fill className="object-cover" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">{testimonials[activeTestimonialIndex].name}</div>
+                    <div className="text-[11px] sm:text-xs font-semibold text-purple-600 dark:text-purple-400">{testimonials[activeTestimonialIndex].role}</div>
+                    <div className="text-[10px] text-slate-400">{testimonials[activeTestimonialIndex].company}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Indicator Dots */}
+              <div className="flex items-center justify-center gap-2 mt-4">
+                {testimonials.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveTestimonialIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeTestimonialIndex === idx
+                      ? "w-6 jvm-gradient-bg"
+                      : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                      }`}
+                  />
                 ))}
               </div>
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 italic font-medium leading-relaxed max-w-2xl mx-auto">
-                &ldquo;{testimonials[activeTestimonialIndex].review}&rdquo;
-              </p>
-              <div className="mt-6 flex items-center justify-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-400">
-                  <Image
-                    src={testimonials[activeTestimonialIndex].avatar}
-                    alt={testimonials[activeTestimonialIndex].name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                    {testimonials[activeTestimonialIndex].name}
-                  </h4>
-                  <p className="text-xs text-purple-600 font-semibold">
-                    {testimonials[activeTestimonialIndex].role} ({testimonials[activeTestimonialIndex].hike})
-                  </p>
-                </div>
-              </div>
             </div>
+
           </div>
         </section>
+
+     
       </main>
+       {/* Global Lead Enquiry Modal */}
+            <LeadEnquiryModal
+              isOpen={modalOpen}
+              onClose={() => setModalOpen(false)}
+              courseTitle={modalTitle}
+            />
 
       <Footer />
-      <LeadEnquiryModal />
+     
     </div>
   );
 }
