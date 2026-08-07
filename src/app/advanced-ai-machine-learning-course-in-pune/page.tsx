@@ -385,7 +385,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
     return () => clearInterval(timer);
   }, []);
 
-  const openEnrollModal = (title: string) => {
+  const openEnrollModal = (title: string, reason?: string) => {
     setModalTitle(title);
     setModalOpen(true);
   };
@@ -496,13 +496,13 @@ export default function AdvancedAIMachineLearningCoursePage() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3"
                 >
-                  <Link
-                    href="/enroll"
+                  <button
+                    onClick={() => openEnrollModal("Advanced AI & Machine Learning", "Course Inquiry & Admissions")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  </button>
 
                   <button
                     onClick={() => openEnrollModal("Advanced AI Download Syllabus PDF")}

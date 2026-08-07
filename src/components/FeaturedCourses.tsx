@@ -232,12 +232,15 @@ export default function FeaturedCourses() {
                     View Details
                   </Link>
 
-                  <Link
-                    href={`/enroll`}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openEnrollModal(course.title, "Course Inquiry & Admissions");
+                    }}
                     className="w-full jvm-gradient-bg text-center py-2.5 sm:py-3 px-2 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer"
                   >
                     Enroll Now <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </button>
                 </div>
 
               </div>

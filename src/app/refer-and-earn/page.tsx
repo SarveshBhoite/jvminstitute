@@ -531,7 +531,7 @@ export default function ReferAndEarnPage() {
                           onChange={(e) => setCourseInterest(e.target.value)}
                           className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                         >
-                          <option value="Data Engineering">Data Engineering &amp; PySpark (₹2,000 Cash Reward)</option>
+                          <option value="Data Engineering">Data Engineering (₹2,000 Cash Reward)</option>
                           <option value="Data Analytics">Data Analytics &amp; SQL (₹1,000 Cash Reward)</option>
                           <option value="Data Science">Data Science &amp; AI Track (₹1,500 Cash Reward)</option>
                         </select>

@@ -83,13 +83,19 @@ const curriculumModules = [
   }
 ];
 
+// Tools & Technologies Data (Client Master Curriculum)
 const techStack = [
-  { name: "Python", category: "Programming", badge: "Beginner Core", color: "from-blue-500 to-cyan-500" },
-  { name: "Pandas & NumPy", category: "Data Analysis", badge: "Data Wrangling", color: "from-amber-500 to-yellow-600" },
-  { name: "Scikit-Learn", category: "Machine Learning", badge: "ML Library", color: "from-orange-500 to-amber-600" },
+  { name: "Python for AI", category: "Programming", badge: "Core Language", color: "from-blue-500 to-cyan-500" },
+  { name: "Advanced Python (OOP & Modules)", category: "Programming", badge: "OOP & Exception", color: "from-indigo-500 to-blue-600" },
+  { name: "REST APIs & JSON/XML", category: "Data Ingestion", badge: "APIs & Web", color: "from-purple-500 to-indigo-600" },
+  { name: "NumPy & Pandas", category: "Data Analysis", badge: "Data Cleaning", color: "from-amber-500 to-yellow-600" },
   { name: "Matplotlib & Seaborn", category: "Visualization", badge: "Graphics", color: "from-emerald-500 to-teal-600" },
-  { name: "Jupyter & Git", category: "Environment", badge: "Interactive Labs", color: "from-purple-500 to-indigo-600" },
-  { name: "Claude AI", category: "Cloud Services", badge: "Azure/AWS/GCP", color: "from-[#1E2B88] to-indigo-600" }
+  { name: "Scikit-Learn", category: "Machine Learning", badge: "ML Library", color: "from-orange-500 to-amber-600" },
+  { name: "Feature Engineering", category: "Preprocessing", badge: "Data Pipeline", color: "from-cyan-500 to-blue-600" },
+  { name: "Regression & Classification", category: "ML Algorithms", badge: "Supervised ML", color: "from-rose-500 to-pink-600" },
+  { name: "Clustering (K-Means)", category: "ML Algorithms", badge: "Unsupervised ML", color: "from-purple-600 to-violet-700" },
+  { name: "Model Evaluation Metrics", category: "ML Operations", badge: "Cross-Validation", color: "from-teal-500 to-emerald-600" },
+  { name: "Git & GitHub", category: "DevOps", badge: "Version Control", color: "from-slate-800 to-black" }
 ];
 
 const capstoneProjects = [
@@ -639,13 +645,7 @@ export default function BasicAIMLCoursePage() {
                 </div>
               </div>
 
-              {/* Scroll Helper Indicator */}
-              {filteredTech.length > 6 && (
-                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
-                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
-                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
-                </div>
-              )}
+
             </div>
 
           </div>

@@ -836,13 +836,7 @@ export default function DataEngineeringCoursePage() {
                 </div>
               </div>
 
-              {/* Scroll Helper Indicator */}
-              {filteredTech.length > 6 && (
-                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
-                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
-                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
-                </div>
-              )}
+
             </div>
 
           </div>

@@ -193,14 +193,14 @@ export default function HeroSection() {
 
             {/* CTAs Button Group - 3 Action Buttons in JVM Website Theme */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-2 sm:gap-2.5 pt-3">
-              <Link
-                href="/contact-us?reason=Free%20Demo%20Class%20Request"
+              <button
+                onClick={() => openEnrollModal("Data Engineering Course", "Free Demo Class Request")}
                 className="flex-1 sm:flex-initial jvm-gradient-bg text-white font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 group cursor-pointer whitespace-nowrap border border-white/20"
               >
                 <Video className="w-4 h-4 shrink-0 text-white" />
                 <span>Book a Free Demo</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
-              </Link>
+              </button>
 
               <button
                 onClick={() => openEnrollModal("Download Course Brochure")}

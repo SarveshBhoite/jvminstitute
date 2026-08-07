@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
+import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
 import { 
   BookOpen, 
   GraduationCap, 
@@ -339,12 +340,12 @@ export default function Navbar() {
             >
               Syllabus PDF
             </Link>
-            <Link 
-              href="/enroll" 
+            <button 
+              onClick={() => openEnrollModal("Data Engineering Course", "Course Inquiry & Admissions")} 
               className="jvm-gradient-bg text-white px-5 py-2.5 rounded-full text-xs md:text-sm font-bold shadow-md hover:opacity-95 transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" /> Enroll Now
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Right Bar including Theme Toggle & Drawer Button */}
@@ -471,13 +472,15 @@ export default function Navbar() {
               >
                 Brochure PDF
               </Link>
-              <Link 
-                href="/contact-us" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="jvm-gradient-bg text-center py-2.5 px-3 rounded-xl text-sm font-bold text-white shadow-md"
+              <button 
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openEnrollModal("Data Engineering Course", "Course Inquiry & Admissions");
+                }}
+                className="jvm-gradient-bg text-center py-2.5 px-3 rounded-xl text-sm font-bold text-white shadow-md cursor-pointer"
               >
                 Enquire Now
-              </Link>
+              </button>
             </div>
           </div>
         )}

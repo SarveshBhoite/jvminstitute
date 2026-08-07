@@ -355,20 +355,30 @@ const curriculumModules = [
   }
 ];
 
-// Tools & Technologies Data
+// Tools & Technologies Data (Client Master Curriculum)
 const techStack = [
-  { name: "Gen AI", category: "AI & LLMs", badge: "Next-Gen", color: "from-purple-500 to-indigo-600" },
-  { name: "PySpark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
-  { name: "Databricks", category: "Lakehouse", badge: "Enterprise", color: "from-red-500 to-rose-600" },
-  { name: "LangChain", category: "AI Framework", badge: "RAG Stack", color: "from-emerald-500 to-teal-600" },
-  { name: "Vector DBs", category: "AI Storage", badge: "Trending", color: "from-pink-500 to-rose-600" },
-  { name: "Snowflake", category: "Warehouse", badge: "Cloud", color: "from-sky-400 to-blue-600" },
-  { name: "Apache Airflow", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
-  { name: "Apache Kafka", category: "Streaming", badge: "Real-time", color: "from-slate-700 to-slate-900" },
-  { name: "Python", category: "Language", badge: "Essential", color: "from-blue-500 to-cyan-500" },
-  { name: "Advanced SQL", category: "Database", badge: "Must Have", color: "from-[#1E2B88] to-indigo-600" },
-  { name: "Delta Lake", category: "Storage", badge: "ACID Compliant", color: "from-cyan-500 to-blue-600" },
-  { name: "Azure ADF", category: "Cloud ETL", badge: "Enterprise", color: "from-blue-600 to-indigo-700" }
+  // Generative AI & AI Stack
+  { name: "LLMs (ChatGPT, Claude, Gemini)", category: "GenAI & LLMs", badge: "Core AI", color: "from-purple-600 to-pink-600" },
+  { name: "Prompt Engineering & RAG", category: "GenAI Stack", badge: "Essential", color: "from-fuchsia-500 to-purple-600" },
+  { name: "Vector DBs (FAISS, ChromaDB)", category: "AI Storage", badge: "Embeddings", color: "from-pink-500 to-rose-600" },
+  { name: "LangChain & LlamaIndex", category: "AI Framework", badge: "RAG & Agents", color: "from-emerald-500 to-teal-600" },
+  { name: "AI Agents & CrewAI", category: "Autonomous AI", badge: "Multi-Agent", color: "from-indigo-600 to-violet-700" },
+  { name: "MCP & Function Calling", category: "AI Protocols", badge: "Integration", color: "from-violet-500 to-purple-800" },
+
+  // Big Data & Lakehouse
+  { name: "PySpark & Apache Spark", category: "Big Data", badge: "Distributed", color: "from-orange-500 to-amber-600" },
+  { name: "Azure Databricks & Delta Lake", category: "Lakehouse", badge: "ACID Storage", color: "from-red-500 to-rose-600" },
+  { name: "Snowflake & dbt", category: "Warehouse", badge: "Modern Stack", color: "from-sky-400 to-blue-600" },
+
+  // Data Engineering & Ingestion
+  { name: "Python (OOP, Modules, REST APIs)", category: "Programming", badge: "Must Have", color: "from-blue-500 to-cyan-500" },
+  { name: "MySQL, PostgreSQL & Oracle", category: "Databases", badge: "Enterprise", color: "from-blue-700 to-indigo-800" },
+  { name: "Apache Airflow & Kafka", category: "Orchestration & Streaming", badge: "Real-time", color: "from-teal-400 to-slate-900" },
+
+  // Cloud & AI Operations
+  { name: "Azure Data Factory & Synapse", category: "Azure Cloud", badge: "Cloud Pipelines", color: "from-blue-600 to-sky-500" },
+  { name: "GCP BigQuery & Vertex AI", category: "GCP Cloud", badge: "Cloud AI", color: "from-amber-500 to-emerald-600" },
+  { name: "Docker, Git & GitHub Actions", category: "DevOps & MLOps", badge: "CI/CD & Containers", color: "from-slate-800 to-black" }
 ];
 
 // Faculty Profiles
@@ -497,7 +507,7 @@ export default function DataEngineeringWithGenAICoursePage() {
     return () => clearInterval(timer);
   }, []);
 
-  const openEnrollModal = (title: string) => {
+  const openEnrollModal = (title: string, reason?: string) => {
     setModalTitle(title);
     setModalOpen(true);
   };
@@ -608,13 +618,13 @@ export default function DataEngineeringWithGenAICoursePage() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3"
                 >
-                  <Link
-                    href="/enroll"
+                  <button
+                    onClick={() => openEnrollModal("Data Engineering with Gen AI", "Course Inquiry & Admissions")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  </button>
 
                   <button
                     onClick={() => openEnrollModal("Hero Download GenAI Syllabus PDF")}
@@ -1018,13 +1028,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                 </div>
               </div>
 
-              {/* Scroll Helper Indicator */}
-              {filteredTech.length > 6 && (
-                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
-                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
-                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
-                </div>
-              )}
+
             </div>
 
           </div>

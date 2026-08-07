@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, Send, CheckCircle2, User, Mail, Phone, BookOpen, Tag, Sparkles, Check } from "lucide-react";
+import { X, Send, CheckCircle2, ChevronDown, Sparkles, Check } from "lucide-react";
 
 /**
- * Global helper function to trigger the Enrollment Modal from anywhere in the app
+ * Global helper function to trigger the Enrollment & Demo Booking Modal from anywhere in the app
  */
-export function openEnrollModal(courseName?: string) {
+export function openEnrollModal(courseName?: string, reason?: string) {
   if (typeof window !== "undefined") {
     window.dispatchEvent(
-      new CustomEvent("open-enroll-modal", { detail: { courseName } })
+      new CustomEvent("open-enroll-modal", { detail: { courseName, reason } })
     );
   }
 }
@@ -18,67 +18,91 @@ interface LeadEnquiryModalProps {
   isOpen?: boolean;
   onClose?: () => void;
   courseTitle?: string;
+  defaultReason?: string;
 }
 
 export default function LeadEnquiryModal({
   isOpen: externalIsOpen,
   onClose: externalOnClose,
   courseTitle,
+  defaultReason,
 }: LeadEnquiryModalProps = {}) {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // Form State
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [course, setCourse] = useState(courseTitle || "Data Engineering Master Program");
-  const [referralCode, setReferralCode] = useState("");
+  // Form State matching Contact Us page 1:1
+  const [formState, setFormState] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    reason: defaultReason || "Free Demo Class Request",
+    course: courseTitle || "Data Engineering Course",
+    message: ""
+  });
+
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   // Update course state if courseTitle prop changes
   useEffect(() => {
     if (courseTitle) {
-      setCourse(courseTitle);
+      setFormState((prev) => ({ ...prev, course: courseTitle }));
     }
   }, [courseTitle]);
 
-  // Listen to custom event to open modal on "Enroll Now" click
+  // Update defaultReason if changed
+  useEffect(() => {
+    if (defaultReason) {
+      setFormState((prev) => ({ ...prev, reason: defaultReason }));
+    }
+  }, [defaultReason]);
+
+  // Listen to custom event to open modal on any "Enroll Now" or "Book Demo" click
   useEffect(() => {
     const handleOpen = (e: Event) => {
-      const customEvent = e as CustomEvent<{ courseName?: string }>;
-      if (customEvent.detail && customEvent.detail.courseName) {
-        setCourse(customEvent.detail.courseName);
+      const customEvent = e as CustomEvent<{ courseName?: string; reason?: string }>;
+      if (customEvent.detail) {
+        setFormState((prev) => ({
+          ...prev,
+          course: customEvent.detail.courseName || prev.course,
+          reason: customEvent.detail.reason || prev.reason || "Free Demo Class Request",
+        }));
       }
       setSubmitted(false);
       setInternalIsOpen(true);
     };
 
+    window.addEventListener("open-enroll-modal", handleOpen);
     return () => {
       window.removeEventListener("open-enroll-modal", handleOpen);
     };
-  }, [externalIsOpen]);
+  }, []);
 
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     try {
       await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          email,
-          phone,
-          courseSlug: course,
-          source: "ENROLLMENT_MODAL",
-          message: referralCode ? `Referral Code: ${referralCode}` : null,
+          name: formState.fullName,
+          email: formState.email,
+          phone: formState.phone,
+          courseSlug: formState.course,
+          message: `[Reason: ${formState.reason}] ${formState.message}`.trim(),
+          source: "ENROLLMENT_MODAL_POPUP",
         }),
       });
     } catch (err) {
-      console.error("Failed to submit lead to database:", err);
+      console.error("Failed to submit lead:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
     }
-    setSubmitted(true);
   };
 
   const handleClose = () => {
@@ -95,8 +119,8 @@ export default function LeadEnquiryModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3.5 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-7 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
 
         {/* Top Decorative Background Glow */}
         <div className="absolute -top-20 -left-20 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -114,15 +138,15 @@ export default function LeadEnquiryModal({
         {!submitted ? (
           <>
             {/* Top Header */}
-            <div className="space-y-2 text-center mb-6 relative z-10">
+            <div className="space-y-2 text-center mb-5 relative z-10">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-[#7C248C] dark:text-purple-300 text-xs font-extrabold uppercase tracking-wider border border-purple-200/50 dark:border-purple-800/50">
-                <Sparkles className="w-3.5 h-3.5 text-[#E01E6A]" /> Student Enrollment Form
+                <Sparkles className="w-3.5 h-3.5 text-[#E01E6A]" /> Student Inquiry &amp; Enrollment
               </div>
 
               {/* Google Reviews Badge */}
-              <div className="flex items-center justify-center gap-1.5 pt-1">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700">
-                  <span className="font-extrabold text-sm tracking-tight flex items-center">
+              <div className="flex items-center justify-center gap-1.5 pt-0.5">
+                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700">
+                  <span className="font-extrabold text-xs tracking-tight flex items-center">
                     <span className="text-[#4285F4]">G</span>
                     <span className="text-[#EA4335]">o</span>
                     <span className="text-[#FBBC05]">o</span>
@@ -137,114 +161,158 @@ export default function LeadEnquiryModal({
                 </div>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
-                Enroll Now &amp; Reserve Seat
+              <h3 className="text-xl sm:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
+                Book Demo Class &amp; Enroll Now
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-sm mx-auto font-medium">
-                Fill in your details below to get direct admission counseling &amp; syllabus PDF
+                Fill out the form below for live class demos, fee breakdown, and direct 1-on-1 counseling.
               </p>
             </div>
 
-            {/* Form */}
+            {/* Form matching Contact Us fields 1:1 */}
             <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
-              {/* 1. Student Name */}
-              <div>
-                <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" /> Student Full Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Rahul Sharma"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
-                />
+
+              {/* Full Name & Email Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {/* Full Name Input */}
+                <div>
+                  <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "fullName" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                    }`}>
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Rahul Sharma"
+                    value={formState.fullName}
+                    onFocus={() => setFocusedField("fullName")}
+                    onBlur={() => setFocusedField(null)}
+                    onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  />
+                </div>
+
+                {/* Email Address Input */}
+                <div>
+                  <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "email" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                    }`}>
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="rahul@example.com"
+                    value={formState.email}
+                    onFocus={() => setFocusedField("email")}
+                    onBlur={() => setFocusedField(null)}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  />
+                </div>
               </div>
 
-              {/* 2. Mail ID */}
+              {/* Phone Number Input */}
               <div>
-                <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" /> Email Address (Mail ID) <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="rahul.sharma@gmail.com"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
-                />
-              </div>
-
-              {/* 3. Contact No */}
-              <div>
-                <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Contact Number (WhatsApp) <span className="text-red-500">*</span>
+                <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "phone" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                  }`}>
+                  Phone / WhatsApp Number *
                 </label>
                 <input
                   type="tel"
                   required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+91 8446284162"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
+                  placeholder="+91 84462 84162"
+                  value={formState.phone}
+                  onFocus={() => setFocusedField("phone")}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                 />
               </div>
 
-              {/* 4. Course Name */}
-              <div>
-                <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-pink-600 dark:text-pink-400" /> Select Course Name <span className="text-red-500">*</span>
-                </label>
-                <select
-                  value={course}
-                  onChange={(e) => setCourse(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold"
-                >
-                  <option value="Data Engineering Course">Data Engineering Course (PySpark &amp; Databricks)</option>
-                  <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
-                  <option value="Gen AI">Gen AI (ChatGPT, RAG &amp; AI Agents)</option>
-                  <option value="Basic AI &amp; ML">Basic AI &amp; Machine Learning</option>
-                  <option value="Advanced AI &amp; Machine Learning">Advanced AI &amp; Machine Learning</option>
-                  <option value="Claude AI">Claude AI &amp; Multi-Cloud MLOps</option>
-                </select>
+              {/* Reason for Contact & Course Interested In Select Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {/* Reason for Contact Dropdown */}
+                <div className="relative">
+                  <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "reason" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                    }`}>
+                    Reason for Contact *
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={formState.reason}
+                      onFocus={() => setFocusedField("reason")}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={(e) => setFormState({ ...formState, reason: e.target.value })}
+                      className="w-full max-w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer pr-8 truncate"
+                    >
+                      <option value="Free Demo Class Request">1. Book Free Demo Class</option>
+                      <option value="Course Inquiry & Admissions">2. Course Admission &amp; Fees</option>
+                      <option value="Placement Support Inquiry">3. Placement &amp; Placement Drives</option>
+                      <option value="Other Inquiries">4. Other General Inquiry</option>
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Course Interested In Select */}
+                <div className="relative min-w-0">
+                  <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "course" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                    }`}>
+                    Course Interested In *
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={formState.course}
+                      onFocus={() => setFocusedField("course")}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={(e) => setFormState({ ...formState, course: e.target.value })}
+                      className="w-full max-w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer pr-8 truncate"
+                    >
+                      <option value="Data Engineering Course">Data Engineering</option>
+                      <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
+                      <option value="Gen AI">Generative AI</option>
+                      <option value="Basic AI & ML">Basic AI &amp; ML</option>
+                      <option value="Advanced AI & Machine Learning">Advanced AI &amp; ML</option>
+                      <option value="Claude AI">Claude AI</option>
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                  </div>
+                </div>
               </div>
 
-              {/* 5. Referral Code */}
+              {/* Message Textarea */}
               <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
-                    <Tag className="w-3.5 h-3.5 text-amber-500" /> Referral Code
-                  </label>
-                  <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
-                    Optional — Extra ₹1,000 Off
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  value={referralCode}
-                  onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
-                  placeholder="e.g. JVMREF2025"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-mono font-bold tracking-wider uppercase"
+                <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "message" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                  }`}>
+                  Your Message / Questions (Optional)
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="Tell us about your background, career goals, or any specific questions..."
+                  value={formState.message}
+                  onFocus={() => setFocusedField("message")}
+                  onBlur={() => setFocusedField(null)}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none"
                 />
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full jvm-gradient-bg text-white font-extrabold py-4 px-4 rounded-xl text-sm transition-all shadow-xl hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2 cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full jvm-gradient-bg text-white font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all shadow-xl hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-1 cursor-pointer disabled:opacity-50"
               >
-                <Send className="w-4 h-4" /> Submit Enrollment Application
+                <Send className="w-4 h-4" /> {isSubmitting ? "Submitting Request..." : "Submit Inquiry & Book Demo"}
               </button>
             </form>
 
-            <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-semibold relative z-10">
+            <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-semibold relative z-10">
               <span className="flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> 100% Privacy Guaranteed
               </span>
-              <span>Pune Offline &amp; Live Online</span>
+              <span>Baner, Pune Campus &amp; Online</span>
             </div>
           </>
         ) : (
@@ -255,23 +323,19 @@ export default function LeadEnquiryModal({
             </div>
 
             <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white font-heading">
-              Application Received! 🎉
+              Inquiry Submitted Successfully! 🎉
             </h3>
 
             <div className="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-4 text-left text-xs space-y-2 border border-slate-200 dark:border-slate-700">
-              <p><strong className="text-slate-900 dark:text-white">Student Name:</strong> {name}</p>
-              <p><strong className="text-slate-900 dark:text-white">Mail ID:</strong> {email}</p>
-              <p><strong className="text-slate-900 dark:text-white">Contact No:</strong> {phone}</p>
-              <p><strong className="text-slate-900 dark:text-white">Course Name:</strong> {course}</p>
-              {referralCode && (
-                <p className="text-emerald-600 dark:text-emerald-400 font-bold">
-                  <strong>Referral Code:</strong> {referralCode} (Applied!)
-                </p>
-              )}
+              <p><strong className="text-slate-900 dark:text-white">Full Name:</strong> {formState.fullName}</p>
+              <p><strong className="text-slate-900 dark:text-white">Email Address:</strong> {formState.email}</p>
+              <p><strong className="text-slate-900 dark:text-white">Phone / WhatsApp:</strong> {formState.phone}</p>
+              <p><strong className="text-slate-900 dark:text-white">Reason:</strong> {formState.reason}</p>
+              <p><strong className="text-slate-900 dark:text-white">Course Interested:</strong> {formState.course}</p>
             </div>
 
             <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-              Our senior counselor will contact you on <span className="font-bold text-slate-800 dark:text-slate-200">{phone}</span> and email complete syllabus details to <span className="font-bold text-slate-800 dark:text-slate-200">{email}</span>.
+              Our admissions team will reach out to <span className="font-bold text-slate-800 dark:text-slate-200">{formState.phone}</span> with demo class schedule and course details.
             </p>
 
             <button

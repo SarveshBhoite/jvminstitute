@@ -471,7 +471,7 @@ export default function OurCoursesPage() {
                   className="pt-4 border-t border-purple-100 dark:border-slate-800/80 grid grid-cols-3 gap-2 sm:gap-4 max-w-lg"
                 >
                   <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">10K+</div>
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">9K+</div>
                     <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">Learners Mentored</div>
                   </div>
                   <div>
@@ -1348,7 +1348,7 @@ export default function OurCoursesPage() {
                     defaultValue={selectedCourseTitle}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
-                    <option value="Master Data Engineering & PySpark Track">Master Data Engineering & PySpark Track</option>
+                    <option value="Master Data Engineering Track">Master Data Engineering Track</option>
                     <option value="AWS Cloud & DevOps Engineering Certification">AWS Cloud & DevOps Engineering Certification</option>
                     <option value="Advanced SQL, Python & Data Analytics Masterclass">Advanced SQL, Python & Data Analytics Masterclass</option>
                   </select>

@@ -58,7 +58,7 @@ function WordRevealHeading({ text, highlightText }: { text: string; highlightTex
 
 // Contact Information Cards Data
 const contactDetails = [
- 
+
   {
     icon: Phone,
     title: "Call & Helpline",
@@ -73,7 +73,7 @@ const contactDetails = [
     icon: Mail,
     title: "Email Support",
     subtitle: "Inquiries & Corporate Training",
-    details: ["infojvminstitute@gmail.com", ],
+    details: ["infojvminstitute@gmail.com",],
     badge: "24/7 Response",
     color: "from-purple-500 to-indigo-600",
     actionText: "Send Mail",
@@ -189,17 +189,17 @@ export default function ContactUsPage() {
       <Navbar />
 
       <main className="flex-grow ">
-        
+
         {/* ========================================================= */}
         {/* 1. HERO BANNER (ONE VIEWPORT COMPACT PROFESSIONAL LAYOUT) */}
         {/* ========================================================= */}
         <section className="relative bg-gradient-to-r from-[#F5F3FF] via-[#FAFAFC] to-[#F3E8FF] dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#1E1B4B] py-8 sm:py-12 lg:py-14 border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden">
-          
+
           {/* Professional Background Grid & Ambient Glow Meshes */}
           <div className="absolute inset-0 bg-[radial-gradient(#7C3AED15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
           <div className="ambient-glow w-96 h-96 bg-purple-400/20 dark:bg-purple-600/15 top-0 left-10 pointer-events-none" />
           <div className="ambient-glow w-[500px] h-[500px] bg-indigo-400/20 dark:bg-indigo-600/15 bottom-0 right-10 pointer-events-none" />
-          
+
           {/* Dotted Flight Path Illustration Line */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30 dark:opacity-20 z-0" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -213,10 +213,10 @@ export default function ContactUsPage() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
+
               {/* Left Column: Text, Badge, Feature Chips & Breadcrumb (7 Cols for Wider Layout) */}
               <div className="lg:col-span-7 space-y-4 text-left">
-                
+
                 {/* Pill Tag Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -314,7 +314,7 @@ export default function ContactUsPage() {
                     <Users className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-lg font-black text-slate-900 dark:text-white leading-none">10K+</div>
+                    <div className="text-lg font-black text-slate-900 dark:text-white leading-none">9K+</div>
                     <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 mt-0.5">Students Connected</div>
                   </div>
                 </motion.div>
@@ -331,14 +331,14 @@ export default function ContactUsPage() {
         {/* 2. CONTACT INFORMATION & INQUIRY FORM SECTION */}
         {/* ========================================================= */}
         <section id="inquiry-form" className="py-10 md:py-20 relative overflow-hidden">
-          
+
           {/* Background Ambient Decor */}
           <div className="ambient-glow w-[500px] h-[500px] bg-[#1E2B88] dark:bg-[#4F46E5] top-1/4 left-[-10%] opacity-15 pointer-events-none" />
           <div className="ambient-glow w-[450px] h-[450px] bg-[#E01E6A] dark:bg-[#EC4899] bottom-1/4 right-[-10%] opacity-15 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(#80808012_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span
@@ -366,7 +366,7 @@ export default function ContactUsPage() {
 
             {/* Equal 50/50 Grid: Contact Cards (6 cols) + Inquiry Form (6 cols) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-              
+
               {/* Left Column: Contact Cards (6 cols) */}
               <div className="lg:col-span-6 space-y-4 flex flex-col justify-between">
                 {contactDetails.map((card, idx) => {
@@ -503,12 +503,11 @@ export default function ContactUsPage() {
                   <form onSubmit={handleSubmit} className="flex-grow flex flex-col justify-between space-y-4">
                     {/* Full Name & Email Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      
+
                       {/* Full Name Input */}
                       <div className="relative">
-                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                          focusedField === "fullName" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
-                        }`}>
+                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "fullName" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                          }`}>
                           Full Name *
                         </label>
                         <div className="relative">
@@ -527,9 +526,8 @@ export default function ContactUsPage() {
 
                       {/* Email Address Input */}
                       <div className="relative">
-                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                          focusedField === "email" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
-                        }`}>
+                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "email" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                          }`}>
                           Email Address *
                         </label>
                         <div className="relative">
@@ -550,9 +548,8 @@ export default function ContactUsPage() {
 
                     {/* Phone Number Input */}
                     <div className="relative">
-                      <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                        focusedField === "phone" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
-                      }`}>
+                      <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "phone" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                        }`}>
                         Phone / WhatsApp Number *
                       </label>
                       <div className="relative">
@@ -571,12 +568,11 @@ export default function ContactUsPage() {
 
                     {/* Reason for Contact & Course Interested In Select Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      
+
                       {/* Reason for Contact Select Dropdown */}
                       <div className="relative">
-                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                          focusedField === "reason" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
-                        }`}>
+                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "reason" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                          }`}>
                           Reason for Contact *
                         </label>
                         <div className="relative">
@@ -585,25 +581,21 @@ export default function ContactUsPage() {
                             onFocus={() => setFocusedField("reason")}
                             onBlur={() => setFocusedField(null)}
                             onChange={(e) => setFormState({ ...formState, reason: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer"
+                            className="w-full max-w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer pr-8 truncate"
                           >
-                            <option value="Free Demo Class Request">Book a Free Demo Class</option>
-                            <option value="Course Inquiry & Admissions">Course Inquiry & Admissions</option>
-                            <option value="Placement Support Inquiry">Placement Support & Referral Drives</option>
-                            <option value="Fees & Installment Plan Inquiry">Fees & EMI Installment Plans</option>
-                            <option value="Campus Visit Appointment">Campus Visit Appointment</option>
-                            <option value="Corporate Training Inquiry">Corporate Training & Partnerships</option>
-                            <option value="Other Inquiries">Other Inquiries</option>
+                            <option value="Free Demo Class Request">1. Book Free Demo Class</option>
+                            <option value="Course Inquiry & Admissions">2. Course Admission &amp; Fees</option>
+                            <option value="Placement Support Inquiry">3. Placement &amp; Placement Drives</option>
+                            <option value="Other Inquiries">4. Other General Inquiry</option>
                           </select>
-                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                         </div>
                       </div>
 
                       {/* Course Interested In Select */}
-                      <div className="relative">
-                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                          focusedField === "course" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
-                        }`}>
+                      <div className="relative min-w-0">
+                        <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "course" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                          }`}>
                           Course Interested In *
                         </label>
                         <div className="relative">
@@ -612,14 +604,14 @@ export default function ContactUsPage() {
                             onFocus={() => setFocusedField("course")}
                             onBlur={() => setFocusedField(null)}
                             onChange={(e) => setFormState({ ...formState, course: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer"
+                            className="w-full max-w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer pr-8 truncate"
                           >
-                            <option value="Data Engineering Course">Data Engineering Course (PySpark & Databricks)</option>
+                            <option value="Data Engineering Course">Data Engineering</option>
                             <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
-                            <option value="Gen AI">Gen AI (ChatGPT, RAG & AI Agents)</option>
-                            <option value="Basic AI & ML">Basic AI & Machine Learning</option>
-                            <option value="Advanced AI & Machine Learning">Advanced AI & Machine Learning</option>
-                            <option value="Claude AI">Claude AI & Multi-Cloud MLOps</option>
+                            <option value="Gen AI">Generative AI</option>
+                            <option value="Basic AI & ML">Basic AI &amp; ML</option>
+                            <option value="Advanced AI & Machine Learning">Advanced AI &amp; ML</option>
+                            <option value="Claude AI">Claude AI</option>
                           </select>
                           <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                         </div>
@@ -629,9 +621,8 @@ export default function ContactUsPage() {
 
                     {/* Message Textarea - Takes Remaining Height */}
                     <div className="relative flex-grow flex flex-col">
-                      <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                        focusedField === "message" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
-                      }`}>
+                      <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "message" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                        }`}>
                         Your Message / Questions (Optional)
                       </label>
                       <textarea
@@ -686,7 +677,7 @@ export default function ContactUsPage() {
         {/* ========================================================= */}
         <section className="py-20 md:py-28 relative overflow-hidden bg-slate-50/70 dark:bg-[#0B0F19]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span
@@ -714,7 +705,7 @@ export default function ContactUsPage() {
 
             {/* Map Container Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
+
               {/* Left Column: Campus Details & Directions (5 cols) */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -724,7 +715,7 @@ export default function ContactUsPage() {
                 className="lg:col-span-5 space-y-6"
               >
                 <div className="bg-white dark:bg-slate-900/90 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-6">
-                  
+
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
                       <Building className="w-6 h-6" />
@@ -793,7 +784,7 @@ export default function ContactUsPage() {
                     loading="lazy"
                     referrerPolicy="strict-origin-when-cross-origin"
                   />
-                  
+
                   {/* Floating Overlay Badge */}
                   <div className="absolute bottom-4 right-4 bg-slate-900/90 text-white backdrop-blur-md px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 shadow-lg flex items-center gap-2">
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
@@ -813,7 +804,7 @@ export default function ContactUsPage() {
         {/* ========================================================= */}
         <section className="py-20 md:py-28 relative overflow-hidden bg-white dark:bg-[#0E1322]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
+
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <motion.span

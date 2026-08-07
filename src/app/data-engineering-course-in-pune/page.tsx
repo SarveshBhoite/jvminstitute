@@ -329,20 +329,42 @@ const curriculumModules = [
   }
 ];
 
-// Tools & Technologies Data
+// Tools & Technologies Data (Client Master Curriculum)
 const techStack = [
-  { name: "PySpark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
-  { name: "Databricks", category: "Lakehouse", badge: "Enterprise", color: "from-red-500 to-rose-600" },
-  { name: "AWS Redshift", category: "Cloud", badge: "Popular", color: "from-amber-500 to-yellow-600" },
-  { name: "Snowflake", category: "Warehouse", badge: "Trending", color: "from-sky-400 to-blue-600" },
-  { name: "Apache Airflow", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
-  { name: "Apache Kafka", category: "Streaming", badge: "Real-time", color: "from-slate-700 to-slate-900" },
-  { name: "Python", category: "Language", badge: "Essential", color: "from-blue-500 to-cyan-500" },
-  { name: "Advanced SQL", category: "Database", badge: "Must Have", color: "from-[#1E2B88] to-indigo-600" },
-  { name: "AWS S3 & IAM", category: "Cloud Storage", badge: "Cloud Native", color: "from-orange-400 to-amber-500" },
-  { name: "PostgreSQL", category: "Database", badge: "Relational", color: "from-blue-700 to-indigo-800" },
-  { name: "Delta Lake", category: "Storage", badge: "ACID Compliant", color: "from-cyan-500 to-blue-600" },
-  { name: "Docker", category: "DevOps", badge: "Containers", color: "from-blue-600 to-indigo-700" }
+  // Database Technologies
+  { name: "MySQL & SQL", category: "Database", badge: "Core SQL", color: "from-[#1E2B88] to-indigo-600" },
+  { name: "PostgreSQL & Oracle", category: "Database", badge: "Enterprise DB", color: "from-blue-700 to-indigo-800" },
+  { name: "Snowflake", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
+  
+  // Programming & ETL
+  { name: "Python (Advanced & OOP)", category: "Programming", badge: "Essential", color: "from-blue-500 to-cyan-500" },
+  { name: "REST APIs & JSON/XML", category: "Data Ingestion", badge: "APIs", color: "from-purple-500 to-indigo-600" },
+  
+  // Big Data & Lakehouse
+  { name: "PySpark & Apache Spark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
+  { name: "Apache Hadoop & HDFS", category: "Big Data", badge: "Distributed", color: "from-yellow-600 to-amber-700" },
+  { name: "Delta Lake & Lakehouse", category: "Storage", badge: "ACID Transactions", color: "from-cyan-500 to-blue-600" },
+  { name: "dbt (Data Build Tool)", category: "Transformation", badge: "Trending", color: "from-orange-600 to-red-600" },
+
+  // Workflow & Streaming
+  { name: "Apache Airflow (DAGs)", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
+  { name: "Apache Kafka", category: "Streaming", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+
+  // Azure Cloud Data Stack
+  { name: "Azure Data Factory (ADF)", category: "Azure Cloud", badge: "Cloud ETL", color: "from-blue-600 to-sky-500" },
+  { name: "Azure Databricks", category: "Azure Cloud", badge: "Enterprise", color: "from-red-500 to-rose-600" },
+  { name: "Azure Synapse & Storage", category: "Azure Cloud", badge: "Analytics", color: "from-indigo-500 to-blue-600" },
+  { name: "Azure Key Vault & DevOps", category: "Azure Cloud", badge: "Security & CI/CD", color: "from-cyan-600 to-teal-700" },
+
+  // GCP Cloud Data Stack
+  { name: "GCP BigQuery & Storage", category: "GCP Cloud", badge: "Serverless DWH", color: "from-blue-500 to-amber-500" },
+  { name: "GCP Dataproc & Dataflow", category: "GCP Cloud", badge: "Managed Spark", color: "from-emerald-500 to-teal-600" },
+  { name: "GCP Cloud Composer & Pub/Sub", category: "GCP Cloud", badge: "Cloud Airflow", color: "from-violet-600 to-purple-700" },
+
+  // DevOps & Analytics
+  { name: "Git, GitHub & GitHub Actions", category: "DevOps", badge: "Version Control", color: "from-slate-800 to-black" },
+  { name: "Docker & CI/CD Pipelines", category: "DevOps", badge: "Containers", color: "from-blue-600 to-indigo-700" },
+  { name: "Power BI & Data Modeling", category: "BI & Analytics", badge: "Visualization", color: "from-amber-500 to-yellow-600" }
 ];
 
 // Faculty Profiles
@@ -471,7 +493,7 @@ export default function DataEngineeringCoursePage() {
     return () => clearInterval(timer);
   }, []);
 
-  const openEnrollModal = (title: string) => {
+  const openEnrollModal = (title: string, reason?: string) => {
     setModalTitle(title);
     setModalOpen(true);
   };
@@ -582,13 +604,13 @@ export default function DataEngineeringCoursePage() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3"
                 >
-                  <Link
-                    href="/enroll"
+                  <button
+                    onClick={() => openEnrollModal("Data Engineering Course", "Course Inquiry & Admissions")}
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  </button>
 
                   <button
                     onClick={() => openEnrollModal("Hero Download Syllabus PDF")}
@@ -993,13 +1015,7 @@ export default function DataEngineeringCoursePage() {
                 </div>
               </div>
 
-              {/* Scroll Helper Indicator */}
-              {filteredTech.length > 6 && (
-                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
-                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
-                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
-                </div>
-              )}
+
             </div>
 
           </div>

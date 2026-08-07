@@ -332,7 +332,7 @@ export default function NewFeaturesSpotlight() {
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>Non-IT to IT salary hikes up to 150%</span>
+                      <span>Non-IT to IT salary hikes up to 120%</span>
                     </li>
                   </ul>
                 </div>

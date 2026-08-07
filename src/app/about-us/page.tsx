@@ -317,8 +317,8 @@ export default function AboutUsPage() {
     },
     {
       year: "2021",
-      title: "Launch of Data Engineering Track",
-      description: "JVM Institute was established in Pune with the mission of providing practical, industry-oriented IT training delivered by experienced technology professionals."
+      title: "Data Engineering Program",
+      description: "Launched our flagship Data Engineering program covering SQL, Python, PySpark, Apache Spark, Databricks, ETL development, and cloud data technologies."
     },
     {
       year: "2024",

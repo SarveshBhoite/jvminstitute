@@ -84,13 +84,28 @@ const curriculumModules = [
   }
 ];
 
+// Tools & Technologies Data (Client Master Curriculum)
 const techStack = [
-  { name: "Claude 3.5 Sonnet", category: "Anthropic LLM", badge: "Flagship", color: "from-amber-500 to-yellow-600" },
-  { name: "MCP Protocol", category: "Model Context", badge: "Architecture", color: "from-purple-500 to-indigo-600" },
-  { name: "Prompt Engineering", category: "Prompting", badge: "Advanced", color: "from-emerald-500 to-teal-600" },
-  { name: "RAG & Vector DBs", category: "AI Storage", badge: "Enterprise RAG", color: "from-pink-500 to-rose-600" },
-  { name: "Claude Code", category: "AI Coding", badge: "Dev Productivity", color: "from-sky-400 to-blue-600" },
-  { name: "Python & SQL", category: "Languages", badge: "Automation", color: "from-blue-500 to-cyan-500" }
+  // Claude AI & Generative AI Core
+  { name: "Claude 3.5 Sonnet & Anthropic API", category: "Claude AI", badge: "Flagship AI", color: "from-amber-600 to-orange-600" },
+  { name: "MCP (Model Context Protocol)", category: "Claude Architecture", badge: "Context Protocol", color: "from-purple-600 to-indigo-600" },
+  { name: "Prompt Engineering & Claude Code", category: "Prompting", badge: "Advanced Tuning", color: "from-emerald-500 to-teal-600" },
+  
+  // RAG & Frameworks
+  { name: "Retrieval-Augmented Generation (RAG)", category: "RAG Systems", badge: "Enterprise RAG", color: "from-fuchsia-500 to-purple-600" },
+  { name: "Vector DBs (FAISS, ChromaDB)", category: "AI Storage", badge: "Vector Search", color: "from-pink-500 to-rose-600" },
+  { name: "LangChain & LlamaIndex", category: "AI Frameworks", badge: "Agents & Workflows", color: "from-teal-500 to-cyan-600" },
+  { name: "AI Agents & CrewAI", category: "Autonomous AI", badge: "Multi-Agent", color: "from-indigo-600 to-violet-700" },
+
+  // Programming & Web Integrations
+  { name: "Python (Advanced & OOP)", category: "Programming", badge: "Core Language", color: "from-blue-500 to-cyan-500" },
+  { name: "REST APIs, JSON & XML", category: "Web Services", badge: "Data Exchange", color: "from-purple-500 to-indigo-600" },
+  { name: "Function Calling & Automation", category: "AI Integration", badge: "APIs", color: "from-violet-500 to-purple-800" },
+
+  // Cloud & DevOps MLOps
+  { name: "Vertex AI (GCP) & Azure Cloud", category: "Cloud AI", badge: "Multi-Cloud", color: "from-blue-600 to-amber-500" },
+  { name: "Azure Key Vault & Monitor", category: "Cloud Security", badge: "Observability", color: "from-cyan-600 to-teal-700" },
+  { name: "Git, GitHub Actions & Docker", category: "DevOps & MLOps", badge: "CI/CD & Containers", color: "from-slate-800 to-black" }
 ];
 
 const capstoneProjects = [
@@ -640,13 +655,7 @@ export default function CloudAICoursePage() {
                 </div>
               </div>
 
-              {/* Scroll Helper Indicator */}
-              {filteredTech.length > 6 && (
-                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
-                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
-                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
-                </div>
-              )}
+
             </div>
 
           </div>
