@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import LeadEnquiryModal, { openEnrollModal } from "@/components/LeadEnquiryModal";
 import ClaudeIcon from "@/components/icons/ClaudeIcon";
 import DataEngineeringIcon from "@/components/icons/DataEngineeringIcon";
@@ -139,6 +140,8 @@ const coursesData = [
 
 
 export default function FeaturedCourses() {
+  const router = useRouter();
+
   return (
     <section className="py-12 sm:py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-slate-100/90 via-purple-50/40 to-slate-100/90 dark:from-[#0B0F19] dark:via-[#131B2E] dark:to-[#0B0F19] transition-colors duration-500 border-y border-purple-100/60 dark:border-purple-900/30">
 
@@ -170,7 +173,8 @@ export default function FeaturedCourses() {
             return (
               <div
                 key={course.id}
-                className={`relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-5 sm:p-7 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${course.isTopRanked
+                onClick={() => router.push(`/${course.slug}`)}
+                className={`relative group bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl p-5 sm:p-7 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 cursor-pointer ${course.isTopRanked
                   ? "border-2 border-[#1E2B88] dark:border-purple-500 shadow-2xl shadow-purple-900/20 dark:shadow-purple-950/50 ring-2 sm:ring-4 ring-purple-100 dark:ring-purple-950/40"
                   : "border border-slate-200/90 dark:border-slate-800 shadow-md"
                   } ${course.glowClass}`}
@@ -186,12 +190,14 @@ export default function FeaturedCourses() {
                 <div className="space-y-4 sm:space-y-5 pt-2">
                   {/* Icon & Title */}
                   <div className="flex items-center gap-3.5 sm:gap-4">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 border border-purple-100 dark:border-slate-700 flex items-center justify-center text-[#1E2B88] dark:text-purple-300 shrink-0">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 border border-purple-100 dark:border-slate-700 flex items-center justify-center text-[#1E2B88] dark:text-purple-300 shrink-0 group-hover:scale-105 transition-transform">
                       <IconComponent className="w-6 h-6 sm:w-7 sm:h-7" />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold font-heading text-slate-900 dark:text-white leading-snug">
-                        {course.title}
+                      <h3 className="text-base sm:text-lg font-bold font-heading text-slate-900 dark:text-white leading-snug group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                        <Link href={`/${course.slug}`} onClick={(e) => e.stopPropagation()}>
+                          {course.title}
+                        </Link>
                       </h3>
                       <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 flex-wrap">
                         <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-slate-400" /> {course.duration}</span>
@@ -223,11 +229,11 @@ export default function FeaturedCourses() {
                     href={`/${course.slug}`}
                     className="w-full text-center py-2.5 sm:py-3 px-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center gap-1"
                   >
-                    View Syllabus
+                    View Details
                   </Link>
 
                   <Link
-                    href="/enroll"
+                    href={`/${course.slug}`}
                     className="w-full jvm-gradient-bg text-center py-2.5 sm:py-3 px-2 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer"
                   >
                     Enroll Now <ArrowRight className="w-3.5 h-3.5" />

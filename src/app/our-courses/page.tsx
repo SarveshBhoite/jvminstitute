@@ -451,7 +451,11 @@ export default function OurCoursesPage() {
                   </a>
 
                   <button
-                    onClick={() => openCourseModal("Free Career Counseling")}
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        window.location.href = "tel:+918446284162";
+                      }
+                    }}
                     className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-sm shadow-md hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-purple-300 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <PhoneCall className="w-4 h-4 text-purple-600 dark:text-purple-400" />
@@ -577,7 +581,7 @@ export default function OurCoursesPage() {
 
                       {/* Course Image Container (6 cols) */}
                       <div className={`lg:col-span-6 relative ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
-                        <div className="relative h-[280px] sm:h-[360px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
+                        <Link href={course.url} className="block relative h-[280px] sm:h-[360px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 cursor-pointer">
                           <Image
                             src={course.image}
                             alt={course.title}
@@ -598,7 +602,7 @@ export default function OurCoursesPage() {
                               {course.duration}
                             </span>
                           </div>
-                        </div>
+                        </Link>
                       </div>
 
                       {/* Course Information Container (6 cols) */}
@@ -606,7 +610,9 @@ export default function OurCoursesPage() {
 
                         <div className="space-y-2">
                           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-tight">
-                            {course.title}
+                            <Link href={course.url}>
+                              {course.title}
+                            </Link>
                           </h3>
 
                           <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">

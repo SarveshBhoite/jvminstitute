@@ -948,53 +948,71 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         {/* 5. TOOLS & TECHNOLOGIES STACK SECTION                     */}
         {/* ========================================================= */}
-         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
-                  <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-        
-                    <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
-                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
-                        ENTERPRISE TECH ECOSYSTEM
+        <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                ENTERPRISE TECH ECOSYSTEM
+              </span>
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Tools &amp; Technologies <span className="jvm-gradient-text">You Will Master</span>
+              </h2>
+            </div>
+
+            {/* Category Filter Chips */}
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-10">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
+                    ? "jvm-gradient-bg text-white shadow-xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* SCROLLABLE TECH STACK CONTAINER SHOWING MINIMUM 6 TOOLS VISIBLE */}
+            <div className="relative">
+              <div className="max-h-[230px] sm:max-h-[290px] overflow-y-auto pr-1.5 scrollbar-thin scrollbar-thumb-purple-500/60 scrollbar-track-slate-100 dark:scrollbar-track-slate-800/50 rounded-2xl p-1">
+                <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
+                  {filteredTech.map((item) => (
+                    <motion.div
+                      key={item.name}
+                      whileHover={{ scale: 1.03 }}
+                      className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs text-center sm:text-left overflow-hidden"
+                    >
+                      <span className="text-[9px] sm:text-xs font-bold text-purple-600 dark:text-purple-400 block truncate">
+                        {item.category}
                       </span>
-                      <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                        Tools &amp; Technologies <span className="jvm-gradient-text">You Will Master</span>
-                      </h2>
-                    </div>
-        
-                    {/* Category Filter Chips */}
-                    <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-10">
-                      {categories.map((cat) => (
-                        <button
-                          key={cat}
-                          onClick={() => setSelectedCategory(cat)}
-                          className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
-                            ? "jvm-gradient-bg text-white shadow-xs"
-                            : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                            }`}
-                        >
-                          {cat}
-                        </button>
-                      ))}
-                    </div>
-        
-                    {/* REQUIREMENT 5: MAKE TECH STACK COMPACT/SMALL ON MOBILE VIEW (3 Cols) */}
-                    <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
-                      {filteredTech.map((item) => (
-                        <motion.div
-                          key={item.name}
-                          whileHover={{ scale: 1.03 }}
-                          className="p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs text-center sm:text-left overflow-hidden"
-                        >
-                          <span className="text-[9px] sm:text-xs font-bold text-purple-600 dark:text-purple-400 block truncate">{item.category}</span>
-        
-                          <h3 className="text-xs sm:text-lg font-extrabold text-slate-900 dark:text-white mt-0.5 truncate">
-                            {item.name}
-                          </h3>
-                        </motion.div>
-                      ))}
-                    </div>
-        
-                  </div>
-                </section>
+                      <h3 className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white mt-0.5 truncate">
+                        {item.name}
+                      </h3>
+                      {item.badge && (
+                        <span className="mt-1 inline-block text-[8px] sm:text-[10px] font-semibold text-slate-500 dark:text-slate-400 truncate">
+                          {item.badge}
+                        </span>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Scroll Helper Indicator */}
+              {filteredTech.length > 6 && (
+                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
+                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
+                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
+                </div>
+              )}
+            </div>
+
+          </div>
+        </section>
 
         {/* ========================================================= */}
         {/* 6. HANDS-ON CAPSTONE PROJECTS SHOWCASE                    */}
@@ -1125,7 +1143,6 @@ export default function DataEngineeringWithGenAICoursePage() {
                       Student <span className="jvm-gradient-text">Success Stories</span>
                     </h2>
                   </div>
-      
                   {/* REQUIREMENT 8: AUTOMATIC TIMED SLIDE SWITCHER WITHOUT SCROLLBAR */}
                   <div className="relative">
                     <div className="bg-white dark:bg-slate-900 p-5 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-4 transition-all duration-500">
@@ -1139,11 +1156,11 @@ export default function DataEngineeringWithGenAICoursePage() {
                           ))}
                         </div>
                       </div>
-      
+
                       <p className="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed italic">
                         &quot;{testimonials[activeTestimonialIndex].review}&quot;
                       </p>
-      
+
                       <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
                         <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-purple-200">
                           <Image src={testimonials[activeTestimonialIndex].avatar} alt={testimonials[activeTestimonialIndex].name} fill className="object-cover" />
@@ -1155,7 +1172,7 @@ export default function DataEngineeringWithGenAICoursePage() {
                         </div>
                       </div>
                     </div>
-      
+
                     {/* Indicator Dots */}
                     <div className="flex items-center justify-center gap-2 mt-4">
                       {testimonials.map((_, idx) => (
@@ -1170,9 +1187,47 @@ export default function DataEngineeringWithGenAICoursePage() {
                       ))}
                     </div>
                   </div>
-      
+
                 </div>
               </section>
+
+        {/* ========================================================= */}
+        {/* 10. FINAL BOTTOM CTA BANNER SECTION                        */}
+        {/* ========================================================= */}
+        <section className="py-12 sm:py-20 bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white relative overflow-hidden border-t border-purple-500/30">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 relative z-10">
+
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Ready to Master Data Engineering &amp; AI in Pune?
+            </h2>
+
+            <p className="text-xs sm:text-base text-purple-200 max-w-2xl mx-auto leading-relaxed">
+              Limited seats per batch to ensure personalized 1:1 code reviews and direct placement assistance. Reserve your seat today.
+            </p>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={() => openEnrollModal("Bottom Final CTA Enrollment")}
+                className="w-full sm:w-auto px-7 py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-xl hover:scale-[1.02] transition-transform cursor-pointer"
+              >
+                Enroll Now in Upcoming Batch
+              </button>
+
+              <button
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.location.href = "tel:+918446284162";
+                  }
+                }}
+                className="w-full sm:w-auto px-7 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold text-xs sm:text-sm hover:bg-white/20 transition-colors cursor-pointer flex items-center justify-center gap-2"
+              >
+                <PhoneCall className="w-4 h-4 text-purple-300" />
+                <span>Talk to Admission Counselor</span>
+              </button>
+            </div>
+
+          </div>
+        </section>
 
       </main>
         {/* Enrollment Lead Enquiry Modal */}
