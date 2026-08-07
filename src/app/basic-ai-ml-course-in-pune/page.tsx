@@ -135,14 +135,23 @@ const capstoneProjects = [
   }
 ];
 
+// Success Testimonials (Real Placed Students)
 const testimonials = [
   {
-    name: "Aakash Patil",
-    role: "Junior Data Analyst",
-    hike: "90% Salary Hike",
-    review: "As a complete beginner, this course built my foundation in Python, Statistics, and ML step-by-step. I cleared my first Data Analyst interview in Pune!",
-    avatar: "/students2.jpeg",
-    company: "Mid-Tier Tech Firm"
+    name: "Priya",
+    role: "Senior Data Engineer",
+    company: "Cymetrix",
+    hike: "11.54 LPA (Non-IT Transition)",
+    review: "Coming from a non-IT background, I was unsure about switching careers into data & tech. JVM Institute made the transition smooth with their step-by-step training approach. Their placement assistance and mock interviews were incredibly helpful.",
+    avatar: "/placements/placement_1_priya.png"
+  },
+  {
+    name: "Shweta",
+    role: "Software Engineer",
+    company: "Persistent",
+    hike: "12.5 LPA Package",
+    review: "After a career break, I wanted to restart my professional journey in a growing field. JVM Institute gave me the confidence and skills needed to enter the IT industry. Today, I am working successfully at Persistent.",
+    avatar: "/placements/placement_2_shweta.png"
   }
 ];
 

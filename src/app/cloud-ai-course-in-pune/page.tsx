@@ -136,14 +136,23 @@ const capstoneProjects = [
   }
 ];
 
+// Success Testimonials (Real Placed Students)
 const testimonials = [
   {
-    name: "Sneha Jadhav",
-    role: "Cloude AI Engineer",
-    hike: "115% Salary Hike",
-    review: "Learning AWS SageMaker, Azure OpenAI, and GCP Vertex AI together gave me an unbeatable multi-cloud advantage in my interviews!",
-    avatar: "/students1.jpeg",
-    company: "Tier-1 Cloud Provider"
+    name: "Satyajeet",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.20 LPA Package",
+    review: "JVM Institute helped me master industry-relevant technologies such as SQL, Python, AWS, and PySpark. The practical assignments and placement support made a huge difference.",
+    avatar: "/placements/placement_7_satyajeet.png"
+  },
+  {
+    name: "Ankit",
+    role: "Senior Consultant",
+    company: "Mindcraft",
+    hike: "12.75 LPA Package",
+    review: "My experience with JVM Institute was fantastic. The trainers not only taught technical concepts but also guided us on resume building and interview preparation for Cloud and Data domains.",
+    avatar: "/placements/placement_10_ankit.png"
   }
 ];
 

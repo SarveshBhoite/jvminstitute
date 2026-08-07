@@ -135,22 +135,31 @@ const mentors = [
   }
 ];
 
+// Success Testimonials (Real Placed Students)
 const testimonials = [
   {
-    name: "Rahul Verma",
-    role: "AI Application Developer",
-    hike: "110% Salary Hike",
-    review: "The hands-on RAG and CrewAI agentic workflow modules were top tier. I landed an AI Engineer role in Pune within a month of completing the course!",
-    avatar: "/students1.jpeg",
-    company: "Tier-1 Product Tech"
+    name: "Satyajeet",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.20 LPA Package",
+    review: "After several years preparing for competitive exams, JVM Institute helped me transform my career into AI & Cloud Tech. The hands-on project preparation and placement mentorship made my transition seamless.",
+    avatar: "/placements/placement_7_satyajeet.png"
   },
   {
-    name: "Sneha Kulkarni",
-    role: "GenAI Solutions Architect",
-    hike: "125% Salary Hike",
-    review: "Building custom document RAG systems with LangChain, ChromaDB, and MCP tool calling gave me real enterprise skills that set me apart in technical interviews.",
-    avatar: "/students2.jpeg",
-    company: "Global MNC Hub"
+    name: "Rohini",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.66 LPA Package",
+    review: "Coming from a non-IT background, JVM Institute provided me with structured guidance, hands-on LLM & Python fundamentals, and real project exposure. The mock interviews and placement support were incredible.",
+    avatar: "/placements/placement_8_rohini.jpeg"
+  },
+  {
+    name: "Ajinkya",
+    role: "Senior Data & AI Engineer",
+    company: "LTI Mindtree",
+    hike: "16 LPA Package",
+    review: "I joined JVM Institute to master advanced data architectures and intelligent AI pipelines. The curriculum was 100% practical, and the mentors helped me land a 16 LPA package at LTI Mindtree.",
+    avatar: "/placements/placement_5_ajinkya.jpeg"
   }
 ];
 

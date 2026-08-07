@@ -225,31 +225,31 @@ const mentors = [
   }
 ];
 
-// Student Success Stories
+// Success Testimonials (Real Placed Students)
 const testimonials = [
   {
-    name: "Sarvesh Bhoite",
-    role: "Senior Data Engineer at MNC",
-    hike: "120% Salary Hike",
-    review: "The hands-on PySpark labs, Databricks Delta Lake projects, and real AWS ETL pipeline deployment at JVM Institute completely transformed my confidence. Jayesh Sir's guidance helped me clear top MNC technical rounds!",
-    avatar: "/students1.jpeg",
-    company: "Fortune 500 Tech Hub"
+    name: "Satyajeet",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.20 LPA Package",
+    review: "After spending years preparing for government exams, I wanted a career with growth. JVM Institute helped me master industry technologies like SQL, Python, AWS, and PySpark. I successfully switched to IT and started my Data & AI career.",
+    avatar: "/placements/placement_7_satyajeet.png"
   },
   {
-    name: "Aniket Deshmukh",
-    role: "Cloud Data Architect",
-    hike: "95% Salary Hike",
-    review: "Transitioning from traditional SQL to modern PySpark, Airflow DAGs, and AWS Redshift was seamless thanks to the structured curriculum and 1:1 mentor doubt sessions.",
-    avatar: "/students2.jpeg",
-    company: "Global IT Services Leader"
+    name: "Prathamesh",
+    role: "Data Engineer",
+    company: "Zorba Consulting",
+    hike: "13 LPA Package",
+    review: "My journey with JVM Institute has been truly life-changing. The training program provided in-depth knowledge of SQL, Python, PySpark, AWS, Azure, and real-time projects. The mock interviews helped me secure multiple offers including Zorba Consulting (13 LPA), Datametica (12.2 LPA), and IPG Mediabrands (12 LPA).",
+    avatar: "/placements/placement_3_prathamesh.png"
   },
   {
-    name: "Pooja Patil",
-    role: "Lead Analytics Consultant",
-    hike: "85% Salary Hike",
-    review: "JVM Institute's 25+ real enterprise projects and mock technical interview preparation gave me the exact hands-on edge required to land a senior role.",
-    avatar: "/place1.png",
-    company: "Leading Product Firm"
+    name: "Rohini",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.66 LPA Package",
+    review: "Coming from a non-IT background, JVM Institute provided me with structured guidance, hands-on Python & AWS building blocks, and real-time project experience. The mentorship enabled me to secure a Lead position at Persistent.",
+    avatar: "/placements/placement_8_rohini.jpeg"
   }
 ];
 

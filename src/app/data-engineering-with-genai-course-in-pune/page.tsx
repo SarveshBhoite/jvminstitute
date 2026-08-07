@@ -421,31 +421,47 @@ const capstoneProjects = [
   }
 ];
 
-// Success Testimonials
+// Success Testimonials (Real Placed Students)
 const testimonials = [
   {
-    name: "Sarvesh Bhoite",
-    role: "Senior Data & AI Engineer",
-    hike: "140% Salary Hike",
-    review: "The GenAI data pipeline modules alongside PySpark and Databricks gave me a massive edge in interviews. I cleared a Senior Data Engineer role at a top AI firm effortlessly!",
-    avatar: "/students1.jpeg",
-    company: "Tier-1 AI Enterprise"
+    name: "Prathamesh",
+    role: "Data Engineer",
+    company: "Zorba Consulting",
+    hike: "13 LPA Package",
+    review: "My journey with JVM Institute has been truly life-changing. The training program provided in-depth knowledge of SQL, Python, PySpark, AWS, Azure, and real-time Data Engineering projects. The mock interviews and placement support helped me secure multiple offers including Zorba Consulting (13 LPA), Datametica (12.2 LPA), and IPG Mediabrands (12 LPA).",
+    avatar: "/placements/placement_3_prathamesh.png"
   },
   {
-    name: "Aniket Deshmukh",
-    role: "Big Data & GenAI Consultant",
-    hike: "120% Salary Hike",
-    review: "JVM Institute's Data Engineering with GenAI course is 100% practical. Learning Vector DBs, PySpark performance tuning, and Airflow DAGs made my profile stand out.",
-    avatar: "/students2.jpeg",
-    company: "Global Tech MNC"
+    name: "Ajinkya",
+    role: "Senior Data Engineer",
+    company: "LTI Mindtree",
+    hike: "16 LPA Package",
+    review: "I joined JVM Institute to upgrade my technical skills in PySpark, Databricks, SQL, and Cloud Data Engineering. The trainers were knowledgeable, supportive, and always encouraged us to learn beyond the classroom. The placement support and interview guidance were outstanding.",
+    avatar: "/placements/placement_5_ajinkya.jpeg"
   },
   {
-    name: "Pooja Patil",
-    role: "Cloud Data Architect",
-    hike: "100% Salary Hike",
-    review: "From SQL window functions to Databricks and GenAI RAG pipelines, everything was taught with deep enterprise rigor. The placement team arranged 5 interviews in 3 weeks!",
-    avatar: "/place1.png",
-    company: "Leading Product Firm"
+    name: "Rohini",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.66 LPA Package",
+    review: "Coming from a non-IT background, JVM Institute provided me with the right guidance, structured learning path, and practical exposure through real-time projects. The mock interviews, resume preparation, and mentorship enabled me to secure a Lead position at Persistent.",
+    avatar: "/placements/placement_8_rohini.jpeg"
+  },
+  {
+    name: "Satyajeet",
+    role: "Lead Software Engineer",
+    company: "Persistent",
+    hike: "13.20 LPA Package",
+    review: "After preparing for government exams, I wanted a career with growth. JVM Institute helped me master industry technologies like SQL, Python, AWS, and PySpark. I successfully switched to IT and started my Data Engineering career.",
+    avatar: "/placements/placement_7_satyajeet.png"
+  },
+  {
+    name: "Abhishek",
+    role: "Data Engineer",
+    company: "Datametica",
+    hike: "12 LPA Package",
+    review: "I joined JVM Institute to upgrade my technical skills and improve my career prospects. The curriculum covered everything from SQL and Python to Cloud and Big Data technologies. The placement support and interview guidance were outstanding.",
+    avatar: "/placements/placement_4_abhishek.jpeg"
   }
 ];
 
