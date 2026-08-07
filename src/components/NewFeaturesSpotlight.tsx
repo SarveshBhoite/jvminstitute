@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
   Gift, 
@@ -16,6 +16,45 @@ import {
 
 export default function NewFeaturesSpotlight() {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
+  const [placementStats, setPlacementStats] = useState({ highest: "22.5 LPA", avg: "12.1 LPA" });
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch("/api/placements");
+        const data = await res.json();
+        if (data.success && data.placements && data.placements.length > 0) {
+          let maxPkg = 0;
+          let sumPkg = 0;
+          let count = 0;
+
+          data.placements.forEach((p: any) => {
+            const str = String(p.package || p.pkg || "");
+            const match = str.match(/[\d.]+/);
+            if (match) {
+              const num = parseFloat(match[0]);
+              if (num > 0) {
+                if (num > maxPkg) maxPkg = num;
+                sumPkg += num;
+                count++;
+              }
+            }
+          });
+
+          if (count > 0) {
+            const avg = sumPkg / count;
+            setPlacementStats({
+              highest: `${maxPkg} LPA`,
+              avg: `${avg.toFixed(1)} LPA`
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch placement stats for spotlight:", err);
+      }
+    }
+    fetchStats();
+  }, []);
 
   const toggleCard = (id: number) => {
     setFlippedCard((prev) => (prev === id ? null : id));
@@ -325,14 +364,14 @@ export default function NewFeaturesSpotlight() {
                     1:1 Mock technical interviews, resume building, and direct interview call scheduling with top MNCs!
                   </p>
 
-                  <div className="space-y-2.5 pt-2 border-t border-white/20">
+                    <div className="space-y-2.5 pt-2 border-t border-white/20">
                     <div className="flex items-center justify-between text-xs font-extrabold">
                       <span>Highest Package:</span>
-                      <span className="bg-emerald-400 text-slate-950 px-2.5 py-0.5 rounded-md">12.0 LPA</span>
+                      <span className="bg-emerald-400 text-slate-950 px-2.5 py-0.5 rounded-md">{placementStats.highest}</span>
                     </div>
                     <div className="flex items-center justify-between text-xs font-extrabold">
                       <span>Average Package:</span>
-                      <span className="bg-emerald-400 text-slate-950 px-2.5 py-0.5 rounded-md">6.8 LPA</span>
+                      <span className="bg-emerald-400 text-slate-950 px-2.5 py-0.5 rounded-md">{placementStats.avg}</span>
                     </div>
                     <div className="flex items-center justify-between text-xs font-extrabold">
                       <span>Non-IT Transition Rate:</span>
