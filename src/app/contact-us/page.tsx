@@ -124,9 +124,25 @@ export default function ContactUsPage() {
     fullName: "",
     email: "",
     phone: "",
+    reason: "Free Demo Class Request",
     course: "Data Engineering Course",
     message: ""
   });
+
+  // Read URL query parameters for reason or course pre-selection
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const reasonParam = params.get("reason");
+      const courseParam = params.get("course");
+      if (reasonParam) {
+        setFormState((prev) => ({ ...prev, reason: reasonParam }));
+      }
+      if (courseParam) {
+        setFormState((prev) => ({ ...prev, course: courseParam }));
+      }
+    }
+  }, []);
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -148,7 +164,7 @@ export default function ContactUsPage() {
           email: formState.email,
           phone: formState.phone,
           courseSlug: formState.course,
-          message: formState.message,
+          message: `[Reason: ${formState.reason}] ${formState.message}`.trim(),
           source: "CONTACT_US_PAGE",
         }),
       });
@@ -161,6 +177,7 @@ export default function ContactUsPage() {
         fullName: "",
         email: "",
         phone: "",
+        reason: "Free Demo Class Request",
         course: "Data Engineering Course",
         message: ""
       });
@@ -531,27 +548,54 @@ export default function ContactUsPage() {
 
                     </div>
 
-                    {/* Phone Number & Course Select Grid */}
+                    {/* Phone Number Input */}
+                    <div className="relative">
+                      <label className={`block text-xs font-bold mb-1.5 transition-colors ${
+                        focusedField === "phone" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                      }`}>
+                        Phone / WhatsApp Number *
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="tel"
+                          required
+                          placeholder="+91 84462 84162"
+                          value={formState.phone}
+                          onFocus={() => setFocusedField("phone")}
+                          onBlur={() => setFocusedField(null)}
+                          onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Reason for Contact & Course Interested In Select Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       
-                      {/* Phone Number Input */}
+                      {/* Reason for Contact Select Dropdown */}
                       <div className="relative">
                         <label className={`block text-xs font-bold mb-1.5 transition-colors ${
-                          focusedField === "phone" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
+                          focusedField === "reason" ? "text-indigo-600 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300"
                         }`}>
-                          Phone / WhatsApp Number *
+                          Reason for Contact *
                         </label>
                         <div className="relative">
-                          <input
-                            type="tel"
-                            required
-                            placeholder="+91 84462 84162"
-                            value={formState.phone}
-                            onFocus={() => setFocusedField("phone")}
+                          <select
+                            value={formState.reason}
+                            onFocus={() => setFocusedField("reason")}
                             onBlur={() => setFocusedField(null)}
-                            onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
-                          />
+                            onChange={(e) => setFormState({ ...formState, reason: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer"
+                          >
+                            <option value="Free Demo Class Request">Book a Free Demo Class</option>
+                            <option value="Course Inquiry & Admissions">Course Inquiry & Admissions</option>
+                            <option value="Placement Support Inquiry">Placement Support & Referral Drives</option>
+                            <option value="Fees & Installment Plan Inquiry">Fees & EMI Installment Plans</option>
+                            <option value="Campus Visit Appointment">Campus Visit Appointment</option>
+                            <option value="Corporate Training Inquiry">Corporate Training & Partnerships</option>
+                            <option value="Other Inquiries">Other Inquiries</option>
+                          </select>
+                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                         </div>
                       </div>
 
