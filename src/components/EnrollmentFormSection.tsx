@@ -177,11 +177,12 @@ export default function EnrollmentFormSection() {
                       onChange={(e) => setCourse(e.target.value)}
                       className="w-full px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold"
                     >
-                      <option value="Data Engineering Master Program">Data Engineering Master Program (PySpark &amp; Databricks)</option>
-                      <option value="Python for Data Analysis">Python for Data Analysis &amp; Automation</option>
-                      <option value="PySpark & Big Data Track">PySpark &amp; Big Data Track</option>
-                      <option value="Cloud Data Platforms (AWS/Azure)">Cloud Data Platforms (AWS &amp; Azure)</option>
-                      <option value="SQL & Advanced Databases">SQL &amp; Advanced Databases</option>
+                      <option value="Data Engineering Course">Data Engineering Course (PySpark &amp; Databricks)</option>
+                      <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
+                      <option value="Gen AI">Gen AI (ChatGPT, RAG &amp; AI Agents)</option>
+                      <option value="Basic AI &amp; ML">Basic AI &amp; Machine Learning</option>
+                      <option value="Advanced AI &amp; Machine Learning">Advanced AI &amp; Machine Learning</option>
+                      <option value="Claude AI">Claude AI &amp; Multi-Cloud MLOps</option>
                     </select>
                   </div>
 

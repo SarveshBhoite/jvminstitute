@@ -124,7 +124,7 @@ export default function ContactUsPage() {
     fullName: "",
     email: "",
     phone: "",
-    course: "PySpark Data Engineering",
+    course: "Data Engineering Course",
     message: ""
   });
 
@@ -161,7 +161,7 @@ export default function ContactUsPage() {
         fullName: "",
         email: "",
         phone: "",
-        course: "PySpark Data Engineering",
+        course: "Data Engineering Course",
         message: ""
       });
     }
@@ -570,11 +570,12 @@ export default function ContactUsPage() {
                             onChange={(e) => setFormState({ ...formState, course: e.target.value })}
                             className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all appearance-none cursor-pointer"
                           >
-                            <option value="PySpark Data Engineering">PySpark & Data Engineering Master Track</option>
-                            <option value="AWS Cloud & DevOps">AWS Cloud & DevOps Engineering</option>
-                            <option value="Data Analytics & SQL">Advanced SQL & Data Analytics</option>
-                            <option value="Python Development">Python Core & Backend Development</option>
-                            <option value="Full-Stack Data Science">Full-Stack Data Science & AI</option>
+                            <option value="Data Engineering Course">Data Engineering Course (PySpark & Databricks)</option>
+                            <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
+                            <option value="Gen AI">Gen AI (ChatGPT, RAG & AI Agents)</option>
+                            <option value="Basic AI & ML">Basic AI & Machine Learning</option>
+                            <option value="Advanced AI & Machine Learning">Advanced AI & Machine Learning</option>
+                            <option value="Claude AI">Claude AI & Multi-Cloud MLOps</option>
                           </select>
                           <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                         </div>

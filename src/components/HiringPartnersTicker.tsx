@@ -12,7 +12,6 @@ const companyLogos = [
   { src: "/logo/HCLTECH.NS_BIG.png", title: "HCL Tech" },
   { src: "/logo/CAP.PA_BIG.png", title: "Capgemini" },
   { src: "/logo/deloitte_BIG.png", title: "Deloitte" },
-  { src: "/logo/LTIM.NS.png", title: "LTIMindtree" },
   { src: "/logo/LTTS.NS.png", title: "L&T Technology Services" },
   { src: "/logo/CTSH.png", title: "Cognizant" },
   { src: "/logo/TECHM.NS_BIG.png", title: "Tech Mahindra" },

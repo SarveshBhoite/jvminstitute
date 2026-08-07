@@ -226,12 +226,12 @@ export default function FeaturedCourses() {
                     View Syllabus
                   </Link>
 
-                  <button
-                    onClick={() => openEnrollModal(course.title)}
+                  <Link
+                    href="/enroll"
                     className="w-full jvm-gradient-bg text-center py-2.5 sm:py-3 px-2 rounded-xl text-xs font-extrabold text-white shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer"
                   >
                     Enroll Now <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                 </div>
 
               </div>

@@ -282,7 +282,32 @@ export default function AboutUsPage() {
     "Placement Assistance"
   ]
 },
-  ];
+  {
+    name: "Parag Sir",
+    role: "AI, Machine Learning & Generative AI Expert",
+    experience: "6+ Years Exp",
+    image: "/parag.png",
+    bio: "Experienced AI and Machine Learning professional specializing in Generative AI, Large Language Models (LLMs), Deep Learning, Natural Language Processing (NLP), Computer Vision, and AI-powered application development. Passionate about building intelligent solutions using modern AI frameworks, cloud platforms, and MLOps best practices.",
+    expertise: [
+      "Generative AI",
+      "Machine Learning",
+      "Deep Learning",
+      "Large Language Models (LLMs)",
+      "Prompt Engineering",
+      "Natural Language Processing (NLP)",
+      "Computer Vision",
+      "TensorFlow",
+      "PyTorch",
+      "Scikit-learn",
+      "LangChain",
+      "LlamaIndex",
+      "RAG",
+      "Vector Databases",
+      "AI Agents",
+      "MLOps"
+    ]
+  }
+];
 
   const timelineData = [
     {

@@ -100,13 +100,13 @@ export default function BasicAIMachineLearningCoursePage() {
                 </div>
 
                 <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
-                  <button
-                    onClick={() => openEnrollModal("Basic AI Batch Enrollment")}
+                  <Link
+                    href="/enroll"
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                   >
                     <span>Enroll Now in Next Batch</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
 
                   <button
                     onClick={() => openEnrollModal("Basic AI Download Syllabus PDF")}
