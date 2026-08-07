@@ -886,9 +886,162 @@ const blog2Html = `
 `;
 
 async function seedNewBlogs() {
-  console.log("Seeding all 5 blogs into Prisma database...");
+  console.log("Seeding all 8 blogs into Prisma database...");
 
-  // Blog 1: Data Engineering vs Data Science – Complete Guide (2026)
+  const getContentJson = (slug: string) => {
+    const post = blogPosts.find((p) => p.slug === slug);
+    if (!post) return "[]";
+    return JSON.stringify({
+      content: post.content || [],
+      tableOfContents: post.tableOfContents || [],
+    });
+  };
+
+  // 1. Home Page Featured Blog 1
+  await prisma.blogPost.upsert({
+    where: { slug: "learn-python-for-data-analysis" },
+    update: {
+      title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
+      metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
+      excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "8 min read",
+      image: "/learnpythonfordataanalysis.png",
+      tags: "Python, Pandas, NumPy, Data Analysis, Data Engineering",
+      featured: true,
+      contentJson: getContentJson("learn-python-for-data-analysis"),
+    },
+    create: {
+      slug: "learn-python-for-data-analysis",
+      title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
+      metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
+      excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "8 min read",
+      image: "/learnpythonfordataanalysis.png",
+      tags: "Python, Pandas, NumPy, Data Analysis, Data Engineering",
+      featured: true,
+      contentJson: getContentJson("learn-python-for-data-analysis"),
+    },
+  });
+
+  // 2. Home Page Featured Blog 2
+  await prisma.blogPost.upsert({
+    where: { slug: "why-should-i-learn-python-for-data-analysis" },
+    update: {
+      title: "Why Should I Learn Python for Data Analysis in 2026?",
+      metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
+      excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      category: "Career Guidance",
+      authorName: "Rohit Sharma",
+      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "July 30, 2026",
+      readTime: "6 min read",
+      image: "/whyshouldyoulearnpython.png",
+      tags: "Career, Python, Data Analyst, Salary, Job Market",
+      featured: true,
+      contentJson: getContentJson("why-should-i-learn-python-for-data-analysis"),
+    },
+    create: {
+      slug: "why-should-i-learn-python-for-data-analysis",
+      title: "Why Should I Learn Python for Data Analysis in 2026?",
+      metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
+      excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      category: "Career Guidance",
+      authorName: "Rohit Sharma",
+      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "July 30, 2026",
+      readTime: "6 min read",
+      image: "/whyshouldyoulearnpython.png",
+      tags: "Career, Python, Data Analyst, Salary, Job Market",
+      featured: true,
+      contentJson: getContentJson("why-should-i-learn-python-for-data-analysis"),
+    },
+  });
+
+  // 3. Home Page Featured Blog 3
+  await prisma.blogPost.upsert({
+    where: { slug: "how-to-read-xml-files-into-python" },
+    update: {
+      title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
+      metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
+      excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "5 min read",
+      image: "/howtoreadxmlfiles.png",
+      tags: "XML, Python, Pandas, Code Tutorial, Data Parsing",
+      featured: true,
+      contentJson: getContentJson("how-to-read-xml-files-into-python"),
+    },
+    create: {
+      slug: "how-to-read-xml-files-into-python",
+      title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
+      metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
+      excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "5 min read",
+      image: "/howtoreadxmlfiles.png",
+      tags: "XML, Python, Pandas, Code Tutorial, Data Parsing",
+      featured: true,
+      contentJson: getContentJson("how-to-read-xml-files-into-python"),
+    },
+  });
+
+  // 4. Blog Page Article 1 (5 Essential Skills)
+  await prisma.blogPost.upsert({
+    where: { slug: "5-essential-skills-every-data-analyst-should-master" },
+    update: {
+      title: "5 Essential Skills Every Data Analyst Should Master",
+      metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
+      excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
+      category: "Career Guidance",
+      authorName: "Rohit Sharma",
+      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "July 30, 2026",
+      readTime: "5 min read",
+      image: "/5essentialsskills.png",
+      tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
+      featured: true,
+      contentJson: "[]",
+    },
+    create: {
+      slug: "5-essential-skills-every-data-analyst-should-master",
+      title: "5 Essential Skills Every Data Analyst Should Master",
+      metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
+      excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
+      category: "Career Guidance",
+      authorName: "Rohit Sharma",
+      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "July 30, 2026",
+      readTime: "5 min read",
+      image: "/5essentialsskills.png",
+      tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
+      featured: true,
+      contentJson: "[]",
+    },
+  });
+
+  // 5. Blog Page Article 2 (Data Engineering vs Data Science)
   await prisma.blogPost.upsert({
     where: { slug: "data-engineering-vs-data-science-complete-guide-2026" },
     update: {
@@ -926,7 +1079,79 @@ async function seedNewBlogs() {
     },
   });
 
-  // Blog 2: Top Skills Required for Data Engineers in 2026 – Complete Guide
+  // 6. Blog Page Article 3 (Unlocking the Power of Data)
+  await prisma.blogPost.upsert({
+    where: { slug: "unlocking-the-power-of-data-the-journey-of-a-data-engineer" },
+    update: {
+      title: "Unlocking the Power of Data: The Journey of a Data Engineer",
+      metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
+      excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/powerofdata.png",
+      tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
+      featured: true,
+      contentJson: "[]",
+    },
+    create: {
+      slug: "unlocking-the-power-of-data-the-journey-of-a-data-engineer",
+      title: "Unlocking the Power of Data: The Journey of a Data Engineer",
+      metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
+      excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
+      category: "Data Engineering",
+      authorName: "JVM Technical Team",
+      authorRole: "Senior Data Architect @ JVM",
+      authorAvatar: "/place1.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/powerofdata.png",
+      tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
+      featured: true,
+      contentJson: "[]",
+    },
+  });
+
+  // 7. Blog Page Article 4 (Top 5 Data Engineering Tools)
+  await prisma.blogPost.upsert({
+    where: { slug: "top-5-data-engineering-tools-every-aspiring-data-engineer-should-master" },
+    update: {
+      title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
+      metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
+      excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
+      category: "Data Engineering",
+      authorName: "JVM Admin",
+      authorRole: "Lead Data Engineering Editorial Team @ JVM",
+      authorAvatar: "/place2.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/top5dataengineeringtool.png",
+      tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
+      featured: true,
+      contentJson: "[]",
+    },
+    create: {
+      slug: "top-5-data-engineering-tools-every-aspiring-data-engineer-should-master",
+      title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
+      metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
+      excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
+      category: "Data Engineering",
+      authorName: "JVM Admin",
+      authorRole: "Lead Data Engineering Editorial Team @ JVM",
+      authorAvatar: "/place2.png",
+      publishedAt: "May 30, 2024",
+      readTime: "6 min read",
+      image: "/top5dataengineeringtool.png",
+      tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
+      featured: true,
+      contentJson: "[]",
+    },
+  });
+
+  // 8. Blog Page Article 5 (Top Skills Required for Data Engineers)
   await prisma.blogPost.upsert({
     where: { slug: "top-skills-required-for-data-engineers-in-2026-complete-guide" },
     update: {
@@ -964,124 +1189,7 @@ async function seedNewBlogs() {
     },
   });
 
-  const getContentJson = (slug: string) => {
-    const post = blogPosts.find((p) => p.slug === slug);
-    if (!post) return "[]";
-    return JSON.stringify({
-      content: post.content || [],
-      tableOfContents: post.tableOfContents || [],
-    });
-  };
-
-  // Blog 3: Unlocking the Power of Data: The Journey of a Data Engineer
-  await prisma.blogPost.upsert({
-    where: { slug: "how-to-read-xml-files-into-python" },
-    update: {
-      title: "Unlocking the Power of Data: The Journey of a Data Engineer",
-      metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
-      excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
-      category: "Data Engineering",
-      authorName: "JVM Technical Team",
-      authorRole: "Senior Data Architect @ JVM",
-      authorAvatar: "/place1.png",
-      publishedAt: "May 30, 2024",
-      readTime: "6 min read",
-      image: "/powerofdata.png",
-      tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
-      featured: true,
-      contentJson: getContentJson("how-to-read-xml-files-into-python"),
-    },
-    create: {
-      slug: "how-to-read-xml-files-into-python",
-      title: "Unlocking the Power of Data: The Journey of a Data Engineer",
-      metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
-      excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
-      category: "Data Engineering",
-      authorName: "JVM Technical Team",
-      authorRole: "Senior Data Architect @ JVM",
-      authorAvatar: "/place1.png",
-      publishedAt: "May 30, 2024",
-      readTime: "6 min read",
-      image: "/powerofdata.png",
-      tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
-      featured: true,
-      contentJson: getContentJson("how-to-read-xml-files-into-python"),
-    },
-  });
-
-  // Blog 4: Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master
-  await prisma.blogPost.upsert({
-    where: { slug: "learn-python-for-data-analysis" },
-    update: {
-      title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
-      metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
-      excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
-      category: "Data Engineering",
-      authorName: "JVM Admin",
-      authorRole: "Lead Data Engineering Editorial Team @ JVM",
-      authorAvatar: "/place2.png",
-      publishedAt: "May 30, 2024",
-      readTime: "6 min read",
-      image: "/top5dataengineeringtool.png",
-      tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
-      featured: true,
-      contentJson: getContentJson("learn-python-for-data-analysis"),
-    },
-    create: {
-      slug: "learn-python-for-data-analysis",
-      title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
-      metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
-      excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
-      category: "Data Engineering",
-      authorName: "JVM Admin",
-      authorRole: "Lead Data Engineering Editorial Team @ JVM",
-      authorAvatar: "/place2.png",
-      publishedAt: "May 30, 2024",
-      readTime: "6 min read",
-      image: "/top5dataengineeringtool.png",
-      tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
-      featured: true,
-      contentJson: getContentJson("learn-python-for-data-analysis"),
-    },
-  });
-
-  // Blog 5: 5 Essential Skills Every Data Analyst Should Master
-  await prisma.blogPost.upsert({
-    where: { slug: "why-should-i-learn-python-for-data-analysis" },
-    update: {
-      title: "5 Essential Skills Every Data Analyst Should Master",
-      metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
-      excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
-      category: "Career Guidance",
-      authorName: "Rohit Sharma",
-      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
-      authorAvatar: "/place1.png",
-      publishedAt: "July 30, 2026",
-      readTime: "5 min read",
-      image: "/5essentialsskills.png",
-      tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
-      featured: true,
-      contentJson: getContentJson("why-should-i-learn-python-for-data-analysis"),
-    },
-    create: {
-      slug: "why-should-i-learn-python-for-data-analysis",
-      title: "5 Essential Skills Every Data Analyst Should Master",
-      metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
-      excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
-      category: "Career Guidance",
-      authorName: "Rohit Sharma",
-      authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
-      authorAvatar: "/place1.png",
-      publishedAt: "July 30, 2026",
-      readTime: "5 min read",
-      image: "/5essentialsskills.png",
-      tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
-      featured: true,
-      contentJson: getContentJson("why-should-i-learn-python-for-data-analysis"),
-    },
-  });
-
-  console.log("Successfully seeded all 5 blogs with their matching images!");
+  console.log("Successfully seeded all 8 blogs into Prisma database!");
 }
 
 seedNewBlogs()

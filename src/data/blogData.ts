@@ -115,7 +115,7 @@ export const blogPosts: BlogPost[] = [
     },
     publishedAt: "May 30, 2024",
     readTime: "6 min read",
-    image: "/powerofdata.png",
+    image: "/howtoreadxmlfiles.png",
     tags: ["Data Engineering", "ETL Pipelines", "Python", "SQL", "Cloud Architect"],
     tableOfContents: [
       { id: "introduction", title: "Introduction: Power of Data" },
@@ -217,7 +217,7 @@ print("Parsed Data Summary:\\n", df.head())`
     },
     publishedAt: "May 30, 2024",
     readTime: "6 min read",
-    image: "/top5dataengineeringtool.png",
+    image: "/learnpythonfordataanalysis.png",
     tags: ["Apache Spark", "AWS Glue", "Apache Hadoop", "Airflow", "SQL", "ETL"],
     tableOfContents: [
       { id: "apache-spark", title: "1. Apache Spark" },
@@ -322,7 +322,7 @@ transformed_df.show(5)`
     },
     publishedAt: "July 30, 2026",
     readTime: "5 min read",
-    image: "/5essentialsskills.png",
+    image: "/whyshouldyoulearnpython.png",
     tags: ["Data Analyst", "Python", "Data Visualization", "SQL", "Career Skills"],
     tableOfContents: [
       { id: "data-manipulation", title: "1. Proficiency in Data Manipulation" },
