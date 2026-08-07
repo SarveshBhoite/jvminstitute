@@ -38,6 +38,12 @@ export default function HeroSection() {
     setActivePoint((prev) => (prev === index ? null : index));
   };
 
+  const handleCallCounselor = () => {
+    if (typeof window !== "undefined") {
+      window.location.href = "tel:+918446284162";
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-slate-50 dark:bg-[#0B0F19] transition-colors duration-300">
 
@@ -205,7 +211,7 @@ export default function HeroSection() {
               </button>
 
               <button
-                onClick={() => openEnrollModal("Talk to a Career Counselor")}
+                onClick={handleCallCounselor}
                 className="flex-1 sm:flex-initial bg-gradient-to-r from-[#E01E6A] to-[#b31454] hover:from-[#c4155b] hover:to-[#9e1049] text-white font-extrabold px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm transition-all shadow-lg hover:shadow-xl hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer group whitespace-nowrap border border-white/10"
               >
                 <PhoneCall className="w-4 h-4 group-hover:rotate-12 transition-transform shrink-0 text-white" />

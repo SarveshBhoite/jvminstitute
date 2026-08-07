@@ -976,20 +976,39 @@ export default function DataEngineeringWithGenAICoursePage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
-              {filteredTech.map((item) => (
-                <motion.div
-                  key={item.name}
-                  whileHover={{ scale: 1.03 }}
-                  className="p-2.5 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs text-center sm:text-left overflow-hidden"
-                >
-                  <span className="text-[9px] sm:text-xs font-bold text-purple-600 dark:text-purple-400 block truncate">{item.category}</span>
+            {/* SCROLLABLE TECH STACK CONTAINER SHOWING MINIMUM 6 TOOLS VISIBLE */}
+            <div className="relative">
+              <div className="max-h-[230px] sm:max-h-[290px] overflow-y-auto pr-1.5 scrollbar-thin scrollbar-thumb-purple-500/60 scrollbar-track-slate-100 dark:scrollbar-track-slate-800/50 rounded-2xl p-1">
+                <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
+                  {filteredTech.map((item) => (
+                    <motion.div
+                      key={item.name}
+                      whileHover={{ scale: 1.03 }}
+                      className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs text-center sm:text-left overflow-hidden"
+                    >
+                      <span className="text-[9px] sm:text-xs font-bold text-purple-600 dark:text-purple-400 block truncate">
+                        {item.category}
+                      </span>
+                      <h3 className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white mt-0.5 truncate">
+                        {item.name}
+                      </h3>
+                      {item.badge && (
+                        <span className="mt-1 inline-block text-[8px] sm:text-[10px] font-semibold text-slate-500 dark:text-slate-400 truncate">
+                          {item.badge}
+                        </span>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
 
-                  <h3 className="text-xs sm:text-lg font-extrabold text-slate-900 dark:text-white mt-0.5 truncate">
-                    {item.name}
-                  </h3>
-                </motion.div>
-              ))}
+              {/* Scroll Helper Indicator */}
+              {filteredTech.length > 6 && (
+                <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] font-bold text-purple-600 dark:text-purple-400">
+                  <span>Scroll box to explore all {filteredTech.length} tools &amp; technologies</span>
+                  <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
+                </div>
+              )}
             </div>
 
           </div>
@@ -1223,7 +1242,11 @@ export default function DataEngineeringWithGenAICoursePage() {
               </button>
 
               <button
-                onClick={() => openEnrollModal("Bottom Final Prospectus Call")}
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.location.href = "tel:+918446284162";
+                  }
+                }}
                 className="w-full sm:w-auto px-7 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold text-xs sm:text-sm hover:bg-white/20 transition-colors cursor-pointer flex items-center justify-center gap-2"
               >
                 <PhoneCall className="w-4 h-4 text-purple-300" />
