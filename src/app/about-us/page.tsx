@@ -306,7 +306,7 @@ export default function AboutUsPage() {
       "AI Agents",
       "MLOps"
     ]
-  }
+  },
 
 {
   name: "Ketan Sir",
