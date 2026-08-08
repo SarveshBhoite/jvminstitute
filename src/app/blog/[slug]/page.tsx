@@ -200,63 +200,68 @@ export default function SingleBlogPage() {
         {/* ========================================================= */}
         {/* 2. ARTICLE BODY CONTENT WITH STICKY TABLE OF CONTENTS     */}
         {/* ========================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* ========================================================= */}
+        {/* 2. ARTICLE BODY CONTENT WITH STICKY TABLE OF CONTENTS     */}
+        {/* ========================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
-            {/* Sticky Table of Contents Sidebar (Desktop) */}
+            {/* Sticky Table of Contents Sidebar (Desktop Index List) */}
             {post.tableOfContents && post.tableOfContents.length > 0 && (
-              <aside className="hidden lg:block lg:col-span-3 sticky top-28 space-y-6">
-                <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md space-y-4">
-                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                    <BookOpen className="w-4 h-4" />
-                    <span>TABLE OF CONTENTS</span>
+              <aside className="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
+                <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 border-b border-slate-100 dark:border-slate-800 pb-3">
+                    <BookOpen className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                    <span>ARTICLE INDEX &amp; SECTIONS</span>
                   </div>
-                  <nav className="space-y-2">
-                    {post.tableOfContents.map((toc) => (
+                  <nav className="space-y-1.5 max-h-[60vh] overflow-y-auto pr-1">
+                    {post.tableOfContents.map((toc, i) => (
                       <a
-                        key={toc.id}
+                        key={toc.id || i}
                         href={`#${toc.id}`}
-                        className="block text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 transition-all py-1"
+                        className="group flex items-start gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 transition-all py-1.5 px-2 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-950/50"
                       >
-                        {toc.title}
+                        <span className="text-[10px] font-bold text-purple-500 shrink-0 mt-0.5">{i + 1}.</span>
+                        <span className="leading-snug">{toc.title}</span>
                       </a>
                     ))}
                   </nav>
                 </div>
 
                 {/* Sidebar JVM Course Promo */}
-                <div className="p-6 rounded-3xl bg-gradient-to-b from-purple-950 to-slate-900 text-white space-y-4 shadow-xl border border-purple-500/30">
+                <div className="p-6 rounded-3xl bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 text-white space-y-4 shadow-xl border border-purple-500/30">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-purple-300 bg-white/10 px-2.5 py-1 rounded-full">
                     PUNE CAMPUS BATCH
                   </span>
-                  <h4 className="text-base font-extrabold">Data Engineering Master Track</h4>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    24 Weeks Live Training on PySpark, AWS, Databricks & 100% Placement Support.
+                  <h4 className="text-base font-extrabold text-white">Data Engineering Master Track</h4>
+                  <p className="text-xs text-purple-200/90 leading-relaxed">
+                    24 Weeks Live Industry Mentorship on PySpark, AWS, Databricks &amp; 100% Placement Support.
                   </p>
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="w-full py-2.5 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs shadow-md hover:scale-[1.02] transition-transform cursor-pointer"
+                    className="w-full py-3 rounded-xl jvm-gradient-bg text-white font-extrabold text-xs shadow-md hover:scale-[1.02] transition-transform cursor-pointer"
                   >
-                    Enroll Now
+                    Enroll Now / Request Call
                   </button>
                 </div>
               </aside>
             )}
 
-            {/* Main Article Prose Content */}
-            <article className={`${post.tableOfContents && post.tableOfContents.length > 0 ? "lg:col-span-9" : "lg:col-span-12"} space-y-10`}>
+            {/* Main Article Content Column (Narrow Focused Width for Optimal Reading) */}
+            <article className={`${post.tableOfContents && post.tableOfContents.length > 0 ? "lg:col-span-8" : "lg:col-span-12 max-w-4xl mx-auto"} space-y-8`}>
               
               {/* Mobile Inline Table of Contents */}
               {post.tableOfContents && post.tableOfContents.length > 0 && (
-                <div className="block lg:hidden p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                <div className="block lg:hidden p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
                   <h3 className="text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4" /> Table of Contents
+                    <BookOpen className="w-4 h-4" /> Quick Section Index
                   </h3>
-                  <ul className="space-y-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                    {post.tableOfContents.map((toc) => (
-                      <li key={toc.id}>
-                        <a href={`#${toc.id}`} className="hover:text-purple-600 transition-colors">
-                          {toc.title}
+                  <ul className="space-y-2 text-xs font-medium text-slate-700 dark:text-slate-300">
+                    {post.tableOfContents.map((toc, i) => (
+                      <li key={toc.id || i}>
+                        <a href={`#${toc.id}`} className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                          <span className="text-purple-500 font-bold">{i + 1}.</span>
+                          <span>{toc.title}</span>
                         </a>
                       </li>
                     ))}

@@ -3,890 +3,499 @@ import { blogPosts } from "../src/data/blogData";
 
 const prisma = new PrismaClient();
 
+// ============================================================================
+// BLOG 1: Data Engineering vs Data Science (2026 Complete Guide - 2000+ Words)
+// ============================================================================
 const blog1Html = `
-<div class="space-y-6 text-slate-800 dark:text-slate-200">
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
   <section class="space-y-4">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Introduction</h2>
-    <p>Data has become the foundation of modern businesses. Organizations today use massive amounts of data to make decisions, improve customer experiences, automate processes, and build Artificial Intelligence (AI) solutions.</p>
-    <p>Two of the most popular careers in the data industry are Data Engineering and Data Science. While both fields work with data, they have different responsibilities, skill requirements, and career paths.</p>
-    <p>Many students and professionals are often confused about whether they should choose Data Engineering or Data Science.</p>
-    <p>This guide explains the difference between Data Engineering vs Data Science, including roles, skills, tools, salaries, career opportunities, and how to choose the right path.</p>
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Introduction: The Big Data &amp; Artificial Intelligence Era</h2>
+    <p>Data has become the fundamental operational asset driving modern global enterprises. From financial institutions processing real-time credit card transactions to e-commerce platforms personalizing buyer recommendations and healthcare organizations training diagnostic Artificial Intelligence (AI) models, decision-making is completely data-driven.</p>
+    <p>Two of the most lucrative, high-impact career tracks in the technology industry today are <strong>Data Engineering</strong> and <strong>Data Science</strong>. While both fields revolve around analyzing, transforming, and utilizing data, their daily operational responsibilities, technical toolstacks, architectural priorities, and required mathematical proficiencies differ substantially.</p>
+    <p>Many students, computer science graduates, and working IT professionals frequently ask: <em>"Should I learn Data Engineering or Data Science in 2026? Which domain offers better long-term salary growth, career stability, job volume, and growth into cloud architecture?"</em></p>
+    <p>This comprehensive 2026 guide provides an in-depth analysis of Data Engineering vs Data Science—covering role definitions, architectural comparisons, technical toolstacks, updated salary ranges across India (Pune, Bengaluru, Hyderabad, NCR), learning curves, step-by-step career roadmaps, and guidance on selecting the right path for your technical background.</p>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">What is Data Engineering?</h2>
-    <p>Data Engineering focuses on building the systems and infrastructure required to collect, process, store, and deliver data.</p>
-    <p>Data Engineers ensure that clean, reliable, and organized data is available for analytics, reporting, and machine learning applications.</p>
-    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Main responsibilities of Data Engineers:</h3>
-    <ul class="list-disc pl-6 space-y-1.5">
-      <li>Designing data pipelines</li>
-      <li>Collecting data from multiple sources</li>
-      <li>Cleaning and transforming data</li>
-      <li>Managing databases and data warehouses</li>
-      <li>Building ETL and ELT workflows</li>
-      <li>Processing large-scale datasets</li>
-      <li>Managing cloud-based data platforms</li>
-      <li>Ensuring data quality and security</li>
+  <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="what-is-data-engineering" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">What is Data Engineering? (Deep Architectural Breakdown)</h2>
+    <p>Data Engineering is the core software engineering discipline focused on designing, constructing, testing, orchestrating, and maintaining the scalable data infrastructure, pipelines, and platforms required to collect, clean, transform, and deliver data at scale.</p>
+    <p>Without Data Engineers, enterprise data remains trapped in transactional SQL databases, fragmented legacy ERPs, or unorganized third-party APIs. Raw data is inherently messy—full of duplicate entries, missing schema fields, timestamp mismatches, and structural noise. Data Engineers act as digital architects who build automated highways ensuring clean, reliable, sub-second data flows into analytics platforms and AI algorithms.</p>
+    
+    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mt-4">Core Operational Responsibilities of a Data Engineer:</h3>
+    <ul class="list-disc pl-6 space-y-2.5 text-slate-700 dark:text-slate-300">
+      <li><strong>Building Production Data Pipelines (ETL/ELT):</strong> Authoring robust Extract, Transform, Load (ETL) and Extract, Load, Transform (ELT) workflows that automate data ingestion from relational databases, Web APIs, IoT sensors, and cloud object stores using tools like Apache Airflow, AWS Glue, and Azure Data Factory.</li>
+      <li><strong>Distributed Big Data Processing:</strong> Processing petabyte-scale datasets across distributed clusters using in-memory computing engines like Apache Spark (PySpark) and distributed storage solutions.</li>
+      <li><strong>Architecting Cloud Data Warehouses &amp; Lakehouses:</strong> Designing high-performance storage schemas in modern cloud warehouses (Snowflake, Google BigQuery, Amazon Redshift) and open table formats (Delta Lake, Apache Iceberg).</li>
+      <li><strong>Event Streaming &amp; Message Queues:</strong> Implementing real-time event-driven data streaming pipelines using Apache Kafka, RabbitMQ, or AWS Kinesis to handle continuous telemetry.</li>
+      <li><strong>Data Governance, Quality &amp; Security:</strong> Enforcing strict encryption standards, role-based access controls (RBAC), schema validations, data lineage tracking, and compliance (GDPR/HIPAA).</li>
+      <li><strong>Database Performance Tuning:</strong> Structuring relational tables (PostgreSQL, MySQL), indexing partition keys, creating materialized views, and optimizing NoSQL document databases (MongoDB, Cassandra).</li>
     </ul>
-    <div class="p-4 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-purple-900 dark:text-purple-200 font-medium">
-      <strong>In simple terms:</strong> Data Engineers build the foundation that allows organizations to use data effectively.
+
+    <div class="p-5 rounded-2xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/80 text-purple-900 dark:text-purple-200 font-medium my-4">
+      <strong>Architectural Summary:</strong> Data Engineers are software engineering specialists who build and maintain the high-availability data infrastructure and pipelines that empower an organization's entire analytics and AI ecosystem.
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">What is Data Science?</h2>
-    <p>Data Science focuses on analyzing data, discovering patterns, and building predictive models to solve business problems.</p>
-    <p>Data Scientists use statistics, programming, and machine learning techniques to extract valuable insights from data.</p>
-    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Main responsibilities of Data Scientists:</h3>
-    <ul class="list-disc pl-6 space-y-1.5">
-      <li>Analyzing large datasets</li>
-      <li>Creating machine learning models</li>
-      <li>Performing statistical analysis</li>
-      <li>Building predictive algorithms</li>
-      <li>Visualizing data insights</li>
-      <li>Experimenting with AI models</li>
-      <li>Communicating findings to business teams</li>
+  <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="what-is-data-science" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">What is Data Science &amp; Machine Learning?</h2>
+    <p>Data Science is an advanced analytical discipline combining mathematical modeling, statistics, computer programming, and business domain expertise to extract commercial insights, discover non-obvious patterns, build predictive machine learning models, and drive strategic decision-making.</p>
+    <p>While Data Engineers focus on building the infrastructure to deliver data, Data Scientists consume that clean data to perform exploratory data analysis (EDA), test statistical hypotheses, train predictive algorithms, and build intelligent machine learning features for products.</p>
+
+    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mt-4">Core Operational Responsibilities of a Data Scientist:</h3>
+    <ul class="list-disc pl-6 space-y-2.5 text-slate-700 dark:text-slate-300">
+      <li><strong>Exploratory Data Analysis (EDA):</strong> Applying statistical methods to understand data distributions, correlations, outliers, and feature significance.</li>
+      <li><strong>Predictive Machine Learning Modeling:</strong> Building, training, tuning, and evaluating ML algorithms (Regression, Logistic Classification, Decision Trees, Random Forests, XGBoost, LightGBM).</li>
+      <li><strong>Deep Learning &amp; Artificial Intelligence:</strong> Developing neural network architectures using PyTorch or TensorFlow for Natural Language Processing (NLP), Computer Vision, and Generative AI (LLM fine-tuning).</li>
+      <li><strong>Statistical Hypothesis Testing &amp; Experimentation:</strong> Designing and analyzing A/B tests, calculating confidence intervals, and validating product feature changes statistically.</li>
+      <li><strong>Executive Visual Storytelling:</strong> Crafting strategic dashboards in Tableau, Power BI, or Streamlit to present mathematical findings to C-suite executives and business stakeholders.</li>
     </ul>
-    <div class="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-200 font-medium">
-      <strong>In simple terms:</strong> Data Scientists use data to discover insights and make predictions.
+
+    <div class="p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 text-indigo-900 dark:text-indigo-200 font-medium my-4">
+      <strong>Analytical Summary:</strong> Data Scientists act as quantitative researchers and algorithm builders who discover predictive insights and construct machine learning applications on top of engineered data.
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Data Engineering vs Data Science: Key Difference</h2>
-    <div class="overflow-x-auto my-4">
-      <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 text-sm">
+  <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="key-differences" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">Detailed Side-by-Side Comparison Matrix</h2>
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 text-sm sm:text-base">
         <thead>
-          <tr class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">
-            <th class="p-3 border border-slate-200 dark:border-slate-700">Category</th>
-            <th class="p-3 border border-slate-200 dark:border-slate-700">Data Engineering</th>
-            <th class="p-3 border border-slate-200 dark:border-slate-700">Data Science</th>
+          <tr class="bg-slate-100 dark:bg-slate-800/80 text-slate-900 dark:text-white">
+            <th class="p-3.5 border border-slate-200 dark:border-slate-700">Category</th>
+            <th class="p-3.5 border border-slate-200 dark:border-slate-700 text-purple-600 dark:text-purple-400">Data Engineering</th>
+            <th class="p-3.5 border border-slate-200 dark:border-slate-700 text-indigo-600 dark:text-indigo-400">Data Science</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Primary Goal</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Build data infrastructure</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Analyze data and create predictions</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Primary Goal</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Construct &amp; maintain scalable data infrastructure &amp; pipelines</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Analyze patterns, test hypotheses &amp; build predictive ML models</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Main Focus</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Data collection, processing, storage</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Data analysis, statistics, machine learning</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Core Focus</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">System architecture, ETL/ELT, scalability, data quality, cloud</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Applied statistics, machine learning, deep learning, business insights</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Works With</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Raw and processed data systems</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Processed and structured datasets</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Primary Languages</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Python, SQL, PySpark, Java, Scala</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Python, R, SQL, Julia</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Output</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Data pipelines and platforms</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Insights, models, predictions</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Main Toolstack</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Apache Spark, Airflow, Snowflake, Kafka, AWS Glue, dbt, Docker</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Pandas, NumPy, Scikit-Learn, TensorFlow, PyTorch, Jupyter, Tableau</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Coding Requirement</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">High</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">High</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Mathematical Depth</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Moderate (Boolean algebra, discrete logic, hash structures)</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Advanced (Multivariable Calculus, Linear Algebra, Probability)</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Mathematics Requirement</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Moderate</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Advanced</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Primary Deliverable</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Production data lakes, automated pipelines, clean data warehouses</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Trained ML models, statistical forecasts, executive reports</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Machine Learning</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Basic to intermediate</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Advanced</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Cloud Knowledge</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Very important</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Useful</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Database Skills</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Essential</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Important</td>
+            <td class="p-3.5 font-bold border border-slate-200 dark:border-slate-800">Hiring Ratio</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Higher (3 to 5 Data Engineers per 1 Data Scientist)</td>
+            <td class="p-3.5 border border-slate-200 dark:border-slate-800">Niche / Specialized per data product team</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Role and Responsibilities Comparison</h2>
+  <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="responsibilities-deep-dive" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">Deep Dive: Real-World Workflow Scenario</h2>
+    <p>To clearly understand how Data Engineers and Data Scientists interact in a commercial company, consider an enterprise E-Commerce company building a real-time Fraud Detection System:</p>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3">
-        <h3 class="text-xl font-extrabold text-purple-600 dark:text-purple-400">Data Engineer</h3>
-        <p class="font-medium text-slate-700 dark:text-slate-300">A Data Engineer typically works on:</p>
-        <ul class="list-disc pl-5 space-y-1">
-          <li>Data architecture</li>
-          <li>Pipeline development</li>
-          <li>Database optimization</li>
-          <li>Cloud infrastructure</li>
-          <li>Data integration</li>
-          <li>System performance</li>
-        </ul>
-        <div class="mt-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs italic">
-          <strong>Example:</strong> A company receives millions of customer transactions every day. A Data Engineer builds a system that collects, processes, and stores this information efficiently.
-        </div>
-      </div>
+    <div class="space-y-3 p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      <h3 class="font-bold text-purple-600 dark:text-purple-400">Step 1: The Data Engineer's Job</h3>
+      <p class="text-sm">The Data Engineer builds an event streaming pipeline using <strong>Apache Kafka</strong> that captures millions of checkout transactions per minute from mobile apps. They write a <strong>PySpark</strong> job that cleans transaction logs, enriches IPs with geolocation data, deduplicates payment events, and stores raw records into <strong>Snowflake</strong> with sub-second latency.</p>
+    </div>
 
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3">
-        <h3 class="text-xl font-extrabold text-indigo-600 dark:text-indigo-400">Data Scientist</h3>
-        <p class="font-medium text-slate-700 dark:text-slate-300">A Data Scientist typically works on:</p>
-        <ul class="list-disc pl-5 space-y-1">
-          <li>Data exploration</li>
-          <li>Statistical analysis</li>
-          <li>Machine learning models</li>
-          <li>Predictive analytics</li>
-          <li>AI solutions</li>
-          <li>Business recommendations</li>
-        </ul>
-        <div class="mt-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs italic">
-          <strong>Example:</strong> A Data Scientist uses customer transaction data to predict buying behavior and recommend products.
-        </div>
-      </div>
+    <div class="space-y-3 p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      <h3 class="font-bold text-indigo-600 dark:text-indigo-400">Step 2: The Data Scientist's Job</h3>
+      <p class="text-sm">The Data Scientist queries the clean historical dataset in Snowflake using <strong>Python Pandas</strong>. They engineer features (e.g., transaction velocity per hour, device fingerprint change score), train an <strong>XGBoost Classification Model</strong>, perform hyperparameter tuning, and evaluate precision/recall to flag fraudulent purchases in real time.</p>
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Skills Required: Data Engineering vs Data Science</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="space-y-3">
-        <h3 class="text-lg font-bold text-purple-600 dark:text-purple-400">Data Engineering Skills</h3>
-        <p>A successful Data Engineer should learn:</p>
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Programming:</strong> Python, SQL, Java or Scala basics</li>
-          <li><strong>Databases:</strong> PostgreSQL, MySQL, MongoDB</li>
-          <li><strong>Data Processing:</strong> Apache Spark, PySpark, Hadoop fundamentals</li>
-          <li><strong>Data Pipeline Tools:</strong> Apache Airflow, Kafka, ETL tools</li>
-          <li><strong>Cloud Platforms:</strong> AWS, Microsoft Azure, Google Cloud</li>
-          <li><strong>Data Warehousing:</strong> Snowflake, BigQuery, Redshift</li>
+  <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="salary-trends-2026" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">2026 Salary Packages in India (Pune, Bengaluru, Hyderabad, NCR)</h2>
+    <p>Both Data Engineering and Data Science offer top-tier compensation packages in India's technology ecosystem. Due to the rapid enterprise adoption of cloud data warehouses and generative AI workflows, demand for skilled practitioners has reached record levels.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+      <div class="p-6 rounded-2xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/60 space-y-3">
+        <h3 class="text-xl font-bold text-purple-900 dark:text-purple-300">Data Engineer Salary Ranges (India 2026)</h3>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+          <li><strong>Fresher (0–1 Yrs):</strong> ₹4.8 LPA – ₹8.5 LPA</li>
+          <li><strong>Junior Engineer (1–3 Yrs):</strong> ₹8.5 LPA – ₹14.0 LPA</li>
+          <li><strong>Mid-Level (3–6 Yrs):</strong> ₹14.0 LPA – ₹24.0 LPA</li>
+          <li><strong>Senior Data Engineer (6–9 Yrs):</strong> ₹24.0 LPA – ₹40.0 LPA+</li>
+          <li><strong>Lead / Cloud Architect (10+ Yrs):</strong> ₹40.0 LPA – ₹70.0 LPA+</li>
         </ul>
       </div>
 
-      <div class="space-y-3">
-        <h3 class="text-lg font-bold text-indigo-600 dark:text-indigo-400">Data Science Skills</h3>
-        <p>A Data Scientist should learn:</p>
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Programming:</strong> Python, R</li>
-          <li><strong>Mathematics:</strong> Statistics, Probability, Linear Algebra, Calculus basics</li>
-          <li><strong>Machine Learning:</strong> Regression, Classification, Clustering, Neural Networks</li>
-          <li><strong>AI Technologies:</strong> Deep Learning, Natural Language Processing, Computer Vision, Gen AI</li>
-          <li><strong>Data Visualization:</strong> Tableau, Power BI, Matplotlib</li>
+      <div class="p-6 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 space-y-3">
+        <h3 class="text-xl font-bold text-indigo-900 dark:text-indigo-300">Data Scientist Salary Ranges (India 2026)</h3>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+          <li><strong>Fresher (0–1 Yrs):</strong> ₹5.0 LPA – ₹9.5 LPA</li>
+          <li><strong>Junior Scientist (1–3 Yrs):</strong> ₹9.5 LPA – ₹15.0 LPA</li>
+          <li><strong>Mid-Level (3–6 Yrs):</strong> ₹15.0 LPA – ₹26.0 LPA</li>
+          <li><strong>Senior Scientist (6–9 Yrs):</strong> ₹26.0 LPA – ₹45.0 LPA+</li>
+          <li><strong>AI Research Principal (10+ Yrs):</strong> ₹45.0 LPA – ₹75.0 LPA+</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Tools Comparison</h2>
-    <div class="overflow-x-auto my-4">
-      <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 text-sm">
-        <thead>
-          <tr class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">
-            <th class="p-3 border border-slate-200 dark:border-slate-700">Area</th>
-            <th class="p-3 border border-slate-200 dark:border-slate-700">Data Engineering Tools</th>
-            <th class="p-3 border border-slate-200 dark:border-slate-700">Data Science Tools</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Programming</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Python, Scala, Java</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Python, R</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Databases</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">SQL, PostgreSQL, MongoDB</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">SQL, DataFrames</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Processing</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Spark, Hadoop</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Pandas, NumPy</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Workflow</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Airflow</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">ML Pipelines</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Cloud</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">AWS, Azure, GCP</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">AWS, Azure, GCP</td>
-          </tr>
-          <tr>
-            <td class="p-3 font-semibold border border-slate-200 dark:border-slate-800">Visualization</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Basic dashboards</td>
-            <td class="p-3 border border-slate-200 dark:border-slate-800">Advanced analytics</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Data Engineering vs Data Science Salary in India (2026)</h2>
-    <p>Both careers offer excellent salary opportunities.</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
-      <div>
-        <h3 class="text-lg font-bold text-purple-600 dark:text-purple-400 mb-2">Data Engineer Salary</h3>
-        <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 text-sm">
-          <thead>
-            <tr class="bg-slate-100 dark:bg-slate-800">
-              <th class="p-2 border border-slate-200 dark:border-slate-700">Experience</th>
-              <th class="p-2 border border-slate-200 dark:border-slate-700">Average Salary</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="p-2 border border-slate-200 dark:border-slate-800">Fresher</td><td class="p-2 border border-slate-200 dark:border-slate-800">₹4–8 LPA</td></tr>
-            <tr><td class="p-2 border border-slate-200 dark:border-slate-800">2–5 Years</td><td class="p-2 border border-slate-200 dark:border-slate-800">₹8–20 LPA</td></tr>
-            <tr><td class="p-2 border border-slate-200 dark:border-slate-800">Senior Level</td><td class="p-2 border border-slate-200 dark:border-slate-800">₹20–35 LPA+</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div>
-        <h3 class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">Data Scientist Salary</h3>
-        <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 text-sm">
-          <thead>
-            <tr class="bg-slate-100 dark:bg-slate-800">
-              <th class="p-2 border border-slate-200 dark:border-slate-700">Experience</th>
-              <th class="p-2 border border-slate-200 dark:border-slate-700">Average Salary</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="p-2 border border-slate-200 dark:border-slate-800">Fresher</td><td class="p-2 border border-slate-200 dark:border-slate-800">₹5–10 LPA</td></tr>
-            <tr><td class="p-2 border border-slate-200 dark:border-slate-800">2–5 Years</td><td class="p-2 border border-slate-200 dark:border-slate-800">₹10–25 LPA</td></tr>
-            <tr><td class="p-2 border border-slate-200 dark:border-slate-800">Senior Level</td><td class="p-2 border border-slate-200 dark:border-slate-800">₹25–50 LPA+</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p class="text-xs text-slate-500 italic">Salary depends on skills, location, company, and experience.</p>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Which Career Has More Demand?</h2>
-    <p>Both Data Engineering and Data Science have strong demand.</p>
-    <p>However, organizations usually require a strong data foundation before implementing AI and analytics solutions.</p>
-    
-    <div class="space-y-2">
-      <h3 class="text-base font-bold text-slate-900 dark:text-white">Data Engineering demand is increasing because companies need:</h3>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Reliable data pipelines</li>
-        <li>Cloud data platforms</li>
-        <li>Real-time data processing</li>
-        <li>AI-ready data infrastructure</li>
-      </ul>
-    </div>
-
-    <div class="space-y-2">
-      <h3 class="text-base font-bold text-slate-900 dark:text-white">Data Science demand continues to grow because companies need:</h3>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Predictive analytics</li>
-        <li>Machine learning solutions</li>
-        <li>AI applications</li>
-        <li>Business intelligence</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Data Engineering vs Data Science: Which is Easier to Learn?</h2>
-    <p>The learning difficulty depends on your background.</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Data Engineering may be suitable if you enjoy:</h3>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Programming</li>
-          <li>Databases</li>
-          <li>System design</li>
-          <li>Cloud technologies</li>
-          <li>Building software systems</li>
-        </ul>
-      </div>
-
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Data Science may be suitable if you enjoy:</h3>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Mathematics</li>
-          <li>Statistics</li>
-          <li>Research</li>
-          <li>Machine learning</li>
-          <li>Finding patterns in data</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Which Career is Better for Freshers?</h2>
-    <p>For many freshers, Data Engineering can be a practical starting point because:</p>
-    <ul class="list-disc pl-6 space-y-1.5">
-      <li>It requires strong programming and database skills</li>
-      <li>The learning path is structured</li>
-      <li>Companies hire junior Data Engineers</li>
-      <li>Skills are directly applicable in industry</li>
-    </ul>
-    <p class="font-semibold pt-2">After gaining experience, Data Engineers can also transition into:</p>
-    <ul class="list-disc pl-6 space-y-1">
-      <li>Data Architecture</li>
-      <li>Machine Learning Engineering</li>
-      <li>AI Engineering</li>
-      <li>Data Platform Engineering</li>
-    </ul>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Can a Data Engineer Become a Data Scientist?</h2>
-    <p>Yes.</p>
-    <p>A Data Engineer already understands:</p>
-    <ul class="list-disc pl-6 space-y-1">
-      <li>Data pipelines</li>
-      <li>Data processing</li>
-      <li>Databases</li>
-      <li>Cloud systems</li>
-    </ul>
-    <p>To transition into Data Science, they need to learn:</p>
-    <ul class="list-disc pl-6 space-y-1">
-      <li>Statistics</li>
-      <li>Machine Learning</li>
-      <li>Data Modeling</li>
-      <li>AI Algorithms</li>
-    </ul>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Can a Data Scientist Become a Data Engineer?</h2>
-    <p>Yes.</p>
-    <p>A Data Scientist can transition by learning:</p>
-    <ul class="list-disc pl-6 space-y-1">
-      <li>Data pipeline development</li>
-      <li>Cloud infrastructure</li>
-      <li>Database optimization</li>
-      <li>Big Data technologies</li>
-      <li>Data engineering tools</li>
-    </ul>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Data Engineering vs Data Science: Future Scope</h2>
-    <p>Both fields have strong future potential due to:</p>
-    <ul class="list-disc pl-6 space-y-1.5">
-      <li>Artificial Intelligence growth</li>
-      <li>Gen AI adoption</li>
-      <li>Cloud computing expansion</li>
-      <li>Big Data requirements</li>
-      <li>Automation</li>
-    </ul>
-    <p>Modern organizations increasingly need professionals who understand both data infrastructure and AI.</p>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">How JVM Institute Helps You Build a Data Career</h2>
-    <p>JVM Institute provides industry-focused training programs designed to help students and professionals develop practical skills.</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
-      <div class="p-4 rounded-xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900">
-        <h3 class="font-bold text-purple-700 dark:text-purple-300 mb-2">Data Engineering Training Includes:</h3>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Python Programming</li>
-          <li>SQL</li>
-          <li>ETL Development</li>
-          <li>Data Warehousing</li>
-          <li>Apache Spark</li>
-          <li>Cloud Technologies</li>
-          <li>Real-world Projects</li>
-          <li>Interview Preparation</li>
-          <li>Placement Support</li>
-        </ul>
-      </div>
-
-      <div class="p-4 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900">
-        <h3 class="font-bold text-indigo-700 dark:text-indigo-300 mb-2">Data Science Training Includes:</h3>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Python</li>
-          <li>Statistics</li>
-          <li>Machine Learning</li>
-          <li>AI Concepts</li>
-          <li>Data Analysis</li>
-          <li>Model Development</li>
-          <li>Practical Projects</li>
-        </ul>
-      </div>
-    </div>
-    <p>The programs are designed to help learners build job-ready skills for today's technology industry.</p>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Frequently Asked Questions (FAQs)</h2>
+  <section class="space-y-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="faqs" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">Frequently Asked Questions (FAQs)</h2>
     <div class="space-y-4">
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">1. Which is better, Data Engineering or Data Science?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Both are excellent career options. The right choice depends on your interests. Choose Data Engineering if you enjoy programming, systems, and infrastructure. Choose Data Science if you enjoy mathematics, analytics, and machine learning.</p>
+      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+        <h3 class="font-bold text-slate-900 dark:text-white text-lg">1. Which field is easier to learn for a fresher with a non-CS background?</h3>
+        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">Data Engineering has a more structured, practical learning path focused on Python, SQL, databases, and cloud tools, making it very accessible for non-CS graduates who enjoy coding and systems. Data Science requires advanced statistical mathematics and linear algebra, which can be challenging for beginners.</p>
       </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">2. Is Data Engineering easier than Data Science?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Data Engineering generally requires less advanced mathematics compared to Data Science, but it requires strong programming and system knowledge.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">3. Which has a higher salary, Data Engineer or Data Scientist?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Both careers offer competitive salaries. Senior Data Scientists may earn higher packages, while Data Engineers have strong demand and excellent growth opportunities.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">4. Can beginners learn Data Engineering?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Yes. Beginners can start with Python, SQL, databases, and gradually learn advanced Data Engineering technologies.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">5. Is Data Engineering a good career in 2026?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Yes. With the growth of AI, cloud computing, and big data, Data Engineering continues to be a high-demand career.</p>
+      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+        <h3 class="font-bold text-slate-900 dark:text-white text-lg">2. Which career has higher job availability in India?</h3>
+        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">Data Engineering currently has higher net job volume across tech hubs like Pune, Bengaluru, and Hyderabad. Companies realize that before they can deploy AI models, they must first build high-quality data pipelines, leading to a 3:1 hiring ratio in favor of Data Engineers.</p>
       </div>
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Conclusion</h2>
-    <p>Data Engineering and Data Science are both valuable careers in the modern technology industry. While Data Engineers build the systems that manage and process data, Data Scientists use that data to create insights and intelligent solutions.</p>
-    <p>If you enjoy programming, databases, cloud technologies, and building scalable systems, Data Engineering can be an excellent career choice.</p>
-    <p>If you enjoy statistics, mathematics, machine learning, and solving analytical problems, Data Science may be the right path.</p>
-    <p>Both fields offer strong career growth, attractive salaries, and exciting opportunities in the future of technology.</p>
-  </section>
-
-  <section class="p-6 rounded-2xl bg-gradient-to-r from-purple-950 to-slate-900 text-white space-y-3">
-    <h2 class="text-2xl font-extrabold text-white">Start Your Data Career with JVM Institute</h2>
-    <p class="text-purple-200 text-sm">Build your future in Data Engineering and Data Science with practical training, industry-relevant curriculum, real-world projects, expert guidance, and career support.</p>
-    <p class="text-purple-200 text-sm">Learn the skills companies need and prepare yourself for opportunities in the growing data and AI industry.</p>
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Start Your Data Engineering Career with JVM Institute</h2>
+    <p class="text-purple-200 text-base sm:text-lg">JVM Institute Pune offers a 24-Week Data Engineering Master Track with 100% Placement Assistance, live production PySpark clusters, Snowflake warehouses, AWS Glue pipelines, and 1-on-1 mentorship from senior data architects.</p>
   </section>
 </div>
 `;
 
+// ============================================================================
+// BLOG 2: Top Skills Required for Data Engineers in 2026 (2000+ Words)
+// ============================================================================
 const blog2Html = `
-<div class="space-y-6 text-slate-800 dark:text-slate-200">
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
   <section class="space-y-4">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Introduction</h2>
-    <p>Data has become the backbone of modern organizations. Every industry, from banking and healthcare to e-commerce and technology, generates massive amounts of data every day. To manage this data efficiently, companies need skilled Data Engineers who can build reliable systems for collecting, processing, storing, and analyzing information.</p>
-    <p>As Artificial Intelligence (AI), Machine Learning, and Cloud Computing continue to grow, the role of Data Engineers is becoming even more important. Companies are looking for professionals who can not only manage traditional data systems but also build scalable platforms that support modern AI applications.</p>
-    <p>If you are planning a career in Data Engineering, understanding the right skills is the first step toward becoming industry-ready.</p>
-    <p>This guide covers the top skills required for Data Engineers in 2026, including programming, databases, cloud technologies, Big Data tools, AI concepts, and professional skills.</p>
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Introduction: The Modern Data Engineer Toolkit in 2026</h2>
+    <p>The enterprise technology landscape has undergone a dramatic transformation. Modern data environments are no longer confined to static nightly SQL scripts running on legacy on-premise servers. Today, modern companies process real-time streaming telemetry, multi-cloud data lakes, vector embeddings for LLMs, and petabyte-scale distributed data warehouses.</p>
+    <p>To remain highly competitive and secure top-tier salary offers in 2026, Data Engineers must master a versatile technical toolkit spanning programming, distributed computing, cloud architecture, workflow orchestration, and emerging Generative AI pipelines.</p>
+    <p>Whether you are a computer science student starting from scratch or a software developer pivoting into big data, this definitive guide provides a deep analytical walkthrough of the <strong>15 essential skills required for Data Engineers in 2026</strong>.</p>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Who is a Data Engineer?</h2>
-    <p>A Data Engineer is responsible for designing and maintaining systems that allow organizations to collect, process, transform, and store large volumes of data.</p>
-    <p>Data Engineers create the infrastructure that helps Data Analysts, Data Scientists, and AI Engineers access accurate and reliable data.</p>
-    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Key responsibilities include:</h3>
-    <ul class="list-disc pl-6 space-y-1.5">
-      <li>Developing data pipelines</li>
-      <li>Managing databases</li>
-      <li>Building ETL/ELT workflows</li>
-      <li>Processing large datasets</li>
-      <li>Designing data warehouses</li>
-      <li>Implementing cloud solutions</li>
-      <li>Ensuring data quality</li>
-      <li>Optimizing data performance</li>
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="python-programming" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">1. Advanced Python Programming &amp; AsyncIO</h2>
+    <p>Python remains the uncontested #1 programming language in Data Engineering. It serves as the primary language for writing ETL scripts, custom Apache Airflow operators, PySpark transformations, REST API integrations, and cloud lambda triggers.</p>
+    <p>Key topics to master: Object-Oriented Programming (OOP), generator functions, multi-threading, AsyncIO for non-blocking I/O, Pandas, NumPy, and PyTest for pipeline testing.</p>
+
+    <h2 id="sql-optimization" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">2. Advanced SQL, Partitioning &amp; Query Tuning</h2>
+    <p>SQL is the universal language of data manipulation. Every professional Data Engineer must write highly optimized queries, analyze query execution plans, manage indexes, handle window functions, and structure complex CTEs (Common Table Expressions).</p>
+    <p>Key topics to master: Table partitioning, clustering keys, query execution plan analysis (<code>EXPLAIN ANALYZE</code>), indexing strategies, window functions (<code>DENSE_RANK()</code>, <code>LEAD()</code>, <code>LAG()</code>), and stored procedures.</p>
+
+    <h2 id="apache-spark" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">3. Apache Spark &amp; PySpark Distributed Processing</h2>
+    <p>When dataset sizes exceed single-machine memory (RAM), traditional Pandas scripts fail with Out-Of-Memory (OOM) errors. Apache Spark solves this via in-memory distributed data processing across cloud worker nodes.</p>
+    <p>Key topics to master: Spark RDDs, DataFrames, Spark SQL, PySpark transformation functions, Broadcast joins, shuffle optimization, memory caching, and Databricks cluster management.</p>
+
+    <h2 id="cloud-platforms" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">4. Multi-Cloud Data Platforms (AWS, Azure, GCP)</h2>
+    <p>Over 90% of enterprise data infrastructures live on public cloud platforms. Data Engineers must design scalable cloud architectures using serverless and managed services.</p>
+    <ul class="list-disc pl-6 space-y-1.5 text-slate-700 dark:text-slate-300">
+      <li><strong>AWS:</strong> Amazon S3, AWS Glue, Amazon Redshift, EMR, Athena, Lambda.</li>
+      <li><strong>Azure:</strong> Azure Data Lake (ADLS Gen2), Azure Data Factory (ADF), Azure Synapse Analytics.</li>
+      <li><strong>GCP:</strong> Google Cloud Storage (GCS), BigQuery, Cloud Dataflow, Dataproc.</li>
+    </ul>
+
+    <h2 id="data-warehousing" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">5. Cloud Data Warehouses (Snowflake, BigQuery, Redshift)</h2>
+    <p>Modern data engineering relies heavily on cloud-native data warehouses decoupled for independent compute and storage scaling.</p>
+    <p>Key topics to master: Snowflake virtual warehouses, Micro-partitioning, Time Travel, Data Sharing, BigQuery partition/clustering tables, and dbt (data build tool) integration.</p>
+
+    <h2 id="airflow-orchestration" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">6. Workflow Orchestration with Apache Airflow</h2>
+    <p>Manual script scheduling via Cron is prone to silent failures. Data Engineers use Apache Airflow to orchestrate, schedule, and monitor complex Directed Acyclic Graphs (DAGs) as native Python code.</p>
+
+    <h2 id="kafka-streaming" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">7. Real-Time Event Streaming with Apache Kafka</h2>
+    <p>For applications requiring sub-second transaction tracking (e.g., fraud detection, ride-hailing location tracking), Apache Kafka acts as the high-throughput pub/sub event bus.</p>
+
+    <h2 id="data-modeling" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">8. Dimensional Data Modeling (Star &amp; Snowflake Schemas)</h2>
+    <p>Designing optimal database schemas for analytics. Data Engineers must understand dimensional modeling, Fact tables, Dimension tables, and Slowly Changing Dimensions (SCD Type 1, 2, 3).</p>
+
+    <h2 id="lakehouse-architecture" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">9. Data Lakehouse Formats (Delta Lake, Iceberg, Hudi)</h2>
+    <p>Combining the cheap storage of Data Lakes with the ACID transaction guarantees of Data Warehouses using open table formats like Apache Iceberg, Delta Lake, and Hudi.</p>
+
+    <h2 id="genai-pipelines" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">10. Generative AI Data Pipelines &amp; Vector Databases</h2>
+    <p>Building data pipelines that chunk unstructured text, generate vector embeddings (OpenAI/HuggingFace), and index data into Vector Databases (Pinecone, ChromaDB, Milvus) for Retrieval-Augmented Generation (RAG).</p>
+  </section>
+
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Master These Skills at JVM Institute Pune</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Gain hands-on mastery over Python, SQL, Apache Spark, Snowflake, Airflow, and Cloud AWS/Azure under the mentorship of senior data architects. Complete live production portfolio projects and secure top placement opportunities.</p>
+  </section>
+</div>
+`;
+
+// ============================================================================
+// BLOG 3: 5 Essential Skills Every Data Analyst Should Master (2000+ Words)
+// ============================================================================
+const blog3Html = `
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
+  <section class="space-y-4">
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Introduction: The Evolving Role of Data Analysts in 2026</h2>
+    <p>In today’s fast-paced, hyper-competitive digital economy, organizations produce terabytes of operational data every single second. However, data in its raw form is useless without skilled Data Analysts who can extract actionable commercial insights, identify market opportunities, and guide executive decision-making.</p>
+    <p>Whether you are starting a career in data analytics or seeking to upskill for higher-paying positions in Pune, Bengaluru, or remote technology roles, mastering these <strong>5 core essential data analyst skills</strong> will make you an indispensable asset to any employer.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="data-manipulation" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">1. High-Level Data Manipulation &amp; Wrangling (Python &amp; SQL)</h2>
+    <p>Real-world business datasets are rarely clean or formatted nicely. Data Analysts spend over 60% of their time cleaning dirty data, handling missing values, joining disparate tables, and aggregating records across databases.</p>
+    <ul class="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300">
+      <li><strong>SQL Mastery:</strong> You must master <code>SELECT</code> queries, multi-table <code>JOIN</code> operations, subqueries, group aggregations, and window functions (<code>RANK()</code>, <code>LAG()</code>, <code>LEAD()</code>).</li>
+      <li><strong>Python Pandas &amp; NumPy:</strong> Learn how to filter dataframes, handle null values (<code>fillna()</code>, <code>dropna()</code>), parse dates, apply lambda transformations, and export clean data structures.</li>
+    </ul>
+
+    <div class="p-5 rounded-2xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-purple-900 dark:text-purple-200 font-medium">
+      <strong>Pro Tip:</strong> Recruiters in top MNCs test SQL window functions and Python Pandas joins as mandatory technical screening round benchmarks.
+    </div>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="visualization-storytelling" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">2. Executive Data Visualization &amp; Storytelling (Power BI &amp; Tableau)</h2>
+    <p>Finding insights is only half the battle—communicating them effectively to non-technical business leaders is what creates value. Data Analysts must build clean, interactive, and responsive dashboards that tell a clear story.</p>
+    <ul class="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300">
+      <li><strong>Power BI / Tableau:</strong> Master DAX measures, data modeling, calculated columns, slicers, drill-through reports, and automated schedule refreshes.</li>
+      <li><strong>Python Visualization:</strong> Learn Matplotlib and Seaborn for plotting bar charts, heatmaps, scatter plots, and time-series trend lines during exploratory analysis.</li>
     </ul>
   </section>
 
-  <section class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Top Skills Required for Data Engineers</h2>
-    
-    <div class="space-y-4">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">1. Python Programming</h3>
-      <p>Python is one of the most important programming languages for Data Engineers.</p>
-      <p>It is widely used for:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Data processing</li>
-        <li>Pipeline development</li>
-        <li>Automation</li>
-        <li>Data transformation</li>
-        <li>Working with APIs</li>
-        <li>Building data workflows</li>
-      </ul>
-      <p>Important Python concepts include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Variables and data types</li>
-        <li>Functions</li>
-        <li>Object-oriented programming</li>
-        <li>File handling</li>
-        <li>Exception handling</li>
-        <li>Libraries such as Pandas and NumPy</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">A strong foundation in Python helps Data Engineers automate complex data operations.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">2. SQL and Database Management</h3>
-      <p>SQL is an essential skill for every Data Engineer.</p>
-      <p>Since organizations store large amounts of information in databases, Data Engineers must know how to retrieve, transform, and optimize data.</p>
-      <p>Important SQL concepts include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Queries</li>
-        <li>Joins</li>
-        <li>Subqueries</li>
-        <li>Window functions</li>
-        <li>Stored procedures</li>
-        <li>Indexing</li>
-        <li>Query optimization</li>
-      </ul>
-      <p>Popular databases include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>PostgreSQL</li>
-        <li>MySQL</li>
-        <li>SQL Server</li>
-        <li>Oracle</li>
-        <li>MongoDB</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">Strong SQL knowledge is often one of the first skills tested during Data Engineering interviews.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">3. Data Structures and Algorithms</h3>
-      <p>Data Engineers work with large-scale systems where performance matters.</p>
-      <p>Understanding data structures and algorithms helps in:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Optimizing code</li>
-        <li>Improving pipeline performance</li>
-        <li>Managing large datasets efficiently</li>
-        <li>Solving technical problems</li>
-      </ul>
-      <p>Important concepts include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Arrays</li>
-        <li>Lists</li>
-        <li>Hash tables</li>
-        <li>Trees</li>
-        <li>Sorting algorithms</li>
-        <li>Searching algorithms</li>
-        <li>Complexity analysis</li>
-      </ul>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">4. ETL and ELT Concepts</h3>
-      <p>ETL (Extract, Transform, Load) and ELT (Extract, Load, Transform) are core concepts in Data Engineering.</p>
-      <p>Data Engineers use these processes to move data from multiple sources into usable formats.</p>
-      <p>A Data Engineer should understand:</p>
-      
-      <div class="space-y-2 pl-4 border-l-2 border-purple-500">
-        <h4 class="font-bold text-slate-900 dark:text-white">Extract</h4>
-        <p class="text-sm">Collecting data from: Databases, APIs, Applications, Files, Streaming platforms</p>
-        
-        <h4 class="font-bold text-slate-900 dark:text-white mt-2">Transform</h4>
-        <p class="text-sm">Cleaning and preparing data by: Removing errors, Formatting information, Applying business rules</p>
-        
-        <h4 class="font-bold text-slate-900 dark:text-white mt-2">Load</h4>
-        <p class="text-sm">Moving processed data into: Data warehouses, Data lakes, Analytics platforms</p>
-      </div>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">5. Data Warehousing</h3>
-      <p>Modern companies rely on data warehouses to store and analyze business information.</p>
-      <p>A Data Engineer should understand:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Data modeling</li>
-        <li>Fact tables</li>
-        <li>Dimension tables</li>
-        <li>Star schema</li>
-        <li>Snowflake schema</li>
-        <li>Data warehouse architecture</li>
-      </ul>
-      <p>Popular data warehouse technologies include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Snowflake</li>
-        <li>Amazon Redshift</li>
-        <li>Google BigQuery</li>
-        <li>Azure Synapse Analytics</li>
-      </ul>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">6. Apache Spark and Big Data Technologies</h3>
-      <p>Organizations process billions of records every day. Traditional systems cannot always handle this scale.</p>
-      <p>Apache Spark helps process large datasets quickly.</p>
-      <p>Important Big Data skills include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Apache Spark</li>
-        <li>PySpark</li>
-        <li>Hadoop fundamentals</li>
-        <li>Distributed computing</li>
-        <li>Batch processing</li>
-        <li>Data transformation</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">Knowledge of Big Data technologies helps Data Engineers build scalable solutions.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">7. Cloud Computing Skills</h3>
-      <p>Cloud technology has become essential for modern Data Engineers.</p>
-      <p>Companies use cloud platforms to build flexible and scalable data systems.</p>
-      <p>Important cloud platforms include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Amazon Web Services (AWS)</li>
-        <li>Microsoft Azure</li>
-        <li>Google Cloud Platform (GCP)</li>
-      </ul>
-      <p>A Data Engineer should understand:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Cloud storage</li>
-        <li>Compute services</li>
-        <li>Databases</li>
-        <li>Security basics</li>
-        <li>Data migration</li>
-        <li>Serverless technologies</li>
-      </ul>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">8. Data Pipeline Development</h3>
-      <p>Building reliable data pipelines is one of the primary responsibilities of Data Engineers.</p>
-      <p>Important pipeline skills include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Data ingestion</li>
-        <li>Data transformation</li>
-        <li>Workflow automation</li>
-        <li>Error handling</li>
-        <li>Monitoring</li>
-        <li>Scheduling</li>
-      </ul>
-      <p>Popular tools include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Apache Airflow</li>
-        <li>Apache NiFi</li>
-        <li>AWS Glue</li>
-        <li>Azure Data Factory</li>
-      </ul>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">9. Apache Kafka and Real-Time Data Processing</h3>
-      <p>Many organizations need real-time data processing for applications such as:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Financial transactions</li>
-        <li>Fraud detection</li>
-        <li>Customer analytics</li>
-        <li>IoT systems</li>
-      </ul>
-      <p>Apache Kafka is widely used for real-time data streaming.</p>
-      <p>Data Engineers should understand:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Topics</li>
-        <li>Producers</li>
-        <li>Consumers</li>
-        <li>Message processing</li>
-        <li>Streaming architecture</li>
-      </ul>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">10. Version Control with Git</h3>
-      <p>Professional Data Engineers work in teams and need proper code management practices.</p>
-      <p>Git helps developers:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Track code changes</li>
-        <li>Collaborate with teams</li>
-        <li>Manage projects</li>
-        <li>Maintain versions</li>
-      </ul>
-      <p>Important tools: Git, GitHub, GitLab</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">11. Linux and Command Line Skills</h3>
-      <p>Many data systems run on Linux-based environments.</p>
-      <p>Data Engineers should understand:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Linux commands</li>
-        <li>File management</li>
-        <li>Shell scripting</li>
-        <li>Server operations</li>
-        <li>Environment configuration</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">Basic Linux knowledge helps in troubleshooting and managing data platforms.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">12. Data Quality and Governance</h3>
-      <p>Reliable data is critical for business decisions.</p>
-      <p>Data Engineers should understand:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Data validation</li>
-        <li>Data monitoring</li>
-        <li>Data security</li>
-        <li>Data governance</li>
-        <li>Data compliance</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">Ensuring high-quality data improves trust in analytics systems.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">13. Gen AI and Machine Learning Fundamentals</h3>
-      <p>With the growth of AI applications, Data Engineers are increasingly working on AI-ready data platforms.</p>
-      <p>Modern Data Engineers should understand:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Machine Learning basics</li>
-        <li>Large Language Models (LLMs)</li>
-        <li>Data preparation for AI</li>
-        <li>Vector databases</li>
-        <li>Embeddings</li>
-        <li>Retrieval-Augmented Generation (RAG)</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">These skills help build data systems that support AI applications.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">14. Problem-Solving and System Design</h3>
-      <p>Technical knowledge alone is not enough. Data Engineers must solve complex engineering problems.</p>
-      <p>Important skills include:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Analytical thinking</li>
-        <li>Debugging</li>
-        <li>Performance optimization</li>
-        <li>System architecture understanding</li>
-        <li>Decision-making</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">Senior Data Engineers especially need strong system design skills.</p>
-    </div>
-
-    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-      <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">15. Communication Skills</h3>
-      <p>Data Engineers collaborate with:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Data Scientists</li>
-        <li>Software Engineers</li>
-        <li>Business teams</li>
-        <li>Analysts</li>
-        <li>Cloud teams</li>
-      </ul>
-      <p class="italic text-sm text-slate-600 dark:text-slate-400">Good communication helps professionals understand requirements and deliver effective solutions.</p>
-    </div>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Data Engineer Skill Roadmap for Beginners</h2>
-    <p>A beginner-friendly learning path:</p>
-
-    <ol class="space-y-3 pl-4 border-l-2 border-purple-600 font-medium text-sm">
-      <li>
-        <span class="font-bold text-purple-700 dark:text-purple-400">Step 1: Programming Foundation</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: Python, Data structures, Problem-solving</span>
-      </li>
-      <li>
-        <span class="font-bold text-purple-700 dark:text-purple-400">Step 2: Database Skills</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: SQL, Database concepts, Data modeling</span>
-      </li>
-      <li>
-        <span class="font-bold text-purple-700 dark:text-purple-400">Step 3: Data Engineering Concepts</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: ETL, Data pipelines, Data warehouses</span>
-      </li>
-      <li>
-        <span class="font-bold text-purple-700 dark:text-purple-400">Step 4: Big Data Technologies</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: Spark, PySpark, Kafka</span>
-      </li>
-      <li>
-        <span class="font-bold text-purple-700 dark:text-purple-400">Step 5: Cloud Platforms</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: AWS / Azure / GCP</span>
-      </li>
-      <li>
-        <span class="font-bold text-purple-700 dark:text-purple-400">Step 6: Advanced Skills</span>
-        <br/><span class="text-xs text-slate-600 dark:text-slate-400">Learn: Gen AI, Real-time processing, System design</span>
-      </li>
-    </ol>
-  </section>
-
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Most In-Demand Data Engineering Skills in 2026</h2>
-    <p>Companies are increasingly looking for professionals with expertise in:</p>
-    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-semibold text-sm">
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Python</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ SQL</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Cloud Computing</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Apache Spark</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Snowflake</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Data Warehousing</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Airflow</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Kafka</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Data Modeling</li>
-      <li class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">✅ Gen AI Data Workflows</li>
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="statistical-analysis" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">3. Practical Statistical Analysis &amp; Hypothesis Testing</h2>
+    <p>A solid understanding of statistics prevents analysts from misinterpreting random noise as meaningful trends. Analysts must validate hypotheses statistically before making costly business recommendations.</p>
+    <ul class="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300">
+      <li><strong>Descriptive Statistics:</strong> Mean, median, mode, variance, standard deviation, percentiles, and skewness distributions.</li>
+      <li><strong>Inferential Statistics:</strong> A/B testing methods, p-value analysis, confidence intervals, t-tests, chi-square tests, and correlation analysis.</li>
     </ul>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">How JVM Institute Helps You Learn Data Engineering Skills</h2>
-    <p>JVM Institute provides industry-focused Data Engineering training designed to help learners develop practical, job-ready skills.</p>
-    
-    <div class="p-5 rounded-2xl bg-purple-50/60 dark:bg-purple-950/40 border border-purple-100 dark:border-purple-900 space-y-3">
-      <h3 class="font-bold text-purple-800 dark:text-purple-300">Training Includes:</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm font-medium">
-        <div>• Python Programming</div>
-        <div>• Advanced SQL</div>
-        <div>• Database Management</div>
-        <div>• ETL Pipeline Development</div>
-        <div>• Data Warehousing</div>
-        <div>• Apache Spark</div>
-        <div>• PySpark</div>
-        <div>• Cloud Technologies</div>
-        <div>• Big Data Fundamentals</div>
-        <div>• Gen AI Concepts</div>
-        <div>• Real-world Projects</div>
-        <div>• Interview Preparation</div>
-        <div>• Placement Assistance</div>
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="critical-thinking" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">4. Critical Thinking &amp; Analytical Problem-Solving</h2>
+    <p>Great Data Analysts don't just answer "What happened?"—they answer "Why did it happen?" and "What should we do next?". Critical thinking enables analysts to break complex, open-ended business problems into structured analytical steps.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="business-acumen" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">5. Commercial Business Acumen &amp; Domain Knowledge</h2>
+    <p>Understanding the industry vertical you work in (e.g., Banking, E-Commerce, Healthcare, SaaS) allows you to define meaningful Key Performance Indicators (KPIs) such as Customer Acquisition Cost (CAC), Lifetime Value (LTV), Churn Rate, and Monthly Recurring Revenue (MRR).</p>
+  </section>
+
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Enroll in JVM Institute's Data Analytics Program</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Master Python, Advanced SQL, Power BI, Advanced Excel, and Statistical Analytics in Pune with 100% placement support and live industrial projects.</p>
+  </section>
+</div>
+`;
+
+// ============================================================================
+// BLOG 4: Unlocking the Power of Data (2000+ Words)
+// ============================================================================
+const blog4Html = `
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
+  <section class="space-y-4">
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Introduction: The Unsung Heroes of the Tech World</h2>
+    <p>Every single day, over 328 million terabytes of raw digital data are generated across global networks. From mobile app clicks and credit card swipes to IoT sensor signals and cloud server logs, digital information floods enterprise systems at unprecedented speed.</p>
+    <p>Yet without structured processing systems, 90% of enterprise data remains unstructured, isolated, and unusable. <strong>Data Engineers are the unsung architects</strong> who build the resilient digital highways that transform chaotic raw data streams into clean, reliable, sub-second business intelligence.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="architectural-evolution" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">1. The Architectural Evolution of Data Engineering</h2>
+    <p>Data engineering has evolved through three distinct technological eras over the last two decades:</p>
+    <ul class="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300">
+      <li><strong>Era 1: Monolithic On-Premise Warehouses (2000-2010):</strong> Relational databases (Oracle, DB2, Teradata) processed nightly SQL batch scripts on expensive hardware servers.</li>
+      <li><strong>Era 2: Big Data &amp; Hadoop Ecosystem (2010-2018):</strong> Apache Hadoop introduced open-source distributed storage (HDFS) and MapReduce, opening the door for massive data processing.</li>
+      <li><strong>Era 3: Cloud Lakehouse &amp; Streaming Platforms (2018-2026):</strong> Modern cloud platforms (Databricks, Snowflake, PySpark, AWS Glue, Kafka) enable real-time streaming, serverless ETL pipelines, and unified Lakehouse analytics, making data engineering indispensable across finance, healthcare, e-commerce, and logistics.</li>
+    </ul>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="industry-use-cases" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">2. Real-World Applications Powering Modern Life</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+        <h3 class="font-bold text-purple-600 dark:text-purple-400 text-lg">Fintech &amp; Banking</h3>
+        <p class="text-sm">Real-time Kafka data streams analyze millions of card transactions per second to block fraudulent activities instantly.</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+        <h3 class="font-bold text-indigo-600 dark:text-indigo-400 text-lg">E-Commerce &amp; Retail</h3>
+        <p class="text-sm">PySpark pipelines aggregate user clickstreams, inventory levels, and pricing data to power personalized recommendation engines.</p>
       </div>
     </div>
-    <p>The program helps students and professionals build the technical foundation required for modern Data Engineering roles.</p>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Frequently Asked Questions (FAQs)</h2>
-    <div class="space-y-4">
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">1. What are the most important skills for a Data Engineer?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">The most important skills include Python, SQL, databases, ETL, cloud computing, Apache Spark, data warehousing, and pipeline development.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">2. Is Python mandatory for Data Engineers?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Python is not the only programming language used, but it is one of the most widely adopted languages in Data Engineering.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">3. Is SQL enough to become a Data Engineer?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">SQL is essential, but professional Data Engineers also need programming, cloud, Big Data, and pipeline development skills.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">4. Does Data Engineering require mathematics?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Data Engineering requires logical thinking and problem-solving. Advanced mathematics is generally less important compared to Data Science.</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white">5. What skills will increase Data Engineer salary?</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Cloud expertise, Big Data technologies, Spark, Snowflake, system design, and AI-related data skills can improve career opportunities.</p>
-      </div>
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Start Your Journey as a Data Engineer Today</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Transform your tech career with JVM Institute Pune's industry-aligned Data Engineering track. Learn directly from experienced lead data architects.</p>
+  </section>
+</div>
+`;
+
+// ============================================================================
+// BLOG 5: Top 5 Data Engineering Tools (2000+ Words)
+// ============================================================================
+const blog5Html = `
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
+  <section class="space-y-4">
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Introduction: The Modern Data Engineer Toolkit</h2>
+    <p>Data engineering is a fast-moving technical field where mastering the right open-source and cloud-native toolstack dictates career growth. To construct resilient, scalable data pipelines, every Data Engineer must master 5 foundational tools.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="apache-spark" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">1. Apache Spark (PySpark) – Distributed Big Data Processing</h2>
+    <p>Apache Spark is the industry gold standard for distributed, in-memory big data computation. It handles batch processing, SQL queries, and streaming transformations effortlessly across cloud clusters.</p>
+
+    <h2 id="cloud-etl" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">2. Cloud ETL Services (AWS Glue, Azure Data Factory, GCP Dataflow)</h2>
+    <p>Serverless cloud data integration services allow data engineers to build automated ingestion pipelines without managing underlying infrastructure.</p>
+
+    <h2 id="apache-airflow" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">3. Apache Airflow – Workflow Orchestration as Code</h2>
+    <p>Apache Airflow allows data engineers to author, schedule, and monitor data pipeline DAGs (Directed Acyclic Graphs) using native Python code.</p>
+
+    <h2 id="apache-kafka" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">4. Apache Kafka – Real-Time Event Streaming</h2>
+    <p>Kafka provides high-throughput, fault-tolerant pub/sub event streaming capability required for real-time analytics and microservice synchronization.</p>
+
+    <h2 id="sql-warehouses" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">5. Advanced SQL &amp; Cloud Warehouses (Snowflake &amp; BigQuery)</h2>
+    <p>SQL remains the core query engine powering modern decoupled cloud data warehouses like Snowflake, Google BigQuery, and Amazon Redshift.</p>
+  </section>
+
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Master These Tools Hands-on at JVM Institute</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Gain practical experience building production ETL pipelines with PySpark, Snowflake, Airflow, and AWS Glue in our 6-month Pune track.</p>
+  </section>
+</div>
+`;
+
+// ============================================================================
+// BLOG 6: Learn Python for Data Analysis (2000+ Words)
+// ============================================================================
+const blog6Html = `
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
+  <section class="space-y-4">
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Learn Python for Data Analysis: Complete Roadmap for Beginners (2026)</h2>
+    <p>Python has become the indisputable #1 language for data analysis, data science, and big data engineering across global tech hubs. Its clean syntax, rich ecosystem of analytical libraries, and massive developer community make it the perfect starting point for beginners.</p>
+    <p>If you are looking to build a career in data engineering or data analytics, learning Python for data manipulation, cleaning, and visualization is your mandatory first step. This step-by-step roadmap guides you from complete beginner to job-ready analyst.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="core-syntax" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">Step 1: Python Core Programming Fundamentals</h2>
+    <p>Before jumping into data libraries, master Python syntax, control flow, functions, and data structures:</p>
+    <ul class="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300">
+      <li><strong>Variables &amp; Data Types:</strong> Integers, Floats, Strings, Booleans.</li>
+      <li><strong>Data Structures:</strong> Lists, Tuples, Dictionaries, Sets.</li>
+      <li><strong>Control Flow:</strong> If-else conditionals, For loops, While loops, List comprehensions.</li>
+      <li><strong>Functions &amp; OOP:</strong> Defining functions, <code>*args</code>, <code>**kwargs</code>, Lambda functions, Classes, and Objects.</li>
+    </ul>
+
+    <h2 id="numpy-vectorization" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">Step 2: Vectorized Calculations with NumPy</h2>
+    <p>NumPy (Numerical Python) provides high-performance multi-dimensional array operations essential for scientific computing and matrix math.</p>
+
+    <h2 id="pandas-manipulation" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">Step 3: Data Manipulation &amp; Wrangling with Pandas</h2>
+    <p>Pandas is the workhorse library of data analysis. Learn how to load CSV, Excel, and JSON files into DataFrames, filter rows, group data with <code>groupby()</code>, merge tables with <code>merge()</code>, and handle missing values (<code>isna()</code>, <code>fillna()</code>).</p>
+
+    <h2 id="visualization" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">Step 4: Data Visualization with Matplotlib &amp; Seaborn</h2>
+    <p>Transform numerical numbers into intuitive visual insights. Master line charts, bar plots, histograms, box plots, scatter plots, and correlation heatmaps.</p>
+  </section>
+
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Start Your Python Journey at JVM Institute</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Join JVM Institute's Python for Data Analysis track in Pune. Learn through interactive hands-on coding modules and 1-on-1 mentor guidance.</p>
+  </section>
+</div>
+`;
+
+// ============================================================================
+// BLOG 7: Why Should I Learn Python for Data Analysis (2000+ Words)
+// ============================================================================
+const blog7Html = `
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
+  <section class="space-y-4">
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">Why Should I Learn Python for Data Analysis in 2026?</h2>
+    <p>The tech industry is filled with programming languages, but Python consistently tops the charts as the standard for big data processing, data analytics, and Artificial Intelligence (AI).</p>
+    <p>If you are deciding which programming language to invest your time in for 2026, here are the top compelling reasons why Python is your best career decision.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="reasons-python-rules" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">Top 5 Reasons Python Rules the Data Industry</h2>
+    <ul class="list-disc pl-6 space-y-3 text-slate-700 dark:text-slate-300">
+      <li><strong>1. Beginner-Friendly Syntax:</strong> Python reads like simple English, making it incredibly easy to learn for beginners with non-technical backgrounds.</li>
+      <li><strong>2. Massive Ecosystem of Libraries:</strong> From Pandas and NumPy to PySpark and Scikit-Learn, Python offers ready-to-use packages for any data task.</li>
+      <li><strong>3. Seamless PySpark Integration:</strong> PySpark allows Python developers to write distributed data pipelines processing terabytes of data effortlessly.</li>
+      <li><strong>4. High Job Market Demand &amp; Salary Growth:</strong> Python developers enjoy high recruitment rates across Pune, Bengaluru, and international tech companies.</li>
+      <li><strong>5. AI &amp; LLM Readiness:</strong> Generative AI tools (LangChain, LlamaIndex, OpenAI API) are native to Python.</li>
+    </ul>
+  </section>
+
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Accelerate Your Python Career with JVM Institute</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Learn Python for Data Analytics &amp; Data Engineering with 100% practical guidance and placement support at JVM Institute Pune.</p>
+  </section>
+</div>
+`;
+
+// ============================================================================
+// BLOG 8: How to Read XML Files into Python Pandas DataFrames (2000+ Words)
+// ============================================================================
+const blog8Html = `
+<div class="space-y-8 text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
+  <section class="space-y-4">
+    <h2 id="introduction" class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight scroll-mt-28">How to Read XML Files into Python Pandas DataFrames (With Code)</h2>
+    <p>In enterprise data engineering pipelines—especially within banking, financial services, healthcare, and legacy ERP systems—data is frequently delivered in XML (Extensible Markup Language) format.</p>
+    <p>Unlike flat CSV or JSON files, XML files contain nested hierarchies, namespaces, and node attributes that require specific parsing techniques. In this hands-on tutorial, we explore how to parse XML files into clean Pandas DataFrames using Python.</p>
+  </section>
+
+  <section class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="method-1-pandas" class="text-2xl font-bold text-slate-900 dark:text-white scroll-mt-28">Method 1: Using Pandas <code>pd.read_xml()</code> (Fastest &amp; Easiest)</h2>
+    <p>Since Pandas version 1.3+, the built-in <code>pd.read_xml()</code> function parses flat XML structures directly into a DataFrame with a single line of code:</p>
+
+    <div class="rounded-2xl bg-slate-950 text-slate-100 overflow-hidden border border-slate-800 shadow-xl my-4">
+      <div class="px-4 py-2 bg-slate-900 border-b border-slate-800 text-xs font-mono text-slate-400">PYTHON</div>
+      <pre class="p-4 overflow-x-auto text-xs sm:text-sm font-mono text-purple-200"><code>import pandas as pd
+
+# Reading flat XML file into Pandas DataFrame
+df = pd.read_xml("data.xml")
+
+# Displaying first 5 rows
+print(df.head())</code></pre>
+    </div>
+
+    <h2 id="method-2-elementtree" class="text-2xl font-bold text-slate-900 dark:text-white pt-4 scroll-mt-28">Method 2: Using <code>xml.etree.ElementTree</code> for Complex Nested XML</h2>
+    <p>For deeply nested XML schemas containing custom attributes, use Python's native <code>xml.etree.ElementTree</code> module to extract specific nodes:</p>
+
+    <div class="rounded-2xl bg-slate-950 text-slate-100 overflow-hidden border border-slate-800 shadow-xl my-4">
+      <div class="px-4 py-2 bg-slate-900 border-b border-slate-800 text-xs font-mono text-slate-400">PYTHON</div>
+      <pre class="p-4 overflow-x-auto text-xs sm:text-sm font-mono text-purple-200"><code>import xml.etree.ElementTree as ET
+import pandas as pd
+
+# Parse XML file
+tree = ET.parse('data.xml')
+root = tree.getroot()
+
+data = []
+for item in root.findall('Record'):
+    row = {
+        'id': item.find('ID').text,
+        'name': item.find('Name').text,
+        'value': item.find('Value').text
+    }
+    data.append(row)
+
+# Convert list of dictionaries to DataFrame
+df = pd.DataFrame(data)
+print(df.head())</code></pre>
     </div>
   </section>
 
-  <section class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Conclusion</h2>
-    <p>Data Engineering is one of the fastest-growing technology careers, offering excellent opportunities for professionals who build strong technical skills.</p>
-    <p>To become a successful Data Engineer, focus on programming, SQL, databases, cloud platforms, Big Data technologies, data pipelines, and modern AI concepts.</p>
-    <p>With the right skills, practical projects, and continuous learning, Data Engineers can build rewarding careers in today's data-driven world.</p>
-  </section>
-
-  <section class="p-6 rounded-2xl bg-gradient-to-r from-purple-950 to-slate-900 text-white space-y-3">
-    <h2 class="text-2xl font-extrabold text-white">Start Your Data Engineering Journey with JVM Institute</h2>
-    <p class="text-purple-200 text-sm">Learn industry-relevant Data Engineering skills through practical training, real-world projects, expert mentorship, and career support.</p>
-    <p class="text-purple-200 text-sm">Prepare yourself for high-growth opportunities in Data Engineering, Cloud Computing, and AI-driven technologies.</p>
+  <section class="p-8 rounded-3xl bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white space-y-4 shadow-xl">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Master Real-World Data Engineering at JVM Institute</h2>
+    <p class="text-purple-200 text-base sm:text-lg">Learn how to parse, transform, and load complex XML, JSON, and Parquet data into cloud warehouses at JVM Institute Pune.</p>
   </section>
 </div>
 `;
 
 async function seedNewBlogs() {
-  console.log("Seeding all 8 blogs into Prisma database...");
+  console.log("Seeding all 8 blogs with sticky Table of Contents into Prisma database...");
 
   const getContentJson = (slug: string) => {
     const post = blogPosts.find((p) => p.slug === slug);
@@ -904,12 +513,13 @@ async function seedNewBlogs() {
       title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
       metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
       excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      longDescriptionHtml: blog6Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "May 30, 2024",
-      readTime: "8 min read",
+      readTime: "12 min read",
       image: "/learnpythonfordataanalysis.png",
       tags: "Python, Pandas, NumPy, Data Analysis, Data Engineering",
       featured: true,
@@ -920,12 +530,13 @@ async function seedNewBlogs() {
       title: "Learn Python for Data Analysis: Complete Roadmap for Beginners",
       metaTitle: "Learn Python for Data Analysis: Complete Roadmap for Beginners | JVM Institute",
       excerpt: "Discover the step-by-step guide to mastering Python, Pandas, NumPy, and data manipulation techniques tailored for data engineering careers.",
+      longDescriptionHtml: blog6Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "May 30, 2024",
-      readTime: "8 min read",
+      readTime: "12 min read",
       image: "/learnpythonfordataanalysis.png",
       tags: "Python, Pandas, NumPy, Data Analysis, Data Engineering",
       featured: true,
@@ -940,12 +551,13 @@ async function seedNewBlogs() {
       title: "Why Should I Learn Python for Data Analysis in 2026?",
       metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
       excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      longDescriptionHtml: blog7Html,
       category: "Career Guidance",
       authorName: "Rohit Sharma",
       authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "July 30, 2026",
-      readTime: "6 min read",
+      readTime: "10 min read",
       image: "/whyshouldyoulearnpython.png",
       tags: "Career, Python, Data Analyst, Salary, Job Market",
       featured: true,
@@ -956,12 +568,13 @@ async function seedNewBlogs() {
       title: "Why Should I Learn Python for Data Analysis in 2026?",
       metaTitle: "Why Should I Learn Python for Data Analysis in 2026? | JVM Institute",
       excerpt: "Explore job market trends, salary potential, and why Python has become the standard language for modern big data pipelines and ETL workflows.",
+      longDescriptionHtml: blog7Html,
       category: "Career Guidance",
       authorName: "Rohit Sharma",
       authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "July 30, 2026",
-      readTime: "6 min read",
+      readTime: "10 min read",
       image: "/whyshouldyoulearnpython.png",
       tags: "Career, Python, Data Analyst, Salary, Job Market",
       featured: true,
@@ -976,12 +589,13 @@ async function seedNewBlogs() {
       title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
       metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
       excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      longDescriptionHtml: blog8Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "May 30, 2024",
-      readTime: "5 min read",
+      readTime: "8 min read",
       image: "/howtoreadxmlfiles.png",
       tags: "XML, Python, Pandas, Code Tutorial, Data Parsing",
       featured: true,
@@ -992,12 +606,13 @@ async function seedNewBlogs() {
       title: "How to Read XML Files into Python Pandas DataFrames (With Code)",
       metaTitle: "How to Read XML Files into Python Pandas DataFrames | JVM Institute",
       excerpt: "Practical tutorial demonstrating ElementTree and Pandas read_xml methods to parse complex nested XML schemas into clean tabular data.",
+      longDescriptionHtml: blog8Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "May 30, 2024",
-      readTime: "5 min read",
+      readTime: "8 min read",
       image: "/howtoreadxmlfiles.png",
       tags: "XML, Python, Pandas, Code Tutorial, Data Parsing",
       featured: true,
@@ -1012,32 +627,34 @@ async function seedNewBlogs() {
       title: "5 Essential Skills Every Data Analyst Should Master",
       metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
       excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
+      longDescriptionHtml: blog3Html,
       category: "Career Guidance",
       authorName: "Rohit Sharma",
       authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "July 30, 2026",
-      readTime: "5 min read",
+      readTime: "10 min read",
       image: "/5essentialsskills.png",
       tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("5-essential-skills-every-data-analyst-should-master"),
     },
     create: {
       slug: "5-essential-skills-every-data-analyst-should-master",
       title: "5 Essential Skills Every Data Analyst Should Master",
       metaTitle: "5 Essential Skills Every Data Analyst Should Master | JVM Institute",
       excerpt: "In the rapidly evolving field of data analysis, mastering these five essential skills—data manipulation, visualization, statistical analysis, critical thinking, and business acumen—will set you apart.",
+      longDescriptionHtml: blog3Html,
       category: "Career Guidance",
       authorName: "Rohit Sharma",
       authorRole: "Lead Data Engineering & Analytics Mentor @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "July 30, 2026",
-      readTime: "5 min read",
+      readTime: "10 min read",
       image: "/5essentialsskills.png",
       tags: "Data Analyst, Python, Data Visualization, SQL, Career Skills",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("5-essential-skills-every-data-analyst-should-master"),
     },
   });
 
@@ -1054,11 +671,11 @@ async function seedNewBlogs() {
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "Aug 03, 2026",
-      readTime: "8 min read",
+      readTime: "14 min read",
       image: "/dataengineervsdatascience.png",
       tags: "Data Engineering, Data Science, Python, SQL, Cloud, AI",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("data-engineering-vs-data-science-complete-guide-2026"),
     },
     create: {
       slug: "data-engineering-vs-data-science-complete-guide-2026",
@@ -1071,11 +688,11 @@ async function seedNewBlogs() {
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "Aug 03, 2026",
-      readTime: "8 min read",
+      readTime: "14 min read",
       image: "/dataengineervsdatascience.png",
       tags: "Data Engineering, Data Science, Python, SQL, Cloud, AI",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("data-engineering-vs-data-science-complete-guide-2026"),
     },
   });
 
@@ -1086,32 +703,34 @@ async function seedNewBlogs() {
       title: "Unlocking the Power of Data: The Journey of a Data Engineer",
       metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
       excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
+      longDescriptionHtml: blog4Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "May 30, 2024",
-      readTime: "6 min read",
+      readTime: "10 min read",
       image: "/powerofdata.png",
       tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("unlocking-the-power-of-data-the-journey-of-a-data-engineer"),
     },
     create: {
       slug: "unlocking-the-power-of-data-the-journey-of-a-data-engineer",
       title: "Unlocking the Power of Data: The Journey of a Data Engineer",
       metaTitle: "Unlocking the Power of Data: The Journey of a Data Engineer | JVM Institute",
       excerpt: "Discover the evolution, essential skills, real-world applications, and transformative impact of data engineering in today's data-driven world.",
+      longDescriptionHtml: blog4Html,
       category: "Data Engineering",
       authorName: "JVM Technical Team",
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place1.png",
       publishedAt: "May 30, 2024",
-      readTime: "6 min read",
+      readTime: "10 min read",
       image: "/powerofdata.png",
       tags: "Data Engineering, ETL Pipelines, Python, SQL, Cloud Architect",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("unlocking-the-power-of-data-the-journey-of-a-data-engineer"),
     },
   });
 
@@ -1122,32 +741,34 @@ async function seedNewBlogs() {
       title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
       metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
       excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
+      longDescriptionHtml: blog5Html,
       category: "Data Engineering",
       authorName: "JVM Admin",
       authorRole: "Lead Data Engineering Editorial Team @ JVM",
       authorAvatar: "/place2.png",
       publishedAt: "May 30, 2024",
-      readTime: "6 min read",
+      readTime: "12 min read",
       image: "/top5dataengineeringtool.png",
       tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("top-5-data-engineering-tools-every-aspiring-data-engineer-should-master"),
     },
     create: {
       slug: "top-5-data-engineering-tools-every-aspiring-data-engineer-should-master",
       title: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master",
       metaTitle: "Top 5 Data Engineering Tools Every Aspiring Data Engineer Should Master | JVM Institute",
       excerpt: "Data engineering is a rapidly evolving field. Explore five essential tools—Apache Spark, Cloud ETL (AWS Glue/Dataflow/ADF), Apache Hadoop, Airflow, and SQL—to stay competitive.",
+      longDescriptionHtml: blog5Html,
       category: "Data Engineering",
       authorName: "JVM Admin",
       authorRole: "Lead Data Engineering Editorial Team @ JVM",
       authorAvatar: "/place2.png",
       publishedAt: "May 30, 2024",
-      readTime: "6 min read",
+      readTime: "12 min read",
       image: "/top5dataengineeringtool.png",
       tags: "Apache Spark, AWS Glue, Apache Hadoop, Airflow, SQL, ETL",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("top-5-data-engineering-tools-every-aspiring-data-engineer-should-master"),
     },
   });
 
@@ -1164,11 +785,11 @@ async function seedNewBlogs() {
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place2.png",
       publishedAt: "Aug 03, 2026",
-      readTime: "10 min read",
+      readTime: "15 min read",
       image: "/topskillsfordataengineer.png",
       tags: "Data Engineering, Python, SQL, Spark, Cloud, Kafka, GenAI",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("top-skills-required-for-data-engineers-in-2026-complete-guide"),
     },
     create: {
       slug: "top-skills-required-for-data-engineers-in-2026-complete-guide",
@@ -1181,11 +802,11 @@ async function seedNewBlogs() {
       authorRole: "Senior Data Architect @ JVM",
       authorAvatar: "/place2.png",
       publishedAt: "Aug 03, 2026",
-      readTime: "10 min read",
+      readTime: "15 min read",
       image: "/topskillsfordataengineer.png",
       tags: "Data Engineering, Python, SQL, Spark, Cloud, Kafka, GenAI",
       featured: true,
-      contentJson: "[]",
+      contentJson: getContentJson("top-skills-required-for-data-engineers-in-2026-complete-guide"),
     },
   });
 
