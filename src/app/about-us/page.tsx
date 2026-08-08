@@ -307,6 +307,28 @@ export default function AboutUsPage() {
       "MLOps"
     ]
   }
+
+{
+  name: "Ketan Sir",
+  role: "Interview Expert",
+  experience: "5+ Years Exp",
+  image: "/ketan.png",
+  bio: "Experienced Interview Expert specializing in technical interviews, project discussions, SQL, Python, scenario-based questions, HR and behavioral rounds. Helps candidates improve their interview performance through practical guidance, personalized feedback, and structured improvement roadmaps.",
+  expertise: [
+    "Technical Interviews",
+    "Project Discussion",
+    "SQL",
+    "Python",
+    "Scenario-Based Questions",
+    "HR & Behavioral Interviews",
+    "Interview Preparation",
+    "Mock Interviews",
+    "Interview Feedback",
+    "Performance Improvement",
+    "Communication Skills",
+    "Problem Solving"
+  ]
+}
 ];
 
   const timelineData = [
