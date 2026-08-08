@@ -19,7 +19,8 @@ import {
   Info,
   AlertTriangle,
   CheckCircle2,
-  Loader2
+  Loader2,
+  User
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -217,15 +218,25 @@ export default function SingleBlogPage() {
             {post.excerpt}
           </p>
 
+          {/* Author Details Bar with User Icon */}
+          <div className="flex items-center gap-2.5 py-2 px-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm w-fit">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <User className="w-4 h-4" />
+            </div>
+            <h4 className="text-xs font-extrabold text-slate-900 dark:text-white">
+              JVM Technical Team
+            </h4>
+          </div>
 
 
-          {/* Large Hero Image */}
-          <div className="relative w-full h-[300px] sm:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 dark:border-slate-800">
+
+          {/* Large Hero Image (Edge-to-Edge Fit on Mobile, Full Cover on Desktop) */}
+          <div className="relative w-full aspect-[16/9] sm:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900">
             <Image
               src={post.image || "/course.jpg"}
               alt={post.title}
               fill
-              className="object-cover object-center"
+              className="object-contain sm:object-cover object-center"
               priority
             />
           </div>

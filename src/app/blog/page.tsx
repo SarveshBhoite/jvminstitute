@@ -13,7 +13,8 @@ import {
   BookOpen, 
   XCircle,
   TrendingUp,
-  Loader2
+  Loader2,
+  User
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -232,12 +233,12 @@ export default function BlogListingPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                     
                     {/* Featured Image */}
-                    <div className="lg:col-span-6 relative min-h-[260px] sm:min-h-[340px] overflow-hidden">
+                    <div className="lg:col-span-6 relative aspect-[16/9] sm:min-h-[340px] overflow-hidden bg-slate-100 dark:bg-slate-900">
                       <Image
                         src={featuredPost.image || "/course.jpg"}
                         alt={featuredPost.title}
                         fill
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        className="object-contain sm:object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1.5 rounded-full bg-[#7C248C] text-white text-xs font-black uppercase tracking-wider shadow-md">
@@ -280,23 +281,13 @@ export default function BlogListingPage() {
 
                       {/* Author & CTA Button */}
                       <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
-                        <div className="flex items-center gap-3">
-                          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-purple-500/30">
-                            <Image
-                              src={featuredPost.author.avatar || "/place1.png"}
-                              alt={featuredPost.author.name}
-                              fill
-                              className="object-cover"
-                            />
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
+                            <User className="w-4 h-4" />
                           </div>
-                          <div>
-                            <h4 className="text-xs font-extrabold text-slate-900 dark:text-white">
-                              {featuredPost.author.name}
-                            </h4>
-                            <span className="text-[11px] text-slate-500 dark:text-slate-400">
-                              {featuredPost.author.role}
-                            </span>
-                          </div>
+                          <h4 className="text-xs font-extrabold text-slate-900 dark:text-white">
+                            JVM Technical Team
+                          </h4>
                         </div>
 
                         <Link
@@ -413,16 +404,11 @@ export default function BlogListingPage() {
                               {/* Author Footnote & Read More Button */}
                               <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-purple-400/40">
-                                    <Image
-                                      src={post.author.avatar || "/place1.png"}
-                                      alt={post.author.name}
-                                      fill
-                                      className="object-cover"
-                                    />
+                                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shrink-0">
+                                    <User className="w-4 h-4" />
                                   </div>
                                   <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate max-w-[120px]">
-                                    {post.author.name}
+                                    JVM Technical Team
                                   </span>
                                 </div>
 

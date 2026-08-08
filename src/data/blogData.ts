@@ -85,12 +85,12 @@ export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
     category: dbBlog.category || "Data Engineering",
     featured: dbBlog.featured ?? false,
     author: {
-      name: dbBlog.authorName || staticPost?.author?.name || "JVM Technical Team",
-      role: dbBlog.authorRole || staticPost?.author?.role || "Senior Data Architect @ JVM",
-      avatar: dbBlog.authorAvatar || staticPost?.author?.avatar || "/place1.png",
+      name: "JVM Technical Team",
+      role: "",
+      avatar: "/place1.png",
       bio: "",
     },
-    publishedAt: dbBlog.publishedAt || "Aug 2026",
+    publishedAt: dbBlog.publishedAt || "August 8, 2026",
     readTime: dbBlog.readTime || "5 min read",
     image: dbBlog.image || staticPost?.image || "/course.jpg",
     tags: tags.length > 0 ? tags : ["Data Engineering"],
@@ -108,12 +108,12 @@ export const blogPosts: BlogPost[] = [
     category: "Data Engineering",
     featured: true,
     author: {
-      name: "",
-      role: "",
-      avatar: "/course.jpg",
-      bio: ""
+      name: "JVM Technical Team",
+      role: "Senior Data Architect @ JVM",
+      avatar: "/place1.png",
+      bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute."
     },
-    publishedAt: "May 30, 2024",
+    publishedAt: "August 8, 2026",
     readTime: "6 min read",
     image: "/howtoreadxmlfiles.png",
     tags: ["Data Engineering", "ETL Pipelines", "Python", "SQL", "Cloud Architect"],
@@ -210,12 +210,12 @@ print("Parsed Data Summary:\\n", df.head())`
     category: "Data Engineering",
     featured: true,
     author: {
-      name: "JVM Admin",
-      role: "Lead Data Engineering Editorial Team @ JVM",
-      avatar: "/place2.png",
-      bio: "Industry technical writers & senior data architects publishing real-world cloud pipelines & framework playbooks."
+      name: "JVM Technical Team",
+      role: "Senior Data Architect @ JVM",
+      avatar: "/place1.png",
+      bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute."
     },
-    publishedAt: "May 30, 2024",
+    publishedAt: "August 8, 2026",
     readTime: "6 min read",
     image: "/learnpythonfordataanalysis.png",
     tags: ["Apache Spark", "AWS Glue", "Apache Hadoop", "Airflow", "SQL", "ETL"],
@@ -315,12 +315,12 @@ transformed_df.show(5)`
     category: "Career Guidance",
     featured: true,
     author: {
-      name: "Rohit Sharma",
-      role: "Lead Data Engineering & Analytics Mentor @ JVM",
+      name: "JVM Technical Team",
+      role: "Senior Data Architect @ JVM",
       avatar: "/place1.png",
-      bio: "Ex-Principal Data Architect with 12+ years mentoring over 1,500+ data analysts and engineers."
+      bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute."
     },
-    publishedAt: "July 30, 2026",
+    publishedAt: "August 8, 2026",
     readTime: "5 min read",
     image: "/whyshouldyoulearnpython.png",
     tags: ["Data Analyst", "Python", "Data Visualization", "SQL", "Career Skills"],

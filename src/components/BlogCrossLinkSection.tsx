@@ -111,12 +111,12 @@ export default function BlogCrossLinkSection() {
                 <div>
                   
                   {/* Blog Image Thumbnail */}
-                  <div className="relative w-full h-36 sm:h-48 overflow-hidden">
+                  <div className="relative w-full h-36 sm:h-48 overflow-hidden bg-slate-100 dark:bg-slate-900">
                     <Image
                       src={article.image}
                       alt={article.title}
                       fill
-                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                      className="object-contain sm:object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                     />
 
                     {/* Gradient Overlay Mask */}
