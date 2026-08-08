@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -94,6 +94,41 @@ export default function SingleBlogPage() {
       setTimeout(() => setCopied(false), 2500);
     }
   };
+
+  // Dynamic extraction of Table of Contents for ALL blogs
+  const effectiveTOC = useMemo(() => {
+    if (!post) return [];
+    if (post.tableOfContents && post.tableOfContents.length > 0) {
+      return post.tableOfContents;
+    }
+    if (post.longDescriptionHtml) {
+      const headings: { id: string; title: string }[] = [];
+      const regex = /<h2[^>]*?(?:id=["']([^"']+)["'])?[^>]*?>([\s\S]*?)<\/h2>/gi;
+      let match;
+      let count = 0;
+      while ((match = regex.exec(post.longDescriptionHtml)) !== null) {
+        count++;
+        const rawId = match[1];
+        const rawTitle = match[2].replace(/<[^>]+>/g, "").trim();
+        const id = rawId || `section-${count}`;
+        if (rawTitle) {
+          headings.push({ id, title: rawTitle });
+        }
+      }
+      if (headings.length > 0) return headings;
+    }
+    if (post.content && post.content.length > 0) {
+      return post.content
+        .filter((c) => c.heading || c.sectionId)
+        .map((c) => ({
+          id: c.sectionId || "section",
+          title: c.heading || c.sectionId || "",
+        }));
+    }
+    return [];
+  }, [post]);
+
+  const hasTOC = effectiveTOC.length > 0;
 
   if (loading) {
     return (
@@ -200,14 +235,11 @@ export default function SingleBlogPage() {
         {/* ========================================================= */}
         {/* 2. ARTICLE BODY CONTENT WITH STICKY TABLE OF CONTENTS     */}
         {/* ========================================================= */}
-        {/* ========================================================= */}
-        {/* 2. ARTICLE BODY CONTENT WITH STICKY TABLE OF CONTENTS     */}
-        {/* ========================================================= */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
             {/* Sticky Table of Contents Sidebar (Desktop Index List) */}
-            {post.tableOfContents && post.tableOfContents.length > 0 && (
+            {hasTOC && (
               <aside className="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
                 <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
                   <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 border-b border-slate-100 dark:border-slate-800 pb-3">
@@ -215,7 +247,7 @@ export default function SingleBlogPage() {
                     <span>ARTICLE INDEX &amp; SECTIONS</span>
                   </div>
                   <nav className="space-y-1.5 max-h-[60vh] overflow-y-auto pr-1">
-                    {post.tableOfContents.map((toc, i) => (
+                    {effectiveTOC.map((toc, i) => (
                       <a
                         key={toc.id || i}
                         href={`#${toc.id}`}
@@ -248,16 +280,16 @@ export default function SingleBlogPage() {
             )}
 
             {/* Main Article Content Column (Narrow Focused Width for Optimal Reading) */}
-            <article className={`${post.tableOfContents && post.tableOfContents.length > 0 ? "lg:col-span-8" : "lg:col-span-12 max-w-4xl mx-auto"} space-y-8`}>
+            <article className={`${hasTOC ? "lg:col-span-8" : "lg:col-span-12 max-w-4xl mx-auto"} space-y-8`}>
               
               {/* Mobile Inline Table of Contents */}
-              {post.tableOfContents && post.tableOfContents.length > 0 && (
+              {hasTOC && (
                 <div className="block lg:hidden p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
                   <h3 className="text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 flex items-center gap-2">
                     <BookOpen className="w-4 h-4" /> Quick Section Index
                   </h3>
                   <ul className="space-y-2 text-xs font-medium text-slate-700 dark:text-slate-300">
-                    {post.tableOfContents.map((toc, i) => (
+                    {effectiveTOC.map((toc, i) => (
                       <li key={toc.id || i}>
                         <a href={`#${toc.id}`} className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
                           <span className="text-purple-500 font-bold">{i + 1}.</span>
