@@ -485,9 +485,13 @@ export default function ReferAndEarnPage() {
                           <input
                             type="tel"
                             required
-                            placeholder="8446284162"
+                            pattern="[0-9]{10}"
+                            minLength={10}
+                            maxLength={10}
+                            title="Phone number must be exactly 10 digits"
+                            placeholder="Enter 10-digit number"
                             value={referrerPhone}
-                            onChange={(e) => setReferrerPhone(e.target.value)}
+                            onChange={(e) => setReferrerPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                             className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                           />
                         </div>
@@ -514,9 +518,13 @@ export default function ReferAndEarnPage() {
                           <input
                             type="tel"
                             required
-                            placeholder="9123456789"
+                            pattern="[0-9]{10}"
+                            minLength={10}
+                            maxLength={10}
+                            title="Phone number must be exactly 10 digits"
+                            placeholder="Enter 10-digit mobile number"
                             value={friendPhone}
-                            onChange={(e) => setFriendPhone(e.target.value)}
+                            onChange={(e) => setFriendPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                             className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                           />
                         </div>

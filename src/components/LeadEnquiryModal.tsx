@@ -221,11 +221,18 @@ export default function LeadEnquiryModal({
                 <input
                   type="tel"
                   required
-                  placeholder="+91 84462 84162"
+                  pattern="[0-9]{10}"
+                  minLength={10}
+                  maxLength={10}
+                  title="Phone number must be exactly 10 digits"
+                  placeholder="Enter 10-digit mobile number"
                   value={formState.phone}
                   onFocus={() => setFocusedField("phone")}
                   onBlur={() => setFocusedField(null)}
-                  onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                  onChange={(e) => {
+                    const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setFormState({ ...formState, phone: onlyDigits });
+                  }}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-slate-900 dark:text-white text-xs sm:text-sm font-medium focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                 />
               </div>

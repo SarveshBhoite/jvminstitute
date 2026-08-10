@@ -9,9 +9,11 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, phone, courseSlug, message, source } = body;
 
-    if (!name || !email || !phone) {
+    const cleanPhone = phone ? String(phone).replace(/\D/g, "") : "";
+
+    if (!name || !email || !cleanPhone || cleanPhone.length !== 10) {
       return NextResponse.json(
-        { success: false, error: "Name, email, and phone number are required." },
+        { success: false, error: "Please enter a valid 10-digit mobile number." },
         { status: 400 }
       );
     }

@@ -43,9 +43,11 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { eventId, name, email, phone, expLevel } = body;
 
-    if (!eventId || !name || !email || !phone) {
+    const cleanPhone = phone ? String(phone).replace(/\D/g, "") : "";
+
+    if (!eventId || !name || !email || !cleanPhone || cleanPhone.length !== 10) {
       return NextResponse.json(
-        { success: false, error: "Missing required registration fields" },
+        { success: false, error: "Please enter a valid 10-digit mobile number." },
         { status: 400 }
       );
     }

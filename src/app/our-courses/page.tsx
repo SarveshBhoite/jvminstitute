@@ -1339,7 +1339,14 @@ export default function OurCoursesPage() {
                   <input
                     type="tel"
                     required
-                    placeholder="+91 8446284162"
+                    pattern="[0-9]{10}"
+                    minLength={10}
+                    maxLength={10}
+                    title="Phone number must be exactly 10 digits"
+                    placeholder="Enter 10-digit mobile number"
+                    onChange={(e) => {
+                      e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    }}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   />
                 </div>
