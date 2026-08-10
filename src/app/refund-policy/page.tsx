@@ -11,10 +11,13 @@ import {
   AlertCircle, 
   CheckCircle2, 
   FileText, 
-  HelpCircle, 
   ChevronRight,
   CreditCard,
-  CalendarCheck
+  Building2,
+  HelpCircle,
+  XCircle,
+  FileSpreadsheet,
+  AlertTriangle
 } from "lucide-react";
 
 export default function RefundPolicyPage() {
@@ -27,13 +30,13 @@ export default function RefundPolicyPage() {
         <div className="absolute inset-0 bg-[radial-gradient(#7C3AED15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-xs font-extrabold text-purple-300 uppercase tracking-wider">
-            <RotateCcw className="w-3.5 h-3.5 text-purple-400" /> Transparency & Satisfaction Guarantee
+            <RotateCcw className="w-3.5 h-3.5 text-purple-400" /> Legal & Compliance
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-white tracking-tight">
-            Refund & Cancellation Policy
+            Refund Policy
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto">
-            Last Updated: August 2026. This policy governs course fee payments, batch transfers, and refund processing terms for JVM Institute Pvt. Ltd.
+            Last Updated: 10 August 2026. Official Refund and Cancellation Policy governing students enrolled at JVM Institute.
           </p>
         </div>
       </section>
@@ -41,85 +44,105 @@ export default function RefundPolicyPage() {
       {/* Main Policy Content */}
       <section className="py-12 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 flex-1">
         
-        {/* Quick Highlights Summary Cards */}
+        {/* Quick Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
-              <Clock className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
+              <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Window</h3>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Up to 7 Days / 2 Classes</p>
+              <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">General Policy</h3>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Strictly Non-Refundable</p>
             </div>
           </div>
 
           <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-start gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-800 flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0 mt-0.5">
-              <CreditCard className="w-5 h-5" />
+              <Clock className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Processing Time</h3>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">7–10 Working Days</p>
+              <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Processing Timeline</h3>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">15 Working Days</p>
             </div>
           </div>
 
           <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-start gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 mt-0.5">
-              <CalendarCheck className="w-5 h-5" />
+              <FileText className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Batch Transfer</h3>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Free Batch Switch (6 mos)</p>
+              <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Intimation</h3>
+              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Written Email / Form</p>
             </div>
           </div>
         </div>
 
-        {/* Detailed Document Container */}
+        {/* Detailed Policy Container */}
         <div className="bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-8 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
           
+          <div className="space-y-4">
+            <p>
+              JVM Institute (hereinafter referred to as the &quot;Institute&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is a private IT training institute based in Pune, India. This Refund Policy forms an integral part of the Terms and Conditions governing the relationship between the Institute and its students.
+            </p>
+            <p className="font-semibold text-slate-800 dark:text-slate-200 bg-purple-50 dark:bg-purple-950/40 p-4 rounded-2xl border border-purple-100 dark:border-purple-900/60">
+              By enrolling in any course, program, workshop, internship, or placement assistance service offered by JVM Institute, you acknowledge that you have read, understood, and agreed to the terms of this Refund Policy.
+            </p>
+          </div>
+
           {/* Section 1 */}
-          <div className="space-y-3">
+          <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-purple-600 dark:text-purple-400" /> 1. Overview & Commitment
+              <AlertCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" /> 1. General Policy on Non-Refundable Fees
             </h2>
             <p>
-              At <strong>JVM Institute Pvt. Ltd.</strong>, we maintain a transparent student-first policy for all our professional IT training programs, including Data Engineering (PySpark, Databricks, AWS/GCP), Gen AI, and Machine Learning courses. We understand that personal or professional emergencies may arise, and we aim to provide fair refund and batch modification guidelines.
+              All fees paid to JVM Institute towards course enrollment, program registration, workshop participation, internship, or any other service offered by the Institute are <strong>strictly non-refundable</strong>.
+            </p>
+            <p>
+              Once a student completes the admission process and makes the payment, the fee is deemed earned by the Institute towards administrative processing, resource allocation, faculty engagement, and infrastructure provisioning.
+            </p>
+            <p>
+              No claim for a refund of any portion of the fee shall be entertained unless expressly provided for under the exceptional circumstances set out in this Policy.
             </p>
           </div>
 
           {/* Section 2 */}
-          <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-4 pt-6 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-500" /> 2. Refund Eligibility Guidelines
+              <CheckCircle2 className="w-5 h-5 text-emerald-500" /> 2. Exceptional Circumstances for Refund
             </h2>
-            <p>
-              Refund requests are evaluated based on when the cancellation request is formally submitted relative to the batch start date:
-            </p>
-            <div className="space-y-3 pt-2">
-              <div className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 space-y-1">
-                <h4 className="font-bold text-emerald-900 dark:text-emerald-300 text-sm sm:text-base">
-                  A. Cancellation Prior to Batch Commencement (or within 7 days of enrollment)
-                </h4>
-                <p className="text-xs sm:text-sm text-emerald-800 dark:text-emerald-200">
-                  If a student cancels their registration before the official batch start date or within 7 days of fee payment (whichever comes first), <strong>100% of the course fee paid</strong> will be refunded, deducting only a nominal administrative fee of ₹1,000 for portal registration.
+            <p>Refunds shall be considered only in the following exceptional circumstances:</p>
+
+            <div className="space-y-4 pt-2">
+              <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 space-y-2">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base">
+                  (a) Cancellation of Batch or Program by the Institute
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  If a batch, course, or program is cancelled by JVM Institute due to operational constraints, insufficient enrollment, unforeseen circumstances, or any other reason attributable solely to the Institute, the student shall be entitled to a full refund of the fees paid for that specific program.
+                </p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  The Institute shall notify the affected students of such cancellation within a reasonable timeframe.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-800/40 space-y-1">
-                <h4 className="font-bold text-blue-900 dark:text-blue-300 text-sm sm:text-base">
-                  B. Cancellation Within the Demo Period (First 2 Live Classes)
-                </h4>
-                <p className="text-xs sm:text-sm text-blue-800 dark:text-blue-200">
-                  If a student attends up to 2 live classes and decides not to continue, they are eligible for a full refund of tuition fees, excluding the non-refundable registration/seat reservation fee.
+              <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 space-y-2">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base">
+                  (b) Withdrawal Prior to Commencement
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  If a student withdraws their admission before the scheduled commencement date of the course and provides written intimation to the Institute at least 7 days prior to the start date, a refund may be considered on a case-by-case basis, subject to a deduction of administrative and processing charges not exceeding 25% of the total fee paid.
+                </p>
+                <p className="text-xs font-semibold text-rose-600 dark:text-rose-400">
+                  No refund shall be applicable for withdrawal requests received after the course has commenced.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-800/40 space-y-1">
-                <h4 className="font-bold text-amber-900 dark:text-amber-300 text-sm sm:text-base">
-                  C. Cancellation After 2 Classes or 7 Days of Batch Start
-                </h4>
-                <p className="text-xs sm:text-sm text-amber-800 dark:text-amber-200">
-                  Course fees become <strong>non-refundable</strong> after 2 classes have elapsed or after 7 days from the batch start date, as lab infrastructure, cloud server credits, instructor slots, and limited batch seats are fixed and allocated.
+              <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 space-y-2">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base">
+                  (c) Force Majeure Events
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  In the event of a prolonged disruption of services due to force majeure circumstances as defined in the Terms and Conditions, the Institute may, at its sole discretion, offer a partial refund or credit towards future courses. Such decisions shall be made on a case-by-case basis.
                 </p>
               </div>
             </div>
@@ -128,50 +151,119 @@ export default function RefundPolicyPage() {
           {/* Section 3 */}
           <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-              <CalendarCheck className="w-5 h-5 text-indigo-500" /> 3. Free Batch Transfer & Deferment Policy
+              <CreditCard className="w-5 h-5 text-indigo-500" /> 3. Refund Processing Timeline and Method
             </h2>
             <p>
-              Instead of forfeiting fees due to unexpected work commitments or personal emergencies, JVM Institute allows enrolled students to:
+              All refunds approved under the exceptional circumstances set out above shall be processed within <strong>15 working days</strong> from the date of approval of the refund request.
             </p>
-            <ul className="list-disc pl-6 space-y-1.5 text-slate-700 dark:text-slate-300 font-medium">
-              <li><strong>Switch Batch Mode:</strong> Transition seamlessly between Offline (Baner, Pune campus) and Online live interactive batches without extra charges.</li>
-              <li><strong>Pause & Resume (Deferment):</strong> Defer training for up to 6 months and join a future batch at no additional cost upon written request.</li>
-              <li><strong>Transfer Enrollment:</strong> Nominate an immediate family member or colleague to take up the reserved seat (subject to administration approval).</li>
+            <p>Refunds shall be initiated through the original mode of payment:</p>
+            <ul className="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300 font-medium">
+              <li>
+                For payments made through credit card, debit card, net banking, or UPI, the refund shall be credited back to the original source account.
+              </li>
+              <li>
+                For payments made through cash or cheque, the refund shall be processed through NEFT/RTGS transfer to the bank account details provided by the student.
+              </li>
             </ul>
+            <p className="text-xs text-slate-500 dark:text-slate-400 italic">
+              The Institute shall not be liable for any delay caused by the respective bank, payment gateway, or financial institution in processing the refund.
+            </p>
           </div>
 
           {/* Section 4 */}
           <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 text-purple-500" /> 4. Institute-Initiated Cancellations & Rescheduling
+              <FileSpreadsheet className="w-5 h-5 text-purple-600 dark:text-purple-400" /> 4. Procedure for Requesting a Refund
             </h2>
             <p>
-              If JVM Institute cancels a batch or reschedules a course start date by more than 14 days and the student cannot attend the new schedule, the student is entitled to a <strong>100% full refund</strong> of all payments made, with zero deduction fees.
+              Any student seeking a refund under the exceptional circumstances set out in this Policy must submit a written refund request through the following channels:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300 font-medium">
+              <li>
+                By email to the Institute at <strong className="text-purple-600 dark:text-purple-400">infojvminstitute@gmail.com</strong> with the subject line <strong>&quot;Refund Request – Student Name and Course Details&quot;</strong>.
+              </li>
+              <li>
+                By submitting a physical refund application form at the Institute&apos;s administrative office.
+              </li>
+            </ul>
+
+            <div className="pt-2 space-y-2">
+              <p className="font-semibold text-slate-900 dark:text-white">
+                The refund request must clearly state the grounds on which the refund is sought and must be accompanied by:
+              </p>
+              <ul className="list-disc pl-6 space-y-1 text-slate-600 dark:text-slate-300">
+                <li>A copy of the fee payment receipt</li>
+                <li>The admission confirmation letter</li>
+                <li>Any other supporting documents as may be required by the Institute</li>
+              </ul>
+            </div>
+
+            <p className="text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+              The Institute shall acknowledge receipt of the refund request within 5 working days and shall communicate its decision within 15 working days from the date of receipt of the complete application.
             </p>
           </div>
 
           {/* Section 5 */}
           <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-              <CreditCard className="w-5 h-5 text-emerald-500" /> 5. Refund Processing & Mode of Payment
+              <XCircle className="w-5 h-5 text-rose-500" /> 5. No Refund for Dissatisfaction or Change of Mind
             </h2>
-            <ul className="list-disc pl-6 space-y-1.5 text-slate-700 dark:text-slate-300 font-medium">
-              <li>Approved refunds will be processed back to the original source account (Bank Account / UPI / Credit Card) within <strong>7 to 10 working days</strong>.</li>
-              <li>For zero-cost EMI or third-party education loan cancellations, any applicable bank processing fees imposed by lending partners will follow the financial institution&apos;s cancellation terms.</li>
+            <p>For the avoidance of doubt, no refund shall be made in the following circumstances:</p>
+            <ul className="list-disc pl-6 space-y-2 text-slate-700 dark:text-slate-300 font-medium">
+              <li>Change of mind or personal circumstances of the student.</li>
+              <li>Dissatisfaction with the teaching methodology, course content, faculty, or infrastructure.</li>
+              <li>Inability of the student to cope with the course curriculum or academic requirements.</li>
+              <li>Non-attendance of classes or failure to complete the course within the stipulated duration.</li>
+              <li>Placement assistance not resulting in a job offer within the student&apos;s expected timeframe, as placement assistance is provided on a best-effort basis and is not guaranteed.</li>
+              <li>Any other reason not expressly covered under the exceptional circumstances set out in this Policy.</li>
             </ul>
           </div>
 
           {/* Section 6 */}
           <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-              <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" /> 6. How to Submit a Cancellation Request
+              <AlertTriangle className="w-5 h-5 text-amber-500" /> 6. Outstanding Dues and Adjustments
             </h2>
             <p>
-              To initiate a refund or batch transfer request, please send a formal email with your full name, registered phone number, admission receipt number, and reason for cancellation to:
+              If the student has any outstanding dues towards the Institute, including but not limited to pending installments, library fines, or any other charges, the Institute reserves the right to deduct such outstanding amounts from any refund payable to the student.
             </p>
+            <p>
+              The net refund amount, if any, after such deductions shall be processed in accordance with this Policy.
+            </p>
+          </div>
+
+          {/* Section 7 */}
+          <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
+            <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
+              <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" /> 7. Amendments to This Refund Policy
+            </h2>
+            <p>
+              JVM Institute reserves the right to amend, modify, or update this Refund Policy from time to time. Any changes to this Policy shall become effective upon being posted on the Institute&apos;s website.
+            </p>
+            <p>
+              Students are encouraged to review this Policy periodically to stay informed of any updates.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 italic">
+              The version of the Policy in effect at the time of enrollment shall govern the student&apos;s rights and obligations regarding refunds, subject to applicable law.
+            </p>
+          </div>
+
+          {/* Section 8 */}
+          <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800">
+            <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-500" /> 8. Declaration
+            </h2>
+            <p className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/40 text-emerald-900 dark:text-emerald-200 font-semibold text-sm sm:text-base">
+              By enrolling in any course, program, workshop, internship, placement assistance program, or related service offered by JVM Institute, you acknowledge that you have read, understood, and agreed to the terms of this Refund Policy.
+            </p>
+          </div>
+
+          {/* Official Contact Card */}
+          <div className="pt-6 border-t border-slate-100 dark:border-slate-800">
             <div className="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-sm font-medium space-y-2">
-              <p><strong className="text-slate-900 dark:text-white">Email:</strong> infojvminstitute@gmail.com</p>
-              <p><strong className="text-slate-900 dark:text-white">Campus Helpline:</strong> +91 84462 84162 / +91 99237 54115</p>
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">JVM Institute Administrative Office</h3>
+              <p><strong className="text-slate-900 dark:text-white">Official Email:</strong> infojvminstitute@gmail.com</p>
+              <p><strong className="text-slate-900 dark:text-white">Campus Helpline:</strong> +91 84462 84162</p>
               <p><strong className="text-slate-900 dark:text-white">Campus Address:</strong> Floor 2, S.No: 82, Suman Ankur, Sahyadri Farms, Lalit Estate, Baner, Pune, Maharashtra 411045</p>
             </div>
           </div>

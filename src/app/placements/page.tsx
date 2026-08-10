@@ -115,21 +115,41 @@ export default function PlacementsPage() {
     fetchPlacements();
   }, []);
 
-  // Auto-rotate hero student photos every 3 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHeroImgIndex((prev) => (prev + 1) % HeroCircleImages.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const currentHero = HeroCircleImages[heroImgIndex];
-
   const getPackageNumeric = (pkgStr: string): number => {
     if (!pkgStr) return 0;
-    const match = pkgStr.match(/[\d.]+/);
+    const match = String(pkgStr).match(/[\d.]+/);
     return match ? parseFloat(match[0]) : 0;
   };
+
+  // Derive Top 15 students sorted by package in descending order (highest package first) for dynamic Hero rotation
+  const top15Students = React.useMemo(() => {
+    if (!placementsList || placementsList.length === 0) return HeroCircleImages;
+    return [...placementsList]
+      .sort((a, b) => {
+        const pkgA = getPackageNumeric(a.package || a.pkg || "");
+        const pkgB = getPackageNumeric(b.package || b.pkg || "");
+        return pkgB - pkgA; // Highest package first (descending)
+      })
+      .slice(0, 15)
+      .map((s) => ({
+        src: s.image || s.photo || s.avatar || "/placements/placement_5_ajinkya.jpeg",
+        name: s.name || s.studentName || "Placed Student",
+        role: s.placedRole || s.role || "Data Engineer",
+        company: s.company || s.companyName || "Top MNC",
+        pkg: s.package || s.pkg ? `${s.package || s.pkg}` : "Highest Package"
+      }));
+  }, [placementsList]);
+
+  // Auto-rotate hero student photos every 3 seconds through Top 15
+  useEffect(() => {
+    if (top15Students.length === 0) return;
+    const timer = setInterval(() => {
+      setHeroImgIndex((prev) => (prev + 1) % top15Students.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [top15Students]);
+
+  const currentHero = top15Students[heroImgIndex % top15Students.length] || HeroCircleImages[0];
 
   const filteredPlacements = placementsList
     .filter((student) => {

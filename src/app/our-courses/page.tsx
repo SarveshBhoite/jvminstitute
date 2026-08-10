@@ -385,15 +385,59 @@ export default function OurCoursesPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCourseTitle, setSelectedCourseTitle] = useState("Data Engineering Course");
 
-  // Testimonial Rotation State — auto-rotates through all 6, showing 3 at a time
+  // Placement Stories State — fetched from live database (/api/placements)
+  const [placementsList, setPlacementsList] = useState<any[]>(studentTestimonials);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   useEffect(() => {
+    async function fetchLivePlacements() {
+      try {
+        const res = await fetch("/api/placements");
+        const data = await res.json();
+        if (data.success && data.placements && data.placements.length > 0) {
+          // Color themes for dynamic cards
+          const themes = [
+            { courseColor: "from-purple-600 to-indigo-600", courseBadge: "bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300" },
+            { courseColor: "from-pink-600 to-purple-600", courseBadge: "bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300" },
+            { courseColor: "from-violet-600 to-purple-600", courseBadge: "bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300" },
+            { courseColor: "from-emerald-600 to-teal-600", courseBadge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300" },
+            { courseColor: "from-indigo-600 to-blue-600", courseBadge: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300" },
+            { courseColor: "from-sky-600 to-blue-600", courseBadge: "bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300" }
+          ];
+
+          const formatted = data.placements.map((item: any, idx: number) => {
+            const theme = themes[idx % themes.length];
+            return {
+              id: item.id || idx,
+              name: item.name || item.studentName || "JVM Alumnus",
+              role: item.role || item.designation || item.jobRole || "Data Engineer",
+              hike: item.package || item.pkg ? `${item.package || item.pkg}` : "Career Transition",
+              course: item.course || item.courseName || "Data Engineering Course",
+              courseColor: theme.courseColor,
+              courseBadge: theme.courseBadge,
+              review: item.testimonial || item.review || "The hands-on training and mentorship at JVM Institute helped me transform my technical skills and land a great role.",
+              avatar: item.image || item.photo || item.avatar || "/students1.jpeg",
+              company: item.company || item.companyName || "Top MNC",
+              companyLogo: "🏢"
+            };
+          });
+
+          setPlacementsList(formatted);
+        }
+      } catch (err) {
+        console.error("Error fetching live placements:", err);
+      }
+    }
+    fetchLivePlacements();
+  }, []);
+
+  useEffect(() => {
+    if (placementsList.length === 0) return;
     const timer = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % studentTestimonials.length);
+      setActiveTestimonial((prev) => (prev + 1) % placementsList.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [placementsList]);
 
   const openCourseModal = (title: string) => {
     setSelectedCourseTitle(title);
@@ -827,10 +871,7 @@ export default function OurCoursesPage() {
                         {item.desc}
                       </p>
 
-                      <div className="mt-3 flex items-center text-xs font-bold text-purple-600 dark:text-purple-400 group-hover:translate-x-1 transition-transform">
-                        <span>Explore Standard</span>
-                        <ChevronRight className="w-4 h-4 ml-1" />
-                      </div>
+                    
                     </div>
                   </motion.div>
                 );
@@ -1208,75 +1249,113 @@ export default function OurCoursesPage() {
               </motion.p>
             </div>
 
-            {/* Per-Course Success Story Grid — 3 visible, rotating through all 6 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {[0, 1, 2].map((offset) => {
-                const idx = (activeTestimonial + offset) % studentTestimonials.length;
-                const t = studentTestimonials[idx];
+            {/* Single Card Display — rotating one by one through live DB placements */}
+            <div className="max-w-3xl mx-auto relative px-4 sm:px-0">
+              {placementsList.length > 0 && (() => {
+                const t = placementsList[activeTestimonial % placementsList.length];
                 return (
-                <motion.div
-                  key={`${activeTestimonial}-${offset}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, delay: offset * 0.08 }}
-                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                  className="relative bg-slate-50 dark:bg-slate-900/80 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-300/60 dark:hover:border-purple-700/50 transition-all duration-300 overflow-hidden flex flex-col group"
-                >
-                  {/* Top Gradient Accent Bar */}
-                  <div className={`h-1.5 w-full bg-gradient-to-r ${t.courseColor}`} />
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTestimonial}
+                      initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: -15 }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                      className="relative bg-slate-50 dark:bg-slate-900/90 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:border-purple-300/60 dark:hover:border-purple-700/50 transition-all duration-300 overflow-hidden flex flex-col group"
+                    >
+                      {/* Top Gradient Accent Bar */}
+                      <div className={`h-2 w-full bg-gradient-to-r ${t.courseColor}`} />
 
-                  <div className="p-6 flex flex-col gap-4 flex-grow">
+                      <div className="p-8 sm:p-10 flex flex-col gap-6 flex-grow">
 
-                    {/* Course Badge */}
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wide border ${t.courseBadge} border-current/20`}>
-                        <BookOpen className="w-3 h-3" />
-                        {t.course}
-                      </span>
-                      {/* Stars */}
-                      <div className="flex items-center gap-0.5">
-                        {[1,2,3,4,5].map(s => (
-                          <Star key={s} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                        ))}
+                        {/* Top Meta: Course Badge + Stars + Hike */}
+                        <div className="flex items-center justify-between flex-wrap gap-3">
+                          <span className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide border ${t.courseBadge} border-current/20`}>
+                            <BookOpen className="w-3.5 h-3.5" />
+                            {t.course}
+                          </span>
+
+                          <div className="flex items-center gap-3">
+                            <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-extrabold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                              ⚡ {t.hike}
+                            </span>
+                            <div className="flex items-center gap-0.5">
+                              {[1, 2, 3, 4, 5].map(s => (
+                                <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Review Quote */}
+                        <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed italic font-medium">
+                          &ldquo;{t.review}&rdquo;
+                        </p>
+
+                        {/* Divider */}
+                        <div className="border-t border-slate-200 dark:border-slate-800" />
+
+                        {/* Student Info */}
+                        <div className="flex items-center gap-4">
+                          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-purple-500/40 dark:border-slate-700 shadow-md flex-shrink-0">
+                            <Image
+                              src={t.avatar}
+                              alt={t.name}
+                              fill
+                              className="object-cover object-center"
+                            />
+                          </div>
+
+                          <div className="flex-grow min-w-0">
+                            <h4 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">
+                              {t.name}
+                            </h4>
+                            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">
+                              {t.role} · <span className="font-semibold text-purple-600 dark:text-purple-400">{t.companyLogo} {t.company}</span>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-
-                    {/* Review Quote */}
-                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic flex-grow">
-                      &ldquo;{t.review}&rdquo;
-                    </p>
-
-                    {/* Divider */}
-                    <div className="border-t border-slate-200 dark:border-slate-800" />
-
-                    {/* Student Info + Hike */}
-                    <div className="flex items-center gap-3">
-                      {/* Avatar */}
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white dark:border-slate-700 shadow-md flex-shrink-0">
-                        <Image
-                          src={t.avatar}
-                          alt={t.name}
-                          fill
-                          className="object-cover object-center"
-                        />
-                      </div>
-
-                      {/* Name & Role */}
-                      <div className="flex-grow min-w-0">
-                        <p className="text-sm font-extrabold text-slate-900 dark:text-white truncate">{t.name}</p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{t.role} · {t.companyLogo} {t.company}</p>
-                      </div>
-
-                      {/* Hike Badge */}
-                      <span className="flex-shrink-0 inline-flex items-center px-2.5 py-1 rounded-xl text-[10px] font-extrabold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 whitespace-nowrap">
-                        ⚡ {t.hike}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
+                    </motion.div>
+                  </AnimatePresence>
                 );
-              })}
+              })()}
+
+              {/* Navigation Controls: Prev / Dots / Next */}
+              <div className="mt-8 flex items-center justify-center gap-4">
+                <button
+                  onClick={() => setActiveTestimonial((prev) => (prev - 1 + placementsList.length) % placementsList.length)}
+                  className="p-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-purple-600 hover:text-white transition-all shadow-md cursor-pointer border border-slate-200 dark:border-slate-700 active:scale-95"
+                  aria-label="Previous story"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                {/* Dots indicator */}
+                <div className="flex items-center gap-2">
+                  {placementsList.slice(0, 8).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveTestimonial(i)}
+                      className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                        activeTestimonial % placementsList.length === i 
+                          ? "bg-purple-600 w-8" 
+                          : "bg-slate-300 dark:bg-slate-700 w-2.5 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setActiveTestimonial((prev) => (prev + 1) % placementsList.length)}
+                  className="p-3 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-purple-600 hover:text-white transition-all shadow-md cursor-pointer border border-slate-200 dark:border-slate-700 active:scale-95"
+                  aria-label="Next story"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
 
