@@ -346,7 +346,7 @@ export default function ReferAndEarnPage() {
                       "Submit candidate contact directly to team"
                     ]}
                     accentColor="#A855F7"
-                    textColor="#334155"
+                    textColor="currentColor"
                     markerColor="#F59E0B"
                     showIndex={false}
                     showMarker={true}
@@ -376,7 +376,7 @@ export default function ReferAndEarnPage() {
                       "Candidate selects Data Engineering batch"
                     ]}
                     accentColor="#A855F7"
-                    textColor="#334155"
+                    textColor="currentColor"
                     markerColor="#F59E0B"
                     showIndex={false}
                     showMarker={true}
@@ -406,7 +406,7 @@ export default function ReferAndEarnPage() {
                       "Direct UPI / PhonePe / GPay payout"
                     ]}
                     accentColor="#A855F7"
-                    textColor="#334155"
+                    textColor="currentColor"
                     markerColor="#F59E0B"
                     showIndex={false}
                     showMarker={true}

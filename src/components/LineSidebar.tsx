@@ -166,13 +166,15 @@ const LineSidebar = ({
       }`
     : '';
 
+  const effectiveTextColor = (textColor === '#334155' || textColor === '#94a3b8') ? 'currentColor' : textColor;
+
   return (
     <nav
-      className={`relative flex justify-start${showMarker ? ' [padding-left:calc(var(--marker-length)+var(--marker-gap))]' : ''}${className ? ` ${className}` : ''}`}
+      className={`relative flex justify-start text-slate-700 dark:text-slate-200${showMarker ? ' [padding-left:calc(var(--marker-length)+var(--marker-gap))]' : ''}${className ? ` ${className}` : ''}`}
       style={
         {
           '--accent-color': accentColor,
-          '--text-color': textColor,
+          '--text-color': effectiveTextColor,
           '--marker-color': markerColor,
           '--marker-length': `${markerLength}px`,
           '--marker-gap': `${markerGap}px`,

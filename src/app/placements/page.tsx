@@ -595,7 +595,7 @@ export default function PlacementsPage() {
                         "Freshers from any stream can also pursue this course"
                       ]}
                       accentColor="#A855F7"
-                      textColor="#334155"
+                      textColor="currentColor"
                       markerColor="#F59E0B"
                       showIndex={false}
                       showMarker={true}
@@ -628,7 +628,7 @@ export default function PlacementsPage() {
                         "Cloud Data Architect (AWS / Snowflake)"
                       ]}
                       accentColor="#A855F7"
-                      textColor="#334155"
+                      textColor="currentColor"
                       markerColor="#F59E0B"
                       showIndex={false}
                       showMarker={true}
@@ -661,7 +661,7 @@ export default function PlacementsPage() {
                         "Tata Consultancy Services (TCS)"
                       ]}
                       accentColor="#A855F7"
-                      textColor="#334155"
+                      textColor="currentColor"
                       markerColor="#F59E0B"
                       showIndex={false}
                       showMarker={true}
