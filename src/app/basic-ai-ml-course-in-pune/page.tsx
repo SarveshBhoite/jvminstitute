@@ -95,7 +95,8 @@ const techStack = [
   { name: "Regression & Classification", category: "ML Algorithms", badge: "Supervised ML", color: "from-rose-500 to-pink-600" },
   { name: "Clustering (K-Means)", category: "ML Algorithms", badge: "Unsupervised ML", color: "from-purple-600 to-violet-700" },
   { name: "Model Evaluation Metrics", category: "ML Operations", badge: "Cross-Validation", color: "from-teal-500 to-emerald-600" },
-  { name: "Git & GitHub", category: "DevOps", badge: "Version Control", color: "from-slate-800 to-black" }
+  { name: "Git & GitHub", category: "DevOps", badge: "Version Control", color: "from-slate-800 to-black" },
+  
 ];
 
 const capstoneProjects = [

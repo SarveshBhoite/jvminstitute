@@ -335,6 +335,10 @@ const techStack = [
   { name: "MySQL & SQL", category: "Database", badge: "Core SQL", color: "from-[#1E2B88] to-indigo-600" },
   { name: "PostgreSQL & Oracle", category: "Database", badge: "Enterprise DB", color: "from-blue-700 to-indigo-800" },
   { name: "Snowflake", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
+  { name: "Bigdata", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
+  { name: "Synapse", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
+  { name: "redshift", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
+
   
   // Programming & ETL
   { name: "Python (Advanced & OOP)", category: "Programming", badge: "Essential", color: "from-blue-500 to-cyan-500" },
@@ -345,10 +349,14 @@ const techStack = [
   { name: "Apache Hadoop & HDFS", category: "Big Data", badge: "Distributed", color: "from-yellow-600 to-amber-700" },
   { name: "Delta Lake & Lakehouse", category: "Storage", badge: "ACID Transactions", color: "from-cyan-500 to-blue-600" },
   { name: "dbt (Data Build Tool)", category: "Transformation", badge: "Trending", color: "from-orange-600 to-red-600" },
+  { name: "GCP storage", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+  {name: "Storage Account", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+  {name: "HDFS", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
 
   // Workflow & Streaming
   { name: "Apache Airflow (DAGs)", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
-  { name: "Apache Kafka", category: "Streaming", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+  { name: "Datastream", category: "Streaming", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+  { name: "Delta table", category: "Streaming", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
 
   // Azure Cloud Data Stack
   { name: "Azure Data Factory (ADF)", category: "Azure Cloud", badge: "Cloud ETL", color: "from-blue-600 to-sky-500" },

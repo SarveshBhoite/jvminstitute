@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
   // Replace with official JVM Institute WhatsApp contact number
   const whatsappNumber = "918446284162"; 
   const defaultMessage = encodeURIComponent(
-    "Hello JVM Institute team! I would like to inquire about your Data Engineering & Tech courses, upcoming batches, and fee details."
+    "Hello JVM Institute! 👋\n\nI am interested in joining your courses. Please share details about:\n• Available Courses & Syllabus\n• Upcoming Batch Dates\n• Fee Structure & EMI Options\n• Placement Support\n\nLooking forward to your response. Thank you! 🙏"
   );
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;

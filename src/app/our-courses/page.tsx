@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
@@ -301,34 +301,79 @@ const techEcosystem = [
   { name: "Terraform", category: "DevOps", color: "from-purple-600 to-indigo-600" }
 ];
 
-// Student Success Testimonials
+// Student Success Testimonials — 1 per course
 const studentTestimonials = [
   {
     name: "Sarvesh Bhoite",
-    role: "Senior Data Engineer at MNC",
+    role: "Senior Data Engineer",
     hike: "120% Salary Hike",
-    course: "Data Engineering & PySpark Track",
-    review: "The hands-on PySpark labs and real ETL capstone projects helped me clear technical rounds easily. Jayesh Sir's guidance was game-changing for my career.",
+    course: "Data Engineering Course",
+    courseColor: "from-purple-600 to-indigo-600",
+    courseBadge: "bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300",
+    review: "The hands-on PySpark labs and real ETL capstone projects helped me clear technical rounds easily. Jayesh Sir's guidance was a career game-changer.",
     avatar: "/students1.jpeg",
-    company: "TCS / Fortune 500"
+    company: "TCS",
+    companyLogo: "🏢"
+  },
+  {
+    name: "Rahul Shinde",
+    role: "Gen AI Engineer",
+    hike: "110% Salary Hike",
+    course: "Data Engineering with Gen AI",
+    courseColor: "from-pink-600 to-purple-600",
+    courseBadge: "bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300",
+    review: "Building AI-powered data pipelines with LangChain, OpenAI, and Databricks in a single program was exactly what the market demanded. Got placed within 45 days.",
+    avatar: "/students2.jpeg",
+    company: "Wipro",
+    companyLogo: "💼"
+  },
+  {
+    name: "Priya Kulkarni",
+    role: "AI Solutions Developer",
+    hike: "95% Salary Hike",
+    course: "Gen AI",
+    courseColor: "from-violet-600 to-purple-600",
+    courseBadge: "bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-300",
+    review: "From knowing nothing about LLMs to deploying RAG pipelines and AI Agents in production — the Gen AI curriculum at JVM is outstanding.",
+    avatar: "/place3.jpeg",
+    company: "Infosys",
+    companyLogo: "🚀"
+  },
+  {
+    name: "Sneha Jadhav",
+    role: "Data Analyst",
+    hike: "80% Salary Hike",
+    course: "Basic AI & ML",
+    courseColor: "from-emerald-600 to-teal-600",
+    courseBadge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+    review: "As a non-IT graduate, I was nervous. But JVM's beginner-friendly Python & ML roadmap made every concept clear. Now I work as a Data Analyst at an MNC.",
+    avatar: "/place1.png",
+    company: "Accenture",
+    companyLogo: "🌟"
   },
   {
     name: "Aniket Deshmukh",
-    role: "Cloud DevOps Analyst",
-    hike: "95% Salary Hike",
-    course: "AWS Cloud & DevOps Certification",
-    review: "From zero cloud knowledge to setting up automated Kubernetes CI/CD pipelines. JVM Institute's practical focus is unparalleled.",
+    role: "ML Engineer",
+    hike: "105% Salary Hike",
+    course: "Advanced AI & Machine Learning",
+    courseColor: "from-indigo-600 to-blue-600",
+    courseBadge: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300",
+    review: "Deep Learning, computer vision and MLOps taught with real-world datasets. The hands-on TensorFlow & PyTorch labs were industry-level. Best investment of my career.",
     avatar: "/students2.jpeg",
-    company: "Cognizant"
+    company: "Cognizant",
+    companyLogo: "⚡"
   },
   {
     name: "Pooja Patil",
-    role: "Lead Analytics Consultant",
-    hike: "85% Salary Hike",
-    course: "SQL, Python & Analytics Masterclass",
-    review: "Advanced SQL window functions and Tableau dashboard training gave me the exact skills needed for enterprise analytics roles.",
-    avatar: "/place1.png",
-    company: "Infosys"
+    role: "Cloud AI Architect",
+    hike: "90% Salary Hike",
+    course: "Claude AI",
+    courseColor: "from-sky-600 to-blue-600",
+    courseBadge: "bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300",
+    review: "Deploying ML models on AWS, Azure & GCP with Kubernetes in one program was incredible. The multi-cloud AI training gave me an edge in every interview.",
+    avatar: "/place2.png",
+    company: "HCL Technologies",
+    companyLogo: "☁️"
   }
 ];
 
@@ -338,22 +383,21 @@ export default function OurCoursesPage() {
 
   // Modal State
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedCourseTitle, setSelectedCourseTitle] = useState("Data Engineering Master Track");
+  const [selectedCourseTitle, setSelectedCourseTitle] = useState("Data Engineering Course");
 
-  // Testimonial Carousel State
+  // Testimonial Rotation State — auto-rotates through all 6, showing 3 at a time
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % studentTestimonials.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const openCourseModal = (title: string) => {
     setSelectedCourseTitle(title);
     setModalOpen(true);
-  };
-
-  const nextTestimonial = () => {
-    setActiveTestimonial((prev) => (prev + 1) % studentTestimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setActiveTestimonial((prev) => (prev - 1 + studentTestimonials.length) % studentTestimonials.length);
   };
 
   // Timeline Scroll Animation Reference
@@ -1129,10 +1173,15 @@ export default function OurCoursesPage() {
 
 
         {/* ========================================================= */}
-        {/* 6. STUDENT SUCCESS STORIES (TESTIMONIAL CAROUSEL) */}
+        {/* 6. STUDENT SUCCESS STORIES — 1 PER COURSE GRID           */}
         {/* ========================================================= */}
         <section className="py-20 md:py-28 relative overflow-hidden bg-white dark:bg-[#0E1322]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          {/* Ambient Background */}
+          <div className="absolute inset-0 bg-[radial-gradient(#7C3AED0A_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-purple-400/40 to-transparent" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -1155,87 +1204,81 @@ export default function OurCoursesPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-slate-600 dark:text-slate-300 text-base"
               >
-                Read how our graduates transformed their skills and secured high-paying roles across India's top IT firms.
+                One real story from every course — see how JVM graduates transformed their careers and landed high-paying roles.
               </motion.p>
             </div>
 
-            {/* Testimonial Card Display */}
-            <div className="relative">
-              <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.5 }}
-                className="bg-slate-50 dark:bg-slate-900/90 p-8 sm:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8"
-              >
-                {/* Student Avatar (Left) */}
-                <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl flex-shrink-0">
-                  <Image
-                    src={studentTestimonials[activeTestimonial].avatar}
-                    alt={studentTestimonials[activeTestimonial].name}
-                    fill
-                    className="object-cover object-center"
-                  />
-                </div>
+            {/* Per-Course Success Story Grid — 3 visible, rotating through all 6 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {[0, 1, 2].map((offset) => {
+                const idx = (activeTestimonial + offset) % studentTestimonials.length;
+                const t = studentTestimonials[idx];
+                return (
+                <motion.div
+                  key={`${activeTestimonial}-${offset}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, delay: offset * 0.08 }}
+                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  className="relative bg-slate-50 dark:bg-slate-900/80 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-lg hover:shadow-2xl hover:border-purple-300/60 dark:hover:border-purple-700/50 transition-all duration-300 overflow-hidden flex flex-col group"
+                >
+                  {/* Top Gradient Accent Bar */}
+                  <div className={`h-1.5 w-full bg-gradient-to-r ${t.courseColor}`} />
 
-                {/* Testimonial Body (Right) */}
-                <div className="space-y-4 text-center md:text-left flex-grow">
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                    <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-800">
-                      ⚡ {studentTestimonials[activeTestimonial].hike}
-                    </span>
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300 border border-purple-200/60">
-                      {studentTestimonials[activeTestimonial].company}
-                    </span>
-                  </div>
+                  <div className="p-6 flex flex-col gap-4 flex-grow">
 
-                  <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg italic leading-relaxed">
-                    "{studentTestimonials[activeTestimonial].review}"
-                  </p>
+                    {/* Course Badge */}
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wide border ${t.courseBadge} border-current/20`}>
+                        <BookOpen className="w-3 h-3" />
+                        {t.course}
+                      </span>
+                      {/* Stars */}
+                      <div className="flex items-center gap-0.5">
+                        {[1,2,3,4,5].map(s => (
+                          <Star key={s} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        ))}
+                      </div>
+                    </div>
 
-                  <div>
-                    <h4 className="text-xl font-extrabold text-slate-900 dark:text-white">
-                      {studentTestimonials[activeTestimonial].name}
-                    </h4>
-                    <p className="text-xs font-semibold text-purple-600 dark:text-purple-400">
-                      {studentTestimonials[activeTestimonial].role} • {studentTestimonials[activeTestimonial].course}
+                    {/* Review Quote */}
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic flex-grow">
+                      &ldquo;{t.review}&rdquo;
                     </p>
+
+                    {/* Divider */}
+                    <div className="border-t border-slate-200 dark:border-slate-800" />
+
+                    {/* Student Info + Hike */}
+                    <div className="flex items-center gap-3">
+                      {/* Avatar */}
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white dark:border-slate-700 shadow-md flex-shrink-0">
+                        <Image
+                          src={t.avatar}
+                          alt={t.name}
+                          fill
+                          className="object-cover object-center"
+                        />
+                      </div>
+
+                      {/* Name & Role */}
+                      <div className="flex-grow min-w-0">
+                        <p className="text-sm font-extrabold text-slate-900 dark:text-white truncate">{t.name}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{t.role} · {t.companyLogo} {t.company}</p>
+                      </div>
+
+                      {/* Hike Badge */}
+                      <span className="flex-shrink-0 inline-flex items-center px-2.5 py-1 rounded-xl text-[10px] font-extrabold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 whitespace-nowrap">
+                        ⚡ {t.hike}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-
-              {/* Carousel Nav Buttons */}
-              <div className="mt-8 flex items-center justify-center gap-4">
-                <button
-                  onClick={prevTestimonial}
-                  className="p-3 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-purple-600 hover:text-white transition-colors shadow-md cursor-pointer"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-
-                <div className="flex gap-2">
-                  {studentTestimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveTestimonial(i)}
-                      className={`w-3 h-3 rounded-full transition-all cursor-pointer ${activeTestimonial === i ? "bg-purple-600 w-8" : "bg-slate-300 dark:bg-slate-700"
-                        }`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  onClick={nextTestimonial}
-                  className="p-3 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-purple-600 hover:text-white transition-colors shadow-md cursor-pointer"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+                </motion.div>
+                );
+              })}
             </div>
+
 
           </div>
         </section>
@@ -1352,14 +1395,17 @@ export default function OurCoursesPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Specialization</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Course</label>
                   <select
                     defaultValue={selectedCourseTitle}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
-                    <option value="Master Data Engineering Track">Master Data Engineering Track</option>
-                    <option value="AWS Cloud & DevOps Engineering Certification">AWS Cloud & DevOps Engineering Certification</option>
-                    <option value="Advanced SQL, Python & Data Analytics Masterclass">Advanced SQL, Python & Data Analytics Masterclass</option>
+                    <option value="Data Engineering Course">Data Engineering Course</option>
+                    <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
+                    <option value="Gen AI">Gen AI</option>
+                    <option value="Basic AI &amp; ML">Basic AI &amp; ML</option>
+                    <option value="Advanced AI &amp; Machine Learning">Advanced AI &amp; Machine Learning</option>
+                    <option value="Claude AI">Claude AI</option>
                   </select>
                 </div>
 
