@@ -86,9 +86,7 @@ export function mapDBBlogToBlogPost(dbBlog: any, index: number = 0): BlogPost {
     : (Array.isArray(dbBlog.tags) ? dbBlog.tags : []);
 
   const facultyAvatar = facultyPhotos[Math.abs(index) % facultyPhotos.length];
-  const finalAvatar = (!dbBlog.authorAvatar || dbBlog.authorAvatar.includes("place1.png")) 
-    ? facultyAvatar 
-    : dbBlog.authorAvatar;
+  // ALWAYS use rotating faculty photos — never use DB-stored avatars (they may be student images)
 
   return {
     id: dbBlog.id,
@@ -101,7 +99,7 @@ export function mapDBBlogToBlogPost(dbBlog: any, index: number = 0): BlogPost {
     author: {
       name: "JVM Technical Team",
       role: "Senior Instructor @ JVM",
-      avatar: finalAvatar,
+      avatar: facultyAvatar,
       bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute.",
     },
     publishedAt: dbBlog.publishedAt || "August 8, 2026",
