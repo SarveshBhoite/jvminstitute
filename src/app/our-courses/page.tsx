@@ -72,7 +72,7 @@ const coursesData = [
     badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800",
     title: "Data Engineering Course",
     desc: "Master SQL, Python, Linux, Hadoop, PySpark, Spark, Airflow, Databricks, GCP, Azure, AWS, ETL Pipelines, Data Warehousing, and Big Data technologies through practical implementation.",
-    image: "/place1.png",
+    image: "/Data Engineering.png",
     url: "/data-engineering-course-in-pune",
     duration: "6 Months",
     mode: "Offline & Online",
@@ -96,7 +96,7 @@ const coursesData = [
     badgeColor: "bg-pink-100 text-pink-700 dark:bg-pink-950/80 dark:text-pink-300 border-pink-200 dark:border-pink-800",
     title: "Data Engineering with Gen AI",
     desc: "Combine modern Data Engineering with Large Language Models, AI-powered automation, Retrieval-Augmented Generation (RAG), AI Data Pipelines, Vector Databases, Prompt Engineering, and Intelligent Analytics.",
-    image: "/place2.png",
+    image: "/Data engineering with gen ai.png",
     url: "/data-engineering-with-genai-course-in-pune",
     duration: "6 Months",
     mode: "Offline & Online Mode",
@@ -118,7 +118,7 @@ const coursesData = [
     badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800",
     title: "Gen AI",
     desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
-    image: "/place3.jpeg",
+    image: "/generative Ai.png",
     url: "/generative-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -136,13 +136,13 @@ const coursesData = [
     ],
     entranceAnim: { x: 50, opacity: 0 }
   },
-    {
+  {
     id: "basic-ai-ml",
     badge: "🌱 Beginner Friendly",
     badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
     title: "Basic AI & ML",
     desc: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
-    image: "/course.jpg",
+    image: "/Basic Ai.png",
     url: "/basic-ai-ml-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -166,7 +166,7 @@ const coursesData = [
     badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
     title: "Advanced AI & Machine Learning",
     desc: "Learn Deep Learning, Neural Networks, Computer Vision, Natural Language Processing (NLP), Reinforcement Learning, MLOps, Model Deployment, and AI System Design.",
-    image: "/students1.jpeg",
+    image: "/Advance AI.png",
     url: "/advanced-ai-ml-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -187,10 +187,10 @@ const coursesData = [
   {
     id: "claude-ai",
     badge: "☁️ Multi-Cloud Mastery",
-    badgeColor: "bg-sky-100 text-sky-700 dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800",
+    badgeColor: "bg-sky-100 text-[#0284C7] dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800",
     title: "Claude AI",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
-    image: "/students2.jpeg",
+    image: "/cloud ai.png",
     url: "/claude-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -207,8 +207,7 @@ const coursesData = [
       "Placement Assistance & Cloud Certification Guidance"
     ],
     entranceAnim: { scale: 0.95, opacity: 0 }
-  },
-
+  }
 ];
 
 // Learning Journey Timeline Items
