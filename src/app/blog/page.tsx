@@ -230,15 +230,15 @@ export default function BlogListingPage() {
                   transition={{ duration: 0.6 }}
                   className="group relative rounded-3xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 overflow-hidden shadow-xl hover:shadow-2xl transition-all"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                     
                     {/* Featured Image */}
-                    <div className="lg:col-span-6 relative aspect-[16/9] sm:min-h-[340px] overflow-hidden bg-slate-100 dark:bg-slate-900">
+                    <div className="lg:col-span-5 relative aspect-[3/2] lg:aspect-auto lg:h-[260px] overflow-hidden bg-slate-100 dark:bg-slate-900">
                       <Image
                         src={featuredPost.image || "/course.jpg"}
                         alt={featuredPost.title}
                         fill
-                        className="object-contain sm:object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1.5 rounded-full bg-[#7C248C] text-white text-xs font-black uppercase tracking-wider shadow-md">
@@ -248,7 +248,7 @@ export default function BlogListingPage() {
                     </div>
 
                     {/* Featured Details */}
-                    <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                    <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-4">
                       <div className="space-y-4">
                         
                         {/* Category & Meta */}
