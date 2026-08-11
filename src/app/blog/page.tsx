@@ -34,7 +34,7 @@ export default function BlogListingPage() {
         const res = await fetch("/api/blogs");
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-          const mappedFromDB = data.data.map(mapDBBlogToBlogPost);
+          const mappedFromDB = data.data.map((b: any, idx: number) => mapDBBlogToBlogPost(b, idx));
           // Combine DB blogs with static blogs, avoiding duplicate slugs
           const dbSlugs = new Set(mappedFromDB.map((b: BlogPost) => b.slug));
           const filteredStatic = staticBlogPosts.filter((b: BlogPost) => !dbSlugs.has(b.slug));
@@ -282,8 +282,13 @@ export default function BlogListingPage() {
                       {/* Author & CTA Button */}
                       <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
-                            <User className="w-4 h-4" />
+                          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-purple-200 dark:border-purple-800 shadow-md shrink-0">
+                            <Image
+                              src={featuredPost.author?.avatar || "/anand.png"}
+                              alt={featuredPost.author?.name || "JVM Technical Team"}
+                              fill
+                              className="object-cover"
+                            />
                           </div>
                           <h4 className="text-xs font-extrabold text-slate-900 dark:text-white">
                             JVM Technical Team
@@ -404,8 +409,13 @@ export default function BlogListingPage() {
                               {/* Author Footnote & Read More Button */}
                               <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-sm shrink-0">
-                                    <User className="w-4 h-4" />
+                                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-purple-200 dark:border-purple-800 shadow-sm shrink-0">
+                                    <Image
+                                      src={post.author?.avatar || "/anand.png"}
+                                      alt={post.author?.name || "JVM Technical Team"}
+                                      fill
+                                      className="object-cover"
+                                    />
                                   </div>
                                   <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate max-w-[120px]">
                                     JVM Technical Team

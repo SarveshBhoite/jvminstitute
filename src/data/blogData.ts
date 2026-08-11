@@ -42,7 +42,16 @@ export const blogCategories = [
   "Tutorials",
 ] as const;
 
-export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
+export const facultyPhotos = [
+  "/anand.png",
+  "/praveen.png",
+  "/omkar.png",
+  "/kiran.png",
+  "/parag.png",
+  "/Ketan.png",
+];
+
+export function mapDBBlogToBlogPost(dbBlog: any, index: number = 0): BlogPost {
   if (!dbBlog) return null as any;
 
   const staticPost = blogPosts.find((p) => p.slug === dbBlog.slug);
@@ -76,6 +85,11 @@ export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
     ? dbBlog.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
     : (Array.isArray(dbBlog.tags) ? dbBlog.tags : []);
 
+  const facultyAvatar = facultyPhotos[Math.abs(index) % facultyPhotos.length];
+  const finalAvatar = (!dbBlog.authorAvatar || dbBlog.authorAvatar.includes("place1.png")) 
+    ? facultyAvatar 
+    : dbBlog.authorAvatar;
+
   return {
     id: dbBlog.id,
     slug: dbBlog.slug,
@@ -86,9 +100,9 @@ export function mapDBBlogToBlogPost(dbBlog: any): BlogPost {
     featured: dbBlog.featured ?? false,
     author: {
       name: "JVM Technical Team",
-      role: "",
-      avatar: "/place1.png",
-      bio: "",
+      role: "Senior Instructor @ JVM",
+      avatar: finalAvatar,
+      bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute.",
     },
     publishedAt: dbBlog.publishedAt || "August 8, 2026",
     readTime: dbBlog.readTime || "5 min read",
@@ -110,7 +124,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: "JVM Technical Team",
       role: "Senior Data Architect @ JVM",
-      avatar: "/place1.png",
+      avatar: "/anand.png",
       bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute."
     },
     publishedAt: "August 8, 2026",
@@ -212,7 +226,7 @@ print("Parsed Data Summary:\\n", df.head())`
     author: {
       name: "JVM Technical Team",
       role: "Senior Data Architect @ JVM",
-      avatar: "/place1.png",
+      avatar: "/praveen.png",
       bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute."
     },
     publishedAt: "August 8, 2026",
@@ -317,7 +331,7 @@ transformed_df.show(5)`
     author: {
       name: "JVM Technical Team",
       role: "Senior Data Architect @ JVM",
-      avatar: "/place1.png",
+      avatar: "/omkar.png",
       bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute."
     },
     publishedAt: "August 8, 2026",

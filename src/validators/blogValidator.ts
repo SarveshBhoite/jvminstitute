@@ -9,7 +9,7 @@ export const blogPostSchema = z.object({
   category: z.string().default("Data Engineering"),
   authorName: z.string().default("JVM Technical Team"),
   authorRole: z.string().default("Senior Data Architect @ JVM"),
-  authorAvatar: z.string().default("/place1.png"),
+  authorAvatar: z.string().default("/anand.png"),
   publishedAt: z.string().default("Aug 2026"),
   readTime: z.string().default("5 min read"),
   image: z.string().default("/course.jpg"),

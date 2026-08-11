@@ -13,7 +13,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-900 relative overflow-hidden">
+    <footer className="bg-slate-950 text-slate-400 pt-16 pb-28 sm:pb-12 border-t border-slate-900 relative overflow-hidden">
       
       {/* Top Subtle Ambient Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
@@ -21,8 +21,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main Footer Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14 border-b border-slate-900">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-6 sm:pb-14 border-b border-slate-900">
+
           {/* Column 1: Brand Info (2 Cols wide on desktop) */}
           <div className="lg:col-span-2 space-y-6">
             
@@ -203,19 +203,19 @@ export default function Footer() {
         </div>
 
         {/* SEO Disclaimer & Copyright Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-500 text-center md:text-left">
-          <p>
+        <div className="pt-4 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-2.5 sm:gap-4 text-xs font-medium text-slate-300 text-center md:text-left">
+          <p className="max-w-md sm:max-w-none">
             © {new Date().getFullYear()} JVM Institute Pvt Ltd. All rights reserved. Registered under Government of India Skill Mission.
           </p>
 
-          <div className="flex items-center gap-4">
-            <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
-            <span>•</span>
-            <Link href="/refund-policy" className="hover:text-slate-300 transition-colors">Refund Policy</Link>
-            <span>•</span>
-            <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors">Terms of Use</Link>
-            <span>•</span>
-            <span className="flex items-center gap-1 text-slate-400">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-3 gap-y-1.5 text-xs">
+            <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors underline sm:no-underline">Privacy Policy</Link>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <Link href="/refund-policy" className="hover:text-slate-300 transition-colors underline sm:no-underline">Refund Policy</Link>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors underline sm:no-underline">Terms of Use</Link>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <span className="flex items-center gap-1 text-slate-400 justify-center">
               Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> in Pune
             </span>
           </div>

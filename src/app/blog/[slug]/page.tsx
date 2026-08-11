@@ -218,10 +218,15 @@ export default function SingleBlogPage() {
             {post.excerpt}
           </p>
 
-          {/* Author Details Bar with User Icon */}
+          {/* Author Details Bar with Faculty Photo */}
           <div className="flex items-center gap-2.5 py-2 px-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm w-fit">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
-              <User className="w-4 h-4" />
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-purple-200 dark:border-purple-800 shadow-md shrink-0">
+              <Image
+                src={post.author?.avatar || "/anand.png"}
+                alt={post.author?.name || "JVM Technical Team"}
+                fill
+                className="object-cover"
+              />
             </div>
             <h4 className="text-xs font-extrabold text-slate-900 dark:text-white">
               JVM Technical Team
@@ -383,6 +388,29 @@ export default function SingleBlogPage() {
                   ))}
                 </div>
               )}
+
+              {/* Author Box Card with Faculty Image */}
+              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-lg shrink-0">
+                  <Image
+                    src={post.author?.avatar || "/anand.png"}
+                    alt={post.author?.name || "JVM Technical Team Faculty"}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="space-y-2 text-center sm:text-left">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 text-[11px] font-extrabold uppercase">
+                    Author • JVM Faculty Team
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
+                    JVM Technical Team
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                    Published by senior IT faculty members and industry lead architects at JVM Institute Pune. Dedicated to empowering students with real-world Data Engineering, AI/ML, PySpark, and Cloud computing expertise.
+                  </p>
+                </div>
+              </div>
 
 
 
