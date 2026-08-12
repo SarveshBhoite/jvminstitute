@@ -328,13 +328,15 @@ export default function DynamicCourseDetailPage() {
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  <button
-                    onClick={() => openEnrollModal("Download Syllabus PDF")}
+                  <a
+                    href="https://wa.me/918446284162?text=Hello%20JVM%20Institute!%20I%20want%20to%20download%20the%20detailed%20course%20brochure%20and%20syllabus%20PDF."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm shadow-xs hover:bg-slate-50 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400" />
                     <span>Download Complete Syllabus PDF</span>
-                  </button>
+                  </a>
                 </div>
 
                 {/* Trust Badges */}
