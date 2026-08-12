@@ -682,33 +682,33 @@ export default function AdminPage() {
 
   // --- 2. ADMIN DASHBOARD SCREEN ---
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-[#FAFAFC] text-slate-900 p-4 sm:p-6 lg:p-8 font-sans">
       <div className="max-w-7xl mx-auto space-y-8">
         
         {/* Top Header Bar */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-slate-900/90 border border-slate-800 p-6 rounded-3xl backdrop-blur-xl shadow-xl">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white border border-slate-200 p-6 rounded-3xl backdrop-blur-xl shadow-md">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-md">
+            <div className="w-12 h-12 rounded-2xl jvm-gradient-bg flex items-center justify-center text-white font-black text-xl shadow-md">
               A
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl md:text-2xl font-black text-white">
+                <h1 className="text-xl md:text-2xl font-black text-slate-900">
                   JVM Admin Control Panel
                 </h1>
-                <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1">
+                <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5" /> Authenticated
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Logged in as <span className="text-purple-300 font-semibold">{adminUser?.email || "Super Admin"}</span> ({adminUser?.role || "SUPER_ADMIN"})
+              <p className="text-xs text-slate-500 mt-0.5">
+                Logged in as <span className="text-purple-700 font-semibold">{adminUser?.email || "Super Admin"}</span> ({adminUser?.role || "SUPER_ADMIN"})
               </p>
             </div>
           </div>
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-red-950/40 text-slate-300 hover:text-red-400 border border-slate-700 hover:border-red-800/50 text-xs font-bold transition-all cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200 hover:border-red-200 text-xs font-bold transition-all cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Sign Out</span>
@@ -717,63 +717,63 @@ export default function AdminPage() {
 
         {/* Quick Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+          <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Total Placements</span>
-              <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Total Placements</span>
+              <div className="p-2 bg-emerald-50 text-emerald-700 rounded-xl">
                 <GraduationCap className="w-5 h-5" />
               </div>
             </div>
-            <div className="text-2xl font-black text-white">{placements.length + 12} Placed</div>
-            <p className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
+            <div className="text-2xl font-black text-slate-900">{placements.length + 12} Placed</div>
+            <p className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
               <TrendingUp className="w-3 h-3" /> Live Database Synced
             </p>
           </div>
 
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+          <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Blog Posts</span>
-              <div className="p-2 bg-indigo-500/10 text-indigo-400 rounded-xl">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Blog Posts</span>
+              <div className="p-2 bg-purple-50 text-purple-700 rounded-xl">
                 <Layers className="w-5 h-5" />
               </div>
             </div>
-            <div className="text-2xl font-black text-white">{blogs.length + 7} Articles</div>
-            <p className="text-[11px] text-indigo-400 font-semibold">Technical Playbooks & Guides</p>
+            <div className="text-2xl font-black text-slate-900">{blogs.length + 7} Articles</div>
+            <p className="text-[11px] text-purple-700 font-semibold">Technical Playbooks & Guides</p>
           </div>
 
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+          <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Lead Enquiries</span>
-              <div className="p-2 bg-pink-500/10 text-pink-400 rounded-xl">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Lead Enquiries</span>
+              <div className="p-2 bg-pink-50 text-pink-700 rounded-xl">
                 <FileText className="w-5 h-5" />
               </div>
             </div>
-            <div className="text-2xl font-black text-white">342 Leads</div>
-            <p className="text-[11px] text-purple-400 font-semibold flex items-center gap-1">
+            <div className="text-2xl font-black text-slate-900">342 Leads</div>
+            <p className="text-[11px] text-purple-700 font-semibold flex items-center gap-1">
               <Sparkles className="w-3 h-3" /> 18 New today
             </p>
           </div>
 
-          <div className="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl space-y-2">
+          <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400">Referral Payouts</span>
-              <div className="p-2 bg-purple-500/10 text-purple-400 rounded-xl">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Referral Payouts</span>
+              <div className="p-2 bg-amber-50 text-amber-700 rounded-xl">
                 <DollarSign className="w-5 h-5" />
               </div>
             </div>
-            <div className="text-2xl font-black text-white">₹48,500</div>
-            <p className="text-[11px] text-emerald-400 font-semibold">Processed this month</p>
+            <div className="text-2xl font-black text-slate-900">₹48,500</div>
+            <p className="text-[11px] text-emerald-700 font-semibold">Processed this month</p>
           </div>
         </div>
 
         {/* --- MANAGEMENT NAVIGATION TABS --- */}
-        <div className="flex items-center gap-3 border-b border-slate-800 pb-2">
+        <div className="flex items-center gap-3 border-b border-slate-200 pb-2">
           <button
             onClick={() => setActiveTab("placements")}
             className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === "placements"
-                ? "bg-purple-600 text-white shadow-lg"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "jvm-gradient-bg text-white shadow-md"
+                : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
             }`}
           >
             <GraduationCap className="w-4 h-4" />
@@ -784,8 +784,8 @@ export default function AdminPage() {
             onClick={() => setActiveTab("blogs")}
             className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === "blogs"
-                ? "bg-purple-600 text-white shadow-lg"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "jvm-gradient-bg text-white shadow-md"
+                : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -799,8 +799,8 @@ export default function AdminPage() {
             }}
             className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === "studies"
-                ? "bg-purple-600 text-white shadow-lg"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "jvm-gradient-bg text-white shadow-md"
+                : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
             }`}
           >
             <BookOpen className="w-4 h-4" />
@@ -1414,15 +1414,15 @@ export default function AdminPage() {
 
         {/* --- SECTION C: STUDY MATERIALS & HTML MODULE EDITOR --- */}
         {activeTab === "studies" && (
-          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-8 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
               <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <BookOpen className="w-6 h-6 text-purple-400" />
+                <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <BookOpen className="w-6 h-6 text-purple-600" />
                   <span>Study Material Courses & HTML Modules Editor</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-1">
-                  Create study courses, set price (₹), select how many modules are free, and write HTML notes with live preview.
+                <p className="text-xs text-slate-500 mt-1">
+                  Create study courses, edit title/price (₹), select free module preview threshold, and manage HTML modules.
                 </p>
               </div>
 
@@ -1440,7 +1440,7 @@ export default function AdminPage() {
                     coverImage: "/course.jpg",
                   });
                 }}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl jvm-gradient-bg hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 <span>{isAddingCourse ? "Cancel Course Form" : "Create New Study Course"}</span>
@@ -1449,62 +1449,62 @@ export default function AdminPage() {
 
             {/* Course Create / Edit Form */}
             {isAddingCourse && (
-              <form onSubmit={handleCourseSubmit} className="bg-slate-800/80 border border-purple-500/30 rounded-2xl p-6 space-y-5">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
-                  <span>{editingCourseId ? "Edit Study Course" : "Create New Study Course"}</span>
+              <form onSubmit={handleCourseSubmit} className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-5">
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-purple-600" />
+                  <span>{editingCourseId ? "Edit Study Course Details" : "Create New Study Course"}</span>
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-medium">
                   <div className="sm:col-span-2">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Course Title</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Course Title</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. PySpark & Apache Spark Architecture Mastery"
                       value={courseFormData.title}
                       onChange={(e) => setCourseFormData({ ...courseFormData, title: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500 font-semibold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Subject Tag</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Subject Tag</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. PySpark & Big Data"
                       value={courseFormData.subject}
                       onChange={(e) => setCourseFormData({ ...courseFormData, subject: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500 font-semibold"
                     />
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Course Description</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Course Description</label>
                     <textarea
                       rows={2}
                       required
                       placeholder="Enter description of what students will learn..."
                       value={courseFormData.description}
                       onChange={(e) => setCourseFormData({ ...courseFormData, description: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Unlock Price (₹)</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Unlock Price (₹)</label>
                     <input
                       type="number"
                       required
                       value={courseFormData.price}
                       onChange={(e) => setCourseFormData({ ...courseFormData, price: parseFloat(e.target.value) || 0 })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500 font-bold"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500 font-bold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Free Preview Modules Count</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Free Preview Modules Count</label>
                     <input
                       type="number"
                       required
@@ -1512,18 +1512,18 @@ export default function AdminPage() {
                       max={10}
                       value={courseFormData.freeModulesCount}
                       onChange={(e) => setCourseFormData({ ...courseFormData, freeModulesCount: parseInt(e.target.value) || 1 })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500 font-bold"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500 font-bold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Badge Tag</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Badge Tag</label>
                     <input
                       type="text"
                       placeholder="e.g. Best Seller / Popular"
                       value={courseFormData.badge}
                       onChange={(e) => setCourseFormData({ ...courseFormData, badge: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500 font-semibold"
                     />
                   </div>
                 </div>
@@ -1531,17 +1531,20 @@ export default function AdminPage() {
                 <div className="flex justify-end gap-3 pt-2">
                   <button
                     type="button"
-                    onClick={() => setIsAddingCourse(false)}
-                    className="px-4 py-2 rounded-xl bg-slate-700 text-slate-300 text-xs font-bold"
+                    onClick={() => {
+                      setIsAddingCourse(false);
+                      setEditingCourseId(null);
+                    }}
+                    className="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 text-xs font-bold"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={savingCourse}
-                    className="px-6 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold"
+                    className="px-6 py-2 rounded-xl jvm-gradient-bg text-white text-xs font-bold shadow-md"
                   >
-                    {savingCourse ? "Saving Course..." : editingCourseId ? "Update Course" : "Create Course"}
+                    {savingCourse ? "Saving..." : editingCourseId ? "Update Course" : "Create Course"}
                   </button>
                 </div>
               </form>
@@ -1549,29 +1552,48 @@ export default function AdminPage() {
 
             {/* Courses List Table */}
             <div className="space-y-4">
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">Published Study Courses</h3>
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Published Study Courses</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {studyCourses.map((c) => (
-                  <div key={c.id} className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-md">
+                  <div key={c.id} className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between">
                       <div>
-                        <span className="text-[10px] font-bold bg-purple-500/20 text-purple-300 px-2.5 py-0.5 rounded-full uppercase">
+                        <span className="text-[10px] font-bold bg-purple-100 text-purple-700 px-2.5 py-0.5 rounded-full uppercase">
                           {c.subject}
                         </span>
-                        <h4 className="text-lg font-bold text-white mt-1">{c.title}</h4>
-                        <p className="text-xs text-slate-400 mt-1 line-clamp-2">{c.description}</p>
+                        <h4 className="text-lg font-bold text-slate-900 mt-1">{c.title}</h4>
+                        <p className="text-xs text-slate-500 mt-1 line-clamp-2">{c.description}</p>
                       </div>
 
                       <div className="text-right shrink-0">
-                        <span className="text-lg font-black text-emerald-400 block">₹{c.price}</span>
-                        <span className="text-[10px] text-slate-400 font-bold">{c.freeModulesCount} Free Module(s)</span>
+                        <span className="text-lg font-black text-emerald-600 block">₹{c.price}</span>
+                        <span className="text-[10px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">{c.freeModulesCount} Free Module(s)</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-200 text-xs">
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
                       <span className="text-slate-600 font-semibold">{c.modules?.length || 0} Total Modules</span>
                       
                       <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            setEditingCourseId(c.id);
+                            setIsAddingCourse(true);
+                            setCourseFormData({
+                              title: c.title,
+                              description: c.description,
+                              subject: c.subject,
+                              badge: c.badge || "Popular",
+                              price: c.price,
+                              freeModulesCount: c.freeModulesCount,
+                              coverImage: c.coverImage || "/course.jpg",
+                            });
+                          }}
+                          className="p-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors"
+                          title="Edit Course Details (Title, Price, Description)"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </button>
                         <button
                           onClick={() => {
                             setSelectedCourseForModules(c);
@@ -1597,7 +1619,7 @@ export default function AdminPage() {
                               fetchStudyCourses();
                             }
                           }}
-                          className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white"
+                          className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -1651,13 +1673,13 @@ export default function AdminPage() {
                   {isAddingModule && (
                     <form
                       onSubmit={handleModuleSubmit}
-                      className="fixed inset-2 sm:inset-4 z-[99999] overflow-y-auto bg-white border border-slate-300 rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl"
+                      className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl animate-fade-in"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
                         <div className="flex items-center gap-2">
                           <span className="w-3 h-3 rounded-full bg-purple-600 animate-pulse"></span>
-                          <h4 className="text-base font-extrabold text-slate-900">
-                            {editingModuleId ? "Edit Module Content & Notes (Full Screen)" : "Create New Module Content & Notes (Full Screen)"}
+                          <h4 className="text-lg font-extrabold text-slate-900">
+                            {editingModuleId ? "Edit Module Content & HTML Notes" : "Create New Module Content & HTML Notes"}
                           </h4>
                         </div>
 
@@ -1742,22 +1764,22 @@ export default function AdminPage() {
                         </div>
                       </div>
 
-                      {/* 50/50 FULLSCREEN PARALLEL EDITOR & LIVE PREVIEW */}
+                      {/* FULL PAGE DEDICATED 50/50 PARALLEL HTML EDITOR & LIVE PREVIEW */}
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
                         <div className="space-y-2 flex flex-col">
                           <div className="flex items-center justify-between">
                             <label className="text-xs font-bold uppercase tracking-wider text-purple-700 flex items-center gap-1.5">
                               <FileText className="w-4 h-4 text-purple-600" /> HTML Source Code Editor
                             </label>
-                            <span className="text-[11px] text-slate-500">Paste HTML / Tailwind markup</span>
+                            <span className="text-[11px] text-slate-500">HTML tags, tailwind classes & formatted notes</span>
                           </div>
                           <textarea
-                            rows={18}
+                            rows={26}
                             required
                             placeholder="<div class='space-y-4'><h2>Module Header</h2><p>Pasted HTML content here...</p></div>"
                             value={moduleFormData.contentHtml}
                             onChange={(e) => setModuleFormData({ ...moduleFormData, contentHtml: e.target.value })}
-                            className="w-full p-4 bg-slate-900 border border-slate-800 rounded-2xl text-xs font-mono text-emerald-400 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner min-h-[420px] leading-relaxed"
+                            className="w-full p-5 bg-slate-900 border border-slate-800 rounded-2xl text-xs font-mono text-emerald-400 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner min-h-[600px] leading-relaxed"
                           />
                         </div>
 
@@ -1766,11 +1788,11 @@ export default function AdminPage() {
                             <label className="text-xs font-bold uppercase tracking-wider text-amber-600 flex items-center gap-1.5">
                               <Sparkles className="w-4 h-4 text-amber-500" /> Live Rendered Preview ({previewThemeMode.toUpperCase()} MODE)
                             </label>
-                            <span className="text-[11px] text-slate-500">Exact live website view</span>
+                            <span className="text-[11px] text-slate-500">Matches live student view</span>
                           </div>
 
                           <div
-                            className={`flex-1 rounded-2xl border p-6 min-h-[420px] overflow-y-auto transition-colors ${
+                            className={`flex-1 rounded-2xl border p-6 min-h-[600px] max-h-[750px] overflow-y-auto transition-colors ${
                               previewThemeMode === "light"
                                 ? "bg-white text-slate-900 border-slate-300 shadow-lg"
                                 : "bg-[#0B0F19] text-slate-100 border-slate-800 shadow-2xl"
