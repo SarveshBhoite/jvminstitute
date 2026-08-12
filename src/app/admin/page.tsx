@@ -15,6 +15,7 @@ import {
   CheckCircle2, 
   AlertCircle,
   Sparkles,
+  Gift,
   ArrowRight,
   Plus,
   Trash2,
@@ -77,7 +78,11 @@ export default function AdminPage() {
   const [adminUser, setAdminUser] = useState<{ fullName?: string; email?: string; role?: string } | null>(null);
 
   // Active Tab: "placements" | "blogs" | "studies" | "unlocks" | "leads"
-  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks" | "leads">("placements");
+  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks" | "leads" | "settings">("placements");
+
+  // Referral Reward Setting State
+  const [referralRewardSetting, setReferralRewardSetting] = useState<number>(2000);
+  const [savingReferralSetting, setSavingReferralSetting] = useState(false);
 
   // Leads & Form Submissions state
   const [leads, setLeads] = useState<any[]>([]);
@@ -219,11 +224,46 @@ export default function AdminPage() {
         fetchStudyCourses();
         fetchCourseUnlocks();
         fetchLeads();
+        fetchReferralSetting();
       }
     } catch {
       // not logged in
     } finally {
       setCheckingAuth(false);
+    }
+  };
+
+  const fetchReferralSetting = async () => {
+    try {
+      const res = await fetch("/api/referrals/settings");
+      const data = await res.json();
+      if (data.success && typeof data.rewardAmount === "number") {
+        setReferralRewardSetting(data.rewardAmount);
+      }
+    } catch (err) {
+      console.error("Failed to fetch referral setting:", err);
+    }
+  };
+
+  const handleUpdateReferralSetting = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSavingReferralSetting(true);
+    try {
+      const res = await fetch("/api/referrals/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rewardAmount: referralRewardSetting }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert("✅ Referral reward amount updated successfully!");
+      } else {
+        alert(data.error || "Failed to update referral reward amount");
+      }
+    } catch (err) {
+      alert("Error updating setting: " + err);
+    } finally {
+      setSavingReferralSetting(false);
     }
   };
 
@@ -907,6 +947,21 @@ export default function AdminPage() {
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Student Unlocks ({courseUnlocks.length})</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveTab("settings");
+                fetchReferralSetting();
+              }}
+              className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
+                activeTab === "settings"
+                  ? "jvm-gradient-bg text-white shadow-md"
+                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
+              }`}
+            >
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              <span>Referral Settings</span>
             </button>
           </div>
         )}
@@ -2167,6 +2222,54 @@ export default function AdminPage() {
                 </tbody>
               </table>
             </div>
+          </div>
+        )}
+
+        {/* --- SECTION F: REFERRAL SETTINGS --- */}
+        {activeTab === "settings" && (
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm max-w-3xl">
+            <div className="border-b border-slate-100 pb-4">
+              <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                <Sparkles className="w-6 h-6 text-amber-500" />
+                <span>Refer &amp; Earn Program Settings</span>
+              </h2>
+              <p className="text-xs text-slate-500 mt-1">
+                Configure the uniform referral cash reward amount granted per successful candidate admission across all courses.
+              </p>
+            </div>
+
+            <form onSubmit={handleUpdateReferralSetting} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  Referral Cash Reward Amount (₹ Per Candidate)
+                </label>
+                <div className="relative max-w-md">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold text-sm">₹</span>
+                  <input
+                    type="number"
+                    min="0"
+                    step="100"
+                    required
+                    value={referralRewardSetting}
+                    onChange={(e) => setReferralRewardSetting(parseInt(e.target.value, 10) || 0)}
+                    className="w-full pl-8 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    placeholder="2000"
+                  />
+                </div>
+                <p className="text-[11px] text-slate-500 mt-1.5 font-medium">
+                  This single uniform amount will dynamically reflect on the <span className="font-mono text-purple-700 font-bold">/refer-and-earn</span> calculator, headlines, and referral banners site-wide!
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                disabled={savingReferralSetting}
+                className="px-6 py-3 jvm-gradient-bg text-white font-extrabold text-xs rounded-xl shadow-md hover:opacity-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <Gift className="w-4 h-4" />
+                {savingReferralSetting ? "Saving Setting..." : "Save Referral Reward Setting"}
+              </button>
+            </form>
           </div>
         )}
 

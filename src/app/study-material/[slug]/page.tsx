@@ -435,9 +435,13 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
                 <input
                   type="tel"
                   required
-                  placeholder="+91 9876543210"
+                  pattern="[0-9]{10}"
+                  minLength={10}
+                  maxLength={10}
+                  title="Phone number must be exactly 10 digits"
+                  placeholder="Enter 10-digit mobile number"
                   value={userPhone}
-                  onChange={(e) => setUserPhone(e.target.value)}
+                  onChange={(e) => setUserPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                   className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-xs font-medium text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>

@@ -32,9 +32,24 @@ export default function ReferAndEarnPage() {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Interactive Earnings Calculator State
-  const [deCount, setDeCount] = useState(3);
-  const [daCount, setDaCount] = useState(2);
+  const [rewardAmount, setRewardAmount] = useState<number>(2000);
+  const [candidateCount, setCandidateCount] = useState<number>(3);
+
+  // Fetch dynamic referral reward amount set by Admin
+  React.useEffect(() => {
+    async function fetchRewardSetting() {
+      try {
+        const res = await fetch("/api/referrals/settings");
+        const data = await res.json();
+        if (data.success && typeof data.rewardAmount === "number") {
+          setRewardAmount(data.rewardAmount);
+        }
+      } catch (err) {
+        console.error("Failed to fetch referral reward setting:", err);
+      }
+    }
+    fetchRewardSetting();
+  }, []);
 
   // Dynamic Referral Code Generation based on Referrer's Name & Phone
   const userReferralCode = React.useMemo(() => {
@@ -44,12 +59,20 @@ export default function ReferAndEarnPage() {
     return `JVM-${cleanName || "REF"}-${lastDigits || "2026"}`;
   }, [referrerName, referrerPhone]);
 
-  const userReferralLink = typeof window !== "undefined"
-    ? `${window.location.origin}/enroll?ref=${userReferralCode}`
-    : `https://jvminstitute.com/enroll?ref=${userReferralCode}`;
+  const userReferralLink = React.useMemo(() => {
+    let baseUrl = "https://jvminstitute.vercel.app";
+    if (typeof window !== "undefined") {
+      const origin = window.location.origin;
+      // If running on localhost or custom domain, map to production URL jvminstitute.vercel.app unless running on a non-localhost host
+      if (!origin.includes("localhost") && !origin.includes("127.0.0.1")) {
+        baseUrl = origin;
+      }
+    }
+    return `${baseUrl}/enroll?ref=${userReferralCode}`;
+  }, [userReferralCode]);
 
-  // Calculation Logic
-  const totalEarnings = (deCount * 2000) + (daCount * 1000);
+  // Single Reward Calculation Logic (Candidate Count * Live Reward Amount)
+  const totalEarnings = candidateCount * rewardAmount;
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(userReferralLink);
@@ -136,7 +159,7 @@ export default function ReferAndEarnPage() {
 
               <div className="space-y-2">
                 <SplitText
-                  text="Refer Your Friends & Earn Up to ₹2,000 Per Enrollment"
+                  text={`Refer Your Friends & Earn ₹${rewardAmount.toLocaleString()} Per Enrollment`}
                   tag="h1"
                   className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight leading-[1.15]"
                   delay={25}
@@ -179,7 +202,10 @@ export default function ReferAndEarnPage() {
                     </label>
                     <input
                       type="tel"
+                      pattern="[0-9]{10}"
+                      minLength={10}
                       maxLength={10}
+                      title="Phone number must be exactly 10 digits"
                       placeholder="e.g. 9822334455"
                       value={referrerPhone}
                       onChange={(e) => setReferrerPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
@@ -249,39 +275,21 @@ export default function ReferAndEarnPage() {
                   {/* Sliders */}
                   <div className="space-y-4 sm:space-y-5 bg-slate-50 dark:bg-slate-900/80 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800">
                     
-                    {/* Slider 1: Data Engineering */}
-                    <div className="space-y-1.5">
+                    {/* Single Candidate Slider */}
+                    <div className="space-y-2">
                       <div className="flex justify-between items-center text-xs font-bold">
                         <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-                          <Sparkles className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Data Engineering (₹2,000/student):
+                          <Sparkles className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Number of Friends Referred (₹{rewardAmount.toLocaleString()}/enrollment):
                         </span>
-                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-xs sm:text-sm">{deCount} Friends</span>
+                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-sm sm:text-base">{candidateCount} Friends</span>
                       </div>
                       <input 
                         type="range" 
-                        min="0" 
-                        max="20" 
-                        value={deCount}
-                        onChange={(e) => setDeCount(parseInt(e.target.value))}
-                        className="w-full accent-purple-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg"
-                      />
-                    </div>
-
-                    {/* Slider 2: Data Analytics */}
-                    <div className="space-y-1.5">
-                      <div className="flex justify-between items-center text-xs font-bold">
-                        <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-                          <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" /> Data Analytics (₹1,000/student):
-                        </span>
-                        <span className="text-amber-600 dark:text-amber-400 font-extrabold text-xs sm:text-sm">{daCount} Friends</span>
-                      </div>
-                      <input 
-                        type="range" 
-                        min="0" 
-                        max="20" 
-                        value={daCount}
-                        onChange={(e) => setDaCount(parseInt(e.target.value))}
-                        className="w-full accent-amber-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg"
+                        min="1" 
+                        max="30" 
+                        value={candidateCount}
+                        onChange={(e) => setCandidateCount(parseInt(e.target.value, 10))}
+                        className="w-full accent-purple-600 cursor-pointer h-2.5 bg-slate-200 dark:bg-slate-700 rounded-lg"
                       />
                     </div>
 
@@ -292,7 +300,7 @@ export default function ReferAndEarnPage() {
                 <div className="lg:col-span-5">
                   <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 text-center space-y-3 sm:space-y-4 shadow-xl border border-purple-500/30">
                     <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/30">
-                      Estimated Direct Cash Payout
+                      Estimated Cash Reward Payout
                     </span>
 
                     <div className="py-1 sm:py-2">
@@ -300,18 +308,22 @@ export default function ReferAndEarnPage() {
                         ₹{totalEarnings.toLocaleString()}
                       </div>
                       <p className="text-[10px] sm:text-xs text-purple-200 mt-0.5 font-medium">
-                        Instant UPI Payout within 48 hrs of batch start
+                        Instant UPI / Bank Payout per confirmed admission
                       </p>
                     </div>
 
                     <div className="pt-2 sm:pt-3 border-t border-white/10 text-[11px] sm:text-xs font-medium text-slate-300 space-y-1">
                       <div className="flex justify-between">
+                        <span>Reward Per Admission:</span>
+                        <strong className="text-amber-400 font-extrabold">₹{rewardAmount.toLocaleString()}</strong>
+                      </div>
+                      <div className="flex justify-between">
                         <span>Total Candidates Referred:</span>
-                        <strong className="text-white">{deCount + daCount} Friends</strong>
+                        <strong className="text-white font-extrabold">{candidateCount} Friends</strong>
                       </div>
                       <div className="flex justify-between">
                         <span>Friend Scholarship Discount:</span>
-                        <strong className="text-emerald-400">₹{(deCount + daCount) * 1000} Total Off</strong>
+                        <strong className="text-emerald-400 font-extrabold">₹{(candidateCount * 1000).toLocaleString()} Scholarship</strong>
                       </div>
                     </div>
 
@@ -609,9 +621,12 @@ export default function ReferAndEarnPage() {
                           onChange={(e) => setCourseInterest(e.target.value)}
                           className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
                         >
-                          <option value="Data Engineering">Data Engineering (₹2,000 Cash Reward)</option>
-                          <option value="Data Analytics">Data Analytics &amp; SQL (₹1,000 Cash Reward)</option>
-                          <option value="Data Science">Data Science &amp; AI Track (₹1,500 Cash Reward)</option>
+                          <option value="Data Engineering">Data Engineering Track</option>
+                          <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
+                          <option value="Generative AI">Generative AI Master Track</option>
+                          <option value="Basic AI & ML">Basic AI &amp; Machine Learning</option>
+                          <option value="Advanced AI & Machine Learning">Advanced AI &amp; Machine Learning</option>
+                          <option value="Claude AI">Claude AI Masterclass</option>
                         </select>
                       </div>
 

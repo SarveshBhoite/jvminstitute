@@ -217,6 +217,15 @@ model Admin {
   @@map("admins")
 }
 
+model SiteSetting {
+  id        String   @id @default("global_settings")
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
 model StudyMaterialCourse {
   id               String                @id @default(cuid())
   slug             String                @unique
