@@ -24,7 +24,12 @@ import {
   Layers,
   Upload,
   Image as ImageIcon,
-  Edit
+  Edit,
+  X,
+  Sun,
+  Moon,
+  Maximize2,
+  Minimize2
 } from "lucide-react";
 
 interface PlacementRecord {
@@ -71,8 +76,46 @@ export default function AdminPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [adminUser, setAdminUser] = useState<{ fullName?: string; email?: string; role?: string } | null>(null);
 
-  // Active Tab: "placements" | "blogs"
-  const [activeTab, setActiveTab] = useState<"placements" | "blogs">("placements");
+  // Active Tab: "placements" | "blogs" | "studies"
+  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies">("placements");
+
+  // Study Materials state
+  const [studyCourses, setStudyCourses] = useState<any[]>([]);
+  const [isAddingCourse, setIsAddingCourse] = useState(false);
+  const [editingCourseId, setEditingCourseId] = useState<string | null>(null);
+  const [savingCourse, setSavingCourse] = useState(false);
+  
+  // Selected course for editing modules
+  const [selectedCourseForModules, setSelectedCourseForModules] = useState<any | null>(null);
+  const [isAddingModule, setIsAddingModule] = useState(false);
+  const [editingModuleId, setEditingModuleId] = useState<string | null>(null);
+  const [savingModule, setSavingModule] = useState(false);
+
+  // Course Form
+  const [courseFormData, setCourseFormData] = useState({
+    title: "",
+    description: "",
+    subject: "Data Engineering",
+    badge: "Popular",
+    price: 499,
+    freeModulesCount: 1,
+    coverImage: "/course.jpg",
+  });
+
+  // Module Form
+  const [moduleFormData, setModuleFormData] = useState({
+    moduleNumber: 1,
+    title: "",
+    description: "",
+    readTime: "10 min read",
+    contentHtml: "<h3>Module Header</h3>\n<p>Enter module HTML content here...</p>",
+  });
+
+  // HTML Preview mode & Theme
+  const [htmlPreviewTab, setHtmlPreviewTab] = useState<"edit" | "preview">("edit");
+  const [previewThemeMode, setPreviewThemeMode] = useState<"dark" | "light">("dark");
+  const [isFullScreenEditor, setIsFullScreenEditor] = useState<boolean>(false);
+
 
   // Placements Management state
   const [placements, setPlacements] = useState<PlacementRecord[]>([]);
@@ -156,6 +199,18 @@ export default function AdminPage() {
     }
   };
 
+  const fetchStudyCourses = async () => {
+    try {
+      const res = await fetch("/api/study-materials/courses");
+      const data = await res.json();
+      if (data.success) {
+        setStudyCourses(data.data || []);
+      }
+    } catch (err) {
+      console.error("Failed to fetch study courses", err);
+    }
+  };
+
   const fetchBlogs = async () => {
     try {
       const res = await fetch("/api/admin/blogs");
@@ -167,6 +222,68 @@ export default function AdminPage() {
       console.error("Failed to fetch blogs", err);
     }
   };
+
+  const handleCourseSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSavingCourse(true);
+    try {
+      const url = editingCourseId ? `/api/study-materials/courses/${editingCourseId}` : "/api/study-materials/courses";
+      const method = editingCourseId ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(courseFormData),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setIsAddingCourse(false);
+        setEditingCourseId(null);
+        fetchStudyCourses();
+      } else {
+        alert(data.message || "Failed to save course");
+      }
+    } catch (err) {
+      alert("Error saving study course: " + err);
+    } finally {
+      setSavingCourse(false);
+    }
+  };
+
+  const handleModuleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedCourseForModules) return;
+    setSavingModule(true);
+    try {
+      const res = await fetch(`/api/study-materials/courses/${selectedCourseForModules.id}/modules`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...moduleFormData,
+          moduleId: editingModuleId,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setIsAddingModule(false);
+        setEditingModuleId(null);
+        fetchStudyCourses();
+        // Refresh selected course
+        const updatedRes = await fetch("/api/study-materials/courses");
+        const updatedData = await updatedRes.json();
+        if (updatedData.success) {
+          const fresh = updatedData.data.find((c: any) => c.id === selectedCourseForModules.id);
+          if (fresh) setSelectedCourseForModules(fresh);
+        }
+      } else {
+        alert(data.message || "Failed to save module");
+      }
+    } catch (err) {
+      alert("Error saving module: " + err);
+    } finally {
+      setSavingModule(false);
+    }
+  };
+
 
   // Helper for Cloudinary Image Upload
   const uploadToCloudinary = async (file: File, folderName: string): Promise<string | null> => {
@@ -464,10 +581,10 @@ export default function AdminPage() {
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
-        <div className="flex items-center gap-3 text-purple-400 font-bold">
-          <div className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
-          <span>Verifying Admin Access...</span>
+      <div className="min-h-screen bg-[#FAFAFC] text-slate-900 flex items-center justify-center">
+        <div className="flex items-center gap-3 font-bold px-6 py-4 rounded-2xl bg-white border border-slate-200 shadow-xl">
+          <div className="w-6 h-6 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-slate-800 text-sm font-extrabold">Verifying Admin Access...</span>
         </div>
       </div>
     );
@@ -476,23 +593,23 @@ export default function AdminPage() {
   // --- 1. LOGIN SCREEN ---
   if (!isAuthenticated) {
     return (
-      <div className="min-h-[85vh] bg-gradient-to-br from-slate-950 via-[#0B0F19] to-slate-900 flex items-center justify-center p-4">
-        <div className="w-full max-w-md bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
+      <div className="min-h-[85vh] bg-[#FAFAFC] flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-white border border-slate-200 rounded-3xl p-8 shadow-2xl space-y-6">
           
           <div className="text-center space-y-2">
-            <div className="w-14 h-14 bg-gradient-to-tr from-[#1E2B88] via-[#7C248C] to-[#E01E6A] rounded-2xl mx-auto flex items-center justify-center text-white shadow-lg">
+            <div className="w-14 h-14 jvm-gradient-bg rounded-2xl mx-auto flex items-center justify-center text-white shadow-lg">
               <Lock className="w-7 h-7" />
             </div>
-            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
               JVM Admin Portal
             </h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500">
               Sign in with your administrator credentials to access the management dashboard.
             </p>
           </div>
 
           {errorMsg && (
-            <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs font-semibold flex items-center gap-2">
+            <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-xs font-semibold flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMsg}</span>
             </div>
@@ -500,7 +617,7 @@ export default function AdminPage() {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
                 Admin Email
               </label>
               <div className="relative">
@@ -509,15 +626,15 @@ export default function AdminPage() {
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@jvminstitute.com"
+                  placeholder="infojvminstitute@gmail.com"
                   required
-                  className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 dark:text-white transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 text-slate-900 transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
                 Password
               </label>
               <div className="relative">
@@ -528,7 +645,7 @@ export default function AdminPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
                   required
-                  className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 dark:text-white transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 text-slate-900 transition-all"
                 />
               </div>
             </div>
@@ -536,7 +653,7 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 px-4 bg-gradient-to-r from-[#1E2B88] via-[#7C248C] to-[#E01E6A] hover:opacity-95 text-white font-bold text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 px-4 jvm-gradient-bg hover:opacity-95 text-white font-bold text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {loading ? (
                 <>
@@ -552,9 +669,9 @@ export default function AdminPage() {
             </button>
           </form>
 
-          <div className="pt-2 border-t border-slate-100 dark:border-slate-800 text-center">
+          <div className="pt-2 border-t border-slate-100 text-center">
             <p className="text-[11px] text-slate-400">
-              Default Seed Email: <code className="text-purple-400 font-mono">admin@jvminstitute.com</code>
+              Admin Login: <code className="text-purple-600 font-mono font-bold">infojvminstitute@gmail.com</code> | Pass: <code className="text-purple-600 font-mono font-bold">Jvm123</code>
             </p>
           </div>
 
@@ -674,24 +791,40 @@ export default function AdminPage() {
             <Layers className="w-4 h-4" />
             <span>Technical Blogs ({blogs.length})</span>
           </button>
+
+          <button
+            onClick={() => {
+              setActiveTab("studies");
+              fetchStudyCourses();
+            }}
+            className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
+              activeTab === "studies"
+                ? "bg-purple-600 text-white shadow-lg"
+                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+            }`}
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Study Materials & Modules ({studyCourses.length})</span>
+          </button>
         </div>
+
 
         {/* --- SECTION A: PLACEMENT MANAGEMENT --- */}
         {activeTab === "placements" && (
-          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                    <GraduationCap className="w-6 h-6 text-purple-400" />
+                  <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <GraduationCap className="w-6 h-6 text-purple-600" />
                     <span>Placed Students Management</span>
                   </h2>
-                  <span className="bg-purple-500/20 text-purple-300 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="bg-purple-100 text-purple-700 text-xs px-2.5 py-0.5 rounded-full font-bold">
                     Admin Access
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 mt-1">
                   Add new student placement records directly into Neon PostgreSQL database to reflect on the main website wall.
                 </p>
               </div>
@@ -718,7 +851,7 @@ export default function AdminPage() {
                     setIsAddingPlacement(true);
                   }
                 }}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl jvm-gradient-bg hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 <span>{isAddingPlacement ? "Cancel Form" : "Add Placed Student"}</span>
@@ -726,7 +859,7 @@ export default function AdminPage() {
             </div>
 
             {placementSuccessMsg && (
-              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold flex items-center gap-2">
+              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>{placementSuccessMsg}</span>
               </div>
@@ -734,63 +867,63 @@ export default function AdminPage() {
 
             {/* Add / Edit Student Placement Form */}
             {isAddingPlacement && (
-              <form onSubmit={handleAddPlacementSubmit} className="bg-slate-800/80 border border-purple-500/30 rounded-2xl p-6 space-y-5 animate-fade-in">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#E01E6A]" />
+              <form onSubmit={handleAddPlacementSubmit} className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-5">
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-purple-600" />
                   <span>{editingPlacementId ? "Edit Placed Student Details" : "Add Placed Student Details"}</span>
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-medium">
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Student Full Name</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Student Full Name</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Siddharth Bhoite"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-semibold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Company Name</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Company Name</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. TCS / Cognizant / Infosys"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-semibold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Placed Role</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Placed Role</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Associate Data Engineer"
                       value={formData.placedRole}
                       onChange={(e) => setFormData({ ...formData, placedRole: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-semibold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Package Offered (LPA)</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Package Offered (LPA)</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. 8.5 LPA"
                       value={formData.package}
                       onChange={(e) => setFormData({ ...formData, package: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-semibold"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Tech Domain</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Tech Domain</label>
                     <select
                       value={formData.domain}
                       onChange={(e) => {
@@ -808,7 +941,7 @@ export default function AdminPage() {
                           category: domainMap[e.target.value] || "data_engineering"
                         });
                       }}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-semibold"
                     >
                       <option value="Data Engineering">Data Engineering</option>
                       <option value="PySpark & Big Data">PySpark & Big Data</option>
@@ -820,27 +953,27 @@ export default function AdminPage() {
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Core Tech Skills</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Core Tech Skills</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. PySpark, Databricks, AWS Glue, SQL"
                       value={formData.skills}
                       onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-semibold"
                     />
                   </div>
 
                   {/* Cloudinary Student Photo Upload Component */}
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1 flex items-center justify-between">
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1 flex items-center justify-between">
                       <span>Student Photo</span>
-                      <span className="text-[10px] text-purple-400 font-bold">Cloudinary Direct Upload</span>
+                      <span className="text-[10px] text-purple-600 font-bold">Cloudinary Direct Upload</span>
                     </label>
                     
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <label className="flex-1 px-3 py-2 bg-slate-900 border border-dashed border-purple-500/50 rounded-xl cursor-pointer hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 text-purple-300 font-bold">
+                        <label className="flex-1 px-3 py-2 bg-white border border-dashed border-purple-300 rounded-xl cursor-pointer hover:bg-purple-50 transition-colors flex items-center justify-center gap-2 text-purple-700 font-bold">
                           <Upload className="w-4 h-4" />
                           <span>{uploadingPlacementImg ? "Uploading..." : "Upload Image to Cloudinary"}</span>
                           <input
@@ -854,13 +987,13 @@ export default function AdminPage() {
                       </div>
 
                       {formData.image && (
-                        <div className="flex items-center gap-2 p-2 bg-slate-900 border border-slate-800 rounded-xl">
-                          <ImageIcon className="w-4 h-4 text-purple-400 shrink-0" />
+                        <div className="flex items-center gap-2 p-2 bg-white border border-slate-200 rounded-xl">
+                          <ImageIcon className="w-4 h-4 text-purple-600 shrink-0" />
                           <input
                             type="text"
                             value={formData.image}
                             onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                            className="w-full bg-transparent text-[11px] text-slate-300 focus:outline-none"
+                            className="w-full bg-transparent text-[11px] text-slate-700 focus:outline-none"
                           />
                         </div>
                       )}
@@ -868,13 +1001,13 @@ export default function AdminPage() {
                   </div>
 
                   {/* Featured Placement Switch Toggle */}
-                  <div className="sm:col-span-3 bg-slate-900 border border-slate-700 p-3.5 rounded-xl flex items-center justify-between">
+                  <div className="sm:col-span-3 bg-white border border-slate-200 p-3.5 rounded-xl flex items-center justify-between shadow-xs">
                     <div>
-                      <label className="text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer">
-                        <Sparkles className="w-4 h-4 text-amber-400" />
+                      <label className="text-slate-900 font-bold text-xs flex items-center gap-1.5 cursor-pointer">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
                         <span>Featured Placement (Display Live on Homepage Slideshow)</span>
                       </label>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
+                      <p className="text-[11px] text-slate-500 mt-0.5">
                         When enabled, this student profile will be included in the homepage slideshow carousel.
                       </p>
                     </div>
@@ -888,7 +1021,7 @@ export default function AdminPage() {
 
                   {/* Student Testimonial / Review / Advice */}
                   <div className="sm:col-span-3">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">
                       Student Testimonial / Review / Advice
                     </label>
                     <textarea
@@ -896,7 +1029,7 @@ export default function AdminPage() {
                       placeholder="e.g. Coming from a non-IT background, I was unsure about switching careers..."
                       value={formData.testimonial}
                       onChange={(e) => setFormData({ ...formData, testimonial: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs"
                     />
                   </div>
                 </div>
@@ -908,25 +1041,25 @@ export default function AdminPage() {
                       setIsAddingPlacement(false);
                       setEditingPlacementId(null);
                     }}
-                    className="px-4 py-2.5 rounded-xl bg-slate-700 text-slate-300 text-xs font-bold cursor-pointer"
+                    className="px-4 py-2.5 rounded-xl bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={savingPlacement || uploadingPlacementImg}
-                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl jvm-gradient-bg text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 cursor-pointer"
                   >
-                    {savingPlacement ? "Saving to Database..." : editingPlacementId ? "Update Placed Student" : "Save Placed Student"}
+                    {savingPlacement ? "Saving..." : editingPlacementId ? "Update Placed Student" : "Save Placed Student"}
                   </button>
                 </div>
               </form>
             )}
 
             {/* Admin Placements Table */}
-            <div className="overflow-x-auto rounded-2xl border border-slate-800">
-              <table className="w-full text-left text-xs text-slate-300">
-                <thead className="bg-slate-800/80 text-slate-400 uppercase font-extrabold tracking-wider border-b border-slate-800">
+            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+              <table className="w-full text-left text-xs text-slate-700">
+                <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold tracking-wider border-b border-slate-200">
                   <tr>
                     <th className="p-3.5">Student Name</th>
                     <th className="p-3.5">Company</th>
@@ -937,7 +1070,7 @@ export default function AdminPage() {
                     <th className="p-3.5 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 bg-slate-900/40">
+                <tbody className="divide-y divide-slate-100">
                   {placements.length === 0 ? (
                     <tr>
                       <td colSpan={7} className="p-6 text-center text-slate-500 font-medium">
@@ -946,22 +1079,22 @@ export default function AdminPage() {
                     </tr>
                   ) : (
                     placements.map((p) => (
-                      <tr key={p.id} className="hover:bg-slate-800/40 transition-colors">
-                        <td className="p-3.5 font-bold text-white flex items-center gap-2">
-                          <div className="w-7 h-7 rounded-full bg-purple-600/30 text-purple-300 flex items-center justify-center font-bold text-xs shrink-0">
+                      <tr key={p.id} className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3.5 font-bold text-slate-900 flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs shrink-0">
                             {p.name.charAt(0)}
                           </div>
                           <span>{p.name}</span>
                         </td>
-                        <td className="p-3.5 font-semibold text-slate-200">
+                        <td className="p-3.5 font-semibold text-slate-800">
                           <span className="flex items-center gap-1">
-                            <Building2 className="w-3.5 h-3.5 text-purple-400" /> {p.company}
+                            <Building2 className="w-3.5 h-3.5 text-purple-600" /> {p.company}
                           </span>
                         </td>
-                        <td className="p-3.5 text-slate-300">{p.placedRole}</td>
-                        <td className="p-3.5 font-bold text-emerald-400">{p.package}</td>
+                        <td className="p-3.5 text-slate-600">{p.placedRole}</td>
+                        <td className="p-3.5 font-bold text-emerald-600">{p.package}</td>
                         <td className="p-3.5">
-                          <span className="bg-purple-500/10 text-purple-300 px-2 py-0.5 rounded-md font-semibold">
+                          <span className="bg-purple-50 text-purple-700 px-2 py-0.5 rounded-md font-semibold">
                             {p.domain}
                           </span>
                         </td>
@@ -971,8 +1104,8 @@ export default function AdminPage() {
                             onClick={() => handleToggleFeaturedPlacement(p)}
                             className={`px-3 py-1 rounded-full text-[10px] font-extrabold flex items-center gap-1 mx-auto transition-all cursor-pointer ${
                               p.isFeatured !== false
-                                ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-xs"
-                                : "bg-slate-800 text-slate-500 border border-slate-700"
+                                ? "bg-amber-100 text-amber-800 border border-amber-300 shadow-xs"
+                                : "bg-slate-100 text-slate-400 border border-slate-200"
                             }`}
                             title="Toggle Homepage Slideshow Visibility"
                           >
@@ -984,14 +1117,14 @@ export default function AdminPage() {
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => handleEditPlacement(p)}
-                              className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 hover:bg-purple-600 hover:text-white transition-colors cursor-pointer"
+                              className="p-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white transition-colors cursor-pointer"
                               title="Edit Placement"
                             >
                               <Edit className="w-4 h-4" />
                             </button>
                             <button
                               onClick={() => handleDeletePlacement(p.id)}
-                              className="p-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors cursor-pointer"
+                              className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-colors cursor-pointer"
                               title="Delete Placement"
                             >
                               <Trash2 className="w-4 h-4" />
@@ -1010,27 +1143,27 @@ export default function AdminPage() {
 
         {/* --- SECTION B: BLOG MANAGEMENT --- */}
         {activeTab === "blogs" && (
-          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                    <Layers className="w-6 h-6 text-purple-400" />
+                  <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <Layers className="w-6 h-6 text-purple-600" />
                     <span>Technical Blog Management</span>
                   </h2>
-                  <span className="bg-indigo-500/20 text-indigo-300 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                  <span className="bg-purple-100 text-purple-700 text-xs px-2.5 py-0.5 rounded-full font-bold">
                     Admin Publisher
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 mt-1">
                   Create and publish technical articles, PySpark playbooks, and cloud architecture guides to the main website blog.
                 </p>
               </div>
 
               <button
                 onClick={() => setIsAddingBlog(!isAddingBlog)}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl jvm-gradient-bg hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 <span>{isAddingBlog ? "Cancel Form" : "Create New Blog Post"}</span>
@@ -1038,7 +1171,7 @@ export default function AdminPage() {
             </div>
 
             {blogSuccessMsg && (
-              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold flex items-center gap-2">
+              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>{blogSuccessMsg}</span>
               </div>
@@ -1046,42 +1179,42 @@ export default function AdminPage() {
 
             {/* Add Blog Post Form */}
             {isAddingBlog && (
-              <form onSubmit={handleAddBlogSubmit} className="bg-slate-800/80 border border-purple-500/30 rounded-2xl p-6 space-y-5 animate-fade-in">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-purple-400" />
+              <form onSubmit={handleAddBlogSubmit} className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-5">
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-purple-600" />
                   <span>{editingBlogId ? "Edit Technical Article" : "Publish New Technical Article"}</span>
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-medium">
                   <div className="sm:col-span-2">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Article Title</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Article Title</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. How to Optimize PySpark Join Performance on Databricks"
                       value={blogFormData.title}
                       onChange={(e) => setBlogFormData({ ...blogFormData, title: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Meta Title (SEO)</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Meta Title (SEO)</label>
                     <input
                       type="text"
                       placeholder="SEO Meta Title (Defaults to Article Title)"
                       value={blogFormData.metaTitle}
                       onChange={(e) => setBlogFormData({ ...blogFormData, metaTitle: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Blog Category</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Blog Category</label>
                     <select
                       value={blogFormData.category}
                       onChange={(e) => setBlogFormData({ ...blogFormData, category: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     >
                       <option value="Data Engineering">Data Engineering</option>
                       <option value="AI & ML">AI & ML</option>
@@ -1093,85 +1226,85 @@ export default function AdminPage() {
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Short Description (Excerpt)</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Short Description (Excerpt)</label>
                     <textarea
                       required
                       rows={2}
                       placeholder="Write a concise short description of the post..."
                       value={blogFormData.excerpt}
                       onChange={(e) => setBlogFormData({ ...blogFormData, excerpt: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   <div className="sm:col-span-3">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Long Description (HTML Format)</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Long Description (HTML Format)</label>
                     <textarea
                       rows={6}
                       placeholder="<p>Enter detailed HTML content here...</p><h2>Subheading</h2><p>Additional paragraph details...</p>"
                       value={blogFormData.longDescriptionHtml}
                       onChange={(e) => setBlogFormData({ ...blogFormData, longDescriptionHtml: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none font-mono text-xs"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none font-mono text-xs"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Author Name</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Author Name</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Rohit Sharma / JVM Admin"
                       value={blogFormData.authorName}
                       onChange={(e) => setBlogFormData({ ...blogFormData, authorName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Author Role</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Author Role</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Lead Data Engineering Architect @ JVM"
                       value={blogFormData.authorRole}
                       onChange={(e) => setBlogFormData({ ...blogFormData, authorRole: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Read Time</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Read Time</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. 6 min read"
                       value={blogFormData.readTime}
                       onChange={(e) => setBlogFormData({ ...blogFormData, readTime: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Tags (Comma Separated)</label>
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1">Tags (Comma Separated)</label>
                     <input
                       type="text"
                       placeholder="e.g. PySpark, Databricks, AWS, SQL"
                       value={blogFormData.tags}
                       onChange={(e) => setBlogFormData({ ...blogFormData, tags: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     />
                   </div>
 
                   {/* Cloudinary Cover Image Upload Component */}
                   <div>
-                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1 flex items-center justify-between">
+                    <label className="block text-slate-600 uppercase tracking-wider font-bold mb-1 flex items-center justify-between">
                       <span>Cover Image</span>
-                      <span className="text-[10px] text-indigo-400 font-bold">Cloudinary Direct Upload</span>
+                      <span className="text-[10px] text-purple-600 font-bold">Cloudinary Direct Upload</span>
                     </label>
 
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <label className="flex-1 px-3 py-2 bg-slate-900 border border-dashed border-indigo-500/50 rounded-xl cursor-pointer hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 text-indigo-300 font-bold">
+                        <label className="flex-1 px-3 py-2 bg-white border border-dashed border-purple-300 rounded-xl cursor-pointer hover:bg-purple-50 transition-colors flex items-center justify-center gap-2 text-purple-700 font-bold">
                           <Upload className="w-4 h-4" />
                           <span>{uploadingBlogImg ? "Uploading..." : "Upload Cover Image"}</span>
                           <input
@@ -1185,13 +1318,13 @@ export default function AdminPage() {
                       </div>
 
                       {blogFormData.image && (
-                        <div className="flex items-center gap-2 p-2 bg-slate-900 border border-slate-800 rounded-xl">
-                          <ImageIcon className="w-4 h-4 text-indigo-400 shrink-0" />
+                        <div className="flex items-center gap-2 p-2 bg-white border border-slate-200 rounded-xl">
+                          <ImageIcon className="w-4 h-4 text-purple-600 shrink-0" />
                           <input
                             type="text"
                             value={blogFormData.image}
                             onChange={(e) => setBlogFormData({ ...blogFormData, image: e.target.value })}
-                            className="w-full bg-transparent text-[11px] text-slate-300 focus:outline-none"
+                            className="w-full bg-transparent text-[11px] text-slate-700 focus:outline-none"
                           />
                         </div>
                       )}
@@ -1206,25 +1339,25 @@ export default function AdminPage() {
                       setIsAddingBlog(false);
                       setEditingBlogId(null);
                     }}
-                    className="px-4 py-2.5 rounded-xl bg-slate-700 text-slate-300 text-xs font-bold cursor-pointer"
+                    className="px-4 py-2.5 rounded-xl bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={savingBlog || uploadingBlogImg}
-                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl jvm-gradient-bg text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 cursor-pointer"
                   >
-                    {savingBlog ? (editingBlogId ? "Updating..." : "Publishing to Database...") : (editingBlogId ? "Update Article" : "Publish Article")}
+                    {savingBlog ? (editingBlogId ? "Updating..." : "Publishing...") : (editingBlogId ? "Update Article" : "Publish Article")}
                   </button>
                 </div>
               </form>
             )}
 
             {/* Admin Blogs Table */}
-            <div className="overflow-x-auto rounded-2xl border border-slate-800">
-              <table className="w-full text-left text-xs text-slate-300">
-                <thead className="bg-slate-800/80 text-slate-400 uppercase font-extrabold tracking-wider border-b border-slate-800">
+            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+              <table className="w-full text-left text-xs text-slate-700">
+                <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold tracking-wider border-b border-slate-200">
                   <tr>
                     <th className="p-3.5">Article Title</th>
                     <th className="p-3.5">Category</th>
@@ -1233,7 +1366,7 @@ export default function AdminPage() {
                     <th className="p-3.5 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 bg-slate-900/40">
+                <tbody className="divide-y divide-slate-100">
                   {blogs.length === 0 ? (
                     <tr>
                       <td colSpan={5} className="p-6 text-center text-slate-500 font-medium">
@@ -1242,28 +1375,28 @@ export default function AdminPage() {
                     </tr>
                   ) : (
                     blogs.map((b) => (
-                      <tr key={b.id} className="hover:bg-slate-800/40 transition-colors">
-                        <td className="p-3.5 font-bold text-white max-w-xs truncate">
+                      <tr key={b.id} className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3.5 font-bold text-slate-900 max-w-xs truncate">
                           {b.title}
                         </td>
                         <td className="p-3.5">
-                          <span className="bg-indigo-500/10 text-indigo-300 px-2 py-0.5 rounded-md font-semibold">
+                          <span className="bg-purple-50 text-purple-700 px-2 py-0.5 rounded-md font-semibold">
                             {b.category}
                           </span>
                         </td>
-                        <td className="p-3.5 text-slate-300">{b.authorName}</td>
-                        <td className="p-3.5 text-purple-300 font-semibold">{b.readTime}</td>
+                        <td className="p-3.5 text-slate-600">{b.authorName}</td>
+                        <td className="p-3.5 text-purple-700 font-semibold">{b.readTime}</td>
                         <td className="p-3.5 text-right flex items-center justify-end gap-2">
                           <button
                             onClick={() => handleEditBlog(b)}
-                            className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white transition-colors cursor-pointer"
                             title="Edit Blog Post"
                           >
                             <Edit className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => handleDeleteBlog(b.id)}
-                            className="p-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-colors cursor-pointer"
                             title="Delete Blog Post"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -1279,6 +1412,465 @@ export default function AdminPage() {
           </div>
         )}
 
+        {/* --- SECTION C: STUDY MATERIALS & HTML MODULE EDITOR --- */}
+        {activeTab === "studies" && (
+          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+              <div>
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                  <BookOpen className="w-6 h-6 text-purple-400" />
+                  <span>Study Material Courses & HTML Modules Editor</span>
+                </h2>
+                <p className="text-xs text-slate-400 mt-1">
+                  Create study courses, set price (₹), select how many modules are free, and write HTML notes with live preview.
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  setIsAddingCourse(!isAddingCourse);
+                  setEditingCourseId(null);
+                  setCourseFormData({
+                    title: "",
+                    description: "",
+                    subject: "Data Engineering",
+                    badge: "Popular",
+                    price: 499,
+                    freeModulesCount: 1,
+                    coverImage: "/course.jpg",
+                  });
+                }}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <Plus className="w-4 h-4" />
+                <span>{isAddingCourse ? "Cancel Course Form" : "Create New Study Course"}</span>
+              </button>
+            </div>
+
+            {/* Course Create / Edit Form */}
+            {isAddingCourse && (
+              <form onSubmit={handleCourseSubmit} className="bg-slate-800/80 border border-purple-500/30 rounded-2xl p-6 space-y-5">
+                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-purple-400" />
+                  <span>{editingCourseId ? "Edit Study Course" : "Create New Study Course"}</span>
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-medium">
+                  <div className="sm:col-span-2">
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Course Title</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. PySpark & Apache Spark Architecture Mastery"
+                      value={courseFormData.title}
+                      onChange={(e) => setCourseFormData({ ...courseFormData, title: e.target.value })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Subject Tag</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. PySpark & Big Data"
+                      value={courseFormData.subject}
+                      onChange={(e) => setCourseFormData({ ...courseFormData, subject: e.target.value })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Course Description</label>
+                    <textarea
+                      rows={2}
+                      required
+                      placeholder="Enter description of what students will learn..."
+                      value={courseFormData.description}
+                      onChange={(e) => setCourseFormData({ ...courseFormData, description: e.target.value })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Unlock Price (₹)</label>
+                    <input
+                      type="number"
+                      required
+                      value={courseFormData.price}
+                      onChange={(e) => setCourseFormData({ ...courseFormData, price: parseFloat(e.target.value) || 0 })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500 font-bold"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Free Preview Modules Count</label>
+                    <input
+                      type="number"
+                      required
+                      min={0}
+                      max={10}
+                      value={courseFormData.freeModulesCount}
+                      onChange={(e) => setCourseFormData({ ...courseFormData, freeModulesCount: parseInt(e.target.value) || 1 })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500 font-bold"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-400 uppercase tracking-wider font-bold mb-1">Badge Tag</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Best Seller / Popular"
+                      value={courseFormData.badge}
+                      onChange={(e) => setCourseFormData({ ...courseFormData, badge: e.target.value })}
+                      className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-end gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsAddingCourse(false)}
+                    className="px-4 py-2 rounded-xl bg-slate-700 text-slate-300 text-xs font-bold"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={savingCourse}
+                    className="px-6 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold"
+                  >
+                    {savingCourse ? "Saving Course..." : editingCourseId ? "Update Course" : "Create Course"}
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/* Courses List Table */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider">Published Study Courses</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {studyCourses.map((c) => (
+                  <div key={c.id} className="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-md">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <span className="text-[10px] font-bold bg-purple-500/20 text-purple-300 px-2.5 py-0.5 rounded-full uppercase">
+                          {c.subject}
+                        </span>
+                        <h4 className="text-lg font-bold text-white mt-1">{c.title}</h4>
+                        <p className="text-xs text-slate-400 mt-1 line-clamp-2">{c.description}</p>
+                      </div>
+
+                      <div className="text-right shrink-0">
+                        <span className="text-lg font-black text-emerald-400 block">₹{c.price}</span>
+                        <span className="text-[10px] text-slate-400 font-bold">{c.freeModulesCount} Free Module(s)</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-200 text-xs">
+                      <span className="text-slate-600 font-semibold">{c.modules?.length || 0} Total Modules</span>
+                      
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            setSelectedCourseForModules(c);
+                            setIsAddingModule(true);
+                            setEditingModuleId(null);
+                            setIsFullScreenEditor(true);
+                            setModuleFormData({
+                              moduleNumber: (c.modules?.length || 0) + 1,
+                              title: "",
+                              description: "",
+                              readTime: "10 min read",
+                              contentHtml: "<div class='space-y-4'><h2>Module Title</h2><p>Start typing your HTML notes here...</p></div>",
+                            });
+                          }}
+                          className="px-3 py-1.5 rounded-xl jvm-gradient-bg text-white font-bold text-xs flex items-center gap-1 shadow-sm"
+                        >
+                          <Plus className="w-3.5 h-3.5" /> Manage / Add Modules
+                        </button>
+                        <button
+                          onClick={async () => {
+                            if (confirm("Delete this course and all its modules?")) {
+                              await fetch(`/api/study-materials/courses/${c.id}`, { method: "DELETE" });
+                              fetchStudyCourses();
+                            }
+                          }}
+                          className="p-1.5 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* MODULE MANAGEMENT FULL SCREEN EDITOR OVERLAY */}
+              {selectedCourseForModules && (
+                <div className="bg-slate-100 border border-slate-300 rounded-3xl p-6 space-y-6 shadow-md">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                    <div>
+                      <span className="text-[10px] font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded">MANAGING MODULES</span>
+                      <h3 className="text-base font-extrabold text-slate-900 mt-1">{selectedCourseForModules.title}</h3>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setIsAddingModule(true);
+                          setEditingModuleId(null);
+                          setIsFullScreenEditor(true);
+                          setModuleFormData({
+                            moduleNumber: (selectedCourseForModules.modules?.length || 0) + 1,
+                            title: "",
+                            description: "",
+                            readTime: "10 min read",
+                            contentHtml: "<div class='space-y-4'><h2>Module Title</h2><p>Start typing HTML content...</p></div>",
+                          });
+                        }}
+                        className="px-4 py-2 rounded-xl jvm-gradient-bg text-white font-bold text-xs flex items-center gap-1.5 shadow-md"
+                      >
+                        <Plus className="w-4 h-4" /> Add Module
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSelectedCourseForModules(null);
+                          setIsAddingModule(false);
+                          setIsFullScreenEditor(false);
+                        }}
+                        className="p-2 rounded-xl bg-slate-200 text-slate-600 hover:text-slate-900"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Add / Edit Module HTML Fullscreen Editor Form */}
+                  {isAddingModule && (
+                    <form
+                      onSubmit={handleModuleSubmit}
+                      className="fixed inset-2 sm:inset-4 z-[99999] overflow-y-auto bg-white border border-slate-300 rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+                        <div className="flex items-center gap-2">
+                          <span className="w-3 h-3 rounded-full bg-purple-600 animate-pulse"></span>
+                          <h4 className="text-base font-extrabold text-slate-900">
+                            {editingModuleId ? "Edit Module Content & Notes (Full Screen)" : "Create New Module Content & Notes (Full Screen)"}
+                          </h4>
+                        </div>
+
+                        {/* Light / Dark Mode Preview Toggle */}
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs font-bold border border-slate-200">
+                            <button
+                              type="button"
+                              onClick={() => setPreviewThemeMode("light")}
+                              className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
+                                previewThemeMode === "light" ? "bg-amber-500 text-slate-900 shadow-md font-black" : "text-slate-600 hover:text-slate-900"
+                              }`}
+                            >
+                              <Sun className="w-3.5 h-3.5" /> Light Mode
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setPreviewThemeMode("dark")}
+                              className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
+                                previewThemeMode === "dark" ? "bg-purple-600 text-white shadow-md" : "text-slate-600 hover:text-slate-900"
+                              }`}
+                            >
+                              <Moon className="w-3.5 h-3.5" /> Dark Mode
+                            </button>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setIsAddingModule(false);
+                            }}
+                            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600"
+                          >
+                            <X className="w-5 h-5" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-medium">
+                        <div>
+                          <label className="block text-slate-600 font-bold mb-1 uppercase">Module Number</label>
+                          <input
+                            type="number"
+                            required
+                            value={moduleFormData.moduleNumber}
+                            onChange={(e) => setModuleFormData({ ...moduleFormData, moduleNumber: parseInt(e.target.value) || 1 })}
+                            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-bold focus:ring-2 focus:ring-purple-500"
+                          />
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label className="block text-slate-600 font-bold mb-1 uppercase">Module Title (Name)</label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="e.g. Module 1: Spark Architecture & Core RDD vs DataFrame"
+                            value={moduleFormData.title}
+                            onChange={(e) => setModuleFormData({ ...moduleFormData, title: e.target.value })}
+                            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-bold focus:ring-2 focus:ring-purple-500"
+                          />
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label className="block text-slate-600 font-bold mb-1 uppercase">Short Description / Subtitle</label>
+                          <input
+                            type="text"
+                            placeholder="Brief 1-sentence summary of this module..."
+                            value={moduleFormData.description}
+                            onChange={(e) => setModuleFormData({ ...moduleFormData, description: e.target.value })}
+                            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 focus:ring-2 focus:ring-purple-500"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-slate-600 font-bold mb-1 uppercase">Read Time</label>
+                          <input
+                            type="text"
+                            value={moduleFormData.readTime}
+                            onChange={(e) => setModuleFormData({ ...moduleFormData, readTime: e.target.value })}
+                            className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-bold focus:ring-2 focus:ring-purple-500"
+                          />
+                        </div>
+                      </div>
+
+                      {/* 50/50 FULLSCREEN PARALLEL EDITOR & LIVE PREVIEW */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+                        <div className="space-y-2 flex flex-col">
+                          <div className="flex items-center justify-between">
+                            <label className="text-xs font-bold uppercase tracking-wider text-purple-700 flex items-center gap-1.5">
+                              <FileText className="w-4 h-4 text-purple-600" /> HTML Source Code Editor
+                            </label>
+                            <span className="text-[11px] text-slate-500">Paste HTML / Tailwind markup</span>
+                          </div>
+                          <textarea
+                            rows={18}
+                            required
+                            placeholder="<div class='space-y-4'><h2>Module Header</h2><p>Pasted HTML content here...</p></div>"
+                            value={moduleFormData.contentHtml}
+                            onChange={(e) => setModuleFormData({ ...moduleFormData, contentHtml: e.target.value })}
+                            className="w-full p-4 bg-slate-900 border border-slate-800 rounded-2xl text-xs font-mono text-emerald-400 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner min-h-[420px] leading-relaxed"
+                          />
+                        </div>
+
+                        <div className="space-y-2 flex flex-col">
+                          <div className="flex items-center justify-between">
+                            <label className="text-xs font-bold uppercase tracking-wider text-amber-600 flex items-center gap-1.5">
+                              <Sparkles className="w-4 h-4 text-amber-500" /> Live Rendered Preview ({previewThemeMode.toUpperCase()} MODE)
+                            </label>
+                            <span className="text-[11px] text-slate-500">Exact live website view</span>
+                          </div>
+
+                          <div
+                            className={`flex-1 rounded-2xl border p-6 min-h-[420px] overflow-y-auto transition-colors ${
+                              previewThemeMode === "light"
+                                ? "bg-white text-slate-900 border-slate-300 shadow-lg"
+                                : "bg-[#0B0F19] text-slate-100 border-slate-800 shadow-2xl"
+                            }`}
+                          >
+                            <div className={`pb-4 mb-4 border-b ${previewThemeMode === "light" ? "border-slate-200" : "border-slate-800"}`}>
+                              <span className="text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
+                                Module {moduleFormData.moduleNumber || 1}
+                              </span>
+                              <h3 className={`text-lg font-extrabold mt-1 ${previewThemeMode === "light" ? "text-slate-900" : "text-white"}`}>
+                                {moduleFormData.title || "Module Title Preview"}
+                              </h3>
+                              <p className={`text-xs mt-0.5 ${previewThemeMode === "light" ? "text-slate-500" : "text-slate-400"}`}>
+                                {moduleFormData.description || "Module description preview..."}
+                              </p>
+                            </div>
+
+                            <div
+                              className={`prose ${previewThemeMode === "dark" ? "dark:prose-invert" : ""} max-w-none text-xs leading-relaxed space-y-4`}
+                              dangerouslySetInnerHTML={{ __html: moduleFormData.contentHtml || "<p class='text-slate-400 italic'>Enter HTML content to preview live...</p>" }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-end gap-3 pt-3 border-t border-slate-200">
+                        <button
+                          type="button"
+                          onClick={() => setIsAddingModule(false)}
+                          className="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={savingModule}
+                          className="px-7 py-2.5 rounded-xl jvm-gradient-bg text-white text-xs font-bold shadow-lg hover:opacity-95"
+                        >
+                          {savingModule ? "Saving Module..." : editingModuleId ? "Update & Save Module" : "Publish Module"}
+                        </button>
+                      </div>
+                    </form>
+                  )}
+
+                  {/* Modules List for Selected Course */}
+                  <div className="space-y-3">
+                    {selectedCourseForModules.modules?.map((m: any) => (
+                      <div key={m.id} className="bg-white border border-slate-200 p-4 rounded-2xl flex items-center justify-between text-xs shadow-sm">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-purple-700">Module {m.moduleNumber}</span>
+                            <span className="font-extrabold text-slate-900">{m.title}</span>
+                            {m.moduleNumber <= selectedCourseForModules.freeModulesCount ? (
+                              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">FREE PREVIEW</span>
+                            ) : (
+                              <span className="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">LOCKED (PAID)</span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-500 mt-0.5">{m.description || "No description provided."}</p>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => {
+                              setEditingModuleId(m.id);
+                              setIsAddingModule(true);
+                              setIsFullScreenEditor(true);
+                              setModuleFormData({
+                                moduleNumber: m.moduleNumber,
+                                title: m.title,
+                                description: m.description || "",
+                                readTime: m.readTime,
+                                contentHtml: m.contentHtml || "",
+                              });
+                            }}
+                            className="p-2 rounded-xl bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white transition-colors"
+                          >
+                            <Edit className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={async () => {
+                              if (confirm("Delete this module?")) {
+                                await fetch(`/api/study-materials/courses/${selectedCourseForModules.id}/modules?moduleId=${m.id}`, { method: "DELETE" });
+                                fetchStudyCourses();
+                              }
+                            }}
+                            className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Database Status Footer Banner */}
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -1287,6 +1879,7 @@ export default function AdminPage() {
           </div>
           <span className="text-[11px] text-slate-400 hidden sm:inline">Server Node Mode: Development</span>
         </div>
+
 
       </div>
     </div>

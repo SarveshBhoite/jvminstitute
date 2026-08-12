@@ -215,3 +215,55 @@ model Admin {
 
   @@map("admins")
 }
+
+model StudyMaterialCourse {
+  id               String                @id @default(cuid())
+  slug             String                @unique
+  title            String
+  description      String                @db.Text
+  subject          String                @default("Data Engineering")
+  badge            String?               @default("Popular")
+  price            Float                 @default(499)
+  freeModulesCount Int                   @default(1)
+  coverImage       String?               @default("/course.jpg")
+  isPublished      Boolean               @default(true)
+  modules          StudyMaterialModule[]
+  unlocks          StudyCourseAccess[]
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  @@map("study_material_courses")
+}
+
+model StudyMaterialModule {
+  id           String              @id @default(cuid())
+  courseId     String
+  course       StudyMaterialCourse @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  moduleNumber Int
+  slug         String              @default("")
+  title        String
+  description  String?             @db.Text
+  contentHtml  String              @db.Text
+  readTime     String              @default("10 min read")
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  @@map("study_material_modules")
+}
+
+model StudyCourseAccess {
+  id                String              @id @default(cuid())
+  courseId          String
+  course            StudyMaterialCourse @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  accessKey         String              // Unique browser key or random uuid
+  accessCode        String?             // 6-digit passcode for cross-device restoration
+  userEmail         String?             // Customer email
+  userPhone         String?             // Customer phone
+  razorpayOrderId   String?
+  razorpayPaymentId String?
+  amountPaid        Float               @default(0)
+  createdAt         DateTime            @default(now())
+
+  @@map("study_course_accesses")
+}
+
