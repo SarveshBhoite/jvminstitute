@@ -77,8 +77,8 @@ export default function AdminPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [adminUser, setAdminUser] = useState<{ fullName?: string; email?: string; role?: string } | null>(null);
 
-  // Active Tab: "placements" | "blogs" | "studies" | "unlocks" | "leads"
-  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks" | "leads" | "settings">("placements");
+  // Active Tab: "placements" | "blogs" | "studies" | "unlocks" | "leads" | "referrals"
+  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks" | "leads" | "referrals">("placements");
 
   // Referral Reward Setting State
   const [referralRewardSetting, setReferralRewardSetting] = useState<number>(2000);
@@ -951,17 +951,18 @@ export default function AdminPage() {
 
             <button
               onClick={() => {
-                setActiveTab("settings");
+                setActiveTab("referrals");
                 fetchReferralSetting();
+                fetchLeads();
               }}
               className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
-                activeTab === "settings"
+                activeTab === "referrals"
                   ? "jvm-gradient-bg text-white shadow-md"
                   : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
               }`}
             >
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span>Referral Settings</span>
+              <Gift className="w-4 h-4 text-amber-500" />
+              <span>Referrals ({leads.filter((l) => l.referralCode).length})</span>
             </button>
           </div>
         )}
@@ -2225,62 +2226,140 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* --- SECTION F: REFERRAL SETTINGS --- */}
-        {activeTab === "settings" && (
-          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm max-w-3xl">
-            <div className="border-b border-slate-100 pb-4">
-              <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-amber-500" />
-                <span>Refer &amp; Earn Program Settings</span>
-              </h2>
-              <p className="text-xs text-slate-500 mt-1">
-                Configure the uniform referral cash reward amount granted per successful candidate admission across all courses.
-              </p>
-            </div>
+        {/* --- SECTION F: REFERRALS TRACKING & SETTINGS --- */}
+        {activeTab === "referrals" && (
+          <div className="space-y-6">
 
-            <form onSubmit={handleUpdateReferralSetting} className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Referral Cash Reward Amount (₹ Per Candidate)
-                </label>
-                <div className="relative max-w-md">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold text-sm">₹</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="100"
-                    required
-                    value={referralRewardSetting}
-                    onChange={(e) => setReferralRewardSetting(parseInt(e.target.value, 10) || 0)}
-                    className="w-full pl-8 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    placeholder="2000"
-                  />
-                </div>
-                <p className="text-[11px] text-slate-500 mt-1.5 font-medium">
-                  This single uniform amount will dynamically reflect on the <span className="font-mono text-purple-700 font-bold">/refer-and-earn</span> calculator, headlines, and referral banners site-wide!
+            {/* Referral Settings Card */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm">
+              <div className="border-b border-slate-100 pb-4 mb-4">
+                <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <Gift className="w-6 h-6 text-amber-500" />
+                  <span>Refer &amp; Earn Program Settings</span>
+                </h2>
+                <p className="text-xs text-slate-500 mt-1">
+                  Configure the uniform referral cash reward amount granted per successful candidate admission across all courses.
                 </p>
               </div>
 
-              <button
-                type="submit"
-                disabled={savingReferralSetting}
-                className="px-6 py-3 jvm-gradient-bg text-white font-extrabold text-xs rounded-xl shadow-md hover:opacity-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
-              >
-                <Gift className="w-4 h-4" />
-                {savingReferralSetting ? "Saving Setting..." : "Save Referral Reward Setting"}
-              </button>
-            </form>
-          </div>
-        )}
+              <form onSubmit={handleUpdateReferralSetting} className="flex flex-col sm:flex-row items-end gap-4 max-w-2xl">
+                <div className="flex-1 w-full">
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    Referral Cash Reward Amount (₹ Per Candidate)
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold text-sm">₹</span>
+                    <input
+                      type="number"
+                      min="0"
+                      step="100"
+                      required
+                      value={referralRewardSetting}
+                      onChange={(e) => setReferralRewardSetting(parseInt(e.target.value, 10) || 0)}
+                      className="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      placeholder="2000"
+                    />
+                  </div>
+                </div>
 
-        {/* Database Status Footer Banner */}
-        {!selectedCourseForModules && (
-          <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>Connected to Neon PostgreSQL Database (`neondb`) &amp; Cloudinary Image CDN</span>
+                <button
+                  type="submit"
+                  disabled={savingReferralSetting}
+                  className="w-full sm:w-auto px-6 py-2.5 jvm-gradient-bg text-white font-extrabold text-xs rounded-xl shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shrink-0"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  {savingReferralSetting ? "Updating..." : "Update Amount"}
+                </button>
+              </form>
             </div>
-            <span className="text-[11px] text-slate-400 hidden sm:inline">Server Node Mode: Development</span>
+
+            {/* Referral Info Table Card */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <FileText className="w-6 h-6 text-purple-600" />
+                    <span>Referral Submissions &amp; Claims</span>
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-1">
+                    All candidate admissions registered with a Referral Code or via the Refer &amp; Earn page.
+                  </p>
+                </div>
+                <span className="bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full border border-amber-300">
+                  Total Referred Candidates: {leads.filter((l) => l.referralCode).length}
+                </span>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-slate-700">
+                  <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold tracking-wider border-b border-slate-200">
+                    <tr>
+                      <th className="p-3.5">Referral Code</th>
+                      <th className="p-3.5">Referred Candidate</th>
+                      <th className="p-3.5">Contact Details</th>
+                      <th className="p-3.5">Course Track</th>
+                      <th className="p-3.5">Submission Source / Notes</th>
+                      <th className="p-3.5 text-right">Reward Amount</th>
+                      <th className="p-3.5 text-right">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {leads.filter((l) => l.referralCode).length === 0 ? (
+                      <tr>
+                        <td colSpan={7} className="p-8 text-center text-slate-500 font-medium">
+                          No referrals recorded yet. Submissions with a referral code will automatically populate here!
+                        </td>
+                      </tr>
+                    ) : (
+                      leads
+                        .filter((l) => l.referralCode)
+                        .map((l) => (
+                          <tr key={l.id} className="hover:bg-slate-50 transition-colors">
+                            <td className="p-3.5 font-mono font-black text-purple-700 text-xs">
+                              <span className="bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-lg inline-block">
+                                🎁 {l.referralCode}
+                              </span>
+                            </td>
+                            <td className="p-3.5 font-bold text-slate-900 text-sm">
+                              {l.name}
+                            </td>
+                            <td className="p-3.5">
+                              <div className="font-semibold text-slate-900">{l.email || "N/A"}</div>
+                              <div className="text-[11px] text-purple-700 font-bold">{l.phone || "N/A"}</div>
+                            </td>
+                            <td className="p-3.5">
+                              <span className="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg font-bold border border-purple-200 text-[11px] inline-block">
+                                {l.courseSlug || "General Track"}
+                              </span>
+                            </td>
+                            <td className="p-3.5 max-w-xs">
+                              <span className="text-[10px] font-extrabold uppercase bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200 inline-block mb-1">
+                                {l.source || "REFERRAL"}
+                              </span>
+                              <p className="text-[11px] text-slate-800 bg-slate-50 p-2 rounded-lg border border-slate-200 mt-1 whitespace-pre-wrap">
+                                {l.message || "Referral enquiry."}
+                              </p>
+                            </td>
+                            <td className="p-3.5 text-right font-black text-emerald-600 text-sm">
+                              ₹{referralRewardSetting.toLocaleString()}
+                            </td>
+                            <td className="p-3.5 text-right text-slate-500 font-medium whitespace-nowrap">
+                              {new Date(l.createdAt).toLocaleDateString("en-IN", {
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit"
+                              })}
+                            </td>
+                          </tr>
+                        ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
         )}
 
