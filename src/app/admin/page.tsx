@@ -76,8 +76,11 @@ export default function AdminPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [adminUser, setAdminUser] = useState<{ fullName?: string; email?: string; role?: string } | null>(null);
 
-  // Active Tab: "placements" | "blogs" | "studies"
-  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies">("placements");
+  // Active Tab: "placements" | "blogs" | "studies" | "unlocks"
+  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks">("placements");
+
+  // Course Purchases / Unlocks state
+  const [courseUnlocks, setCourseUnlocks] = useState<any[]>([]);
 
   // Study Materials state
   const [studyCourses, setStudyCourses] = useState<any[]>([]);
@@ -210,11 +213,25 @@ export default function AdminPage() {
         setAdminUser(data.data.admin);
         fetchPlacements();
         fetchBlogs();
+        fetchStudyCourses();
+        fetchCourseUnlocks();
       }
     } catch {
       // not logged in
     } finally {
       setCheckingAuth(false);
+    }
+  };
+
+  const fetchCourseUnlocks = async () => {
+    try {
+      const res = await fetch("/api/admin/unlocks");
+      const data = await res.json();
+      if (data.success) {
+        setCourseUnlocks(data.data || []);
+      }
+    } catch (err) {
+      console.error("Failed to fetch course unlocks", err);
     }
   };
 
@@ -387,6 +404,8 @@ export default function AdminPage() {
       setAdminUser(data.data?.admin || { fullName: "JVM Super Admin", email, role: "SUPER_ADMIN" });
       fetchPlacements();
       fetchBlogs();
+      fetchStudyCourses();
+      fetchCourseUnlocks();
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Network error. Please try again.";
       setErrorMsg(msg);
@@ -840,7 +859,22 @@ export default function AdminPage() {
               }`}
             >
               <BookOpen className="w-4 h-4" />
-              <span>Study Materials & Modules ({studyCourses.length})</span>
+              <span>Study Materials ({studyCourses.length})</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveTab("unlocks");
+                fetchCourseUnlocks();
+              }}
+              className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
+                activeTab === "unlocks"
+                  ? "jvm-gradient-bg text-white shadow-md"
+                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4" />
+              <span>Student Unlocks ({courseUnlocks.length})</span>
             </button>
           </div>
         )}
@@ -1942,6 +1976,80 @@ export default function AdminPage() {
                 </div>
             )}
           </>
+        )}
+
+        {/* --- SECTION D: STUDENT COURSE UNLOCKS & PURCHASES --- */}
+        {activeTab === "unlocks" && (
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <ShieldCheck className="w-6 h-6 text-purple-600" />
+                  <span>Student Course Purchases & Unlock Passcodes</span>
+                </h2>
+                <p className="text-xs text-slate-500 mt-1">
+                  View all completed Razorpay payments, customer details, and 6-digit recovery passcodes.
+                </p>
+              </div>
+
+              <button
+                onClick={fetchCourseUnlocks}
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5"
+              >
+                <span>Refresh List</span>
+              </button>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs text-slate-700">
+                <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold tracking-wider border-b border-slate-200">
+                  <tr>
+                    <th className="p-3.5">Course Title</th>
+                    <th className="p-3.5">Customer Email / Phone</th>
+                    <th className="p-3.5">6-Digit Passcode</th>
+                    <th className="p-3.5">Razorpay Payment ID</th>
+                    <th className="p-3.5 text-right">Unlocked At</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {courseUnlocks.length === 0 ? (
+                    <tr>
+                      <td colSpan={5} className="p-8 text-center text-slate-500 font-medium">
+                        No course purchases recorded yet. Purchased courses will automatically show here!
+                      </td>
+                    </tr>
+                  ) : (
+                    courseUnlocks.map((u) => (
+                      <tr key={u.id} className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3.5 font-bold text-slate-900">
+                          {u.course?.title || "Study Course"}
+                        </td>
+                        <td className="p-3.5">
+                          <div className="font-semibold text-slate-900">{u.userEmail || "N/A"}</div>
+                          <div className="text-[11px] text-slate-500">{u.userPhone || "N/A"}</div>
+                        </td>
+                        <td className="p-3.5 font-mono font-bold text-purple-700 bg-purple-50 rounded-lg inline-block my-2 px-3 py-1 border border-purple-200">
+                          {u.accessCode || "N/A"}
+                        </td>
+                        <td className="p-3.5 font-mono text-slate-600 text-[11px]">
+                          {u.razorpayPaymentId || u.razorpayOrderId || "Test Unlock"}
+                        </td>
+                        <td className="p-3.5 text-right text-slate-500 font-medium">
+                          {new Date(u.createdAt).toLocaleDateString("en-IN", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit"
+                          })}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
         )}
 
         {/* Database Status Footer Banner */}
