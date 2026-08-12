@@ -126,20 +126,25 @@ export default function ContactUsPage() {
     phone: "",
     reason: "Free Demo Class Request",
     course: "Data Engineering Course",
+    referralCode: "",
     message: ""
   });
 
-  // Read URL query parameters for reason or course pre-selection
+  // Read URL query parameters for reason, course, or referral code pre-selection
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       const reasonParam = params.get("reason");
       const courseParam = params.get("course");
+      const refParam = params.get("ref");
       if (reasonParam) {
         setFormState((prev) => ({ ...prev, reason: reasonParam }));
       }
       if (courseParam) {
         setFormState((prev) => ({ ...prev, course: courseParam }));
+      }
+      if (refParam) {
+        setFormState((prev) => ({ ...prev, referralCode: refParam.toUpperCase() }));
       }
     }
   }, []);
@@ -164,6 +169,7 @@ export default function ContactUsPage() {
           email: formState.email,
           phone: formState.phone,
           courseSlug: formState.course,
+          referralCode: formState.referralCode || null,
           message: `[Reason: ${formState.reason}] ${formState.message}`.trim(),
           source: "CONTACT_US_PAGE",
         }),
@@ -179,6 +185,7 @@ export default function ContactUsPage() {
         phone: "",
         reason: "Free Demo Class Request",
         course: "Data Engineering Course",
+        referralCode: "",
         message: ""
       });
     }
@@ -624,6 +631,30 @@ export default function ContactUsPage() {
                         </div>
                       </div>
 
+                    </div>
+
+                    {/* Referral Code Field (Optional) */}
+                    <div>
+                      <label className={`block text-xs font-bold mb-1.5 transition-colors ${focusedField === "referralCode" ? "text-purple-600 dark:text-purple-400" : "text-slate-700 dark:text-slate-300"
+                        }`}>
+                        Referral Code (Optional)
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={formState.referralCode}
+                          onFocus={() => setFocusedField("referralCode")}
+                          onBlur={() => setFocusedField(null)}
+                          onChange={(e) => setFormState({ ...formState, referralCode: e.target.value.toUpperCase() })}
+                          placeholder="e.g. JVM-ANAND-9822"
+                          className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-purple-200 dark:border-purple-900/60 text-slate-900 dark:text-white text-sm font-mono uppercase font-bold focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                        />
+                        {formState.referralCode && (
+                          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded-full">
+                            ✓ Applied
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Message Textarea - Takes Remaining Height */}

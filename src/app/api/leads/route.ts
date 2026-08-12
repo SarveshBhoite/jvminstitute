@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, courseSlug, message, source } = body;
+    const { name, email, phone, courseSlug, message, referralCode, source } = body;
 
     const cleanPhone = phone ? String(phone).replace(/\D/g, "") : "";
 
@@ -18,13 +18,14 @@ export async function POST(request: Request) {
       );
     }
 
-    const lead = await prisma.leadEnquiry.create({
+    const lead = await (prisma as any).leadEnquiry.create({
       data: {
         name,
         email,
         phone,
         courseSlug: courseSlug || "General Enquiry",
         message: message || null,
+        referralCode: referralCode || null,
         source: source || "WEBSITE_FORM",
       },
     });

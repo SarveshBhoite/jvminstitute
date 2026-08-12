@@ -36,20 +36,30 @@ export default function ReferAndEarnPage() {
   const [deCount, setDeCount] = useState(3);
   const [daCount, setDaCount] = useState(2);
 
-  const sampleReferralCode = "JVM-REF-2026";
+  // Dynamic Referral Code Generation based on Referrer's Name & Phone
+  const userReferralCode = React.useMemo(() => {
+    if (!referrerName && !referrerPhone) return "JVM-REF-2026";
+    const cleanName = referrerName ? referrerName.trim().split(" ")[0].toUpperCase().replace(/[^A-Z]/g, "") : "JVM";
+    const lastDigits = referrerPhone ? referrerPhone.replace(/\D/g, "").slice(-4) : "2026";
+    return `JVM-${cleanName || "REF"}-${lastDigits || "2026"}`;
+  }, [referrerName, referrerPhone]);
+
+  const userReferralLink = typeof window !== "undefined"
+    ? `${window.location.origin}/enroll?ref=${userReferralCode}`
+    : `https://jvminstitute.com/enroll?ref=${userReferralCode}`;
 
   // Calculation Logic
   const totalEarnings = (deCount * 2000) + (daCount * 1000);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`https://jvminstitute.com/enroll?ref=${sampleReferralCode}`);
+    navigator.clipboard.writeText(userReferralLink);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
   };
 
   const handleShareWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hey! Learn Data Engineering & PySpark at JVM Institute Pune with 100% placement support. Use my link to get ₹1,000 scholarship: https://jvminstitute.com/enroll?ref=${sampleReferralCode}`
+      `Hey! Learn Data Engineering & PySpark at JVM Institute Pune with 100% placement support. Use my link to get ₹1,000 scholarship: ${userReferralLink}`
     );
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
   };
@@ -66,6 +76,7 @@ export default function ReferAndEarnPage() {
             email: `${referrerPhone.replace(/\D/g, "") || "referrer"}@referral.jvminstitute.com`,
             phone: friendPhone,
             courseSlug: `Referral: ${courseInterest}`,
+            referralCode: userReferralCode,
             message: `[Referrer: ${referrerName} (${referrerPhone})] Referred Friend: ${friendName}`,
             source: "REFERRAL_PROGRAM_PAGE",
           }),
@@ -138,32 +149,75 @@ export default function ReferAndEarnPage() {
                 Help your friends launch a high-paying tech career in Data Engineering &amp; AI. Share the gift of learning and get instant cash payouts directly to your UPI!
               </p>
 
-              {/* Instant Referral Link Copy Box & WhatsApp Share */}
-              <div className="pt-2 max-w-lg mx-auto space-y-2.5 sm:space-y-3">
-                <div className="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full p-1.5 sm:p-2 shadow-lg">
-                  <input
-                    type="text"
-                    readOnly
-                    value={`https://jvminstitute.com/enroll?ref=${sampleReferralCode}`}
-                    className="w-full bg-transparent px-3 sm:px-4 text-[10px] sm:text-xs font-mono text-slate-700 dark:text-slate-300 focus:outline-none truncate"
-                  />
-                  <button
-                    onClick={handleCopyLink}
-                    className="jvm-gradient-bg text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold shrink-0 flex items-center gap-1 sm:gap-1.5 shadow-md hover:opacity-95 transition-all"
-                  >
-                    {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    {copiedLink ? "Copied!" : "Copy Link"}
-                  </button>
+              {/* Interactive Referral Link & Code Generator Card */}
+              <div className="pt-2 max-w-xl mx-auto space-y-3.5 bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 rounded-3xl p-4 sm:p-6 shadow-xl text-left">
+                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
+                  <span className="text-xs font-black uppercase text-purple-700 dark:text-purple-300 tracking-wider flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-amber-500" /> Dynamic Referral Code Generator
+                  </span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">
+                    No Login Needed
+                  </span>
                 </div>
 
-                <div className="flex items-center justify-center">
-                  <button
-                    onClick={handleShareWhatsApp}
-                    className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all"
-                  >
-                    <Share2 className="w-3.5 h-3.5" /> Share directly on WhatsApp
-                  </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Anand Bhoite"
+                      value={referrerName}
+                      onChange={(e) => setReferrerName(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Your Mobile Number
+                    </label>
+                    <input
+                      type="tel"
+                      maxLength={10}
+                      placeholder="e.g. 9822334455"
+                      value={referrerPhone}
+                      onChange={(e) => setReferrerPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30"
+                    />
+                  </div>
                 </div>
+
+                {/* Derived Code & Copy Link Box */}
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                    <span>Your Unique Referral Code: <strong className="text-purple-700 dark:text-purple-300 font-mono">{userReferralCode}</strong></span>
+                    <span>₹1,000 Friend Discount</span>
+                  </div>
+
+                  <div className="flex items-center bg-slate-50 dark:bg-slate-950 border border-purple-200 dark:border-purple-900/60 rounded-xl p-1.5 shadow-inner">
+                    <input
+                      type="text"
+                      readOnly
+                      value={userReferralLink}
+                      className="w-full bg-transparent px-3 text-[11px] font-mono text-slate-800 dark:text-slate-200 focus:outline-none truncate"
+                    />
+                    <button
+                      onClick={handleCopyLink}
+                      className="jvm-gradient-bg text-white px-4 py-2 rounded-lg text-xs font-bold shrink-0 flex items-center gap-1.5 shadow-md hover:opacity-95 transition-all"
+                    >
+                      {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedLink ? "Copied!" : "Copy Link"}
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleShareWhatsApp}
+                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                >
+                  <Share2 className="w-4 h-4" /> Share Invite &amp; Link on WhatsApp
+                </button>
               </div>
 
             </div>

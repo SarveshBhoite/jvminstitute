@@ -2140,9 +2140,16 @@ export default function AdminPage() {
                           </span>
                         </td>
                         <td className="p-3.5 max-w-md">
-                          <span className="text-[10px] font-extrabold uppercase bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200 block w-max mb-1">
-                            {l.source || "WEBSITE"}
-                          </span>
+                          <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                            <span className="text-[10px] font-extrabold uppercase bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200 block w-max">
+                              {l.source || "WEBSITE"}
+                            </span>
+                            {l.referralCode && (
+                              <span className="text-[10px] font-mono font-black uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded border border-amber-300 flex items-center gap-1">
+                                🎁 REF: {l.referralCode}
+                              </span>
+                            )}
+                          </div>
                           <p className="text-[11px] text-slate-800 whitespace-pre-wrap bg-slate-50 p-2 rounded-lg border border-slate-200 mt-1">{l.message || "No message provided."}</p>
                         </td>
                         <td className="p-3.5 text-right text-slate-500 font-medium whitespace-nowrap">

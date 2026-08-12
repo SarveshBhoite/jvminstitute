@@ -192,15 +192,16 @@ model ReferralPayout {
 }
 
 model LeadEnquiry {
-  id         String   @id @default(cuid())
-  name       String
-  email      String
-  phone      String
-  courseSlug String?
-  message    String?  @db.Text
-  source     String   @default("WEBSITE_CONTACT")
-  isResolved Boolean  @default(false)
-  createdAt  DateTime @default(now())
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  phone        String
+  courseSlug   String?
+  message      String?  @db.Text
+  referralCode String?
+  source       String   @default("WEBSITE_CONTACT")
+  isResolved   Boolean  @default(false)
+  createdAt    DateTime @default(now())
 }
 
 model Admin {
