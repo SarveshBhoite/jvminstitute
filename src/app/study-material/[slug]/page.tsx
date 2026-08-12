@@ -82,13 +82,16 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
     return key;
   };
 
-  const moduleContentRef = React.useRef<HTMLDivElement>(null);
+  const [isCourseUnlocked, setIsCourseUnlocked] = useState<boolean>(false);
+
+  // Mobile view state: "index" (shows module index list) or "content" (shows full screen module notes)
+  const [mobileViewMode, setMobileViewMode] = useState<"index" | "content">("index");
 
   useEffect(() => {
-    loadModuleContent(1);
+    loadModuleContent(1, false);
   }, [slug]);
 
-  const loadModuleContent = async (moduleIdent: string | number) => {
+  const loadModuleContent = async (moduleIdent: string | number, openMobileContent: boolean = true) => {
     setLoading(true);
     setActiveModuleIdent(moduleIdent);
 
@@ -102,12 +105,15 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
         setCourse(data.course);
         setActiveModule(data.module);
         setIsLocked(data.isLocked);
+        setIsCourseUnlocked(data.isCourseUnlocked || false);
 
-        // On mobile devices, smoothly scroll down to the module reader content starting point
-        if (typeof window !== "undefined" && window.innerWidth < 1024 && moduleContentRef.current) {
-          setTimeout(() => {
-            moduleContentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }, 150);
+        // Always scroll page to top whenever a module is loaded (both Desktop & Mobile)
+        if (typeof window !== "undefined") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        if (openMobileContent) {
+          setMobileViewMode("content");
         }
       }
     } catch (err) {
@@ -248,9 +254,26 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
       {/* Reader Top Breadcrumb Navigation */}
       <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* On mobile: if reading module content, show "Back to Module Index", else show "Back to Study Materials" */}
+          {mobileViewMode === "content" ? (
+            <button
+              onClick={() => {
+                setMobileViewMode("index");
+                if (typeof window !== "undefined") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-extrabold text-xs shadow-xs"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" /> Back to Modules Index
+            </button>
+          ) : null}
+
           <Link
             href="/study-material"
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className={`inline-flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors ${
+              mobileViewMode === "content" ? "hidden lg:inline-flex" : ""
+            }`}
           >
             <ArrowLeft className="w-4 h-4" /> Back to Study Materials
           </Link>
@@ -269,11 +292,11 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
       <div className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
         
         {/* Left Sidebar: Modules Navigation List */}
-        <div className="lg:col-span-1 space-y-6">
+        <div className={`lg:col-span-1 space-y-6 ${mobileViewMode === "content" ? "hidden lg:block" : "block"}`}>
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-lg space-y-4">
             <div>
               <span className="text-[10px] font-black uppercase text-purple-600 dark:text-purple-400 tracking-wider block">
-                COURSE MODULES
+                COURSE MODULES INDEX
               </span>
               <h2 className="text-lg font-black text-slate-900 dark:text-white mt-0.5">
                 {course?.title}
@@ -286,7 +309,7 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
                 return (
                   <button
                     key={mod.id}
-                    onClick={() => loadModuleContent(mod.slug || mod.moduleNumber)}
+                    onClick={() => loadModuleContent(mod.slug || mod.moduleNumber, true)}
                     className={`w-full text-left p-3.5 rounded-2xl border transition-all flex items-start gap-3 cursor-pointer ${
                       isActive
                         ? "bg-purple-600 text-white border-purple-600 shadow-lg"
@@ -298,12 +321,17 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
                         <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isActive ? "bg-white/20 text-white" : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"}`}>
                           FREE
                         </span>
+                      ) : isCourseUnlocked ? (
+                        <Unlock className={`w-4 h-4 ${isActive ? "text-emerald-200" : "text-emerald-500"}`} />
                       ) : (
                         <Lock className={`w-4 h-4 ${isActive ? "text-white" : "text-slate-400"}`} />
                       )}
                     </div>
-                    <div>
-                      <h4 className="text-xs font-bold leading-snug">{mod.title}</h4>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-bold leading-snug">{mod.title}</h4>
+                        <ChevronRight className="w-3.5 h-3.5 opacity-60 lg:hidden" />
+                      </div>
                       <p className={`text-[11px] mt-0.5 ${isActive ? "text-purple-100" : "text-slate-500 dark:text-slate-400"}`}>
                         {mod.readTime}
                       </p>
@@ -313,28 +341,39 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
               })}
             </div>
 
-            {/* Unlock All Banner */}
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-amber-900/20 border border-purple-500/30 space-y-3">
-              <div className="flex items-center gap-2 text-xs font-extrabold text-amber-500">
-                <Sparkles className="w-4 h-4" /> Full Access ₹{course?.price}
+            {/* Unlock All Banner / Unlocked Badge */}
+            {isCourseUnlocked ? (
+              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-black">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Full Access Unlocked 🎉
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                  You have full lifetime access to all course modules on this device!
+                </p>
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                Unlock all remaining modules permanently. Read on any device with your 6-digit passcode.
-              </p>
-              <button
-                onClick={() => setPaymentModalOpen(true)}
-                className="w-full py-2.5 px-3 rounded-xl jvm-gradient-bg text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <Zap className="w-3.5 h-3.5 text-amber-300" />
-                <span>Unlock All Modules</span>
-              </button>
-            </div>
+            ) : (
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-amber-900/20 border border-purple-500/30 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-extrabold text-amber-500">
+                  <Sparkles className="w-4 h-4" /> Full Access ₹{course?.price}
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                  Unlock all remaining modules permanently. Read on any device with your 6-digit passcode.
+                </p>
+                <button
+                  onClick={() => setPaymentModalOpen(true)}
+                  className="w-full py-2.5 px-3 rounded-xl jvm-gradient-bg text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <Zap className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Unlock All Modules</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Right Main Area: Module Content Viewer */}
-        <div className="lg:col-span-3">
-          <div ref={moduleContentRef} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-8 min-h-[500px] scroll-mt-20">
+        <div className={`lg:col-span-3 ${mobileViewMode === "index" ? "hidden lg:block" : "block"}`}>
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-8 min-h-[500px]">
             
             {/* Module Top Meta */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100 dark:border-slate-800">

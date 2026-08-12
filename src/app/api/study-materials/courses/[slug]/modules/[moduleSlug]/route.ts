@@ -36,35 +36,7 @@ export async function GET(
 
     const moduleNumber = targetModule.moduleNumber;
 
-    // 3. Check if module is within free threshold
-    const isFree = moduleNumber <= course.freeModulesCount;
-
-    if (isFree) {
-      return NextResponse.json({
-        success: true,
-        isLocked: false,
-        course: {
-          id: course.id,
-          title: course.title,
-          slug: course.slug,
-          price: course.price,
-          freeModulesCount: course.freeModulesCount,
-          modulesCount: course.modules.length,
-          allModules: course.modules.map((m: any) => ({
-            id: m.id,
-            moduleNumber: m.moduleNumber,
-            slug: m.slug || m.moduleNumber.toString(),
-            title: m.title,
-            description: m.description,
-            readTime: m.readTime,
-            isFree: m.moduleNumber <= course.freeModulesCount
-          }))
-        },
-        module: targetModule
-      });
-    }
-
-    // 4. Paid module: check database for accessKey unlock
+    // 3. Check database for accessKey unlock status
     let isUnlocked = false;
 
     if (accessKey) {
@@ -79,10 +51,14 @@ export async function GET(
       }
     }
 
-    if (isUnlocked) {
+    // 4. Check if module is within free threshold
+    const isFree = moduleNumber <= course.freeModulesCount;
+
+    if (isFree || isUnlocked) {
       return NextResponse.json({
         success: true,
         isLocked: false,
+        isCourseUnlocked: isUnlocked,
         course: {
           id: course.id,
           title: course.title,
