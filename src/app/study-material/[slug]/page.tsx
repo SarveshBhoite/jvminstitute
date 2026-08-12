@@ -10,6 +10,7 @@ import {
   Lock,
   Unlock,
   ChevronRight,
+  ChevronLeft,
   ArrowLeft,
   CheckCircle2,
   Sparkles,
@@ -81,6 +82,8 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
     return key;
   };
 
+  const moduleContentRef = React.useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     loadModuleContent(1);
   }, [slug]);
@@ -99,6 +102,13 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
         setCourse(data.course);
         setActiveModule(data.module);
         setIsLocked(data.isLocked);
+
+        // On mobile devices, smoothly scroll down to the module reader content starting point
+        if (typeof window !== "undefined" && window.innerWidth < 1024 && moduleContentRef.current) {
+          setTimeout(() => {
+            moduleContentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 150);
+        }
       }
     } catch (err) {
       console.error("Failed to fetch module content:", err);
@@ -324,7 +334,7 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
 
         {/* Right Main Area: Module Content Viewer */}
         <div className="lg:col-span-3">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-8 min-h-[500px]">
+          <div ref={moduleContentRef} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-8 min-h-[500px] scroll-mt-20">
             
             {/* Module Top Meta */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100 dark:border-slate-800">
@@ -384,10 +394,51 @@ export default function CourseReaderPage({ params }: { params: { slug: string } 
                 </p>
               </div>
             ) : (
-              <div
-                className="prose dark:prose-invert max-w-none text-sm leading-relaxed space-y-6"
-                dangerouslySetInnerHTML={{ __html: activeModule?.contentHtml || "<p>No content uploaded for this module yet.</p>" }}
-              />
+              <>
+                <div
+                  className="prose dark:prose-invert max-w-none text-sm leading-relaxed space-y-6"
+                  dangerouslySetInnerHTML={{ __html: activeModule?.contentHtml || "<p>No content uploaded for this module yet.</p>" }}
+                />
+
+                {/* Bottom Previous & Next Module Navigation Controls */}
+                {course && course.allModules && course.allModules.length > 0 && (() => {
+                  const currentIdx = course.allModules.findIndex(
+                    (m) => (m.slug && m.slug === activeModuleIdent) || m.moduleNumber === activeModuleIdent
+                  );
+                  const prevMod = currentIdx > 0 ? course.allModules[currentIdx - 1] : null;
+                  const nextMod = currentIdx >= 0 && currentIdx < course.allModules.length - 1 ? course.allModules[currentIdx + 1] : null;
+
+                  return (
+                    <div className="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                      {prevMod ? (
+                        <button
+                          onClick={() => loadModuleContent(prevMod.slug || prevMod.moduleNumber)}
+                          className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-purple-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
+                        >
+                          <ChevronLeft className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                          <div className="text-left">
+                            <span className="text-[10px] text-slate-400 block uppercase font-extrabold">Previous Module</span>
+                            <span>{prevMod.title}</span>
+                          </div>
+                        </button>
+                      ) : <div />}
+
+                      {nextMod && (
+                        <button
+                          onClick={() => loadModuleContent(nextMod.slug || nextMod.moduleNumber)}
+                          className="w-full sm:w-auto px-6 py-3 rounded-2xl jvm-gradient-bg text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md hover:opacity-95"
+                        >
+                          <div className="text-right">
+                            <span className="text-[10px] text-purple-200 block uppercase font-black">Next Module</span>
+                            <span>{nextMod.title}</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-amber-300" />
+                        </button>
+                      )}
+                    </div>
+                  );
+                })()}
+              </>
             )}
 
           </div>
