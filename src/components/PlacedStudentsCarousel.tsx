@@ -185,14 +185,18 @@ export default function PlacedStudentsCarousel() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-slate-900 transition-colors duration-300">
       
-      {/* Background Image Layer (students1.jpeg) */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 scale-105"
-        style={{ 
-          backgroundImage: `url('/students2.jpeg')`,
-        }}
-      ></div>
-      {/* Reduced translucent overlay mask so background group photo is clear */}
+      {/* Background Image Layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/students2.jpeg"
+          alt="JVM Institute Batch Background"
+          fill
+          sizes="100vw"
+          quality={65}
+          className="object-cover object-center scale-105"
+        />
+      </div>
+      {/* Translucent overlay mask */}
       <div className="absolute inset-0 z-0 bg-slate-950/30 bg-gradient-to-b from-slate-950/40 via-slate-950/25 to-slate-950/50"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -64,6 +64,8 @@ export default function HeroSection() {
               src={img.src}
               alt={img.alt}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={75}
               className="object-cover object-center scale-105"
               priority={idx === 0}
             />
@@ -114,6 +116,8 @@ export default function HeroSection() {
                 src={img.src}
                 alt={img.alt}
                 fill
+                sizes="100vw"
+                quality={70}
                 className="object-cover object-center"
                 priority={idx === 0}
               />
