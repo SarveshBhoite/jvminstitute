@@ -237,15 +237,16 @@ export default function BlogListingPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                     
                     {/* Featured Image */}
-                    <div className="lg:col-span-5 relative aspect-[3/2] lg:aspect-auto lg:h-[260px] overflow-hidden bg-slate-100 dark:bg-slate-900">
+                    <div className="lg:col-span-5 relative w-full h-[220px] sm:h-[280px] lg:h-[320px] overflow-hidden bg-slate-100 dark:bg-slate-900 shrink-0">
                       <Image
                         src={featuredPost.image || "/course.jpg"}
                         alt={featuredPost.title}
                         fill
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        priority
+                        className="object-cover object-top sm:object-center group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1.5 rounded-full bg-[#7C248C] text-white text-xs font-black uppercase tracking-wider shadow-md">
+                      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+                        <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-[#7C248C] text-white text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-md">
                           FEATURED ARTICLE
                         </span>
                       </div>
