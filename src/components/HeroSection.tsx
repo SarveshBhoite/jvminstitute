@@ -24,11 +24,11 @@ const heroImages = [
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Automatic smooth image fade transition loop (switches every 2 seconds)
+  // Automatic smooth image fade transition loop (switches every 4 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -52,8 +52,6 @@ export default function HeroSection() {
 
       {/* DESKTOP FULL RIGHT-SIDE IMAGE CONTAINER WITH AUTOMATIC FADE SLIDESHOW */}
       <div className="absolute top-0 right-0 bottom-0 w-full lg:w-1/2 z-0 hidden lg:block overflow-hidden">
-
-        {/* Auto Fade Images Layer */}
         {heroImages.map((img, idx) => (
           <div
             key={img.src}
