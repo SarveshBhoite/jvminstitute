@@ -76,8 +76,11 @@ export default function AdminPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [adminUser, setAdminUser] = useState<{ fullName?: string; email?: string; role?: string } | null>(null);
 
-  // Active Tab: "placements" | "blogs" | "studies" | "unlocks"
-  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks">("placements");
+  // Active Tab: "placements" | "blogs" | "studies" | "unlocks" | "leads"
+  const [activeTab, setActiveTab] = useState<"placements" | "blogs" | "studies" | "unlocks" | "leads">("placements");
+
+  // Leads & Form Submissions state
+  const [leads, setLeads] = useState<any[]>([]);
 
   // Course Purchases / Unlocks state
   const [courseUnlocks, setCourseUnlocks] = useState<any[]>([]);
@@ -215,11 +218,24 @@ export default function AdminPage() {
         fetchBlogs();
         fetchStudyCourses();
         fetchCourseUnlocks();
+        fetchLeads();
       }
     } catch {
       // not logged in
     } finally {
       setCheckingAuth(false);
+    }
+  };
+
+  const fetchLeads = async () => {
+    try {
+      const res = await fetch("/api/admin/leads");
+      const data = await res.json();
+      if (data.success) {
+        setLeads(data.data || []);
+      }
+    } catch (err) {
+      console.error("Failed to fetch leads", err);
     }
   };
 
@@ -406,6 +422,7 @@ export default function AdminPage() {
       fetchBlogs();
       fetchStudyCourses();
       fetchCourseUnlocks();
+      fetchLeads();
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Network error. Please try again.";
       setErrorMsg(msg);
@@ -777,9 +794,9 @@ export default function AdminPage() {
                   <GraduationCap className="w-5 h-5" />
                 </div>
               </div>
-              <div className="text-2xl font-black text-slate-900">{placements.length + 12} Placed</div>
+              <div className="text-2xl font-black text-slate-900">{placements.length} Placed</div>
               <p className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
-                <TrendingUp className="w-3 h-3" /> Live Database Synced
+                <TrendingUp className="w-3 h-3" /> Live DB Records
               </p>
             </div>
 
@@ -790,8 +807,8 @@ export default function AdminPage() {
                   <Layers className="w-5 h-5" />
                 </div>
               </div>
-              <div className="text-2xl font-black text-slate-900">{blogs.length + 7} Articles</div>
-              <p className="text-[11px] text-purple-700 font-semibold">Technical Playbooks & Guides</p>
+              <div className="text-2xl font-black text-slate-900">{blogs.length} Published</div>
+              <p className="text-[11px] text-purple-700 font-semibold">Technical Articles</p>
             </div>
 
             <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 shadow-sm">
@@ -801,28 +818,28 @@ export default function AdminPage() {
                   <FileText className="w-5 h-5" />
                 </div>
               </div>
-              <div className="text-2xl font-black text-slate-900">342 Leads</div>
+              <div className="text-2xl font-black text-slate-900">{leads.length} Enquiries</div>
               <p className="text-[11px] text-purple-700 font-semibold flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> 18 New today
+                <Sparkles className="w-3 h-3" /> Website Form Submissions
               </p>
             </div>
 
             <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 shadow-sm">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Referral Payouts</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Course Unlocks</span>
                 <div className="p-2 bg-amber-50 text-amber-700 rounded-xl">
-                  <DollarSign className="w-5 h-5" />
+                  <ShieldCheck className="w-5 h-5" />
                 </div>
               </div>
-              <div className="text-2xl font-black text-slate-900">₹48,500</div>
-              <p className="text-[11px] text-emerald-700 font-semibold">Processed this month</p>
+              <div className="text-2xl font-black text-slate-900">{courseUnlocks.length} Unlocked</div>
+              <p className="text-[11px] text-emerald-700 font-semibold">Paid Student Unlocks</p>
             </div>
           </div>
         )}
 
         {/* --- MANAGEMENT NAVIGATION TABS --- */}
         {!selectedCourseForModules && (
-          <div className="flex items-center gap-3 border-b border-slate-200 pb-2">
+          <div className="flex items-center gap-3 border-b border-slate-200 pb-2 overflow-x-auto">
             <button
               onClick={() => setActiveTab("placements")}
               className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
@@ -860,6 +877,21 @@ export default function AdminPage() {
             >
               <BookOpen className="w-4 h-4" />
               <span>Study Materials ({studyCourses.length})</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveTab("leads");
+                fetchLeads();
+              }}
+              className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
+                activeTab === "leads"
+                  ? "jvm-gradient-bg text-white shadow-md"
+                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
+              }`}
+            >
+              <FileText className="w-4 h-4" />
+              <span>Form Enquiries ({leads.length})</span>
             </button>
 
             <button
@@ -2036,6 +2068,85 @@ export default function AdminPage() {
                         </td>
                         <td className="p-3.5 text-right text-slate-500 font-medium">
                           {new Date(u.createdAt).toLocaleDateString("en-IN", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit"
+                          })}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* --- SECTION E: WEBSITE FORM SUBMISSIONS & LEAD ENQUIRIES --- */}
+        {activeTab === "leads" && (
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <FileText className="w-6 h-6 text-pink-600" />
+                  <span>Website Form Submissions & Lead Enquiries</span>
+                </h2>
+                <p className="text-xs text-slate-500 mt-1">
+                  View all incoming lead submissions from enrollment popups, demo requests, contact forms, and referral forms.
+                </p>
+              </div>
+
+              <button
+                onClick={fetchLeads}
+                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>Refresh Leads</span>
+              </button>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs text-slate-700">
+                <thead className="bg-slate-50 text-slate-500 uppercase font-extrabold tracking-wider border-b border-slate-200">
+                  <tr>
+                    <th className="p-3.5">Candidate Name</th>
+                    <th className="p-3.5">Email / Phone</th>
+                    <th className="p-3.5">Course / Topic</th>
+                    <th className="p-3.5">Source & Details</th>
+                    <th className="p-3.5 text-right">Received Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {leads.length === 0 ? (
+                    <tr>
+                      <td colSpan={5} className="p-8 text-center text-slate-500 font-medium">
+                        No form enquiries received yet. Submissions from website forms will automatically appear here!
+                      </td>
+                    </tr>
+                  ) : (
+                    leads.map((l) => (
+                      <tr key={l.id} className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3.5 font-bold text-slate-900">
+                          {l.name}
+                        </td>
+                        <td className="p-3.5">
+                          <div className="font-semibold text-slate-900">{l.email || "N/A"}</div>
+                          <div className="text-[11px] text-purple-700 font-bold">{l.phone || "N/A"}</div>
+                        </td>
+                        <td className="p-3.5">
+                          <span className="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg font-bold border border-purple-200 text-[11px] inline-block">
+                            {l.courseSlug || "General Enquiry"}
+                          </span>
+                        </td>
+                        <td className="p-3.5 max-w-md">
+                          <span className="text-[10px] font-extrabold uppercase bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200 block w-max mb-1">
+                            {l.source || "WEBSITE"}
+                          </span>
+                          <p className="text-[11px] text-slate-800 whitespace-pre-wrap bg-slate-50 p-2 rounded-lg border border-slate-200 mt-1">{l.message || "No message provided."}</p>
+                        </td>
+                        <td className="p-3.5 text-right text-slate-500 font-medium whitespace-nowrap">
+                          {new Date(l.createdAt).toLocaleDateString("en-IN", {
                             day: "numeric",
                             month: "short",
                             year: "numeric",

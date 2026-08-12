@@ -462,14 +462,33 @@ export default function BlogListingPage() {
 
               <div className="lg:col-span-5">
                 <form 
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    const target = e.target as any;
+                    const email = target.email?.value || "";
+                    try {
+                      await fetch("/api/leads", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          name: "Newsletter Subscriber",
+                          email,
+                          phone: "9999999999",
+                          courseSlug: "Tech Blog Newsletter",
+                          message: "Subscribed to JVM Weekly Tech & Career Insights",
+                          source: "BLOG_NEWSLETTER_FORM",
+                        }),
+                      });
+                    } catch (err) {
+                      console.error("Newsletter lead error:", err);
+                    }
                     alert("Thank you for subscribing to JVM Institute Tech Insights!");
                   }}
                   className="flex flex-col sm:flex-row gap-3"
                 >
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="Enter your email address"
                     className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 flex-grow"

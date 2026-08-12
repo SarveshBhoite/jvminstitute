@@ -1444,11 +1444,39 @@ export default function OurCoursesPage() {
                 </p>
               </div>
 
-              <form onSubmit={(e) => { e.preventDefault(); setModalOpen(false); }} className="space-y-4">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const target = e.target as any;
+                  const fullName = target.fullName?.value || "";
+                  const phone = target.phone?.value || "";
+                  const course = target.course?.value || selectedCourseTitle;
+
+                  try {
+                    await fetch("/api/leads", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        name: fullName,
+                        email: `${phone.replace(/\D/g, "") || "student"}@courseapp.jvminstitute.com`,
+                        phone,
+                        courseSlug: course,
+                        message: `Callback application for ${course}`,
+                        source: "OUR_COURSES_PAGE_MODAL",
+                      }),
+                    });
+                  } catch (err) {
+                    console.error("Failed to submit course application lead", err);
+                  }
+                  setModalOpen(false);
+                }}
+                className="space-y-4"
+              >
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
                   <input
                     type="text"
+                    name="fullName"
                     required
                     placeholder="e.g. Rahul Sharma"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
@@ -1459,6 +1487,7 @@ export default function OurCoursesPage() {
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">WhatsApp Phone Number *</label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     pattern="[0-9]{10}"
                     minLength={10}
@@ -1475,6 +1504,7 @@ export default function OurCoursesPage() {
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Course</label>
                   <select
+                    name="course"
                     defaultValue={selectedCourseTitle}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
@@ -1491,7 +1521,7 @@ export default function OurCoursesPage() {
                   type="submit"
                   className="w-full jvm-gradient-bg text-white font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01]"
                 >
-                  <Send className="w-4 h-4" /> Submit Application & Download Syllabus
+                  <Send className="w-4 h-4" /> Submit Application &amp; Download Syllabus
                 </button>
               </form>
 

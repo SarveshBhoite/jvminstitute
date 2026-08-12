@@ -54,9 +54,25 @@ export default function ReferAndEarnPage() {
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
   };
 
-  const handleSubmitReferral = (e: React.FormEvent) => {
+  const handleSubmitReferral = async (e: React.FormEvent) => {
     e.preventDefault();
     if (referrerName && friendName && friendPhone) {
+      try {
+        await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: referrerName,
+            email: `${referrerPhone.replace(/\D/g, "") || "referrer"}@referral.jvminstitute.com`,
+            phone: friendPhone,
+            courseSlug: `Referral: ${courseInterest}`,
+            message: `[Referrer: ${referrerName} (${referrerPhone})] Referred Friend: ${friendName}`,
+            source: "REFERRAL_PROGRAM_PAGE",
+          }),
+        });
+      } catch (err) {
+        console.error("Referral lead submit error:", err);
+      }
       setSubmitted(true);
     }
   };

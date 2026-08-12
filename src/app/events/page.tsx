@@ -362,6 +362,20 @@ export default function EventsPage() {
 
     setIsSubmitting(true);
     try {
+      // Save lead enquiry
+      fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fullName,
+          email,
+          phone,
+          courseSlug: selectedEventForReg?.title || "Masterclass Event",
+          message: `Event: ${selectedEventForReg?.title} | Exp: ${expLevel}`,
+          source: "EVENT_REGISTRATION_PAGE",
+        })
+      }).catch(() => {});
+
       const res = await fetch("/api/events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
