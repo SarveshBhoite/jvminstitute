@@ -81,8 +81,9 @@ export default function Navbar() {
               <Image 
                 src="/jvm_logo-bg.png" 
                 alt="JVM Institute Logo" 
-                width={260} 
-                height={65}
+                width={196} 
+                height={50}
+                sizes="(max-width: 768px) 160px, 196px"
                 className="h-10 md:h-12 w-auto object-contain"
                 priority
               />

@@ -87,9 +87,9 @@ export default function WhyOurCourseRanksSection() {
                   className="relative w-full aspect-video sm:h-[340px] bg-slate-900 flex flex-col justify-between cursor-pointer overflow-hidden group p-3 sm:p-5"
                   onClick={() => setIsPlaying(true)}
                 >
-                  {/* High Resolution YouTube Thumbnail Image */}
+                  {/* Optimized Responsive YouTube Thumbnail Image */}
                   <img 
-                    src="https://img.youtube.com/vi/OlRm6aXmfdg/maxresdefault.jpg" 
+                    src="https://img.youtube.com/vi/OlRm6aXmfdg/hqdefault.jpg" 
                     alt="JVM Institute Class Tour Video"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter-none"
                   />
