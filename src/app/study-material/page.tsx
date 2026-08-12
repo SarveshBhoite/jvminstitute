@@ -68,6 +68,22 @@ export default function StudyMaterialPage() {
     }
   };
 
+  const filteredCourses = React.useMemo(() => {
+    if (!searchQuery.trim()) return courses;
+    const q = searchQuery.toLowerCase().trim();
+    return courses.filter((c) => {
+      const matchTitle = c.title?.toLowerCase().includes(q);
+      const matchSubject = c.subject?.toLowerCase().includes(q);
+      const matchDesc = c.description?.toLowerCase().includes(q);
+      const matchModules = c.modules?.some(
+        (m) =>
+          m.title?.toLowerCase().includes(q) ||
+          m.description?.toLowerCase().includes(q)
+      );
+      return matchTitle || matchSubject || matchDesc || matchModules;
+    });
+  }, [courses, searchQuery]);
+
   const handleRestoreAccess = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!restoreInput.trim()) return;
@@ -109,13 +125,6 @@ export default function StudyMaterialPage() {
       setRestoreStatus({ type: "error", msg: "Error restoring access. Please try again." });
     }
   };
-
-  const filteredCourses = courses.filter(
-    (c) =>
-      c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300 font-sans selection:bg-purple-500 selection:text-white">

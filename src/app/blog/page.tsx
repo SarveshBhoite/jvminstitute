@@ -61,11 +61,15 @@ export default function BlogListingPage() {
         selectedCategory === "All Blogs" || post.category === selectedCategory;
 
       const query = searchQuery.toLowerCase().trim();
-      const matchesSearch =
-        query === "" ||
-        post.title.toLowerCase().includes(query) ||
-        post.excerpt.toLowerCase().includes(query) ||
-        (post.tags && post.tags.some((tag) => tag.toLowerCase().includes(query)));
+      if (!query) return matchesCategory;
+
+      const matchesTitle = post.title?.toLowerCase().includes(query);
+      const matchesExcerpt = post.excerpt?.toLowerCase().includes(query);
+      const matchesCategoryName = post.category?.toLowerCase().includes(query);
+      const matchesAuthor = post.author?.name?.toLowerCase().includes(query);
+      const matchesTags = post.tags && post.tags.some((tag) => tag.toLowerCase().includes(query));
+
+      const matchesSearch = matchesTitle || matchesExcerpt || matchesCategoryName || matchesAuthor || matchesTags;
 
       return matchesCategory && matchesSearch;
     });
