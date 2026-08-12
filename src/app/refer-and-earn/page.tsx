@@ -28,7 +28,7 @@ export default function ReferAndEarnPage() {
   const [referrerPhone, setReferrerPhone] = useState("");
   const [friendName, setFriendName] = useState("");
   const [friendPhone, setFriendPhone] = useState("");
-  const [courseInterest, setCourseInterest] = useState("Data Engineering");
+  const [courseInterest, setCourseInterest] = useState("Data Engineering Course");
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -111,14 +111,14 @@ export default function ReferAndEarnPage() {
     }
   };
 
-  const FaqItems = [
+  const FaqItems = React.useMemo(() => [
     {
       q: "Who is eligible to participate in the Refer & Earn Program?",
       a: "Anyone! Current JVM Institute students, alumni, working professionals, and IT enthusiasts are eligible to refer candidates and claim cash rewards."
     },
     {
       q: "How much cash reward do I earn per successful referral?",
-      a: "You earn ₹2,000 for every candidate who enrolls in our flagship Data Engineering & PySpark Master track, and ₹1,000 for Python/SQL Data Analytics courses."
+      a: `You earn a guaranteed ₹${rewardAmount.toLocaleString()} cash reward for every single candidate who enrolls in any of our technical course tracks!`
     },
     {
       q: "When and how will I receive my referral payout?",
@@ -128,7 +128,7 @@ export default function ReferAndEarnPage() {
       q: "Is there any limit to the number of friends I can refer?",
       a: "No! There is zero upper limit. You can refer unlimited friends and earn rewards for every single successful admission."
     }
-  ];
+  ], [rewardAmount]);
 
   const topReferrers = [
     { name: "Siddharth Bhoite", course: "Data Engineering", referrals: 18, earned: "₹36,000", badge: "🏆 Gold Champion" },
@@ -614,19 +614,20 @@ export default function ReferAndEarnPage() {
 
                       <div>
                         <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                          Interested Tech Track *
+                          Select Course *
                         </label>
                         <select
                           value={courseInterest}
                           onChange={(e) => setCourseInterest(e.target.value)}
-                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none cursor-pointer"
                         >
-                          <option value="Data Engineering">Data Engineering Track</option>
+                          <option value="Data Engineering Course">Data Engineering Course</option>
                           <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
-                          <option value="Generative AI">Generative AI Master Track</option>
-                          <option value="Basic AI & ML">Basic AI &amp; Machine Learning</option>
-                          <option value="Advanced AI & Machine Learning">Advanced AI &amp; Machine Learning</option>
-                          <option value="Claude AI">Claude AI Masterclass</option>
+                          <option value="Generative AI Course">Generative AI Course</option>
+                          <option value="Claude AI Course">Claude AI Course</option>
+                          <option value="Cloud AI Course">Cloud AI Course</option>
+                          <option value="Basic AI & ML Course">Basic AI &amp; ML Course</option>
+                          <option value="Advanced AI & Machine Learning Course">Advanced AI &amp; Machine Learning Course</option>
                         </select>
                       </div>
 
