@@ -126,7 +126,7 @@ export default function Footer() {
                 <Link href="/refer-and-earn" className="hover:text-white transition-colors">Refer & Earn</Link>
               </li>
               <li>
-                <Link href="/study-material" className="hover:text-white transition-colors">Study Material Store</Link>
+                {/* <Link href="/study-material" className="hover:text-white transition-colors">Study Material Store</Link> */}
               </li>
               {/* <li>
                 <Link href="/events" className="hover:text-white transition-colors">Workshops & Events</Link>

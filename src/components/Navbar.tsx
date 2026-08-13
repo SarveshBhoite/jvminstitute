@@ -284,8 +284,8 @@ export default function Navbar() {
               <Gift className="w-4 h-4 text-amber-500 dark:text-amber-400" /> Refer & Earn
             </Link>
 
-            {/* Notes & PDFs */}
-            <Link 
+            {/* Notes & PDFs (Commented out temporarily until courses are updated by Admin) */}
+            {/* <Link 
               href="/study-material" 
               className={`px-4 py-2 text-sm font-semibold rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap ${
                 pathname === "/study-material" 
@@ -294,7 +294,7 @@ export default function Navbar() {
               }`}
             >
               <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" /> Notes & PDFs
-            </Link>
+            </Link> */}
 
             {/* About Us */}
             <Link 
@@ -427,13 +427,13 @@ export default function Navbar() {
               <Gift className="w-4 h-4 text-amber-500 dark:text-amber-400" /> Refer & Earn Money
             </Link>
 
-            <Link 
+            {/* <Link 
               href="/study-material" 
               onClick={() => setMobileMenuOpen(false)}
               className="block px-4 py-2.5 rounded-lg text-base font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2"
             >
               <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" /> Free Notes & PDFs
-            </Link>
+            </Link> */}
 
             <Link 
               href="/blog" 
