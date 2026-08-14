@@ -444,11 +444,11 @@ export default function AboutUsPage() {
                   {/* Main Large Collage Photo */}
                   <div className="relative rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800">
                     <Image
-                      src="/place1.png"
-                      alt="JVM Institute Campus Placement Drive"
+                      src="/about.jpg"
+                      alt="JVM Institute About Us Campus"
                       width={600}
                       height={520}
-                      className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-6 text-white">
