@@ -153,10 +153,10 @@ export default function HeroSection() {
                   4.9/5 (200+ Reviews)
                 </span>
                 <span className="text-slate-300 dark:text-slate-600">|</span>
-                <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                {/* <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   ISO 9001:2020
-                </span>
+                </span> */}
               </div>
             </div>
 

@@ -60,10 +60,10 @@ export default function ReferAndEarnPage() {
   }, [referrerName, referrerPhone]);
 
   const userReferralLink = React.useMemo(() => {
-    let baseUrl = "https://jvminstitute.vercel.app";
+    let baseUrl = "https://jvminstitute.com";
     if (typeof window !== "undefined") {
       const origin = window.location.origin;
-      // If running on localhost or custom domain, map to production URL jvminstitute.vercel.app unless running on a non-localhost host
+      // If running on custom domain, map to production URL jvminstitute.com unless running on localhost
       if (!origin.includes("localhost") && !origin.includes("127.0.0.1")) {
         baseUrl = origin;
       }

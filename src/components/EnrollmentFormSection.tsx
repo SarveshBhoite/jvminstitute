@@ -133,9 +133,9 @@ export default function EnrollmentFormSection() {
             </div>
 
             <div className="pt-2 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 dark:text-slate-400 font-bold">
-              <span className="flex items-center gap-1.5">
+              {/* <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-500" /> ISO 9001:2020 Institute
-              </span>
+              </span> */}
               <span className="flex items-center gap-1.5">
                 <GraduationCap className="w-4 h-4 text-purple-500" /> 200+ Alumni Placed
               </span>
