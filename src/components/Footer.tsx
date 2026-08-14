@@ -216,7 +216,15 @@ export default function Footer() {
             <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors underline sm:no-underline">Terms of Use</Link>
             <span className="hidden sm:inline text-slate-700">•</span>
             <span className="flex items-center gap-1 text-slate-400 justify-center">
-              Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> in Pune
+              Made by{" "}
+              <a 
+                href="https://jisnudigital.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-purple-400 hover:text-purple-300 font-bold transition-colors underline underline-offset-2"
+              >
+                Jisnu Digital Solutions Pvt Ltd
+              </a>
             </span>
           </div>
         </div>
