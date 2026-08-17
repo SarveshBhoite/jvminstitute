@@ -89,7 +89,7 @@ export default function WhyOurCourseRanksSection() {
                 >
                   {/* High Resolution Crisp YouTube Thumbnail Image */}
                   <img 
-                    src="https://img.youtube.com/vi/OlRm6aXmfdg/maxresdefault.jpg" 
+                    src="https://img.youtube.com/vi/4PCAe1ce6gk/maxresdefault.jpg" 
                     alt="JVM Institute Class Tour Video"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter-none"
                   />
@@ -143,7 +143,7 @@ export default function WhyOurCourseRanksSection() {
                 <div className="relative w-full aspect-video sm:h-[340px]">
                   <iframe 
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/OlRm6aXmfdg?si=kMOVKlDUCIii_Rkd&autoplay=1" 
+                    src="https://www.youtube.com/embed/4PCAe1ce6gk?si=7vBx-2ZcIyEhau9L&autoplay=1" 
                     title="JVM Institute - Class Tour" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
