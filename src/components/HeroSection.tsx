@@ -24,11 +24,11 @@ const heroImages = [
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Automatic smooth image fade transition loop (switches every 2 seconds)
+  // Automatic smooth image fade transition loop (switches every 4 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -52,8 +52,6 @@ export default function HeroSection() {
 
       {/* DESKTOP FULL RIGHT-SIDE IMAGE CONTAINER WITH AUTOMATIC FADE SLIDESHOW */}
       <div className="absolute top-0 right-0 bottom-0 w-full lg:w-1/2 z-0 hidden lg:block overflow-hidden">
-
-        {/* Auto Fade Images Layer */}
         {heroImages.map((img, idx) => (
           <div
             key={img.src}
@@ -64,6 +62,8 @@ export default function HeroSection() {
               src={img.src}
               alt={img.alt}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={85}
               className="object-cover object-center scale-105"
               priority={idx === 0}
             />
@@ -114,6 +114,8 @@ export default function HeroSection() {
                 src={img.src}
                 alt={img.alt}
                 fill
+                sizes="100vw"
+                quality={70}
                 className="object-cover object-center"
                 priority={idx === 0}
               />
@@ -151,10 +153,10 @@ export default function HeroSection() {
                   4.9/5 (200+ Reviews)
                 </span>
                 <span className="text-slate-300 dark:text-slate-600">|</span>
-                <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                {/* <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   ISO 9001:2020
-                </span>
+                </span> */}
               </div>
             </div>
 

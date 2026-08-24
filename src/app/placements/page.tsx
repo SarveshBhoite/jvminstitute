@@ -121,18 +121,17 @@ export default function PlacementsPage() {
     return match ? parseFloat(match[0]) : 0;
   };
 
-  // Derive Top 15 students sorted by package in descending order (highest package first) for dynamic Hero rotation
+  // Derive all placement students sorted by package in descending order (highest package first) for dynamic Hero rotation
   const top15Students = React.useMemo(() => {
-    if (!placementsList || placementsList.length === 0) return HeroCircleImages;
+    if (!placementsList || placementsList.length === 0) return [];
     return [...placementsList]
       .sort((a, b) => {
         const pkgA = getPackageNumeric(a.package || a.pkg || "");
         const pkgB = getPackageNumeric(b.package || b.pkg || "");
         return pkgB - pkgA; // Highest package first (descending)
       })
-      .slice(0, 15)
       .map((s) => ({
-        src: s.image || s.photo || s.avatar || "/placements/placement_5_ajinkya.jpeg",
+        src: s.image || s.photo || s.avatar || "/place1.png",
         name: s.name || s.studentName || "Placed Student",
         role: s.placedRole || s.role || "Data Engineer",
         company: s.company || s.companyName || "Top MNC",
@@ -149,7 +148,7 @@ export default function PlacementsPage() {
     return () => clearInterval(timer);
   }, [top15Students]);
 
-  const currentHero = top15Students[heroImgIndex % top15Students.length] || HeroCircleImages[0];
+  const currentHero = top15Students.length > 0 ? top15Students[heroImgIndex % top15Students.length] : null;
 
   const filteredPlacements = placementsList
     .filter((student) => {
@@ -231,36 +230,54 @@ export default function PlacementsPage() {
                 {/* Stable Fixed Circle Frame */}
                 <div className="relative w-44 h-44 xs:w-56 xs:h-56 sm:w-96 sm:h-96 rounded-full border-2 sm:border-4 border-purple-300/80 dark:border-purple-800/80 p-2 sm:p-3 shadow-2xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-md ring-2 ring-purple-500/20 mx-auto">
                   <div className="relative w-full h-full rounded-full overflow-hidden border-2 sm:border-4 border-purple-400/90 shadow-inner bg-slate-100 dark:bg-slate-800">
-                    <motion.div
-                      key={heroImgIndex}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.6 }}
-                      className="relative w-full h-full"
-                    >
-                      <Image
-                        src={currentHero.src}
-                        alt={`${currentHero.name} - Placed Alumni`}
-                        fill
-                        className="object-cover object-top"
-                        priority
-                      />
-                    </motion.div>
+                    {currentHero ? (
+                      <motion.div
+                        key={heroImgIndex}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="relative w-full h-full"
+                      >
+                        <Image
+                          src={currentHero.src}
+                          alt={`${currentHero.name} - Placed Alumni`}
+                          fill
+                          className="object-cover object-top"
+                          priority
+                        />
+                      </motion.div>
+                    ) : (
+                      <div className="w-full h-full bg-white dark:bg-slate-900 flex items-center justify-center p-6">
+                        <Image
+                          src="/jvm_logo-bg.png"
+                          alt="JVM Institute Logo"
+                          width={220}
+                          height={60}
+                          className="w-auto h-12 sm:h-16 object-contain animate-pulse"
+                          priority
+                        />
+                      </div>
+                    )}
                   </div>
 
                   {/* Floating Alum Badge Pill Overlay (Centered) */}
-                  <motion.div
-                    key={`pill-${heroImgIndex}`}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-slate-950/95 text-white px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-purple-400/50 shadow-xl whitespace-nowrap z-20 text-center flex items-center justify-center gap-1.5"
-                  >
-                    <span>{currentHero.name}</span>
-                    <span className="text-purple-400">•</span>
-                    <span className="text-purple-300">{currentHero.company} ({currentHero.pkg})</span>
-                  </motion.div>
+                  {currentHero && (
+                    <motion.div
+                      key={`pill-${heroImgIndex}`}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-slate-950/95 text-white px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-purple-400/50 shadow-xl whitespace-nowrap z-20 text-center flex items-center justify-center gap-1.5"
+                    >
+                      <span className="text-purple-300 font-extrabold">{currentHero.name}</span>
+                      <span className="text-slate-400">•</span>
+                      <span className="text-slate-300">{currentHero.company}</span>
+                      <span className="text-emerald-400 font-black bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/30 ml-1">
+                        {currentHero.pkg}
+                      </span>
+                    </motion.div>
+                  )}
 
                   {/* Sparkle Badge Overlay */}
                   <div className="absolute top-1 right-1 sm:top-2 sm:right-2 bg-gradient-to-r from-[#1E2B88] to-[#E01E6A] text-white p-2 sm:p-3 rounded-xl sm:rounded-2xl shadow-xl border border-white/20 z-20">

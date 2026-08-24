@@ -72,7 +72,7 @@ const coursesData = [
     badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800",
     title: "Data Engineering Course",
     desc: "Master SQL, Python, Linux, Hadoop, PySpark, Spark, Airflow, Databricks, GCP, Azure, AWS, ETL Pipelines, Data Warehousing, and Big Data technologies through practical implementation.",
-    image: "/Data Engineering.png",
+    image: "/dataengineering.jpeg",
     url: "/data-engineering-course-in-pune",
     duration: "6 Months",
     mode: "Offline & Online",
@@ -96,7 +96,7 @@ const coursesData = [
     badgeColor: "bg-pink-100 text-pink-700 dark:bg-pink-950/80 dark:text-pink-300 border-pink-200 dark:border-pink-800",
     title: "Data Engineering with Gen AI",
     desc: "Combine modern Data Engineering with Large Language Models, AI-powered automation, Retrieval-Augmented Generation (RAG), AI Data Pipelines, Vector Databases, Prompt Engineering, and Intelligent Analytics.",
-    image: "/Data engineering with gen ai.png",
+    image: "/dataengineeringwithgenai.jpeg",
     url: "/data-engineering-with-genai-course-in-pune",
     duration: "6 Months",
     mode: "Offline & Online Mode",
@@ -118,7 +118,7 @@ const coursesData = [
     badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 border-purple-200 dark:border-purple-800",
     title: "Gen AI",
     desc: "Build intelligent AI applications using ChatGPT, OpenAI APIs, LangChain, CrewAI, Vector Databases, AI Agents, Prompt Engineering, and Retrieval-Augmented Generation (RAG).",
-    image: "/generative Ai.png",
+    image: "/generativeai.jpeg",
     url: "/generative-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -142,7 +142,7 @@ const coursesData = [
     badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
     title: "Basic AI & ML",
     desc: "A beginner-friendly program covering Python Programming, Statistics, Machine Learning Fundamentals, Data Visualization, Exploratory Data Analysis, and Predictive Analytics.",
-    image: "/Basic Ai.png",
+    image: "/basicaiml.jpeg",
     url: "/basic-ai-ml-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -166,7 +166,7 @@ const coursesData = [
     badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
     title: "Advanced AI & Machine Learning",
     desc: "Learn Deep Learning, Neural Networks, Computer Vision, Natural Language Processing (NLP), Reinforcement Learning, MLOps, Model Deployment, and AI System Design.",
-    image: "/Advance AI.png",
+    image: "/advanceaiml.jpeg",
     url: "/advanced-ai-ml-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -190,7 +190,7 @@ const coursesData = [
     badgeColor: "bg-sky-100 text-[#0284C7] dark:bg-sky-950/80 dark:text-sky-300 border-sky-200 dark:border-sky-800",
     title: "Claude AI",
     desc: "Master AI deployment using AWS, Azure, and Google Cloud while learning cloud-native AI services, Kubernetes, Docker, scalable ML pipelines, and cloud infrastructure.",
-    image: "/cloud ai.png",
+    image: "/claudeai.jpeg",
     url: "/claude-ai-course-in-pune",
     duration: "1 Month",
     mode: "Offline & Online",
@@ -668,14 +668,13 @@ export default function OurCoursesPage() {
 
                       {/* Course Image Container (6 cols) */}
                       <div className={`lg:col-span-6 relative ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
-                        <Link href={course.url} className="block relative h-[280px] sm:h-[360px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 cursor-pointer">
+                        <Link href={course.url} className="block relative w-full aspect-[16/10] sm:aspect-auto sm:h-[340px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl cursor-pointer">
                           <Image
                             src={course.image}
                             alt={course.title}
                             fill
                             className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
                           {/* Top Badge Pill */}
                           <span className={`absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-extrabold border backdrop-blur-md shadow-md ${course.badgeColor}`}>
@@ -1444,11 +1443,39 @@ export default function OurCoursesPage() {
                 </p>
               </div>
 
-              <form onSubmit={(e) => { e.preventDefault(); setModalOpen(false); }} className="space-y-4">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const target = e.target as any;
+                  const fullName = target.fullName?.value || "";
+                  const phone = target.phone?.value || "";
+                  const course = target.course?.value || selectedCourseTitle;
+
+                  try {
+                    await fetch("/api/leads", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        name: fullName,
+                        email: `${phone.replace(/\D/g, "") || "student"}@courseapp.jvminstitute.com`,
+                        phone,
+                        courseSlug: course,
+                        message: `Callback application for ${course}`,
+                        source: "OUR_COURSES_PAGE_MODAL",
+                      }),
+                    });
+                  } catch (err) {
+                    console.error("Failed to submit course application lead", err);
+                  }
+                  setModalOpen(false);
+                }}
+                className="space-y-4"
+              >
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
                   <input
                     type="text"
+                    name="fullName"
                     required
                     placeholder="e.g. Rahul Sharma"
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
@@ -1459,6 +1486,7 @@ export default function OurCoursesPage() {
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">WhatsApp Phone Number *</label>
                   <input
                     type="tel"
+                    name="phone"
                     required
                     pattern="[0-9]{10}"
                     minLength={10}
@@ -1475,6 +1503,7 @@ export default function OurCoursesPage() {
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Course</label>
                   <select
+                    name="course"
                     defaultValue={selectedCourseTitle}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                   >
@@ -1491,7 +1520,7 @@ export default function OurCoursesPage() {
                   type="submit"
                   className="w-full jvm-gradient-bg text-white font-extrabold py-3.5 px-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01]"
                 >
-                  <Send className="w-4 h-4" /> Submit Application & Download Syllabus
+                  <Send className="w-4 h-4" /> Submit Application &amp; Download Syllabus
                 </button>
               </form>
 

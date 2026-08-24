@@ -38,10 +38,22 @@ export default function LeadEnquiryModal({
     phone: "",
     reason: defaultReason || "Free Demo Class Request",
     course: courseTitle || "Data Engineering Course",
+    referralCode: "",
     message: ""
   });
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
+
+  // Auto-detect ?ref=... parameter from URL
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get("ref");
+      if (ref) {
+        setFormState((prev) => ({ ...prev, referralCode: ref.toUpperCase() }));
+      }
+    }
+  }, []);
 
   // Update course state if courseTitle prop changes
   useEffect(() => {
@@ -93,6 +105,7 @@ export default function LeadEnquiryModal({
           email: formState.email,
           phone: formState.phone,
           courseSlug: formState.course,
+          referralCode: formState.referralCode || null,
           message: `[Reason: ${formState.reason}] ${formState.message}`.trim(),
           source: "ENROLLMENT_MODAL_POPUP",
         }),
@@ -285,6 +298,30 @@ export default function LeadEnquiryModal({
                     </select>
                     <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                   </div>
+                </div>
+              </div>
+
+              {/* Referral Code Field (Optional) */}
+              <div>
+                <label className={`block text-xs font-bold mb-1 transition-colors ${focusedField === "referralCode" ? "text-purple-600 dark:text-purple-400" : "text-slate-700 dark:text-slate-300"
+                  }`}>
+                  Referral Code (Optional)
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={formState.referralCode}
+                    onFocus={() => setFocusedField("referralCode")}
+                    onBlur={() => setFocusedField(null)}
+                    onChange={(e) => setFormState({ ...formState, referralCode: e.target.value.toUpperCase() })}
+                    placeholder="e.g. JVM-ANAND-9822"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-purple-200 dark:border-purple-900/60 text-slate-900 dark:text-white text-xs sm:text-sm font-mono uppercase font-bold focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  />
+                  {formState.referralCode && (
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded-full">
+                      ✓ Applied
+                    </span>
+                  )}
                 </div>
               </div>
 

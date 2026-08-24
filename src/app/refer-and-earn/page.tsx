@@ -28,47 +28,97 @@ export default function ReferAndEarnPage() {
   const [referrerPhone, setReferrerPhone] = useState("");
   const [friendName, setFriendName] = useState("");
   const [friendPhone, setFriendPhone] = useState("");
-  const [courseInterest, setCourseInterest] = useState("Data Engineering");
+  const [courseInterest, setCourseInterest] = useState("Data Engineering Course");
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Interactive Earnings Calculator State
-  const [deCount, setDeCount] = useState(3);
-  const [daCount, setDaCount] = useState(2);
+  const [rewardAmount, setRewardAmount] = useState<number>(2000);
+  const [candidateCount, setCandidateCount] = useState<number>(3);
 
-  const sampleReferralCode = "JVM-REF-2026";
+  // Fetch dynamic referral reward amount set by Admin
+  React.useEffect(() => {
+    async function fetchRewardSetting() {
+      try {
+        const res = await fetch("/api/referrals/settings");
+        const data = await res.json();
+        if (data.success && typeof data.rewardAmount === "number") {
+          setRewardAmount(data.rewardAmount);
+        }
+      } catch (err) {
+        console.error("Failed to fetch referral reward setting:", err);
+      }
+    }
+    fetchRewardSetting();
+  }, []);
 
-  // Calculation Logic
-  const totalEarnings = (deCount * 2000) + (daCount * 1000);
+  // Dynamic Referral Code Generation based on Referrer's Name & Phone
+  const userReferralCode = React.useMemo(() => {
+    if (!referrerName && !referrerPhone) return "JVM-REF-2026";
+    const cleanName = referrerName ? referrerName.trim().split(" ")[0].toUpperCase().replace(/[^A-Z]/g, "") : "JVM";
+    const lastDigits = referrerPhone ? referrerPhone.replace(/\D/g, "").slice(-4) : "2026";
+    return `JVM-${cleanName || "REF"}-${lastDigits || "2026"}`;
+  }, [referrerName, referrerPhone]);
+
+  const userReferralLink = React.useMemo(() => {
+    let baseUrl = "https://jvminstitute.com";
+    if (typeof window !== "undefined") {
+      const origin = window.location.origin;
+      // If running on custom domain, map to production URL jvminstitute.com unless running on localhost
+      if (!origin.includes("localhost") && !origin.includes("127.0.0.1")) {
+        baseUrl = origin;
+      }
+    }
+    return `${baseUrl}/enroll?ref=${userReferralCode}`;
+  }, [userReferralCode]);
+
+  // Single Reward Calculation Logic (Candidate Count * Live Reward Amount)
+  const totalEarnings = candidateCount * rewardAmount;
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`https://jvminstitute.com/enroll?ref=${sampleReferralCode}`);
+    navigator.clipboard.writeText(userReferralLink);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
   };
 
   const handleShareWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hey! Learn Data Engineering & PySpark at JVM Institute Pune with 100% placement support. Use my link to get ₹1,000 scholarship: https://jvminstitute.com/enroll?ref=${sampleReferralCode}`
+      `Hey! Learn Data Engineering & PySpark at JVM Institute Pune with 100% placement support. Use my link to get ₹1,000 scholarship: ${userReferralLink}`
     );
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
   };
 
-  const handleSubmitReferral = (e: React.FormEvent) => {
+  const handleSubmitReferral = async (e: React.FormEvent) => {
     e.preventDefault();
     if (referrerName && friendName && friendPhone) {
+      try {
+        await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: referrerName,
+            email: `${referrerPhone.replace(/\D/g, "") || "referrer"}@referral.jvminstitute.com`,
+            phone: friendPhone,
+            courseSlug: `Referral: ${courseInterest}`,
+            referralCode: userReferralCode,
+            message: `[Referrer: ${referrerName} (${referrerPhone})] Referred Friend: ${friendName}`,
+            source: "REFERRAL_PROGRAM_PAGE",
+          }),
+        });
+      } catch (err) {
+        console.error("Referral lead submit error:", err);
+      }
       setSubmitted(true);
     }
   };
 
-  const FaqItems = [
+  const FaqItems = React.useMemo(() => [
     {
       q: "Who is eligible to participate in the Refer & Earn Program?",
       a: "Anyone! Current JVM Institute students, alumni, working professionals, and IT enthusiasts are eligible to refer candidates and claim cash rewards."
     },
     {
       q: "How much cash reward do I earn per successful referral?",
-      a: "You earn ₹2,000 for every candidate who enrolls in our flagship Data Engineering & PySpark Master track, and ₹1,000 for Python/SQL Data Analytics courses."
+      a: `You earn a guaranteed ₹${rewardAmount.toLocaleString()} cash reward for every single candidate who enrolls in any of our technical course tracks!`
     },
     {
       q: "When and how will I receive my referral payout?",
@@ -78,7 +128,7 @@ export default function ReferAndEarnPage() {
       q: "Is there any limit to the number of friends I can refer?",
       a: "No! There is zero upper limit. You can refer unlimited friends and earn rewards for every single successful admission."
     }
-  ];
+  ], [rewardAmount]);
 
   const topReferrers = [
     { name: "Siddharth Bhoite", course: "Data Engineering", referrals: 18, earned: "₹36,000", badge: "🏆 Gold Champion" },
@@ -109,7 +159,7 @@ export default function ReferAndEarnPage() {
 
               <div className="space-y-2">
                 <SplitText
-                  text="Refer Your Friends & Earn Up to ₹2,000 Per Enrollment"
+                  text={`Refer Your Friends & Earn ₹${rewardAmount.toLocaleString()} Per Enrollment`}
                   tag="h1"
                   className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight leading-[1.15]"
                   delay={25}
@@ -122,32 +172,78 @@ export default function ReferAndEarnPage() {
                 Help your friends launch a high-paying tech career in Data Engineering &amp; AI. Share the gift of learning and get instant cash payouts directly to your UPI!
               </p>
 
-              {/* Instant Referral Link Copy Box & WhatsApp Share */}
-              <div className="pt-2 max-w-lg mx-auto space-y-2.5 sm:space-y-3">
-                <div className="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full p-1.5 sm:p-2 shadow-lg">
-                  <input
-                    type="text"
-                    readOnly
-                    value={`https://jvminstitute.com/enroll?ref=${sampleReferralCode}`}
-                    className="w-full bg-transparent px-3 sm:px-4 text-[10px] sm:text-xs font-mono text-slate-700 dark:text-slate-300 focus:outline-none truncate"
-                  />
-                  <button
-                    onClick={handleCopyLink}
-                    className="jvm-gradient-bg text-white px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold shrink-0 flex items-center gap-1 sm:gap-1.5 shadow-md hover:opacity-95 transition-all"
-                  >
-                    {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    {copiedLink ? "Copied!" : "Copy Link"}
-                  </button>
+              {/* Interactive Referral Link & Code Generator Card */}
+              <div className="pt-2 max-w-xl mx-auto space-y-3.5 bg-white dark:bg-slate-900 border border-purple-200 dark:border-slate-800 rounded-3xl p-4 sm:p-6 shadow-xl text-left">
+                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
+                  <span className="text-xs font-black uppercase text-purple-700 dark:text-purple-300 tracking-wider flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-amber-500" /> Dynamic Referral Code Generator
+                  </span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">
+                    No Login Needed
+                  </span>
                 </div>
 
-                <div className="flex items-center justify-center">
-                  <button
-                    onClick={handleShareWhatsApp}
-                    className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all"
-                  >
-                    <Share2 className="w-3.5 h-3.5" /> Share directly on WhatsApp
-                  </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Anand Bhoite"
+                      value={referrerName}
+                      onChange={(e) => setReferrerName(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Your Mobile Number
+                    </label>
+                    <input
+                      type="tel"
+                      pattern="[0-9]{10}"
+                      minLength={10}
+                      maxLength={10}
+                      title="Phone number must be exactly 10 digits"
+                      placeholder="e.g. 9822334455"
+                      value={referrerPhone}
+                      onChange={(e) => setReferrerPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30"
+                    />
+                  </div>
                 </div>
+
+                {/* Derived Code & Copy Link Box */}
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                    <span>Your Unique Referral Code: <strong className="text-purple-700 dark:text-purple-300 font-mono">{userReferralCode}</strong></span>
+                    <span>₹1,000 Friend Discount</span>
+                  </div>
+
+                  <div className="flex items-center bg-slate-50 dark:bg-slate-950 border border-purple-200 dark:border-purple-900/60 rounded-xl p-1.5 shadow-inner">
+                    <input
+                      type="text"
+                      readOnly
+                      value={userReferralLink}
+                      className="w-full bg-transparent px-3 text-[11px] font-mono text-slate-800 dark:text-slate-200 focus:outline-none truncate"
+                    />
+                    <button
+                      onClick={handleCopyLink}
+                      className="jvm-gradient-bg text-white px-4 py-2 rounded-lg text-xs font-bold shrink-0 flex items-center gap-1.5 shadow-md hover:opacity-95 transition-all"
+                    >
+                      {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedLink ? "Copied!" : "Copy Link"}
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleShareWhatsApp}
+                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                >
+                  <Share2 className="w-4 h-4" /> Share Invite &amp; Link on WhatsApp
+                </button>
               </div>
 
             </div>
@@ -179,39 +275,21 @@ export default function ReferAndEarnPage() {
                   {/* Sliders */}
                   <div className="space-y-4 sm:space-y-5 bg-slate-50 dark:bg-slate-900/80 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800">
                     
-                    {/* Slider 1: Data Engineering */}
-                    <div className="space-y-1.5">
+                    {/* Single Candidate Slider */}
+                    <div className="space-y-2">
                       <div className="flex justify-between items-center text-xs font-bold">
                         <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-                          <Sparkles className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Data Engineering (₹2,000/student):
+                          <Sparkles className="w-3.5 h-3.5 text-purple-600 shrink-0" /> Number of Friends Referred (₹{rewardAmount.toLocaleString()}/enrollment):
                         </span>
-                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-xs sm:text-sm">{deCount} Friends</span>
+                        <span className="text-purple-600 dark:text-purple-400 font-extrabold text-sm sm:text-base">{candidateCount} Friends</span>
                       </div>
                       <input 
                         type="range" 
-                        min="0" 
-                        max="20" 
-                        value={deCount}
-                        onChange={(e) => setDeCount(parseInt(e.target.value))}
-                        className="w-full accent-purple-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg"
-                      />
-                    </div>
-
-                    {/* Slider 2: Data Analytics */}
-                    <div className="space-y-1.5">
-                      <div className="flex justify-between items-center text-xs font-bold">
-                        <span className="text-slate-800 dark:text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-                          <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" /> Data Analytics (₹1,000/student):
-                        </span>
-                        <span className="text-amber-600 dark:text-amber-400 font-extrabold text-xs sm:text-sm">{daCount} Friends</span>
-                      </div>
-                      <input 
-                        type="range" 
-                        min="0" 
-                        max="20" 
-                        value={daCount}
-                        onChange={(e) => setDaCount(parseInt(e.target.value))}
-                        className="w-full accent-amber-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg"
+                        min="1" 
+                        max="30" 
+                        value={candidateCount}
+                        onChange={(e) => setCandidateCount(parseInt(e.target.value, 10))}
+                        className="w-full accent-purple-600 cursor-pointer h-2.5 bg-slate-200 dark:bg-slate-700 rounded-lg"
                       />
                     </div>
 
@@ -222,7 +300,7 @@ export default function ReferAndEarnPage() {
                 <div className="lg:col-span-5">
                   <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 text-center space-y-3 sm:space-y-4 shadow-xl border border-purple-500/30">
                     <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/30">
-                      Estimated Direct Cash Payout
+                      Estimated Cash Reward Payout
                     </span>
 
                     <div className="py-1 sm:py-2">
@@ -230,18 +308,22 @@ export default function ReferAndEarnPage() {
                         ₹{totalEarnings.toLocaleString()}
                       </div>
                       <p className="text-[10px] sm:text-xs text-purple-200 mt-0.5 font-medium">
-                        Instant UPI Payout within 48 hrs of batch start
+                        Instant UPI / Bank Payout per confirmed admission
                       </p>
                     </div>
 
                     <div className="pt-2 sm:pt-3 border-t border-white/10 text-[11px] sm:text-xs font-medium text-slate-300 space-y-1">
                       <div className="flex justify-between">
+                        <span>Reward Per Admission:</span>
+                        <strong className="text-amber-400 font-extrabold">₹{rewardAmount.toLocaleString()}</strong>
+                      </div>
+                      <div className="flex justify-between">
                         <span>Total Candidates Referred:</span>
-                        <strong className="text-white">{deCount + daCount} Friends</strong>
+                        <strong className="text-white font-extrabold">{candidateCount} Friends</strong>
                       </div>
                       <div className="flex justify-between">
                         <span>Friend Scholarship Discount:</span>
-                        <strong className="text-emerald-400">₹{(deCount + daCount) * 1000} Total Off</strong>
+                        <strong className="text-emerald-400 font-extrabold">₹{(candidateCount * 1000).toLocaleString()} Scholarship</strong>
                       </div>
                     </div>
 
@@ -532,16 +614,20 @@ export default function ReferAndEarnPage() {
 
                       <div>
                         <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                          Interested Tech Track *
+                          Select Course *
                         </label>
                         <select
                           value={courseInterest}
                           onChange={(e) => setCourseInterest(e.target.value)}
-                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500/50 outline-none cursor-pointer"
                         >
-                          <option value="Data Engineering">Data Engineering (₹2,000 Cash Reward)</option>
-                          <option value="Data Analytics">Data Analytics &amp; SQL (₹1,000 Cash Reward)</option>
-                          <option value="Data Science">Data Science &amp; AI Track (₹1,500 Cash Reward)</option>
+                          <option value="Data Engineering Course">Data Engineering Course</option>
+                          <option value="Data Engineering with Gen AI">Data Engineering with Gen AI</option>
+                          <option value="Generative AI Course">Generative AI Course</option>
+                          <option value="Claude AI Course">Claude AI Course</option>
+                          <option value="Cloud AI Course">Cloud AI Course</option>
+                          <option value="Basic AI & ML Course">Basic AI &amp; ML Course</option>
+                          <option value="Advanced AI & Machine Learning Course">Advanced AI &amp; Machine Learning Course</option>
                         </select>
                       </div>
 

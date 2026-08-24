@@ -82,20 +82,20 @@ export default function WhyOurCourseRanksSection() {
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white dark:border-slate-800 bg-slate-950">
               
               {!isPlaying ? (
-                /* High-Resolution Crisp YouTube Thumbnail Preview */
+                /* High-Resolution Crisp YouTube Thumbnail Preview (Pure 16:9 Aspect Ratio) */
                 <div 
-                  className="relative w-full aspect-video sm:h-[340px] bg-slate-900 flex flex-col justify-between cursor-pointer overflow-hidden group p-3 sm:p-5"
+                  className="relative w-full aspect-video bg-slate-900 flex flex-col justify-between cursor-pointer overflow-hidden group p-3 sm:p-5"
                   onClick={() => setIsPlaying(true)}
                 >
-                  {/* High Resolution YouTube Thumbnail Image */}
+                  {/* High Resolution Crisp YouTube Thumbnail Image */}
                   <img 
-                    src="https://img.youtube.com/vi/OlRm6aXmfdg/maxresdefault.jpg" 
+                    src="https://img.youtube.com/vi/4PCAe1ce6gk/maxresdefault.jpg" 
                     alt="JVM Institute Class Tour Video"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter-none"
                   />
 
-                  {/* Gentle Top & Bottom Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/80"></div>
+                  {/* Soft Gradient Overlay so thumbnail graphics remain 100% visible */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/50"></div>
 
                   {/* Top Bar: Channel Logo & Title */}
                   <div className="relative z-10 flex items-center gap-2.5">
@@ -140,10 +140,10 @@ export default function WhyOurCourseRanksSection() {
                 </div>
               ) : (
                 /* Native Crisp YouTube iFrame Player */
-                <div className="relative w-full aspect-video sm:h-[340px]">
+                <div className="relative w-full aspect-video">
                   <iframe 
                     className="w-full h-full"
-                    src="https://www.youtube.com/embed/OlRm6aXmfdg?si=kMOVKlDUCIii_Rkd&autoplay=1" 
+                    src="https://www.youtube.com/embed/4PCAe1ce6gk?si=7vBx-2ZcIyEhau9L&autoplay=1" 
                     title="JVM Institute - Class Tour" 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

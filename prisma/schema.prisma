@@ -192,15 +192,16 @@ model ReferralPayout {
 }
 
 model LeadEnquiry {
-  id         String   @id @default(cuid())
-  name       String
-  email      String
-  phone      String
-  courseSlug String?
-  message    String?  @db.Text
-  source     String   @default("WEBSITE_CONTACT")
-  isResolved Boolean  @default(false)
-  createdAt  DateTime @default(now())
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  phone        String
+  courseSlug   String?
+  message      String?  @db.Text
+  referralCode String?
+  source       String   @default("WEBSITE_CONTACT")
+  isResolved   Boolean  @default(false)
+  createdAt    DateTime @default(now())
 }
 
 model Admin {
@@ -215,3 +216,64 @@ model Admin {
 
   @@map("admins")
 }
+
+model SiteSetting {
+  id        String   @id @default("global_settings")
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+model StudyMaterialCourse {
+  id               String                @id @default(cuid())
+  slug             String                @unique
+  title            String
+  description      String                @db.Text
+  subject          String                @default("Data Engineering")
+  badge            String?               @default("Popular")
+  price            Float                 @default(499)
+  freeModulesCount Int                   @default(1)
+  coverImage       String?               @default("/course.jpg")
+  isPublished      Boolean               @default(true)
+  modules          StudyMaterialModule[]
+  unlocks          StudyCourseAccess[]
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  @@map("study_material_courses")
+}
+
+model StudyMaterialModule {
+  id           String              @id @default(cuid())
+  courseId     String
+  course       StudyMaterialCourse @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  moduleNumber Int
+  slug         String              @default("")
+  title        String
+  description  String?             @db.Text
+  contentHtml  String              @db.Text
+  readTime     String              @default("10 min read")
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  @@map("study_material_modules")
+}
+
+model StudyCourseAccess {
+  id                String              @id @default(cuid())
+  courseId          String
+  course            StudyMaterialCourse @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  accessKey         String              // Unique browser key or random uuid
+  accessCode        String?             // 6-digit passcode for cross-device restoration
+  userEmail         String?             // Customer email
+  userPhone         String?             // Customer phone
+  razorpayOrderId   String?
+  razorpayPaymentId String?
+  amountPaid        Float               @default(0)
+  createdAt         DateTime            @default(now())
+
+  @@map("study_course_accesses")
+}
+

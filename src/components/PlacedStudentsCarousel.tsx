@@ -25,112 +25,10 @@ const getPackageNumeric = (pkgStr: string | number | undefined | null): number =
   return match ? parseFloat(match[0]) : 0;
 };
 
-// Fallback Top Placed Students (Sorted by highest package)
-const fallbackStudents = [
-  {
-    id: "1",
-    name: "Ajinkya",
-    domain: "PySpark & Big Data",
-    placedRole: "Senior Data Engineer",
-    company: "LTI Mindtree",
-    package: "16 LPA",
-    image: "/placements/placement_5_ajinkya.jpeg",
-    testimonial: "I joined JVM Institute to upgrade my technical skills in PySpark, Databricks, SQL, and Cloud Data Engineering. The trainers were knowledgeable, supportive, and always encouraged us to learn beyond the classroom. The placement support and interview guidance were outstanding.",
-  },
-  {
-    id: "2",
-    name: "Rohini",
-    domain: "Data Engineering",
-    placedRole: "Lead Software Engineer",
-    company: "Persistent",
-    package: "13.66 LPA",
-    image: "/placements/placement_8_rohini.jpeg",
-    testimonial: "Coming from a non-IT background, JVM Institute provided me with the right guidance, structured learning path, and practical exposure through real-time projects. The mock interviews, resume preparation, and mentorship enabled me to secure a Lead position at Persistent.",
-  },
-  {
-    id: "3",
-    name: "Satyajeet",
-    domain: "Cloud & Snowflake",
-    placedRole: "Lead Software Engineer",
-    company: "Persistent",
-    package: "13.20 LPA",
-    image: "/placements/placement_7_satyajeet.png",
-    testimonial: "After spending years preparing for government exams, I wanted a career with growth. JVM Institute helped me learn industry technologies like SQL, Python, AWS, and PySpark. I successfully switched to IT and started my Data & AI career.",
-  },
-  {
-    id: "4",
-    name: "Prathamesh",
-    domain: "Data Engineering",
-    placedRole: "Data Engineer",
-    company: "Zorba Consulting",
-    package: "13 LPA",
-    image: "/placements/placement_3_prathamesh.png",
-    testimonial: "My journey with JVM Institute has been truly life-changing. The training program provided in-depth knowledge of SQL, Python, PySpark, AWS, Azure, and real-time Data Engineering projects. The mock interviews helped me secure multiple offers including Zorba Consulting (13 LPA), Datametica (12.2 LPA), and IPG Mediabrands (12 LPA).",
-  },
-  {
-    id: "5",
-    name: "Ankit",
-    domain: "Cloud & Snowflake",
-    placedRole: "Senior Consultant",
-    company: "Mindcraft",
-    package: "12.75 LPA",
-    image: "/placements/placement_10_ankit.png",
-    testimonial: "My experience with JVM Institute was fantastic. The trainers not only taught technical concepts but also guided us on resume building and interview preparation for Cloud and Data domains.",
-  },
-  {
-    id: "6",
-    name: "Shweta",
-    domain: "Data Engineering",
-    placedRole: "Software Engineer",
-    company: "Persistent",
-    package: "12.5 LPA",
-    image: "/placements/placement_2_shweta.png",
-    testimonial: "After a career break, I wanted to restart my professional journey in a growing field. JVM Institute gave me the confidence and skills needed to enter the IT industry. Today, I am working successfully at Persistent.",
-  },
-  {
-    id: "7",
-    name: "Abhishek",
-    domain: "Data Engineering",
-    placedRole: "Data Engineer",
-    company: "Datametica",
-    package: "12 LPA",
-    image: "/placements/placement_4_abhishek.jpeg",
-    testimonial: "I joined JVM Institute to upgrade my technical skills and improve my career prospects. The curriculum covered everything from SQL and Python to Cloud and Big Data technologies. The placement support and interview guidance were outstanding.",
-  },
-  {
-    id: "8",
-    name: "Priya",
-    previousRole: "Non-IT Career Transition",
-    placedRole: "Senior Data Engineer",
-    company: "Cymetrix",
-    package: "11.54 LPA",
-    image: "/placements/placement_1_priya.png",
-    testimonial: "Coming from a non-IT background, I was unsure about switching careers. JVM Institute made the transition smooth with their step-by-step training approach. The live projects gave me valuable practical exposure, and the trainers continuously motivated me throughout the course. Their placement assistance and mock interviews were incredibly helpful.",
-  },
-  {
-    id: "9",
-    name: "Nikhil",
-    domain: "Data Engineering",
-    placedRole: "Senior Software Engineer",
-    company: "Prodapt",
-    package: "11 LPA",
-    image: "/placements/placement_6_nikhil.jpeg",
-    testimonial: "I am extremely grateful to JVM Institute for helping me achieve this milestone in my career. The practical training, real-time projects, and continuous mentorship played a crucial role in enhancing my technical skills.",
-  },
-  {
-    id: "10",
-    name: "Rahul",
-    domain: "Data Engineering",
-    placedRole: "Data Engineer",
-    company: "Anchanto",
-    package: "10 LPA",
-    image: "/placements/placement_9_rahul.jpeg",
-    testimonial: "Coming from a non-IT background, I had limited technical knowledge. JVM Institute helped me understand Data Engineering concepts from scratch through hands-on learning and real-world projects.",
-  }
-];
+
 
 export default function PlacedStudentsCarousel() {
-  const [placedStudents, setPlacedStudents] = useState<any[]>(fallbackStudents);
+  const [placedStudents, setPlacedStudents] = useState<any[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -139,18 +37,18 @@ export default function PlacedStudentsCarousel() {
       try {
         const res = await fetch("/api/placements");
         const data = await res.json();
-        if (data.success && data.placements && data.placements.length > 0) {
-          // Dynamic sorting logic: Automatically sort students by package descending (highest first)
-          // When admin adds a new student (e.g., 14 LPA or 20 LPA), it automatically re-sorts and displays top 15
-          const sortedTopPlacements = [...data.placements]
+        if (data.success && Array.isArray(data.placements) && data.placements.length > 0) {
+          // Filter ONLY featured placement records (isFeatured === true) and sort descending by package amount
+          const featuredPlacements = data.placements.filter((p: any) => p.isFeatured !== false);
+          
+          const sortedFeaturedPlacements = [...(featuredPlacements.length > 0 ? featuredPlacements : data.placements)]
             .sort((a, b) => {
               const pkgA = getPackageNumeric(a.package || a.pkg);
               const pkgB = getPackageNumeric(b.package || b.pkg);
-              return pkgB - pkgA; // Descending
-            })
-            .slice(0, 15); // Top 15 students
+              return pkgB - pkgA; // Descending (highest package first)
+            });
 
-          setPlacedStudents(sortedTopPlacements.length > 0 ? sortedTopPlacements : fallbackStudents);
+          setPlacedStudents(sortedFeaturedPlacements);
         }
       } catch (err) {
         console.error("Failed to fetch placements for carousel:", err);
@@ -185,14 +83,18 @@ export default function PlacedStudentsCarousel() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-slate-900 transition-colors duration-300">
       
-      {/* Background Image Layer (students1.jpeg) */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 scale-105"
-        style={{ 
-          backgroundImage: `url('/students2.jpeg')`,
-        }}
-      ></div>
-      {/* Reduced translucent overlay mask so background group photo is clear */}
+      {/* Background Image Layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/students2.jpeg"
+          alt="JVM Institute Batch Background"
+          fill
+          sizes="100vw"
+          quality={65}
+          className="object-cover object-center scale-105"
+        />
+      </div>
+      {/* Translucent overlay mask */}
       <div className="absolute inset-0 z-0 bg-slate-950/30 bg-gradient-to-b from-slate-950/40 via-slate-950/25 to-slate-950/50"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

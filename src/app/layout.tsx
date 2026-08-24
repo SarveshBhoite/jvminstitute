@@ -29,9 +29,14 @@ export const metadata: Metadata = {
     "Software Training Pune"
   ],
   icons: {
-    icon: "/jvm_logo-bg.png",
-    shortcut: "/jvm_logo-bg.png",
-    apple: "/jvm_logo-bg.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
     title: "JVM Institute - Premier Data Engineering & Tech Training",

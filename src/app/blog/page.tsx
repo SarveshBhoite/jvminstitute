@@ -61,11 +61,15 @@ export default function BlogListingPage() {
         selectedCategory === "All Blogs" || post.category === selectedCategory;
 
       const query = searchQuery.toLowerCase().trim();
-      const matchesSearch =
-        query === "" ||
-        post.title.toLowerCase().includes(query) ||
-        post.excerpt.toLowerCase().includes(query) ||
-        (post.tags && post.tags.some((tag) => tag.toLowerCase().includes(query)));
+      if (!query) return matchesCategory;
+
+      const matchesTitle = post.title?.toLowerCase().includes(query);
+      const matchesExcerpt = post.excerpt?.toLowerCase().includes(query);
+      const matchesCategoryName = post.category?.toLowerCase().includes(query);
+      const matchesAuthor = post.author?.name?.toLowerCase().includes(query);
+      const matchesTags = post.tags && post.tags.some((tag) => tag.toLowerCase().includes(query));
+
+      const matchesSearch = matchesTitle || matchesExcerpt || matchesCategoryName || matchesAuthor || matchesTags;
 
       return matchesCategory && matchesSearch;
     });
@@ -233,15 +237,16 @@ export default function BlogListingPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                     
                     {/* Featured Image */}
-                    <div className="lg:col-span-5 relative aspect-[3/2] lg:aspect-auto lg:h-[260px] overflow-hidden bg-slate-100 dark:bg-slate-900">
+                    <div className="lg:col-span-5 relative w-full h-[220px] sm:h-[280px] lg:h-[320px] overflow-hidden bg-slate-100 dark:bg-slate-900 shrink-0">
                       <Image
                         src={featuredPost.image || "/course.jpg"}
                         alt={featuredPost.title}
                         fill
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        priority
+                        className="object-cover object-top sm:object-center group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1.5 rounded-full bg-[#7C248C] text-white text-xs font-black uppercase tracking-wider shadow-md">
+                      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+                        <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-[#7C248C] text-white text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-md">
                           FEATURED ARTICLE
                         </span>
                       </div>
@@ -462,14 +467,33 @@ export default function BlogListingPage() {
 
               <div className="lg:col-span-5">
                 <form 
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    const target = e.target as any;
+                    const email = target.email?.value || "";
+                    try {
+                      await fetch("/api/leads", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          name: "Newsletter Subscriber",
+                          email,
+                          phone: "9999999999",
+                          courseSlug: "Tech Blog Newsletter",
+                          message: "Subscribed to JVM Weekly Tech & Career Insights",
+                          source: "BLOG_NEWSLETTER_FORM",
+                        }),
+                      });
+                    } catch (err) {
+                      console.error("Newsletter lead error:", err);
+                    }
                     alert("Thank you for subscribing to JVM Institute Tech Insights!");
                   }}
                   className="flex flex-col sm:flex-row gap-3"
                 >
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="Enter your email address"
                     className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 flex-grow"

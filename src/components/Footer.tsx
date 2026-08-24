@@ -47,7 +47,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed pr-4">
-              Pune&apos;s leading training institute empowering engineers, non-IT graduates, and career changers with practical PySpark, Databricks, Cloud ETL, and SQL skills. ISO Certified 9001:2020.
+              Pune&apos;s leading training institute empowering engineers, non-IT graduates, and career changers with practical PySpark, Databricks, Cloud ETL, and SQL skills.
             </p>
 
             <div className="flex items-center gap-3 pt-1">
@@ -111,7 +111,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm font-medium">
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/blog" className="hover:text-white transition-colors">Blogs</Link>
               </li>
               <li>
                 <Link href="/about-us" className="hover:text-white transition-colors">About Us</Link>
@@ -126,7 +126,7 @@ export default function Footer() {
                 <Link href="/refer-and-earn" className="hover:text-white transition-colors">Refer & Earn</Link>
               </li>
               <li>
-                <Link href="/study-material" className="hover:text-white transition-colors">Study Material Store</Link>
+                {/* <Link href="/study-material" className="hover:text-white transition-colors">Study Material Store</Link> */}
               </li>
               {/* <li>
                 <Link href="/events" className="hover:text-white transition-colors">Workshops & Events</Link>
@@ -193,8 +193,8 @@ export default function Footer() {
                 <a href="mailto:infojvminstitute@gmail.com" className="hover:text-white transition-colors">infojvminstitute@gmail.com</a>
               </div>
               <div className="pt-2 border-t border-slate-900 flex items-center gap-1.5 text-[11px] text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>ISO 9001:2020 Registered Institute</span>
+                {/* <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>ISO 9001:2020 Registered Institute</span> */}
               </div>
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function Footer() {
         {/* SEO Disclaimer & Copyright Bar */}
         <div className="pt-4 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-2.5 sm:gap-4 text-xs font-medium text-slate-300 text-center md:text-left">
           <p className="max-w-md sm:max-w-none">
-            © {new Date().getFullYear()} JVM Institute Pvt Ltd. All rights reserved. Registered under Government of India Skill Mission.
+            © {new Date().getFullYear()} JVM Institute Pvt Ltd. All rights reserved.
           </p>
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-3 gap-y-1.5 text-xs">
@@ -216,7 +216,15 @@ export default function Footer() {
             <Link href="/terms-and-conditions" className="hover:text-slate-300 transition-colors underline sm:no-underline">Terms of Use</Link>
             <span className="hidden sm:inline text-slate-700">•</span>
             <span className="flex items-center gap-1 text-slate-400 justify-center">
-              Made with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> in Pune
+              Made by{" "}
+              <a 
+                href="https://jisnudigital.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-purple-400 hover:text-purple-300 font-bold transition-colors underline underline-offset-2"
+              >
+                Jisnu Digital Solutions Pvt Ltd
+              </a>
             </span>
           </div>
         </div>
