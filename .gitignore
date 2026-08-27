@@ -37,3 +37,6 @@ pnpm-debug.log*
 .idea/
 .vscode/
 *.tsbuildinfo
+
+# Sub-projects / LMS repository
+/lms
