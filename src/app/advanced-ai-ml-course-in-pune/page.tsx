@@ -206,7 +206,7 @@ const techStack = [
 // Faculty Profiles
 const mentors = [
   {
-    name: "Jayesh Bhoite",
+    name: "Jayesh Bonde",
     role: "Lead Data Architect & Founder",
     experience: "12+ Years IT Industry Experience",
     company: "Ex-Fortune 500 Architect",

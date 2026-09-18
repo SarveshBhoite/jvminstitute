@@ -69,7 +69,7 @@ export default function DataEngineeringLayout({
           courseWorkload: 'PT12W',
           instructor: {
             '@type': 'Person',
-            name: 'Jayesh Bhoite',
+            name: 'Jayesh Bonde',
             jobTitle: 'Lead Data Architect & Founder',
           },
         },

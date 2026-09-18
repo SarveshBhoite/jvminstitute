@@ -116,7 +116,7 @@ const capstoneProjects = [
 
 const mentors = [
   {
-    name: "Jayesh Bhoite",
+    name: "Jayesh Bonde",
     role: "Lead AI Architect & Founder",
     experience: "12+ Years IT Industry Experience",
     company: "Ex-Fortune 500 Architect",
@@ -203,8 +203,8 @@ export default function GenAICoursePage() {
     selectedCategory === "All"
       ? techStack
       : techStack.filter((t) =>
-          t.category.toLowerCase().includes(selectedCategory.toLowerCase())
-        );
+        t.category.toLowerCase().includes(selectedCategory.toLowerCase())
+      );
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFC] dark:bg-[#0B0F19] transition-colors duration-300 overflow-x-hidden selection:bg-[#7C248C] selection:text-white">
@@ -386,11 +386,10 @@ export default function GenAICoursePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.45, delay: index * 0.07 }}
-                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${
-                      isOpen
+                    className={`relative rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-md ${isOpen
                         ? "bg-white dark:bg-slate-900/95 border-purple-500/50 dark:border-purple-500/50 shadow-xl"
                         : "bg-white/90 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800/90 shadow-sm"
-                    }`}
+                      }`}
                   >
                     <button
                       onClick={() => setOpenModule(isOpen ? null : mod.id)}
@@ -398,11 +397,10 @@ export default function GenAICoursePage() {
                     >
                       <div className="flex items-center gap-3 sm:gap-5">
                         <span
-                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${
-                            isOpen
+                          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 ${isOpen
                               ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-md"
                               : "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
-                          }`}
+                            }`}
                         >
                           {mod.number}
                         </span>
@@ -420,11 +418,10 @@ export default function GenAICoursePage() {
                       </div>
 
                       <div
-                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${
-                          isOpen
+                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shrink-0 ${isOpen
                             ? "bg-purple-600 text-white rotate-180"
                             : "bg-slate-100 dark:bg-slate-800 text-slate-600"
-                        }`}
+                          }`}
                       >
                         <ChevronDown className="w-4 h-4" />
                       </div>
@@ -657,54 +654,54 @@ export default function GenAICoursePage() {
         {/* ========================================================= */}
         {/* 6. ENTERPRISE CAPSTONE PROJECTS                           */}
         {/* ========================================================= */}
-         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
-                  <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-        
-                    <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
-                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
-                        PORTFOLIO BUILDERS
-                      </span>
-                      <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                        Enterprise <span className="jvm-gradient-text">Capstone Projects</span>
-                      </h2>
-                    </div>
-        
-                    {/* REQUIREMENT 6: ADD SCROLL BAR FOR DISPLAY THIS PROJECT ON MOBILE */}
-                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-8 pb-4 scrollbar-thin scrollbar-thumb-purple-500/50 md:grid md:grid-cols-3">
-                      {capstoneProjects.map((p) => (
-                        <div key={p.id} className="min-w-[260px] sm:min-w-[320px] md:min-w-0 flex-1 snap-center bg-slate-50 dark:bg-slate-900 p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3 flex flex-col justify-between">
-                          <div className="space-y-2">
-                            <span className="px-2.5 py-0.5 rounded-full text-[9px] sm:text-[11px] font-extrabold bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300">
-                              {p.tag}
-                            </span>
-                            <h3 className="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-white leading-snug">
-                              {p.title}
-                            </h3>
-                            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-                              {p.desc}
-                            </p>
-                          </div>
-        
-                          <div className="space-y-2 pt-2 border-t border-slate-200/60 dark:border-slate-800">
-                            <div className="flex flex-wrap gap-1">
-                              {p.tech.map((t) => (
-                                <span key={t} className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60">
-                                  {t}
-                                </span>
-                              ))}
-                            </div>
-        
-                            <div className="text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                              <CheckCircle2 className="w-3.5 h-3.5" />
-                              <span>{p.metrics}</span>
-                            </div>
-                          </div>
-                        </div>
+        <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                PORTFOLIO BUILDERS
+              </span>
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Enterprise <span className="jvm-gradient-text">Capstone Projects</span>
+              </h2>
+            </div>
+
+            {/* REQUIREMENT 6: ADD SCROLL BAR FOR DISPLAY THIS PROJECT ON MOBILE */}
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-8 pb-4 scrollbar-thin scrollbar-thumb-purple-500/50 md:grid md:grid-cols-3">
+              {capstoneProjects.map((p) => (
+                <div key={p.id} className="min-w-[260px] sm:min-w-[320px] md:min-w-0 flex-1 snap-center bg-slate-50 dark:bg-slate-900 p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[9px] sm:text-[11px] font-extrabold bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300">
+                      {p.tag}
+                    </span>
+                    <h3 className="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-white leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                      {p.desc}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 pt-2 border-t border-slate-200/60 dark:border-slate-800">
+                    <div className="flex flex-wrap gap-1">
+                      {p.tech.map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60">
+                          {t}
+                        </span>
                       ))}
                     </div>
-        
+
+                    <div className="text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>{p.metrics}</span>
+                    </div>
                   </div>
-                </section>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
 
 
         {/* 7. PLACEMENT SUPPORT JOURNEY (FIT CLEANLY IN VIEW)         */}
@@ -833,17 +830,17 @@ export default function GenAICoursePage() {
           </div>
         </section>
 
-     
+
       </main>
-       {/* Global Lead Enquiry Modal */}
-            <LeadEnquiryModal
-              isOpen={modalOpen}
-              onClose={() => setModalOpen(false)}
-              courseTitle={modalTitle}
-            />
+      {/* Global Lead Enquiry Modal */}
+      <LeadEnquiryModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        courseTitle={modalTitle}
+      />
 
       <Footer />
-     
+
     </div>
   );
 }

@@ -339,19 +339,19 @@ const techStack = [
   { name: "Synapse", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
   { name: "redshift", category: "Warehouse", badge: "High Demand", color: "from-sky-400 to-blue-600" },
 
-  
+
   // Programming & ETL
   { name: "Python (Advanced & OOP)", category: "Programming", badge: "Essential", color: "from-blue-500 to-cyan-500" },
   { name: "REST APIs & JSON/XML", category: "Data Ingestion", badge: "APIs", color: "from-purple-500 to-indigo-600" },
-  
+
   // Big Data & Lakehouse
   { name: "PySpark & Apache Spark", category: "Big Data", badge: "Core Engine", color: "from-orange-500 to-amber-600" },
   { name: "Apache Hadoop & HDFS", category: "Big Data", badge: "Distributed", color: "from-yellow-600 to-amber-700" },
   { name: "Delta Lake & Lakehouse", category: "Storage", badge: "ACID Transactions", color: "from-cyan-500 to-blue-600" },
   { name: "dbt (Data Build Tool)", category: "Transformation", badge: "Trending", color: "from-orange-600 to-red-600" },
   { name: "GCP storage", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
-  {name: "Storage Account", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
-  {name: "HDFS", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+  { name: "Storage Account", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
+  { name: "HDFS", category: "Storage", badge: "Real-time Event", color: "from-slate-700 to-slate-900" },
 
   // Workflow & Streaming
   { name: "Apache Airflow (DAGs)", category: "Orchestration", badge: "Workflow", color: "from-teal-400 to-emerald-600" },
@@ -378,7 +378,7 @@ const techStack = [
 // Faculty Profiles
 const mentors = [
   {
-    name: "Jayesh Bhoite",
+    name: "Jayesh Bonde",
     role: "Lead Data Architect & Founder",
     experience: "12+ Years IT Industry Experience",
     company: "Ex-Fortune 500 Architect",

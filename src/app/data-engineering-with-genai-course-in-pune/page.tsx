@@ -384,7 +384,7 @@ const techStack = [
 // Faculty Profiles
 const mentors = [
   {
-    name: "Jayesh Bhoite",
+    name: "Jayesh Bonde",
     role: "Lead Data Architect & Founder",
     experience: "12+ Years IT Industry Experience",
     company: "Ex-Fortune 500 Architect",
@@ -1039,59 +1039,59 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         {/* 6. HANDS-ON CAPSTONE PROJECTS SHOWCASE                    */}
         {/* ========================================================= */}
-         <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
-                  <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-        
-                    <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
-                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
-                        PORTFOLIO BUILDERS
-                      </span>
-                      <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                        Enterprise <span className="jvm-gradient-text">Capstone Projects</span>
-                      </h2>
-                    </div>
-        
-                    {/* REQUIREMENT 6: ADD SCROLL BAR FOR DISPLAY THIS PROJECT ON MOBILE */}
-                    <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-8 pb-4 scrollbar-thin scrollbar-thumb-purple-500/50 md:grid md:grid-cols-3">
-                      {capstoneProjects.map((p) => (
-                        <div key={p.id} className="min-w-[260px] sm:min-w-[320px] md:min-w-0 flex-1 snap-center bg-slate-50 dark:bg-slate-900 p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3 flex flex-col justify-between">
-                          <div className="space-y-2">
-                            <span className="px-2.5 py-0.5 rounded-full text-[9px] sm:text-[11px] font-extrabold bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300">
-                              {p.tag}
-                            </span>
-                            <h3 className="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-white leading-snug">
-                              {p.title}
-                            </h3>
-                            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-                              {p.desc}
-                            </p>
-                          </div>
-        
-                          <div className="space-y-2 pt-2 border-t border-slate-200/60 dark:border-slate-800">
-                            <div className="flex flex-wrap gap-1">
-                              {p.tech.map((t) => (
-                                <span key={t} className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60">
-                                  {t}
-                                </span>
-                              ))}
-                            </div>
-        
-                            <div className="text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                              <CheckCircle2 className="w-3.5 h-3.5" />
-                              <span>{p.metrics}</span>
-                            </div>
-                          </div>
-                        </div>
+        <section className="py-8 sm:py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200/70 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                PORTFOLIO BUILDERS
+              </span>
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Enterprise <span className="jvm-gradient-text">Capstone Projects</span>
+              </h2>
+            </div>
+
+            {/* REQUIREMENT 6: ADD SCROLL BAR FOR DISPLAY THIS PROJECT ON MOBILE */}
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 sm:gap-8 pb-4 scrollbar-thin scrollbar-thumb-purple-500/50 md:grid md:grid-cols-3">
+              {capstoneProjects.map((p) => (
+                <div key={p.id} className="min-w-[260px] sm:min-w-[320px] md:min-w-0 flex-1 snap-center bg-slate-50 dark:bg-slate-900 p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-md space-y-3 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[9px] sm:text-[11px] font-extrabold bg-purple-100 dark:bg-purple-950 text-[#7C3AED] dark:text-purple-300">
+                      {p.tag}
+                    </span>
+                    <h3 className="text-sm sm:text-lg font-extrabold text-slate-900 dark:text-white leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+                      {p.desc}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 pt-2 border-t border-slate-200/60 dark:border-slate-800">
+                    <div className="flex flex-wrap gap-1">
+                      {p.tech.map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60">
+                          {t}
+                        </span>
                       ))}
                     </div>
-        
+
+                    <div className="text-[10px] sm:text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>{p.metrics}</span>
+                    </div>
                   </div>
-                </section>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
 
         {/* ========================================================= */}
         {/* 7. PLACEMENT SUPPORT JOURNEY                               */}
         {/* ========================================================= */}
-         <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
+        <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
 
             <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-16 space-y-1.5 sm:space-y-3">
@@ -1154,64 +1154,64 @@ export default function DataEngineeringWithGenAICoursePage() {
         {/* ========================================================= */}
         {/* 8. FACULTY / MENTORS SECTION                               */}
         {/* ========================================================= */}
-              <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
-                <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-      
-                  <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
-                      REAL TRANSCRIPTIONS
-                    </span>
-                    <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                      Student <span className="jvm-gradient-text">Success Stories</span>
-                    </h2>
+        <section className="py-8 sm:py-24 bg-[#FAFAFC] dark:bg-[#0B0F19] border-t border-purple-100/60 dark:border-slate-800">
+          <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-1.5 sm:space-y-3">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 block">
+                REAL TRANSCRIPTIONS
+              </span>
+              <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Student <span className="jvm-gradient-text">Success Stories</span>
+              </h2>
+            </div>
+            {/* REQUIREMENT 8: AUTOMATIC TIMED SLIDE SWITCHER WITHOUT SCROLLBAR */}
+            <div className="relative">
+              <div className="bg-white dark:bg-slate-900 p-5 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-4 transition-all duration-500">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
+                    {testimonials[activeTestimonialIndex].hike}
+                  </span>
+                  <div className="flex text-amber-400">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                    ))}
                   </div>
-                  {/* REQUIREMENT 8: AUTOMATIC TIMED SLIDE SWITCHER WITHOUT SCROLLBAR */}
-                  <div className="relative">
-                    <div className="bg-white dark:bg-slate-900 p-5 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-4 transition-all duration-500">
-                      <div className="flex items-center justify-between">
-                        <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
-                          {testimonials[activeTestimonialIndex].hike}
-                        </span>
-                        <div className="flex text-amber-400">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                          ))}
-                        </div>
-                      </div>
-
-                      <p className="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed italic">
-                        &quot;{testimonials[activeTestimonialIndex].review}&quot;
-                      </p>
-
-                      <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                        <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-purple-200">
-                          <Image src={testimonials[activeTestimonialIndex].avatar} alt={testimonials[activeTestimonialIndex].name} fill className="object-cover" />
-                        </div>
-                        <div>
-                          <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">{testimonials[activeTestimonialIndex].name}</div>
-                          <div className="text-[11px] sm:text-xs font-semibold text-purple-600 dark:text-purple-400">{testimonials[activeTestimonialIndex].role}</div>
-                          <div className="text-[10px] text-slate-400">{testimonials[activeTestimonialIndex].company}</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Indicator Dots */}
-                    <div className="flex items-center justify-center gap-2 mt-4">
-                      {testimonials.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setActiveTestimonialIndex(idx)}
-                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeTestimonialIndex === idx
-                            ? "w-6 jvm-gradient-bg"
-                            : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                            }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
                 </div>
-              </section>
+
+                <p className="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                  &quot;{testimonials[activeTestimonialIndex].review}&quot;
+                </p>
+
+                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-purple-200">
+                    <Image src={testimonials[activeTestimonialIndex].avatar} alt={testimonials[activeTestimonialIndex].name} fill className="object-cover" />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">{testimonials[activeTestimonialIndex].name}</div>
+                    <div className="text-[11px] sm:text-xs font-semibold text-purple-600 dark:text-purple-400">{testimonials[activeTestimonialIndex].role}</div>
+                    <div className="text-[10px] text-slate-400">{testimonials[activeTestimonialIndex].company}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Indicator Dots */}
+              <div className="flex items-center justify-center gap-2 mt-4">
+                {testimonials.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveTestimonialIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeTestimonialIndex === idx
+                      ? "w-6 jvm-gradient-bg"
+                      : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </section>
 
         {/* ========================================================= */}
         {/* 10. FINAL BOTTOM CTA BANNER SECTION                        */}
@@ -1252,7 +1252,7 @@ export default function DataEngineeringWithGenAICoursePage() {
         </section>
 
       </main>
-        {/* Enrollment Lead Enquiry Modal */}
+      {/* Enrollment Lead Enquiry Modal */}
       <LeadEnquiryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

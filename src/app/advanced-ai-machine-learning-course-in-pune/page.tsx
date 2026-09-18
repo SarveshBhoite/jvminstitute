@@ -324,7 +324,7 @@ const techStack = [
 // Faculty / Mentors
 const mentors = [
   {
-    name: "Jayesh Bhoite",
+    name: "Jayesh Bonde",
     role: "Lead AI Architect & Founder",
     experience: "12+ Years Industry Experience",
     company: "Ex-Fortune 500 Architect",
@@ -406,21 +406,21 @@ export default function AdvancedAIMachineLearningCoursePage() {
         {/* 1. HERO SECTION: MATCHING IMAGE 2 EXACT DESIGN */}
         {/* ========================================================= */}
         <section className="relative py-6 sm:py-10 lg:py-14 bg-gradient-to-b from-[#F5F3FF] via-[#FAFAFC] to-white dark:from-[#0B0F19] dark:via-[#111827] dark:to-[#0B0F19] border-b border-purple-100/80 dark:border-slate-800/80 overflow-hidden flex items-center min-h-[auto] lg:min-h-[580px]">
-          
-          {/* Animated Ambient Glow Spheres */} 
-          <motion.div 
+
+          {/* Animated Ambient Glow Spheres */}
+          <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0" 
+            className="absolute -top-24 -left-20 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-600/20 dark:bg-purple-600/25 rounded-full blur-[100px] pointer-events-none z-0"
           />
-          
+
           <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-10 items-center">
-              
+
               {/* Left Column: Headline, Description & Stats (7 Cols) */}
               <div className="lg:col-span-7 space-y-2.5 sm:space-y-3.5 text-left">
-                
+
                 {/* Pill Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -433,7 +433,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 </motion.div>
 
                 {/* Main Title */}
-                <motion.h1 
+                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
@@ -443,7 +443,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 </motion.h1>
 
                 {/* Description */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -458,13 +458,13 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 </motion.div>
 
                 {/* Metric Stat Cards */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="grid grid-cols-3 gap-2 sm:gap-3.5 pt-1"
                 >
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-purple-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -472,7 +472,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">Average Salary Hike</div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -480,7 +480,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                     <div className="text-[9px] sm:text-[11px] font-extrabold text-slate-700 dark:text-slate-300 mt-0.5">AI Job Growth</div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.04, y: -2 }}
                     className="p-2 sm:p-3 rounded-xl bg-white dark:bg-slate-900 border border-pink-100 dark:border-slate-800 shadow-xs text-center sm:text-left"
                   >
@@ -490,7 +490,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 </motion.div>
 
                 {/* Action CTAs */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -516,7 +516,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 </motion.div>
 
                 {/* Trust Badges */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -539,14 +539,14 @@ export default function AdvancedAIMachineLearningCoursePage() {
               </div>
 
               {/* Right Column: Dark Card (Image 2 style) */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="lg:col-span-5"
               >
                 <div className="bg-gradient-to-b from-purple-950 via-slate-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl border border-purple-500/30 relative overflow-hidden space-y-3 sm:space-y-4">
-                  
+
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-purple-200 text-[9px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                     ✦ WHAT YOU WILL ACHIEVE
                   </div>
@@ -704,11 +704,10 @@ export default function AdvancedAIMachineLearningCoursePage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                    selectedCategory === cat
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${selectedCategory === cat
                       ? "bg-[#7C248C] text-white shadow-sm"
                       : "bg-[#F1F3FB] dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -762,7 +761,7 @@ export default function AdvancedAIMachineLearningCoursePage() {
                       <h3 className="text-base font-bold text-slate-900 dark:text-white mt-3 leading-snug">{proj.title}</h3>
                       <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">{proj.desc}</p>
                     </div>
-                    
+
                     <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
                       <div className="flex flex-wrap gap-1">
                         {proj.tech.map((t) => (
