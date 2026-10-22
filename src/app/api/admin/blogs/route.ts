@@ -29,6 +29,16 @@ export async function POST(req: NextRequest) {
       data: validatedData,
     });
 
+    try {
+      const { revalidatePath } = await import("next/cache");
+      revalidatePath("/sitemap.xml");
+      revalidatePath("/blog");
+      revalidatePath(`/blog/${newBlog.slug}`);
+      revalidatePath("/");
+    } catch (e) {
+      console.error("Cache revalidation failed:", e);
+    }
+
     return apiSuccessResponse(newBlog, "Blog post created successfully", 201);
   } catch (error) {
     return handleApiError(error);

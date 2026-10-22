@@ -29,6 +29,19 @@ export async function PUT(
       data: validatedData,
     });
 
+    try {
+      const { revalidatePath } = await import("next/cache");
+      revalidatePath("/sitemap.xml");
+      revalidatePath("/blog");
+      revalidatePath(`/blog/${updatedBlog.slug}`);
+      if (existing.slug !== updatedBlog.slug) {
+        revalidatePath(`/blog/${existing.slug}`);
+      }
+      revalidatePath("/");
+    } catch (e) {
+      console.error("Cache revalidation failed:", e);
+    }
+
     return apiSuccessResponse(updatedBlog, "Blog post updated successfully");
   } catch (error) {
     return handleApiError(error);
@@ -54,6 +67,16 @@ export async function DELETE(
     await prisma.blogPost.delete({
       where: { id },
     });
+
+    try {
+      const { revalidatePath } = await import("next/cache");
+      revalidatePath("/sitemap.xml");
+      revalidatePath("/blog");
+      revalidatePath(`/blog/${existing.slug}`);
+      revalidatePath("/");
+    } catch (e) {
+      console.error("Cache revalidation failed:", e);
+    }
 
     return apiSuccessResponse(null, "Blog post deleted successfully");
   } catch (error) {
