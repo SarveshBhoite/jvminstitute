@@ -88,6 +88,36 @@ export function mapDBBlogToBlogPost(dbBlog: any, index: number = 0): BlogPost {
   const facultyAvatar = facultyPhotos[Math.abs(index) % facultyPhotos.length];
   // ALWAYS use rotating faculty photos — never use DB-stored avatars (they may be student images)
 
+  // Dynamically format publication date directly from dbBlog.createdAt timestamp
+  let formattedDate = "";
+  if (dbBlog.createdAt) {
+    try {
+      const d = new Date(dbBlog.createdAt);
+      if (!isNaN(d.getTime())) {
+        formattedDate = d.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        });
+      }
+    } catch {
+      formattedDate = "";
+    }
+  }
+
+  // If no valid createdAt, fall back to non-placeholder publishedAt or default
+  if (!formattedDate) {
+    if (dbBlog.publishedAt && dbBlog.publishedAt !== "Aug 2026" && dbBlog.publishedAt !== "August 8, 2026") {
+      formattedDate = dbBlog.publishedAt;
+    } else {
+      formattedDate = new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
+    }
+  }
+
   return {
     id: dbBlog.id,
     slug: dbBlog.slug,
@@ -102,7 +132,7 @@ export function mapDBBlogToBlogPost(dbBlog: any, index: number = 0): BlogPost {
       avatar: facultyAvatar,
       bio: "Lead Technical Architects & Engineers publishing real-world data pipelines and framework playbooks at JVM Institute.",
     },
-    publishedAt: dbBlog.publishedAt || "August 8, 2026",
+    publishedAt: formattedDate,
     readTime: dbBlog.readTime || "5 min read",
     image: dbBlog.image || staticPost?.image || "/course.jpg",
     tags: tags.length > 0 ? tags : ["Data Engineering"],

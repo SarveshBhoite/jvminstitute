@@ -25,6 +25,15 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const validatedData = blogPostSchema.parse(body);
 
+    // If publishedAt is missing or default placeholder, set to current formatted date
+    if (!validatedData.publishedAt || validatedData.publishedAt === "Aug 2026") {
+      validatedData.publishedAt = new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
+    }
+
     const newBlog = await prisma.blogPost.create({
       data: validatedData,
     });

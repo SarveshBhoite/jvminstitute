@@ -200,7 +200,11 @@ export default function AdminPage() {
     authorName: "JVM Technical Team",
     authorRole: "Senior Data Architect @ JVM",
     authorAvatar: "/anand.png",
-    publishedAt: "Aug 2026",
+    publishedAt: new Date().toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    }),
     readTime: "5 min read",
     image: "/course.jpg",
     tags: "Data Engineering, Python, PySpark, SQL",
@@ -654,7 +658,11 @@ export default function AdminPage() {
         authorName: "JVM Technical Team",
         authorRole: "Senior Data Architect @ JVM",
         authorAvatar: "/anand.png",
-        publishedAt: "Aug 2026",
+        publishedAt: new Date().toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        }),
         readTime: "5 min read",
         image: "/course.jpg",
         tags: "Data Engineering, Python, PySpark, SQL",
